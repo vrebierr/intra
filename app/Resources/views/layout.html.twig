@@ -4,11 +4,55 @@
 		<meta/>
 		<title>{% block title %} Intra {% endblock %}</title>
 		{% block stylesheets %}
-		<link rel="stylesheet" href="{{ asset('css/semantic.css') }}" type="text/css" />
-		<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+			<link rel="stylesheet" href="{{ asset('css/semantic.css') }}" type="text/css" />
+			<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+		{% endblock %}
+		{% block scripts %}
+			<script type="text/javascript" src="{{ asset('javascript/jquery-2.1.1.min.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('javascript/semantic.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('javascript/script.js') }}"></script>
 		{% endblock %}
 	</head>
 	<body>
+		<div class="ui secondary pointing menu">
+			<a class="{% block active_home '' %} item hide" href="{{ path('intra_index') }}">
+				<i class="home icon"></i> {{ 'NAVBAR_HOME'|trans({}, 'SiteIntraBundle') }}
+			</a>
+			<a class="{% block active_activites '' %} item hide" href="#">
+				<i class="tasks icon"></i> {{ 'NAVBAR_ACTIVITES'|trans }}
+			</a>
+			<a class="{% block active_planning '' %} item hide" href="#">
+				<i class="calendar icon"></i> {{ 'NAVBAR_PLANNING'|trans }}
+			</a>
+			<a class="{% block active_elearning '' %} item hide" href="#">
+				<i class="laptop icon"></i> {{ 'NAVBAR_ELEARNING'|trans }}
+			</a>
+			<a class="{% block active_forum '' %} item hide" href="#">
+				<i class="chat icon"></i> {{ 'NAVBAR_FORUM'|trans }}
+			</a>
+			<div class="right menu">
+				<div class="item">
+					<div class="ui small icon input">
+						<input type="text" placeholder="{{ 'NAVBAR_SEARCH'|trans }}">
+						<i class="search icon"></i>
+					</div>
+				</div>
+				<div class="ui dropdown item">
+					<i class="user icon"></i> {{ app.user.username }} <i class="icon dropdown"></i>
+					<div class="menu">
+						<a class="item hide" href="{{ path('sonata_user_profile_show') }}">
+							<i class="info letter icon"></i> {{ 'NAVBAR_PROFILE'|trans }}
+						</a>
+						<a class="item hide" href="{{ path('sonata_user_profile_edit_authentication') }}">
+							<i class="settings icon"></i>{{ 'NAVBAR_SETTINGS'|trans }}
+						</a>
+						<a class="item hide" href="{{ path('sonata_user_security_logout') }}">
+							<i class="sign out icon"></i>{{ 'NVBAR_LOGOUT'|trans }}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 		{% block body %}
 		{% endblock %}
 	</body>

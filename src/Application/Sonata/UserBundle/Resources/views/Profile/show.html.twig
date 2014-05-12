@@ -1,51 +1,49 @@
-{#
-
-This file is part of the Sonata package.
-
-(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-
-#}
-
 {% extends "SonataUserBundle:Profile:action.html.twig" %}
 
 {% block sonata_profile_content %}
-    {% sonata_template_box 'This is the user profile template. Feel free to override it.' %}
-
-    <div class="row row-fluid">
-        {% set has_center = false %}
-        {% for block in blocks %}
-            {% if block.position == 'center' %}
-                {% set has_center = true %}
-            {% endif %}
-        {% endfor %}
-
-        <div class="{% if has_center %}span4 col-lg-4{% else %}span6 col-lg-6{% endif %}">
-            {% for block in blocks %}
-                {% if block.position == 'left' %}
-                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        {% if has_center %}
-            <div class="span4 col-lg-4">
-                {% for block in blocks %}
-                    {% if block.position == 'center' %}
-                        {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% endif %}
-
-        <div class="{% if has_center %}span4 col-lg-4{% else %}span6 col-lg-6{% endif %}">
-            {% for block in blocks %}
-                {% if block.position == 'right' %}
-                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
+	<h3 class="ui header">
+		<i class="unhide icon"></i>
+		<div class="content">
+			{{ 'DASHBOARD_TITLE_SHOW'|trans }}
+			<div class="sub header">{{ 'DASHBOARD_SUBTITLE_SHOW'|trans }}</div>
+		</div>
+	</h3>
+	<div class="profile">
+		<div>
+			{{ 'show.label_username'|trans({}, 'SonataUserBundle') }}: {{ user.username }}
+		</div>
+		<div>
+			{{ 'show.label_firstname'|trans({}, 'SonataUserBundle') }}: {{ user.firstname }}
+		</div>
+		<div>
+			{{ 'show.label_lastname'|trans({}, 'SonataUserBundle') }}: {{ user.lastname }}
+		</div>
+		<div>
+			{{ 'show.label_gender'|trans({}, 'SonataUserBundle') }}: {% if user.gender == "m" %}{{ 'gender_male'|trans({}, 'SonataUserBundle') }}{%elseif user.gender =="f" %}{{ 'gender_female'|trans({}, 'SonataUserBundle') }}{% else %}{{ 'gender_unknown'|trans({}, 'SonataUserBundle') }}{% endif %}
+		</div>
+		<div>
+			{{ 'show.label_date_of_birth'|trans({}, 'SonataUserBundle') }}: {{ user.dateofbirth|localizeddate("medium", "short") }}
+		</div>
+		<div>
+			{{ 'show.label_email'|trans({}, 'SonataUserBundle') }}: {{ user.email }}
+		</div>
+		<div>
+			{{ 'show.label_phone'|trans({}, 'SonataUserBundle') }}: {{ user.phone }}
+		</div>
+		<div>
+			{{ 'show.label_website'|trans({}, 'SonataUserBundle') }}: {{ user.website }}
+		</div>
+		<div>
+			{{ 'show.label_biography'|trans({}, 'SonataUserBundle') }}: {{ user.biography }}
+		</div>
+		<br>
+		<br>
+		<div>
+			{{ 'show.label_created_at'|trans({}, 'SonataUserBundle') }}: {{ user.createdat|localizeddate("full", "medium") }}
+		</div>
+		<div>
+			{{ 'show.label_last_login'|trans({}, 'SonataUserBundle') }}: {{ user.updatedat|localizeddate("full", "medium") }}
+		</div>
+	</div>
 {% endblock %}
+

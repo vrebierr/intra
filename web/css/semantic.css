@@ -2047,7 +2047,6 @@ body > .ui.grid {
 }
 .ui.secondary.menu .item > .input input {
   background-color: transparent;
-  border: none;
 }
 .ui.secondary.menu .link.item,
 .ui.secondary.menu a.item {

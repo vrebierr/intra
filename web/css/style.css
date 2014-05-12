@@ -12,7 +12,7 @@ html a
 	text-decoration: none;
 }
 
-html a:hover, html a:active, html a:focus
+html a:hover:not(.hide), html a:active:not(.hide), html a:focus:not(.hide)
 {
 	text-decoration: underline;
 }
