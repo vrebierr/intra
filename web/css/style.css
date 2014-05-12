@@ -1,0 +1,31 @@
+@import url(http://fonts.googleapis.com/css?family=Lemon|Oxygen);
+
+html
+{
+	font-family: "Oxygen", sans-serif;
+	font-size: 0.9em;
+}
+
+html a
+{
+	color: #444444;
+	text-decoration: none;
+}
+
+html a:hover, html a:active, html a:focus
+{
+	text-decoration: underline;
+}
+
+body.ui.fade
+{
+	background: rgba(68, 68, 68, 0.5);
+}
+
+div.form.login
+{
+	width: 15%;
+	min-width: 350px;
+	margin: 0 auto;
+	margin-top: 20%;
+}

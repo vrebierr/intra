@@ -1774,80 +1774,18 @@
         ]
     },
     {
-        "name": "sonata-project/cache",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sonata-project/cache.git",
-            "reference": "3bd8c266c6184ebcf82846d659292e9680b979eb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sonata-project/cache/zipball/3bd8c266c6184ebcf82846d659292e9680b979eb",
-            "reference": "3bd8c266c6184ebcf82846d659292e9680b979eb",
-            "shasum": ""
-        },
-        "require-dev": {
-            "doctrine/orm": "~2.2",
-            "doctrine/phpcr-odm": "~1.0",
-            "predis/predis": "~0.8",
-            "psr/log": "~1.0"
-        },
-        "suggest": {
-            "doctrine/orm": "ORM support",
-            "doctrine/phpcr-odm": "PHPCR ODM support",
-            "ext-apc": "Caching with ext/apc",
-            "ext-memcached": "Caching with ext/memcached",
-            "predis/predis": "Install redis php"
-        },
-        "time": "2014-02-13 15:12:33",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Sonata\\Cache\\Tests\\": "test/",
-                "Sonata\\Cache\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Thomas Rabaix",
-                "email": "thomas.rabaix@gmail.com",
-                "homepage": "http://sonata-project.org/"
-            }
-        ],
-        "description": "Cache library",
-        "homepage": "https://github.com/sonata-project/cache",
-        "keywords": [
-            "cache",
-            "memcached",
-            "mongodb",
-            "redis"
-        ]
-    },
-    {
         "name": "sonata-project/admin-bundle",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-            "reference": "d89d9dc1447f2e0eaac14e89558a4738385c4099"
+            "reference": "717b6704e66cc3633b575467878e8b62d8f4480d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/d89d9dc1447f2e0eaac14e89558a4738385c4099",
-            "reference": "d89d9dc1447f2e0eaac14e89558a4738385c4099",
+            "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/717b6704e66cc3633b575467878e8b62d8f4480d",
+            "reference": "717b6704e66cc3633b575467878e8b62d8f4480d",
             "shasum": ""
         },
         "require": {
@@ -1879,7 +1817,7 @@
             "jms/translation-bundle": "Extract message keys from Admins",
             "sonata-project/intl-bundle": "Add localized date and number into the list"
         },
-        "time": "2014-05-07 08:41:34",
+        "time": "2014-05-12 10:08:08",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -1972,76 +1910,6 @@
         "homepage": "http://sonata-project.org/bundles/easy-extends",
         "keywords": [
             "Easy Extends",
-            "sonata"
-        ]
-    },
-    {
-        "name": "sonata-project/doctrine-orm-admin-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-            "reference": "f35952c3e58e6cb50e2a773c3681859bf2469a07"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/f35952c3e58e6cb50e2a773c3681859bf2469a07",
-            "reference": "f35952c3e58e6cb50e2a773c3681859bf2469a07",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/orm": "~2.4",
-            "sonata-project/admin-bundle": "~2.3@dev",
-            "sonata-project/exporter": "~1.3,>=1.3.1",
-            "symfony/console": "~2.3",
-            "symfony/doctrine-bridge": "~2.2",
-            "symfony/form": "~2.3",
-            "symfony/framework-bundle": "~2.2",
-            "symfony/security": "~2.3"
-        },
-        "require-dev": {
-            "simplethings/entity-audit-bundle": "~0.1",
-            "sonata-project/admin-bundle": "~2.3@dev"
-        },
-        "suggest": {
-            "simplethings/entity-audit-bundle": "If you want to support for versioning of entities and their associations."
-        },
-        "time": "2014-04-29 11:25:21",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.3.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Sonata\\DoctrineORMAdminBundle\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Thomas Rabaix",
-                "email": "thomas.rabaix@sonata-project.org",
-                "homepage": "http://sonata-project.org"
-            },
-            {
-                "name": "Sonata Community",
-                "homepage": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle/contributors"
-            }
-        ],
-        "description": "Symfony Sonata / Integrate Doctrine ORM into the SonataAdminBundle",
-        "homepage": "http://sonata-project.org/bundles/admin",
-        "keywords": [
-            "Admin Generator",
-            "admin",
-            "bootstrap",
-            "generator",
             "sonata"
         ]
     },
@@ -2146,76 +2014,6 @@
         "keywords": [
             "datagrid",
             "sonata"
-        ]
-    },
-    {
-        "name": "friendsofsymfony/user-bundle",
-        "version": "1.3.x-dev",
-        "version_normalized": "1.3.9999999.9999999-dev",
-        "target-dir": "FOS/UserBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-            "reference": "334a0ec4e479f2858d55fad3f2db292328e7bb4b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/334a0ec4e479f2858d55fad3f2db292328e7bb4b",
-            "reference": "334a0ec4e479f2858d55fad3f2db292328e7bb4b",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "symfony/framework-bundle": "~2.1",
-            "symfony/security-bundle": "~2.1"
-        },
-        "require-dev": {
-            "doctrine/doctrine-bundle": "*",
-            "swiftmailer/swiftmailer": "~4.3",
-            "symfony/validator": "~2.1",
-            "symfony/yaml": "~2.1",
-            "twig/twig": "~1.5",
-            "willdurand/propel-typehintable-behavior": "dev-master"
-        },
-        "suggest": {
-            "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
-        },
-        "time": "2014-03-16 18:17:43",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "FOS\\UserBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Christophe Coevoet",
-                "email": "stof@notk.org"
-            },
-            {
-                "name": "Thibault Duplessis",
-                "email": "thibault.duplessis@gmail.com",
-                "homepage": "http://ornicar.github.com"
-            },
-            {
-                "name": "FriendsOfSymfony Community",
-                "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
-            }
-        ],
-        "description": "Symfony FOSUserBundle",
-        "homepage": "http://friendsofsymfony.github.com",
-        "keywords": [
-            "User management"
         ]
     },
     {
@@ -2964,80 +2762,6 @@
         ]
     },
     {
-        "name": "sonata-project/user-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sonata-project/SonataUserBundle.git",
-            "reference": "086173fd698d6bf2bc85d113f5551871d93d40aa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/086173fd698d6bf2bc85d113f5551871d93d40aa",
-            "reference": "086173fd698d6bf2bc85d113f5551871d93d40aa",
-            "shasum": ""
-        },
-        "require": {
-            "friendsofsymfony/rest-bundle": "~1.1",
-            "friendsofsymfony/user-bundle": "~1.3",
-            "jms/serializer-bundle": "~0.11",
-            "nelmio/api-doc-bundle": "~2.4",
-            "sonata-project/admin-bundle": "~2.3@dev",
-            "sonata-project/core-bundle": "~2.2",
-            "sonata-project/datagrid-bundle": "~2.2@dev",
-            "sonata-project/doctrine-extensions": "~1.0",
-            "sonata-project/easy-extends-bundle": "~2.1",
-            "sonata-project/google-authenticator": "~1.0",
-            "symfony/console": "~2.3",
-            "symfony/form": "~2.3",
-            "symfony/http-foundation": "~2.3",
-            "symfony/security": "~2.3"
-        },
-        "require-dev": {
-            "sonata-project/seo-bundle": "~1.1"
-        },
-        "suggest": {
-            "sonata-project/doctrine-orm-admin-bundle": "~2.3@dev",
-            "sonata-project/seo-bundle": "~1.1"
-        },
-        "time": "2014-05-02 13:49:49",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.3.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Sonata\\UserBundle\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Thomas Rabaix",
-                "email": "thomas.rabaix@sonata-project.org",
-                "homepage": "http://sonata-project.org"
-            },
-            {
-                "name": "Sonata Community",
-                "homepage": "https://github.com/sonata-project/SonataUserBundle/contributors"
-            }
-        ],
-        "description": "Symfony SonataUserBundle",
-        "homepage": "http://sonata-project.org/bundles/user",
-        "keywords": [
-            "google authenticator",
-            "sonata",
-            "user"
-        ]
-    },
-    {
         "name": "sonata-project/core-bundle",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -3108,12 +2832,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-            "reference": "30ccaa691e695aafc254da197ac545f719a1d132"
+            "reference": "60e1eb14c33afe8e114a788c1ca6acb7928ea784"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/30ccaa691e695aafc254da197ac545f719a1d132",
-            "reference": "30ccaa691e695aafc254da197ac545f719a1d132",
+            "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/60e1eb14c33afe8e114a788c1ca6acb7928ea784",
+            "reference": "60e1eb14c33afe8e114a788c1ca6acb7928ea784",
             "shasum": ""
         },
         "require": {
@@ -3132,7 +2856,7 @@
             "sonata-project/admin-bundle": "~2.2",
             "sonata-project/cache-bundle": "~2.1"
         },
-        "time": "2014-04-30 12:24:22",
+        "time": "2014-05-12 10:21:43",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -3324,6 +3048,282 @@
         "keywords": [
             "Authentication",
             "ldap"
+        ]
+    },
+    {
+        "name": "sonata-project/cache",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sonata-project/cache.git",
+            "reference": "7c91e7fd1ca5be4273b09388650709bff31d8966"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sonata-project/cache/zipball/7c91e7fd1ca5be4273b09388650709bff31d8966",
+            "reference": "7c91e7fd1ca5be4273b09388650709bff31d8966",
+            "shasum": ""
+        },
+        "require-dev": {
+            "doctrine/orm": "~2.2",
+            "doctrine/phpcr-odm": "~1.0",
+            "predis/predis": "~0.8,<1.0",
+            "psr/log": "~1.0"
+        },
+        "suggest": {
+            "doctrine/orm": "ORM support",
+            "doctrine/phpcr-odm": "PHPCR ODM support",
+            "ext-apc": "Caching with ext/apc",
+            "ext-memcached": "Caching with ext/memcached",
+            "predis/predis": "Install redis php"
+        },
+        "time": "2014-05-12 08:55:48",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Sonata\\Cache\\Tests\\": "test/",
+                "Sonata\\Cache\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Thomas Rabaix",
+                "email": "thomas.rabaix@gmail.com",
+                "homepage": "http://sonata-project.org/"
+            }
+        ],
+        "description": "Cache library",
+        "homepage": "https://github.com/sonata-project/cache",
+        "keywords": [
+            "cache",
+            "memcached",
+            "mongodb",
+            "redis"
+        ]
+    },
+    {
+        "name": "sonata-project/doctrine-orm-admin-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
+            "reference": "6683eb037e78a0bc3586ba5154e77f926dd4a191"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/6683eb037e78a0bc3586ba5154e77f926dd4a191",
+            "reference": "6683eb037e78a0bc3586ba5154e77f926dd4a191",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/orm": "~2.4",
+            "sonata-project/admin-bundle": "~2.3@dev",
+            "sonata-project/exporter": "~1.3,>=1.3.1",
+            "symfony/console": "~2.3",
+            "symfony/doctrine-bridge": "~2.2",
+            "symfony/form": "~2.3",
+            "symfony/framework-bundle": "~2.2",
+            "symfony/security": "~2.3"
+        },
+        "require-dev": {
+            "simplethings/entity-audit-bundle": "~0.1",
+            "sonata-project/admin-bundle": "~2.3@dev"
+        },
+        "suggest": {
+            "simplethings/entity-audit-bundle": "If you want to support for versioning of entities and their associations."
+        },
+        "time": "2014-05-12 08:36:16",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Sonata\\DoctrineORMAdminBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Thomas Rabaix",
+                "email": "thomas.rabaix@sonata-project.org",
+                "homepage": "http://sonata-project.org"
+            },
+            {
+                "name": "Sonata Community",
+                "homepage": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle/contributors"
+            }
+        ],
+        "description": "Symfony Sonata / Integrate Doctrine ORM into the SonataAdminBundle",
+        "homepage": "http://sonata-project.org/bundles/admin",
+        "keywords": [
+            "Admin Generator",
+            "admin",
+            "bootstrap",
+            "generator",
+            "sonata"
+        ]
+    },
+    {
+        "name": "sonata-project/user-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sonata-project/SonataUserBundle.git",
+            "reference": "4afb772d69e35009e840b3300b744513e88aaf92"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/4afb772d69e35009e840b3300b744513e88aaf92",
+            "reference": "4afb772d69e35009e840b3300b744513e88aaf92",
+            "shasum": ""
+        },
+        "require": {
+            "friendsofsymfony/rest-bundle": "~1.1",
+            "friendsofsymfony/user-bundle": "~1.3",
+            "jms/serializer-bundle": "~0.11",
+            "nelmio/api-doc-bundle": "~2.4",
+            "sonata-project/admin-bundle": "~2.3@dev",
+            "sonata-project/core-bundle": "~2.2",
+            "sonata-project/datagrid-bundle": "~2.2@dev",
+            "sonata-project/doctrine-extensions": "~1.0",
+            "sonata-project/easy-extends-bundle": "~2.1",
+            "sonata-project/google-authenticator": "~1.0",
+            "symfony/console": "~2.3",
+            "symfony/form": "~2.3",
+            "symfony/http-foundation": "~2.3",
+            "symfony/security": "~2.3"
+        },
+        "require-dev": {
+            "sonata-project/seo-bundle": "~1.1"
+        },
+        "suggest": {
+            "sonata-project/doctrine-orm-admin-bundle": "~2.3@dev",
+            "sonata-project/seo-bundle": "~1.1"
+        },
+        "time": "2014-05-12 10:21:23",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Sonata\\UserBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Thomas Rabaix",
+                "email": "thomas.rabaix@sonata-project.org",
+                "homepage": "http://sonata-project.org"
+            },
+            {
+                "name": "Sonata Community",
+                "homepage": "https://github.com/sonata-project/SonataUserBundle/contributors"
+            }
+        ],
+        "description": "Symfony SonataUserBundle",
+        "homepage": "http://sonata-project.org/bundles/user",
+        "keywords": [
+            "google authenticator",
+            "sonata",
+            "user"
+        ]
+    },
+    {
+        "name": "friendsofsymfony/user-bundle",
+        "version": "1.3.x-dev",
+        "version_normalized": "1.3.9999999.9999999-dev",
+        "target-dir": "FOS/UserBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+            "reference": "334a0ec4e479f2858d55fad3f2db292328e7bb4b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/334a0ec4e479f2858d55fad3f2db292328e7bb4b",
+            "reference": "334a0ec4e479f2858d55fad3f2db292328e7bb4b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "symfony/framework-bundle": "~2.1",
+            "symfony/security-bundle": "~2.1"
+        },
+        "require-dev": {
+            "doctrine/doctrine-bundle": "*",
+            "swiftmailer/swiftmailer": "~4.3",
+            "symfony/validator": "~2.1",
+            "symfony/yaml": "~2.1",
+            "twig/twig": "~1.5",
+            "willdurand/propel-typehintable-behavior": "dev-master"
+        },
+        "suggest": {
+            "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
+        },
+        "time": "2014-03-16 18:17:43",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "FOS\\UserBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christophe Coevoet",
+                "email": "stof@notk.org"
+            },
+            {
+                "name": "Thibault Duplessis",
+                "email": "thibault.duplessis@gmail.com",
+                "homepage": "http://ornicar.github.com"
+            },
+            {
+                "name": "FriendsOfSymfony Community",
+                "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
+            }
+        ],
+        "description": "Symfony FOSUserBundle",
+        "homepage": "http://friendsofsymfony.github.com",
+        "keywords": [
+            "User management"
         ]
     }
 ]
