@@ -151,4 +151,4 @@ fr3d_ldap:
             - { ldap_attr: alias, user_method: setEmail }
             - { ldap_attr: first-name, user-method: setFirstname }
             - { ldap_attr: last-name, user-method: setLastname }
-            - { ldap_attr: mobile-phone, user-method: setPhone }
+#            - { ldap_attr: mobile-phone, user-method: setPhone }

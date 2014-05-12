@@ -1,8 +1,14 @@
+
+
 root:
     pattern: /
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
-        route: sonata_user_security_login
+        route: intra_index
+
+site_intra:
+    resource: "@SiteIntraBundle/Resources/config/routing.yml"
+    prefix:   /
 
 sonata_user_security:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
@@ -14,10 +20,6 @@ sonata_user_resetting:
 sonata_user_profile:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
     prefix: /profile
-
-sonata_user_register:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml"
-    prefix: /register
 
 sonata_user_change_password:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml"
