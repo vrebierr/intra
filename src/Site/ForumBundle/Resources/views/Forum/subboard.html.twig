@@ -1,0 +1,42 @@
+{% extends "SiteForumBundle::layout.html.twig" %}
+
+{% block body %}
+	<div>
+		<h2 class="subtitle">{% block breadcrumb_forum %} {{ parent() }} / <a href="{{ path('blank_board', {'id': subboard.board.id }) }}">{{ subboard.board.title }}</a>{% endblock %}</h2>
+	</div>
+{% block forum_body %}
+	<div>
+		<h2 class="subsubtitle">{{ subboard.title }}</h2>
+	</div>
+	<div class="thread">
+		{% for thread in subboard.threads %}
+			<div class="forumlink">
+				{% if thread.locked == true %}
+					<i class="icon-lock"></i>
+				{% endif %}
+				<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
+				<span class="commentlist">
+					<span class="right">
+						{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
+						{% if thread.posts|length != 0 %}
+							{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
+						{% endif %}
+					</span>
+				</span>
+			</div>
+		{% endfor %}
+		{% if form is not null %}
+			<br><br>
+			<div>
+				<h3>{{ "FORUM_NEW_THREAD"|trans }}</h3>
+			</div>
+			<form action="" method="POST">
+				{{ form_widget(form) }}
+				<div>
+					<input type="submit" value="{{ 'FORUM_SEND'|trans }}" class="contactsubmit" />
+				</div>
+			</form>
+		{% endif %}
+	</div>
+{% endblock %}
+{% endblock %}

@@ -29,3 +29,13 @@ div.form.login
 	margin: 0 auto;
 	margin-top: 20%;
 }
+
+.italic
+{
+	font-style: italic;
+}
+
+.right
+{
+	float: right;
+}

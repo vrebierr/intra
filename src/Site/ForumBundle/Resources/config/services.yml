@@ -1,0 +1,54 @@
+parameters:
+#    site_forum.example.class: Site\ForumBundle\Example
+
+services:
+    sonata.admin.board:
+        class: Site\ForumBundle\Admin\BoardAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Boards" }
+        arguments:
+            - ~
+            - Site\ForumBundle\Entity\ForumBoard
+            - ~
+        calls:
+            - [ setTranslationDomain, ['SiteForumBundle'] ]
+    sonata.admin.subboard:
+        class: Site\ForumBundle\Admin\SubboardAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Subboards" }
+        arguments:
+            - ~
+            - Site\ForumBundle\Entity\ForumSubboard
+            - ~
+        calls:
+            - [ setTranslationDomain, ['SiteForumBundle'] ]
+    sonata.admin.thread:
+        class: Site\ForumBundle\Admin\ThreadAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Threads" }
+        arguments:
+            - ~
+            - Site\ForumBundle\Entity\ForumThread
+            - ~
+        calls:
+            - [ setTranslationDomain, ['SiteForumBundle'] ]
+    sonata.admin.post:
+        class: Site\ForumBundle\Admin\PostAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Posts" }
+        arguments:
+            - ~
+            - Site\ForumBundle\Entity\ForumPost
+            - ~
+        calls:
+            - [ setTranslationDomain, ['SiteForumBundle'] ]
+    sonata.admin.comment:
+        class: Site\ForumBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Comments" }
+        arguments:
+            - ~
+            - Site\ForumBundle\Entity\ForumComment
+            - ~
+        calls:
+            - [ setTranslationDomain, ['SiteForumBundle'] ]

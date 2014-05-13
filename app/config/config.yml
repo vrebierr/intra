@@ -68,6 +68,8 @@ doctrine:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
                     FOSUserBundle: ~
+                    SiteForumBundle: ~
+                    SiteIntraBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

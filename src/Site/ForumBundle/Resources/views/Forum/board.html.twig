@@ -1,0 +1,53 @@
+{% extends "SiteForumBundle::layout.html.twig" %}
+
+{% block forum_body %}
+	<div>
+		<h2 class="subsubtitle">{{ board.title }}</h2>
+	</div>
+	<div class="thread">
+		{% for subboard in board.subboards %}
+			{% if subboard.ghost == true %}
+				{% for thread in subboard.threads %}
+					<div class="forumlink">
+						{% if thread.locked == true %}
+							<i class="icon-lock"></i>
+						{% else %}
+							<i class="icon-paperclip"></i>
+						{% endif %}
+						<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
+						<span class="commentlist">
+							<span class="right">
+								{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
+								{% if thread.posts|length != 0 %}
+									{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
+								{% endif %}
+							</span>
+						</span>
+					</div>
+					{% if loop.last %}
+						<br>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+		{% for subboard in board.subboards %}
+			{% if subboard.ghost != true %}
+				<div class="forumlink">
+					<div>
+						<a href="{{ path('blank_subboard', { 'id': subboard.id }) }}">{{ subboard.title }}</a>
+						<br>
+						<div class="commentlist">
+							{{ subboard.subtitle }}
+							<span class="right">
+								{{ 'FORUM_SUBBOARD_NBTHREADS'|transchoice(subboard.threads|length) }}
+								{% if subboard.threads|length != 0 %}
+									{{ 'FORUM_SUBBOARD_LASTTHREAD'|trans ({'%subboard_lastthread%': subboard.threads.last.date|localizeddate("medium", "medium")}) }}
+								{% endif %}
+							</span>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

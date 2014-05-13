@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new FR3D\LdapBundle\FR3DLdapBundle(),
             new Site\IntraBundle\SiteIntraBundle(),
+            new Site\ForumBundle\SiteForumBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

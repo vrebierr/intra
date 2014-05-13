@@ -10,6 +10,11 @@ site_intra:
     resource: "@SiteIntraBundle/Resources/config/routing.yml"
     prefix:   /
 
+blank_forum:
+    resource: "@SiteForumBundle/Resources/config/routing.yml"
+    prefix:   /forum
+
+
 sonata_user_security:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
 
@@ -24,6 +29,7 @@ sonata_user_profile:
 sonata_user_change_password:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml"
     prefix: /profile
+
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'

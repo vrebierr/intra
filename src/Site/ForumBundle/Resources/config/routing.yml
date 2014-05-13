@@ -1,0 +1,27 @@
+site_forum:
+    pattern:  /
+    defaults: { _controller: SiteForumBundle:Forum:forum }
+
+site_forum_board:
+    pattern: /board/{id}
+    defaults: { _controller: SiteForumBundle:Forum:board, id: 1 }
+    requirements:
+        id: \d+
+
+site_forum_subboard:
+    pattern: /subboard/{id}
+    defaults: { _controller: SiteForumBundle:Forum:subboard, id: 1 }
+    requirements:
+        id: \d+
+
+site_forum_thread:
+    pattern: /thread/{id}/
+    defaults: { _controller: SiteForumBundle:Forum:thread, id: 1 }
+    requirements:
+        id: \d+
+
+site_forum_post:
+    pattern: /post/{id}/
+    defaults: { _controller: SiteForumBundle:Forum:post, id : 1 }
+    requirements:
+        id: \d+
