@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotSite;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Collection;
 
 class PostType extends AbstractType
@@ -21,7 +21,7 @@ class PostType extends AbstractType
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 		$collectionConstraint = new Collection(array(
-			'content' => array(new NotSite(array('message' => 'Message should not be site.')),new Length(array('min' => 5)))));
+			'content' => array(new NotBlank(array('message' => 'Message should not be site.')),new Length(array('min' => 5)))));
 		$resolver->setDefaults(array('constraints' => $collectionConstraint));
 	}
 

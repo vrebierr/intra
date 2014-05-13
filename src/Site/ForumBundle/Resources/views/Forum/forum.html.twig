@@ -1,7 +1,7 @@
 {% extends "SiteForumBundle::layout.html.twig" %}
 
 {% block forum_body %}
-	<div class="ui accordion">
+	<div class="ui fluid basic accordion">
 		{% for board in listboards %}
 			<div class="title">
 				<h3 class="ui header">
@@ -9,31 +9,26 @@
 					<a href="{{ path('site_forum_board', { 'id': board.id}) }}">{{ board.title }}</a>
 				</h3>
 			</div>
-				{% for subboard in board.subboards %}
-					{% if subboard.ghost == true %}
-						{% for thread in subboard.threads %}
-							<div class="forumlink">
-								{% if thread.locked == true %}
-									<i class="icon-lock"></i>
-								{% else %}
-									<i class="icon-paperclip"></i>
-								{% endif %}
-								<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
-								<span class="commentlist">
-									<span class="right">
-										{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
-										{% if thread.posts|length != 0 %}
-											{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
-										{% endif %}
-									</span>
-								</span>
-							</div>
-							{% if loop.last %}
-								<br>
-							{% endif %}
-						{% endfor %}
-					{% endif %}
-				{% endfor %}
+			{% for subboard in board.subboards %}
+				{% if subboard.ghost == true %}
+					{% for thread in subboard.threads %}
+						{% if thread.locked == true %}
+							<i class="lock icon"></i>
+						{% else %}
+							<i class="pin icon"></i>
+						{% endif %}
+						<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
+						{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
+						{% if thread.posts|length != 0 %}
+							{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
+						{% endif %}
+						{% if loop.last %}
+							<br>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+			<div class="content">
 				{% for subboard in board.subboards %}
 					{% if subboard.ghost != true %}
 						<h4 class="ui header">
@@ -50,6 +45,7 @@
 						</h4>
 					{% endif %}
 				{% endfor %}
+			</div>
 		{% endfor %}
 	</div>
 {% endblock %}

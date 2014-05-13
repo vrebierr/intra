@@ -2,7 +2,7 @@
 
 {% block body %}
 	<div>
-		<h2 class="subtitle">{% block breadcrumb_forum %} {{ parent() }} / <a href="{{ path('blank_board', {'id': subboard.board.id }) }}">{{ subboard.board.title }}</a>{% endblock %}</h2>
+		<h2 class="subtitle">{% block breadcrumb_forum %} {{ parent() }} / <a href="{{ path('site_forum_board', {'id': subboard.board.id }) }}">{{ subboard.board.title }}</a>{% endblock %}</h2>
 	</div>
 {% block forum_body %}
 	<div>

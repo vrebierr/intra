@@ -34,7 +34,7 @@
 			{% if subboard.ghost != true %}
 				<div class="forumlink">
 					<div>
-						<a href="{{ path('blank_subboard', { 'id': subboard.id }) }}">{{ subboard.title }}</a>
+						<a href="{{ path('site_forum_subboard', { 'id': subboard.id }) }}">{{ subboard.title }}</a>
 						<br>
 						<div class="commentlist">
 							{{ subboard.subtitle }}
