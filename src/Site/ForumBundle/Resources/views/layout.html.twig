@@ -6,7 +6,9 @@
 	<h2 class="ui header">
 		<i class="chat icon"></i>
 		<div class="content">
-			{% block breadcrumb_forum %} <a href="{{ path('site_forum') }}">{{ 'FORUM_HOME'|trans|upper }}</a> {% endblock %}
+			<a class="section" href="{{ path('site_forum') }}">
+				{{ 'FORUM_HOME'|trans|upper }}
+			</a>
 		</div>
 	</h2>
 	{% if user is null %}

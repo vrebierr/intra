@@ -1,42 +1,45 @@
 {% extends "SiteForumBundle::layout.html.twig" %}
 
-{% block body %}
-	<div>
-		<h2 class="subtitle">{% block breadcrumb_forum %} {{ parent() }} / <a href="{{ path('site_forum_board', {'id': subboard.board.id }) }}">{{ subboard.board.title }}</a>{% endblock %}</h2>
-	</div>
 {% block forum_body %}
-	<div>
-		<h2 class="subsubtitle">{{ subboard.title }}</h2>
-	</div>
-	<div class="thread">
+	<h3 class="ui header">
+		<i class="dropdown icon"></i>
+		{{ subboard.title }}
+	</h3>
+	{% if form is not null %}
+		<br>
+		<br>
+		<div class="form newthread">
+			<div class="ui blue button show form center">
+				<i class="plus icon"></i>{{ 'FORUM_NEW_THREAD'|trans }}
+			</div>
+			<form class="form thread hidden" action="" method="POST">
+				<div class="two fields">
+					{{ form_widget(form) }}
+				</div>
+				<br>
+				<div class="field">
+					<input type="submit" id="_submit" class="ui right floated button" name="_submit" value="{{ 'FORUM_SEND'|trans }}"/>
+				</div>
+			</form>
+		</div>
+	{% endif %}
+	<br>
+	<br>
+	<br>
+	<div class="forum thread">
 		{% for thread in subboard.threads %}
 			<div class="forumlink">
 				{% if thread.locked == true %}
-					<i class="icon-lock"></i>
+					<i class="lock icon"></i>
 				{% endif %}
 				<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
-				<span class="commentlist">
-					<span class="right">
-						{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
-						{% if thread.posts|length != 0 %}
-							{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
-						{% endif %}
-					</span>
+				<span class="italic float right">
+					{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
+					{% if thread.posts|length != 0 %}
+						{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
+					{% endif %}
 				</span>
 			</div>
 		{% endfor %}
-		{% if form is not null %}
-			<br><br>
-			<div>
-				<h3>{{ "FORUM_NEW_THREAD"|trans }}</h3>
-			</div>
-			<form action="" method="POST">
-				{{ form_widget(form) }}
-				<div>
-					<input type="submit" value="{{ 'FORUM_SEND'|trans }}" class="contactsubmit" />
-				</div>
-			</form>
-		{% endif %}
 	</div>
-{% endblock %}
 {% endblock %}

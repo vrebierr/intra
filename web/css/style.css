@@ -30,12 +30,37 @@ div.form.login
 	margin-top: 20%;
 }
 
+div.form.newthread
+{
+	display: block;
+	width: 30%;
+	min-width: 400px;
+	margin: 0 auto;
+}
+
+div.forum.thread
+{
+	display: block;
+}
+
 .italic
 {
 	font-style: italic;
 }
 
-.right
+.float.right
 {
 	float: right;
+}
+
+.hidden
+{
+	display: none;
+}
+
+.button.show.form.center
+{
+	display: block;
+	margin: 0 auto;
+	width: 330px;
 }

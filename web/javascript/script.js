@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('.ui.dropdown').dropdown();
-});
-
-$(document).ready(function() {
 	$('.ui.accordion').accordion();
+	$('.ui.blue.button.show.form').click(function() {
+		$('.form.thread').transition('slide down');
+	});
 });

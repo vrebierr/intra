@@ -1,9 +1,5 @@
 {% extends "SiteForumBundle::layout.html.twig" %}
 
-{% block body %}
-	<div>
-		<h2 class="subtitle">{% block breadcrumb_forum %} {{ parent() }} / <a href="{{ path('site_forum_board', {'id': thread.subboard.board.id }) }}">{{ thread.subboard.board.title }}</a> {% if thread.subboard.ghost == false %} / <a href="{{ path('site_forum_subboard', {'id': thread.subboard.id}) }}">{{ thread.subboard.title}}</a>{% endif %} {% endblock %}</h2>
-	</div>
 {% block forum_body %}
 	<div>
 		<h2 class="subsubtitle">{{ thread.title }}</h2>
@@ -65,5 +61,4 @@
 			</form>
 		{% endif %}
 	</div>
-{% endblock %}
 {% endblock %}
