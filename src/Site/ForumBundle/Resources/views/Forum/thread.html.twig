@@ -21,9 +21,9 @@
 		{% set i = 0 %}
 		{% for post in thread.posts %}
 			<div class="post">
-				<div>
+				<p>
 					{{ post.content }}
-				</div>
+				</p>
 				<br>
 				<span class="right">
 					{{ 'POST_TITLE'|trans({'%post_author%': post.author, '%post_date%': post.date|localizeddate("medium", "medium")}) }} {% if thread.locked != true and post.locked != true %}-- <span class="commlink" onclick="comment({{ i }})">Commenter</span>{% elseif post.locked == true %}-- <i class="icon-lock"></i>{% endif %}

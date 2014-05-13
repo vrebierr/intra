@@ -26,9 +26,9 @@ class PhpBundleReader extends AbstractBundleReader implements BundleReaderInterf
      */
     public function read($path, $locale)
     {
-        if ('en' !== $locale) {
+/*        if ('en' !== $locale) {
             throw new InvalidArgumentException('Only the locale "en" is supported.');
-        }
+}*/
 
         $fileName = $path . '/' . $locale . '.php';
 
