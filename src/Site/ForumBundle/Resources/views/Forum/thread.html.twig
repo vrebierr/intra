@@ -1,64 +1,77 @@
 {% extends "SiteForumBundle::layout.html.twig" %}
 
 {% block forum_body %}
-	<div>
-		<h2 class="subsubtitle">{{ thread.title }}</h2>
-	</div>
+	<h4 class="ui dividing header">
 		{% if thread.locked == true %}
-			<p class="error">{{ 'FORUM_THREAD_LOCKED'|trans }}</p>
+			<i class="lock red icon"></i>
 		{% endif %}
+		{% if thread.pinned == true %}
+			<i class="pin blue icon"></i>
+		{% endif %}
+		{{ thread.title }}
+	</h4>
+	{% if thread.locked == true %}
+		<h4 class="ui error message centered">
+			{{ 'FORUM_THREAD_LOCKED'|trans }}
+		</h4>
+	{% endif %}
 	<div class="thread">
 		<div class="post">
-			<div>
+			<div class="postitem bottombordered">
 				{{ thread.content }}
+				<br>
+				<div class="italic float right">
+					{{ 'POST_TITLE'|trans({'%post_author%': thread.author, '%post_date%': thread.date|localizeddate("medium", "medium")}) }}
+				</div>
 			</div>
-			<br>
-			<span class="right">
-				{{ 'POST_TITLE'|trans({'%post_author%': thread.author, '%post_date%': thread.date|localizeddate("medium", "medium")}) }}
-			</span>
-			<br>
 		</div>
-		{% set i = 0 %}
 		{% for post in thread.posts %}
 			<div class="post">
-				<p>
+				<div class="postitem bottombordered">
 					{{ post.content }}
-				</p>
-				<br>
-				<span class="right">
-					{{ 'POST_TITLE'|trans({'%post_author%': post.author, '%post_date%': post.date|localizeddate("medium", "medium")}) }} {% if thread.locked != true and post.locked != true %}-- <span class="commlink" onclick="comment({{ i }})">Commenter</span>{% elseif post.locked == true %}-- <i class="icon-lock"></i>{% endif %}
-				</span>
-				<br>
-			</div>
-			<div class="commentlist">
-				{% for comment in post.comments %}
-						<div class="comment">
-							{{ 'COMMENT'|trans({'%comment_content%': comment.content, '%comment_author%': comment.author, '%comment_date%': comment.date|localizeddate("short", "medium")}) }}
-						</div>
-				{% endfor %}
-			</div>
-			{% if thread.locked != true and post.locked != true %}
-				<div class="addcomment" id="{{ "addcomment" ~ i }}">
-					<form action="" method="POST">
+					<br>
+					<div class="italic float right">
+						{{ 'POST_TITLE'|trans({'%post_author%': post.author, '%post_date%': post.date|localizeddate("medium", "medium")}) }} -- 
+						{% if thread.locked != true and post.locked != true %}
+							<div class="ui blue tiny button show comment">
+								Commenter
+							</div>
+						{% elseif post.locked == true %}
+							<i class="lock icon"></i>
+						{% endif %}
+					</div>
+				</div>
+				{% if post.comments|length != 0 %}
+					<div class="comment">
+						{% for comment in post.comments %}
+							<div class="commentitem italic">
+								{{ 'COMMENT'|trans({'%comment_content%': comment.content, '%comment_author%': comment.author, '%comment_date%': comment.date|localizeddate("short", "medium")}) }}
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+				{% if thread.locked != true and post.locked != true %}
+					<form class="form comment hidden" action="" method="POST">
 						<input type="text" name="content" required="required">
 						<input type="hidden" name="postid" value="{{ post.id }}">
-						<input type="submit" value="{{ 'FORUM_SEND'|trans }}" name="comment">
+						<input class="ui right floated button" type="submit" value="{{ 'FORUM_SEND'|trans }}" name="comment">
 					</form>
-				</div>
-			{% endif %}
-			{% set i = i + 1 %}
+				{% endif %}
+			</div>
 		{% endfor %}
 		{% if formpost is not null and thread.locked != true %}
-			<br><br>
-			<div>
-				<h3>{{ "FORUM_REPLY"|trans }}</h3>
-			</div>
-			<form action="" method="POST">
-				{{ form_widget(formpost) }}
-				<div>
-					<input type="submit" value="{{ 'FORUM_SEND'|trans }}" class="contactsubmit" name="post">
+			<div class="form newpost">
+				<h3 class="ui header">
+				{{ "FORUM_REPLY"|trans }}
+				</h3>
+				<form class="ui form" action="" method="POST">
+					{{ form_widget(formpost) }}
+				<br>
+				<div class="field">
+					<input type="submit" id="_submit" class="ui right floated button" name="post" value="{{ 'FORUM_SEND'|trans }}"/>
 				</div>
-			</form>
+				</form>
+			</div>
 		{% endif %}
 	</div>
 {% endblock %}

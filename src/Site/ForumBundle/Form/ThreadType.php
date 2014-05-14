@@ -15,15 +15,15 @@ class ThreadType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('title', 'text', array('label' => 'FORUM_TITLE', 'attr' => array('pattern' => '.{2,}')))
-			->add('content', 'textarea', array('label' => 'FORUM_CONTENT', 'attr' => array('cols' => 70, 'rows' => 15)));
+			->add('title', 'text', array('label' => false, 'attr' => array('pattern' => '.{2,}', 'placeholder' => 'FORUM_TITLE', 'size' => 10)))
+			->add('content', 'textarea', array('label' => false, 'attr' => array('cols' => 70, 'rows' => 15, 'placeholder' => 'FORUM_CONTENT')));
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 		$collectionConstraint = new Collection(array(
-			'title' => array(new NotBlank(array('message' => 'Subject should not be site.')),new Length(array('min' => 3))),
-			'content' => array(new NotBlank(array('message' => 'Message should not be site.')),new Length(array('min' => 5)))));
+			'title' => array(new NotBlank(array('message' => 'Subject should not be blank.')),new Length(array('min' => 3))),
+			'content' => array(new NotBlank(array('message' => 'Message should not be blank.')),new Length(array('min' => 5)))));
 		$resolver->setDefaults(array('constraints' => $collectionConstraint));
 	}
 

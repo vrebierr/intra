@@ -27,28 +27,12 @@ class ForumController extends Controller
 		$listboards = $repo->findAll();
 		$data['listboards'] = $listboards;
 
+		$data['subboard'] = null;
+
 		$user = $this->container->get("security.context")->getToken()->getUser();
-		if ($user instanceOf UserInterface)
-			$data['user'] = $user;
-		else
-			$data['user'] = null;
+		$data['user'] = $user;
 
 		return $this->render('SiteForumBundle:Forum:forum.html.twig', $data);
-	}
-
-	public function boardAction(ForumBoard $board)
-	{
-		$data = array();
-		$user = $this->container->get("security.context")->getToken()->getUser();
-
-		if ($user instanceof userinterface)
-			$data['user'] = $user;
-		else
-			$data['user'] = null;
-
-		$data['board'] = $board;
-
-		return $this->render('SiteForumBundle:Forum:board.html.twig', $data);
 	}
 
 	public function subboardAction(ForumSubboard $subboard)
@@ -56,17 +40,13 @@ class ForumController extends Controller
 		$data = array();
 		$user = $this->container->get("security.context")->getToken()->getUser();
 
-		if ($user instanceof userinterface)
-		{
-			$form = $this->createForm(new ThreadType());
-			$data['form'] = $form->createView();
-			$data['user'] = $user;
-		}
-		else
-		{
-			$data['form'] = null;
-			$data['user'] = null;
-		}
+		$repo = $this->getDoctrine()->getManager()->getRepository("SiteForumBundle:ForumBoard");
+		$listboards = $repo->findAll();
+		$data['listboards'] = $listboards;
+
+		$form = $this->createForm(new ThreadType());
+		$data['form'] = $form->createView();
+		$data['user'] = $user;
 
 		$request = $this->getRequest();
 		if ($request->isMethod("POST"))
@@ -98,17 +78,14 @@ class ForumController extends Controller
 	{
 		$data = array();
 		$user = $this->container->get("security.context")->getToken()->getUser();
-		if ($user instanceOf UserInterface)
-		{
-			$formPost = $this->createForm(new PostType());
-			$data['formpost'] = $formPost->createView();
-			$data['user'] = $user;
-		}
-		else
-		{
-			$data['formpost'] = null;
-			$data['user'] = null;
-		}
+		$formPost = $this->createForm(new PostType());
+		$data['formpost'] = $formPost->createView();
+		$data['user'] = $user;
+
+		$repo = $this->getDoctrine()->getManager()->getRepository("SiteForumBundle:ForumBoard");
+		$listboards = $repo->findAll();
+		$data['listboards'] = $listboards;
+		$data['subboard'] = $thread->getSubboard();
 
 		$request = $this->getRequest();
 		if ($request->isMethod("POST") && isset($_POST['post']))

@@ -3,7 +3,7 @@
 {% block title %} {{ 'FORUM_HOME'|trans }} - {{ parent() }} {% endblock %}
 {% block active_forum 'active' %}
 {% block body %}
-	<h2 class="ui header">
+	<h2 class="ui header padded left">
 		<i class="chat icon"></i>
 		<div class="content">
 			<a class="section" href="{{ path('site_forum') }}">
@@ -11,9 +11,69 @@
 			</a>
 		</div>
 	</h2>
-	{% if user is null %}
-		<p class="error"> {{ "FORUM_CONNECT"|trans }}</p>
-	{% endif %}
-	{% block forum_body %}
-	{% endblock %}
+	<div class="ui grid">
+		<div class="left floated two wide column rightbordered">
+			<div class="ui fluid basic accordion">
+				{% for board in listboards %}
+					{% if subboard is not null and board == subboard.board %}
+						<div class="active title">
+					{% else %}
+						<div class="title">
+					{% endif %}
+						<h4 class="ui header">
+							<i class="dropdown icon"></i>
+							{{ board.title }}
+						</h4>
+					</div>
+					{% for subboardmenu in board.subboards %}
+						{% if subboardmenu.ghost == true %}
+							{% for threadmenu in subboardmenu.threads %}
+								{% if threadmenu.locked == true %}
+									<i class="lock icon"></i>
+								{% else %}
+									<i class="pin icon"></i>
+								{% endif %}
+								<a href="{{ path('site_forum_thread', { 'id' : threadmenu.id}) }}">{{ threadmenu.title }}</a>
+								{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': threadmenu.author}) }}
+								{% if threadmenu.posts|length != 0 %}
+									{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': threadmenu.posts.last.date|localizeddate("medium", "medium")}) }}
+								{% endif %}
+								{% if loop.last %}
+									<br>
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					{% endfor %}
+					{% if subboard is not null and board == subboard.board %}
+						<div class="active content">
+					{% else %}
+						<div class="content">
+					{% endif %}
+						{% for subboardmenu in board.subboards %}
+							{% if subboardmenu.ghost != true %}
+								{% if subboardmenu == subboard %}
+									<h5 class="ui disabled header padded left">
+								{% else %}
+									<h5 class="ui header padded left">
+								{% endif %}
+									<a href="{{ path('site_forum_subboard', { 'id': subboardmenu.id }) }}">{{ subboardmenu.title }}</a>
+									<span class="ui small blue label float right">
+										{{ subboardmenu.threads|length }}
+									</span>
+								</h5>
+							{% endif %}
+						{% else %}
+							<h5 class="ui header padded left">
+								{{ 'FORUM_TREE_NO_ITEMS'|trans }}
+							</h5>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="left floated fourteen wide column">
+			{% block forum_body %}
+			{% endblock %}
+		</div>
+	</div>
 {% endblock %}

@@ -38,9 +38,13 @@ div.form.newthread
 	margin: 0 auto;
 }
 
-div.forum.thread
+div.form.newpost
 {
 	display: block;
+	width: 30%;
+	min-width: 400px;
+	margin: 0 auto;
+	padding-top: 50px;
 }
 
 .italic
@@ -58,9 +62,67 @@ div.forum.thread
 	display: none;
 }
 
+.centered
+{
+	text-align: center;
+}
+
 .button.show.form.center
 {
 	display: block;
 	margin: 0 auto;
 	width: 330px;
+}
+
+.padded.left
+{
+	padding-left: 34px;
+}
+
+.leftbordered
+{
+	border-left: 1px solid #E5E5E5;
+}
+
+.rightbordered
+{
+	border-right: 1px solid #E5E5E5;
+}
+
+.bottombordered
+{
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.topbordered
+{
+	border-top: 1px solid #E5E5E5;
+}
+
+.thread
+{
+	padding-top: 50px;
+	padding-left: 50px;
+}
+
+.post
+{
+	margin: 30px 0px 10px 10px;
+	border-left: 3px solid #E5E5E5;
+}
+
+.postitem
+{
+	padding: 0px 0px 35px 15px;
+	margin-bottom: 20px;
+}
+
+.comment
+{
+	padding-left: 200px;
+}
+
+.commentitem
+{
+	margin: 10px 0px 15px 0px;
 }

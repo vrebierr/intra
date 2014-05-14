@@ -47,14 +47,6 @@ class ForumSubboard
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="subtitle", type="string", length=255)
-     */
-    private $subtitle;
-
-
-    /**
      * Get id
      *
      * @return integer
@@ -108,29 +100,6 @@ class ForumSubboard
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set subtitle
-     *
-     * @param string $title
-     * @return Subboard
-     */
-    public function setSubtitle($subtitle)
-    {
-        $this->subtitle = $subtitle;
-
-        return $this;
-    }
-
-    /**
-     * Get subtitle
-     *
-     * @return string 
-     */
-    public function getSubtitle()
-    {
-        return $this->subtitle;
     }
 
     /**

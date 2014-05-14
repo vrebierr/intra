@@ -1,8 +1,8 @@
 {% extends "SiteForumBundle::layout.html.twig" %}
 
 {% block forum_body %}
-	<h3 class="ui header">
-		<i class="dropdown icon"></i>
+	<h3 class="ui dividing header">
+		<i class="list icon"></i>
 		{{ subboard.title }}
 	</h3>
 	{% if form is not null %}
@@ -12,10 +12,9 @@
 			<div class="ui blue button show form center">
 				<i class="plus icon"></i>{{ 'FORUM_NEW_THREAD'|trans }}
 			</div>
+			<br>
 			<form class="form thread hidden" action="" method="POST">
-				<div class="two fields">
-					{{ form_widget(form) }}
-				</div>
+				{{ form_widget(form) }}
 				<br>
 				<div class="field">
 					<input type="submit" id="_submit" class="ui right floated button" name="_submit" value="{{ 'FORUM_SEND'|trans }}"/>
@@ -28,9 +27,12 @@
 	<br>
 	<div class="forum thread">
 		{% for thread in subboard.threads %}
-			<div class="forumlink">
+			<h5 class="ui black block header">
 				{% if thread.locked == true %}
-					<i class="lock icon"></i>
+					<i class="lock red icon"></i>
+				{% endif %}
+				{% if thread.pinned == true %}
+					<i class="pin blue icon"></i>
 				{% endif %}
 				<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
 				<span class="italic float right">
@@ -39,7 +41,9 @@
 						{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
 					{% endif %}
 				</span>
-			</div>
+			</h5>
 		{% endfor %}
 	</div>
 {% endblock %}
+
+

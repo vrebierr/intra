@@ -13,7 +13,6 @@ class SubboardAdmin extends Admin
 	{
 		$formMapper->add('board', null, array('label' => 'Board'))
 				->add('title', 'text', array('attr' => array('size' => 50), 'label' => 'Board Title'))
-				->add('subtitle', 'text', array('attr' => array('size' => 75), 'label' => 'Board Subtitle'))
 				->add('ghost', null, array('label' => 'Ghost subboard', 'required' => false));
 	}
 
@@ -29,7 +28,6 @@ class SubboardAdmin extends Admin
 		$listMapper->addIdentifier('id')
 				->addIdentifier('board')
 				->addIdentifier('title')
-				->add('subtitle')
 				->add('threads')
 				->add('ghost', null, array('editable' => true))
 				->add('_action', 'actions', array('actions' => array('edit' => array(), 'delete' => array())));

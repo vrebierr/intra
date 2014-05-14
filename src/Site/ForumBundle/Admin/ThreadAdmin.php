@@ -24,6 +24,7 @@ class ThreadAdmin extends Admin
 					->add('title')
 					->add('author')
 					->add('date')
+					->add('pinned')
 					->add('locked');
 	}
 
@@ -34,6 +35,7 @@ class ThreadAdmin extends Admin
 				->addIdentifier('title')
 				->add('author')
 				->add('date')
+				->add('pinned', null, array('editable' => true))
 				->add('locked', null, array('editable' => true))
 				->add('_action', 'actions', array('actions' => array('edit' => array(), 'delete' => array())));
 	}

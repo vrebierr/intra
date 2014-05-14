@@ -15,13 +15,13 @@ class CommentType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('content', 'text');
+			->add('content', 'text', array('label' => false, 'attr' => array('placeholder' => 'FORUM_CONTENT')));
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 		$collectionConstraint = new Collection(array(
-			'content' => array(new NotBlank(array('message' => 'Message should not be site.')),new Length(array('min' => 1)))));
+			'content' => array(new NotBlank(array('message' => 'Message should not be blank.')),new Length(array('min' => 1)))));
 		$resolver->setDefaults(array('constraints' => $collectionConstraint));
 	}
 

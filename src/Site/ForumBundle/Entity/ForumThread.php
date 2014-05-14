@@ -29,6 +29,13 @@ class ForumThread
     private $locked = false;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="pinned", type="boolean")
+     */
+     private $pinned = false;
+
+    /**
      * @ORM\ManyToOne(targetEntity="ForumSubboard", inversedBy="threads")
      * @ORM\JoinColumn(nullable=false, name="subboard_id")
      */
@@ -103,6 +110,29 @@ class ForumThread
     public function getLocked()
     {
         return $this->locked;
+    }
+
+	/**
+     * Set pinned
+     *
+     * @param boolean $pinned
+     * @return ForumThread
+     */
+    public function setPinned($pinned)
+    {
+        $this->pinned = $pinned;
+
+        return $this;
+	}
+
+    /**
+     * Get pinned
+     *
+     * @return string
+     */
+    public function getpinned()
+    {
+        return $this->pinned;
     }
 
     /**
