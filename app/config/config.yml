@@ -129,11 +129,12 @@ sonata_block:
 sonata_admin:
     title: Admin Panel
     templates:
-        layout:  SonataAdminBundle::standard_layout.html.twig
-        ajax:    SonataAdminBundle::ajax_layout.html.twig
-        list:    SonataAdminBundle:CRUD:list.html.twig
-        show:    SonataAdminBundle:CRUD:show.html.twig
-        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        layout:    SonataAdminBundle::standard_layout.html.twig
+        ajax:      SonataAdminBundle::ajax_layout.html.twig
+        dashboard: SiteIntraBundle:Admin:dashboard.html.twig
+        list:      SonataAdminBundle:CRUD:list.html.twig
+        show:      SonataAdminBundle:CRUD:show.html.twig
+        edit:      SonataAdminBundle:CRUD:edit.html.twig
 
 #Fr3dLdap Configuration
 fr3d_ldap:
