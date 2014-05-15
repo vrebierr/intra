@@ -24,7 +24,7 @@ class TicketTicket
     /**
      * @ORM\OneToMany(targetEntity="Site\TicketBundle\Entity\TicketMessage", mappedBy="ticket", cascade={"persist", "remove"})
      */
-    private $message;
+    private $messages;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
@@ -179,9 +179,9 @@ class TicketTicket
      * @param \Site\TicketBundle\Entity\TicketMessage $message
      * @return TicketTicket
      */
-    public function addMessage(\Site\TicketBundle\Entity\TicketMessage $message)
+    public function addMessages(\Site\TicketBundle\Entity\TicketMessage $message)
     {
-        $this->message[] = $message;
+        $this->messages[] = $message;
 
         return $this;
     }
@@ -191,9 +191,9 @@ class TicketTicket
      *
      * @param \Site\TicketBundle\Entity\TicketMessage $message
      */
-    public function removeMessage(\Site\TicketBundle\Entity\TicketMessage $message)
+    public function removeMessages(\Site\TicketBundle\Entity\TicketMessage $message)
     {
-        $this->message->removeElement($message);
+        $this->messages->removeElement($message);
     }
 
     /**
@@ -201,9 +201,9 @@ class TicketTicket
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getMessage()
+    public function getMessages()
     {
-        return $this->message;
+        return $this->messages;
     }
 
     /**

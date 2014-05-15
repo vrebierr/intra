@@ -127,7 +127,7 @@ sonata_block:
 
 # SonataAdmin Configuration
 sonata_admin:
-    title: Admin Panel
+    title: Panel admin
     templates:
         layout:    SonataAdminBundle::standard_layout.html.twig
         ajax:      SonataAdminBundle::ajax_layout.html.twig

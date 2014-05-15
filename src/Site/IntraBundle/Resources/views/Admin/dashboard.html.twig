@@ -1,5 +1,13 @@
 {% extends "SonataAdminBundle:Core:dashboard.html.twig" %}
 
+{% block logo %}
+	<a class="logo" href="{{ url('sonata_admin_dashboard') }}">
+		{% if 'single_text' == admin_pool.getOption('title_mode') or 'both' == admin_pool.getOption('title_mode') %}
+			{{ admin_pool.title }}
+		{% endif %}
+	</a>
+{% endblock %}
+
 {% block sonata_top_nav_menu %}
 	<div class="navbar-right">
 		<ul class="nav navbar-nav">
@@ -11,4 +19,7 @@
 			</li>
 		</ul>
 	</div>
+{% endblock %}
+
+{% block side_bar_after_nav %}
 {% endblock %}
