@@ -2215,13 +2215,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "99117a8ba70e56bad08797fe814e7996a68d5107"
+                "reference": "ecdc96a1688e14af5636d29d19d4ca3a3eb862b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/99117a8ba70e56bad08797fe814e7996a68d5107",
-                "reference": "99117a8ba70e56bad08797fe814e7996a68d5107",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/ecdc96a1688e14af5636d29d19d4ca3a3eb862b9",
+                "reference": "ecdc96a1688e14af5636d29d19d4ca3a3eb862b9",
                 "shasum": ""
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.4"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2255,7 +2258,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2014-05-02 13:55:54"
+            "time": "2014-05-15 16:06:18"
         },
         {
             "name": "sonata-project/doctrine-extensions",
