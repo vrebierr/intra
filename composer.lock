@@ -118,7 +118,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -1825,7 +1825,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "The base bundle for the Symfony Distributions",
@@ -1880,7 +1882,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "This bundle provides a way to configure your controllers with annotations",
@@ -1932,7 +1936,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "This bundle generates code for you",
@@ -2023,12 +2029,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "2b5e246b6f351766cc8b016713f5bf0db3b7f894"
+                "reference": "5536c1dc63be47e2cb60b2dd809a17d3a330e172"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/2b5e246b6f351766cc8b016713f5bf0db3b7f894",
-                "reference": "2b5e246b6f351766cc8b016713f5bf0db3b7f894",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/5536c1dc63be47e2cb60b2dd809a17d3a330e172",
+                "reference": "5536c1dc63be47e2cb60b2dd809a17d3a330e172",
                 "shasum": ""
             },
             "require": {
@@ -2079,7 +2085,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2014-05-15 11:07:07"
+            "time": "2014-05-15 14:52:44"
         },
         {
             "name": "sonata-project/cache",
@@ -3089,7 +3095,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "Common additional features for Twig that do not directly belong in core",
