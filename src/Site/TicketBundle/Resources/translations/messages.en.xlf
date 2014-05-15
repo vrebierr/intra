@@ -94,6 +94,10 @@
                 <source>TICKET_INFO_CLOSED</source>
                 <target>This ticket is closed</target>
             </trans-unit>
+            <trans-unit id="24">
+                <source>TICKET_HEADING_LIST</source>
+                <target>Tickets list</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -23,23 +23,7 @@ class TicketController extends Controller
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$em = $this->getDoctrine()->getManager();
 
-		$query = $em->createQueryBuilder()->add("select", "t")
-										->add("from", "Site\TicketBundle\Entity\TicketTicket t")
-										->add("where", "t.author =" .$user->getId())->getQuery();
-		$paginator = $this->get('knp_paginator');
-		$pagination = $paginator->paginate($query, $this->get('request')->query->get('page', 1), 10);
-
-		$data['pagination'] = $pagination;
-
-		return $this->render('SiteTicketBundle:Ticket:ticket.html.twig', $data);
-	}
-
-	public function newAction()
-	{
-		$data = array();
-		$user = $this->container->get("security.context")->getToken()->getUser();
 		$form = $this->createForm(new TicketType());
-
 		$data['form'] = $form->createView();
 
 		$request = $this->getRequest();
@@ -59,7 +43,7 @@ class TicketController extends Controller
 				$message->setAuthor($user);
 				$message->setContent($postVal['content']);
 
-				$ticket->addMessage($message);
+				$ticket->addMessages($message);
 
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($ticket);
@@ -67,7 +51,16 @@ class TicketController extends Controller
 
 			}
 		}
-		return $this->render('SiteTicketBundle:Ticket:new.html.twig', $data);
+
+		$query = $em->createQueryBuilder()->add("select", "t")
+										->add("from", "Site\TicketBundle\Entity\TicketTicket t")
+										->add("where", "t.author =" .$user->getId())->getQuery();
+		$paginator = $this->get('knp_paginator');
+		$pagination = $paginator->paginate($query, $this->get('request')->query->get('page', 1), 10);
+
+		$data['pagination'] = $pagination;
+
+		return $this->render('SiteTicketBundle:Ticket:ticket.html.twig', $data);
 	}
 
 	public function showAction(TicketTicket $ticket)
@@ -92,7 +85,7 @@ class TicketController extends Controller
 				$message->setAuthor($user);
 				$message->setContent($postVal['content']);
 
-				$ticket->addMessage($message);
+				$ticket->addMessages($message);
 
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($message);

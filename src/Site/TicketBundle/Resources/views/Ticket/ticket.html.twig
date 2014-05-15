@@ -1,24 +1,40 @@
 {% extends "SiteTicketBundle::layout.html.twig" %}
 
 {% block body_ticket %}
-	<div>
-		<h2 class="subsubtitle">{{ 'TICKET_HEADING_TITLE'|trans }}</h1>
-	</div>
-	<div class="view">
-		<div class="row">
-			<a href="{{ path('site_ticket_new') }}">{{ 'TICKET_BUTTON_NEW'|trans }}</a>
+	<h3 class="ui dividing header">
+		<i class="list icon"></i>
+		<div class="content">
+			{{ 'TICKET_HEADING_LIST'|trans|upper }}
 		</div>
-	</div>
-	<div class="table">
+	</h3>
+	{% if form is not null %}
+		<br>
+		<div class="form newticket">
+			<div class="ui blue button show form center">
+				<i class="plus icon"></i>{{ 'TICKET_BUTTON_NEW'|trans }}
+			</div>
+			<form class="form thread hidden" action="" method="POST">
+				{{ form_widget(form) }}
+				<br>
+				<div class="field">
+					<input type="submit" class="ui right floated button" value="{{ 'TICKET_SEND'|trans }}"/>
+				</div>
+			</form>
+		</div>
+	{% endif %}
+	<br>
+	<br>
+	<br>
+	<div class="ticket">
 		<table>
 			<thead>
 				<tr>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_SUBJECT'|trans, 't.subject') }}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_DATE'|trans, 't.date') }}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_LASTMESSAGE'|trans, 't.messages.last.date') }}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_PRIORITY'|trans, 't.priority') }}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_ASSIGNED'|trans, 't.assignedTo') }}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_STATUS'|trans, 't.closed') }}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_SUBJECT'|trans, 't.subject') }} {% if pagination.isSorted('t.subject') %} <i class="triangle down icon"></i> {% endif %}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_DATE'|trans, 't.date') }}{% if pagination.isSorted('t.date') %} <i class="triangle down icon"></i> {% endif %}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_LASTMESSAGE'|trans, 't.messages.last.date') }}{% if pagination.isSorted('t.messages.last.date') %} <i class="triangle down icon"></i> {% endif %}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_PRIORITY'|trans, 't.priority') }}{% if pagination.isSorted('t.priority') %} <i class="triangle down icon"></i> {% endif %}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_ASSIGNED'|trans, 't.assignedTo') }}{% if pagination.isSorted('t.assignedTo') %} <i class="triangle down icon"></i> {% endif %}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_STATUS'|trans, 't.closed') }}{% if pagination.isSorted('t.closed') %} <i class="triangle down icon"></i> {% endif %}</th>
 				</tr>
 			</thead>
 			<tbody>
