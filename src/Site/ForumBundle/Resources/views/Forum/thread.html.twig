@@ -3,10 +3,10 @@
 {% block forum_body %}
 	<h4 class="ui dividing header">
 		{% if thread.locked == true %}
-			<i class="lock red icon"></i>
+			<i class="lock red large icon"></i>
 		{% endif %}
 		{% if thread.pinned == true %}
-			<i class="pin blue icon"></i>
+			<i class="pin blue large icon"></i>
 		{% endif %}
 		{{ thread.title }}
 	</h4>
@@ -31,13 +31,15 @@
 					{{ post.content }}
 					<br>
 					<div class="italic float right">
-						{{ 'POST_TITLE'|trans({'%post_author%': post.author, '%post_date%': post.date|localizeddate("medium", "medium")}) }} -- 
+						{{ 'POST_TITLE'|trans({'%post_author%': post.author, '%post_date%': post.date|localizeddate("medium", "medium")}) }}
 						{% if thread.locked != true and post.locked != true %}
+							--
 							<div class="ui blue tiny button show comment">
-								Commenter
+								 Commenter
 							</div>
 						{% elseif post.locked == true %}
-							<i class="lock icon"></i>
+							--
+							 <i class="lock icon"></i>
 						{% endif %}
 					</div>
 				</div>

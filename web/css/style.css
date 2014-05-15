@@ -126,3 +126,11 @@ div.form.newpost
 {
 	margin: 10px 0px 15px 0px;
 }
+
+.profile
+{
+	width: 50%;
+	padding-top: 50px;
+	padding-left: 150px;
+	margin: 0 auto;
+}

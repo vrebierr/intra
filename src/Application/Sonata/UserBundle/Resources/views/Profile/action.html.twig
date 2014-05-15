@@ -17,17 +17,10 @@
 			{{ 'sonata_profile_title'|trans({}, 'SonataUserBundle')|upper }}
 		</div>
 	</h2>
-	<div class="sonata-user-show row row-fluid">
-	<div class="span2 col-lg-2" style="padding: 8px 0;">
-		{% block sonata_profile_menu %}
-			{{ sonata_block_render({'type': 'sonata.user.block.menu'}, {'current_uri': app.request.requestUri}) }}
-		{% endblock %}
-	</div>
 	<div class="ui clearing divider"></div>
-	<div class="span10 col-lg-10">
+	<div class="profile">
 		{% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
 		{% block sonata_profile_content %}
 		{% endblock %}
 	</div>
-</div>
 {% endblock %}

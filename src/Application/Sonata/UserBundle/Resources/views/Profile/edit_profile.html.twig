@@ -1,26 +1,23 @@
 {% extends "SonataUserBundle:Profile:action.html.twig" %}
 
-{% block sonata_profile_title %}
-	{{ "title_user_account" | trans({}, 'SonataUserBundle')}} - {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}
-{% endblock %}
-
 {% block sonata_profile_content %}
-
-	{{ form_errors(form) }}
-
+	<h3 class="ui dividing header">
+		<i class="edit large icon"></i>
+		<div class="content">
+			{{ 'title_user_edit_profile'|trans({}, 'SonataUserBundle')|upper }} {{ 'title_user_account'|trans({}, 'SonataUserBundle')|upper }}
+		</div>
+	</h3>
+	<h4 class="ui message error centered">
+		{{ form_errors(form) }}
+	</h4>
 	{% form_theme form _self %}
-
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h3 class="panel-title">{{ "title_user_account" | trans({}, 'SonataUserBundle')}}</h3>
-		</div>
-		<div class="panel-body">
-			<form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal">
-				{{ form_widget(form) }}
-				<div class="form-actions">
-					<button type="submit" name="submit"  class="btn btn-primary pull-right">{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}</button>
-				</div>
-			</form>
-		</div>
+	<div class="ui form">
+		<form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal">
+			{{ form_widget(form) }}
+			<br>
+			<div class="field">
+				<input type="submit" name="submit" class="ui button floated right" value="{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}">
+			</div>
+		</form>
 	</div>
 {% endblock %}

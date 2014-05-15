@@ -16,10 +16,10 @@
 	<body>
 		<div class="ui secondary pointing blue menu">
 			<a class="{% block active_home '' %} item hide" href="{{ path('intra_index') }}">
-				<i class="home icon"></i> {{ 'NAVBAR_HOME'|trans({}, 'SiteIntraBundle') }}
+				<i class="home icon"></i> {{ 'NAVBAR_HOME'|trans }}
 			</a>
 			<a class="{% block active_activites '' %} item hide" href="#">
-				<i class="tasks icon"></i> {{ 'NAVBAR_ACTIVITES'|trans }}
+				<i class="tasks icon"></i> {{ 'NAVBAR_ACTIVITIES'|trans }}
 			</a>
 			<a class="{% block active_planning '' %} item hide" href="#">
 				<i class="calendar icon"></i> {{ 'NAVBAR_PLANNING'|trans }}
@@ -41,16 +41,16 @@
 					<i class="user icon"></i> {{ app.user.username }} <i class="icon dropdown"></i>
 					<div class="menu">
 						<a class="item hide" href="{{ path('sonata_user_profile_show') }}">
-							<i class="unhide icon"></i> {{ 'NAVBAR_PROFILE'|trans }}
+							<i class="unhide icon"></i> {{ 'NAVBAR_DROP_PROFILE'|trans }}
 						</a>
 						<a class="item hide" href="{{ path('sonata_user_profile_edit_authentication') }}">
-							<i class="settings icon"></i>{{ 'NAVBAR_SETTINGS'|trans }}
+							<i class="settings icon"></i>{{ 'NAVBAR_DROP_SETTINGS'|trans }}
 						</a>
 						<a class="item hide" href="#">
-							<i class="ticket icon"></i>{{ 'NAVBAR_TICKETS'|trans }}
+							<i class="ticket icon"></i>{{ 'NAVBAR_DROP_TICKETS'|trans }}
 						</a>
 						<a class="item hide" href="{{ path('sonata_user_security_logout') }}">
-							<i class="sign out icon"></i>{{ 'NAVBAR_LOGOUT'|trans }}
+							<i class="sign out icon"></i>{{ 'NAVBAR_DROP_LOGOUT'|trans }}
 						</a>
 					</div>
 				</div>

@@ -1,11 +1,10 @@
 {% extends "SonataUserBundle:Profile:action.html.twig" %}
 
 {% block sonata_profile_content %}
-	<h3 class="ui header">
-		<i class="lock icon"></i>
+	<h3 class="ui dividing header">
+		<i class="lock large icon"></i>
 		<div class="content">
-			{{ 'DASHBOARD_TITLE_EDIT_PASSWORD'|trans }}
-			<div class="sub header">{{ 'DASHBOARD_SUBTITLE_EDIT_PASSWORD'|trans }}</div>
+			{{ 'title_user_edit_authentication'|trans({}, 'SonataUserBundle')|upper }}
 		</div>
 	</h3>
 	<div class="ui form newpost">

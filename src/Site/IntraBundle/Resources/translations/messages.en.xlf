@@ -6,11 +6,11 @@
             <!-- NAVBAR -->
             <trans-unit id="1">
                 <source>NAVBAR_HOME</source>
-                <target>Index</target>
+                <target>Home</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>NAVBAR_ACTIVITIES</source>
-                <target>Activités</target>
+                <target>Activities</target>
             </trans-unit>
             <trans-unit id="3">
                 <source>NAVBAR_PLANNING</source>
@@ -26,17 +26,17 @@
             </trans-unit>
             <trans-unit id="6">
                 <source>NAVBAR_SEARCH</source>
-                <target>Rechercher...</target>
+                <target>Search...</target>
             </trans-unit>
 
             <!-- NAVBAR DROPDOWN -->
             <trans-unit id="10">
                 <source>NAVBAR_DROP_PROFILE</source>
-                <target>Profil</target>
+                <target>Profile</target>
             </trans-unit>
             <trans-unit id="11">
                 <source>NAVBAR_DROP_SETTINGS</source>
-                <target>Paramètres</target>
+                <target>Parameters</target>
             </trans-unit>
             <trans-unit id="12">
                 <source>NAVBAR_DROP_TICKETS</source>
@@ -44,7 +44,7 @@
             </trans-unit>
             <trans-unit id="13">
                 <source>NAVBAR_DROP_LOGOUT</source>
-                <target>Déconnexion</target>
+                <target>Logout</target>
             </trans-unit>
         </body>
     </file>

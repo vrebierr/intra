@@ -62,6 +62,10 @@
                 <source>FORUM_THREAD_LOCKED</source>
                 <target>Cette discussion est fermée</target>
             </trans-unit>
+            <trans-unit id="16">
+                <source>FORUM_TREE_NO_ITEMS</source>
+                <target>Aucune discussion trouvée</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
