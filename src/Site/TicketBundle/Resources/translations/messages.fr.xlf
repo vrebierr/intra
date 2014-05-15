@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>TICKET_HEADING_TITLE</source>
+                <target>Tickets</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>TICKET_HEADING_SUBJECT</source>
+                <target>Sujet</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>TICKET_HEADING_LASTMESSAGE</source>
+                <target>Dernier message le</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>TICKET_HEADING_DATE</source>
+                <target>Créé le</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>TICKET_HEADING_PRIORITY</source>
+                <target>Priorité</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>TICKET_HEADING_ASSIGNED</source>
+                <target>Assigné à</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>TICKET_HEADING_STATUS</source>
+                <target>Statut</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>TICKET_STATUS_CLOSED</source>
+                <target>Fermé</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>TICKET_STATUS_OPEN</source>
+                <target>Ouvert</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>TICKET_BUTTON_NEW</source>
+                <target>Créer un nouveau ticket</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>TICKET_NO_TICKETS</source>
+                <target>Aucun ticket trouvé</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>TICKET_LABEL_SUBJECT</source>
+                <target>Sujet</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>TICKET_LABEL_CONTENT</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>TICKET_LABEL_PRIORITY</source>
+                <target>Priorité</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>TICKET_HEADING_NEW_TITLE</source>
+                <target>Créer un nouveau ticket</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>TICKET_SEND</source>
+                <target>Envoyer</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>TICKET_PRIORITY_LOW</source>
+                <target>basse</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>TICKET_PRIORITY_MEDIUM</source>
+                <target>moyenne</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>TICKET_PRIORITY_HIGH</source>
+                <target>haute</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>TICKET_HEADING_SHOW_TITLE</source>
+                <target>Ticket nº%ticket_id%</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>TICKET_MESSAGE_INFOS</source>
+                <target>Par %message_author% le %message_date%</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>TICKET_MESSAGE_REPLY</source>
+                <target>Repondre</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>TICKET_INFO_CLOSED</source>
+                <target>Ce ticket est fermé</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

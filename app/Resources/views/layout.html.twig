@@ -46,9 +46,19 @@
 						<a class="item hide" href="{{ path('sonata_user_profile_edit_authentication') }}">
 							<i class="settings icon"></i>{{ 'NAVBAR_DROP_SETTINGS'|trans }}
 						</a>
-						<a class="item hide" href="#">
+						<a class="item hide" href="{{ path('site_ticket') }}">
 							<i class="ticket icon"></i>{{ 'NAVBAR_DROP_TICKETS'|trans }}
 						</a>
+						{% if is_granted('ROLE_ADMIN') %}
+							<a class="item hide" href="{{ path("sonata_admin_redirect") }}">
+								<i class="table icon"></i>{{ 'NAVBAR_DROP_ADMIN'|trans }}
+							</a>
+						{% endif %}
+						{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+							<a class="item hide" href="{{ path('sonata_admin_redirect', {'_switch_user': '_exit'}) }}">
+								<i class="forward mail icon"></i>{{ 'NAVBAR_DROP_LOGOUTAS'|trans }}
+							</a>
+						{% endif %}
 						<a class="item hide" href="{{ path('sonata_user_security_logout') }}">
 							<i class="sign out icon"></i>{{ 'NAVBAR_DROP_LOGOUT'|trans }}
 						</a>

@@ -43,6 +43,14 @@
                 <target>Tickets</target>
             </trans-unit>
             <trans-unit id="13">
+                <source>NAVBAR_DROP_ADMIN</source>
+                <target>Admin panel</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>NAVBAR_DROP_LOGOUTAS</source>
+                <target>Exit impersonating</target>
+            </trans-unit>
+            <trans-unit id="15">
                 <source>NAVBAR_DROP_LOGOUT</source>
                 <target>Logout</target>
             </trans-unit>

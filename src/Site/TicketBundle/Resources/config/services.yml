@@ -1,0 +1,24 @@
+parameters:
+#    site_ticket.example.class: Site\TicketBundle\Example
+
+services:
+    sonata.admin.ticket:
+        class: Site\TicketBundle\Admin\TicketAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Tickets", label: "Ticket" }
+        arguments:
+            - ~
+            - Site\TicketBundle\Entity\TicketTicket
+            - ~
+        calls:
+            - [ setTranslationDomain, ['SiteTicketBundle'] ]
+    sonata.admin.message:
+        class: Site\TicketBundle\Admin\MessageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Tickets", label: "Message" }
+        arguments:
+            - ~
+            - Site\TicketBundle\Entity\TicketMessage
+            - ~
+        calls:
+            - [ setTranslationDomain, ['SiteTicketBundle'] ]

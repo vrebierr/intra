@@ -1,5 +1,3 @@
-
-
 root:
     pattern: /
     defaults:
@@ -10,9 +8,15 @@ site_intra:
     resource: "@SiteIntraBundle/Resources/config/routing.yml"
     prefix:   /
 
+
 blank_forum:
     resource: "@SiteForumBundle/Resources/config/routing.yml"
     prefix:   /forum
+
+
+site_ticket:
+    resource: "@SiteTicketBundle/Resources/config/routing.yml"
+    prefix:   /tickets/
 
 
 sonata_user_security:

@@ -1,0 +1,13 @@
+site_ticket:
+    pattern:  /
+    defaults: { _controller: SiteTicketBundle:Ticket:ticket }
+
+site_ticket_new:
+    pattern:  /new
+    defaults: { _controller: SiteTicketBundle:Ticket:new }
+
+site_ticket_show:
+    pattern:  /show/{id}/
+    defaults: { _controller: SiteTicketBundle:Ticket:show, id: 1}
+    requirements:
+        id: \d+

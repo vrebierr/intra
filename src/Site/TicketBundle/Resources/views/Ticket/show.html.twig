@@ -1,0 +1,36 @@
+{% extends "SiteTicketBundle::layout.html.twig" %}
+
+{% block body_ticket %}
+	<div>
+		<h2 class="subsubtitle">{{ 'TICKET_HEADING_SHOW_TITLE'|trans({'%ticket_id%': ticket.id}) }} - {{ ticket.subject }}</h1>
+	</div>
+	{% if ticket.closed == true %}
+		<p class="error"> {{ 'TICKET_INFO_CLOSED'|trans }} </p>
+	{% endif %}
+	<div class="thread">
+		{% for message in ticket.messages %}
+			<div class="post">
+				<div>
+					{{ message.content }}
+				</div>
+				<span class="right">
+					{{ 'TICKET_MESSAGE_INFOS'|trans({'%message_author%' : message.author, '%message_date%': message.date|localizeddate("medium", "medium")}) }}
+				</span>
+				<br>
+			</div>
+		{% endfor %}
+		{% if form is not null and ticket.closed != true %}
+			<br><br>
+			<div>
+				<h3>{{ "TICKET_MESSAGE_REPLY"|trans }}</h3>
+			</div>
+			<form action="" method="POST">
+				{{ form_widget(form) }}
+				<div>
+					<input type="submit" value="{{ 'TICKET_SEND'|trans }}" class="contactsubmit" name="post">
+				</div>
+			</form>
+		{% endif %}
+	</div>
+{% endblock %}
+

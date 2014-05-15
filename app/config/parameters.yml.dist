@@ -2,14 +2,14 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
     database_port:     ~
-    database_name:     symfony
+    database_name:     db_intra
     database_user:     root
-    database_password: ~
-
+    database_password: root
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
-
-    locale:            en
+    mailer_user:       null
+    mailer_password:   null
+    ldap_login:        TOTO
+    ldap_password:     TOTO
+    locale:            fr
     secret:            ThisTokenIsNotSoSecretChangeIt

@@ -26,6 +26,8 @@ return array(
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
     'Knp\\Menu\\' => array($vendorDir . '/knplabs/knp-menu/src'),
+    'Knp\\Component' => array($vendorDir . '/knplabs/knp-components/src'),
+    'Knp\\Bundle\\PaginatorBundle' => array($vendorDir . '/knplabs/knp-paginator-bundle'),
     'Knp\\Bundle\\MenuBundle' => array($vendorDir . '/knplabs/knp-menu-bundle'),
     'JsonpCallbackValidator' => array($vendorDir . '/willdurand/jsonp-callback-validator/src'),
     'JMS\\SerializerBundle' => array($vendorDir . '/jms/serializer-bundle'),

@@ -7,12 +7,10 @@
 	</h3>
 	{% if form is not null %}
 		<br>
-		<br>
 		<div class="form newthread">
 			<div class="ui blue button show form center">
 				<i class="plus icon"></i>{{ 'FORUM_NEW_THREAD'|trans }}
 			</div>
-			<br>
 			<form class="form thread hidden" action="" method="POST">
 				{{ form_widget(form) }}
 				<br>
@@ -38,7 +36,9 @@
 				<span class="italic float right">
 					{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
 					{% if thread.posts|length != 0 %}
-						{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium")}) }}
+						{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium"), '%thread_lastauthor%': thread.posts.last.author}) }}
+					{% else %}
+						{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.date|localizeddate("medium", "medium"), '%thread_lastauthor%': thread.author}) }}
 					{% endif %}
 				</span>
 			</h5>

@@ -36,6 +36,8 @@ class AppKernel extends Kernel
             new FR3D\LdapBundle\FR3DLdapBundle(),
             new Site\IntraBundle\SiteIntraBundle(),
             new Site\ForumBundle\SiteForumBundle(),
+            new Site\TicketBundle\SiteTicketBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

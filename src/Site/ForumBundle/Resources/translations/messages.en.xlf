@@ -48,7 +48,7 @@
             </trans-unit>
             <trans-unit id="12">
                 <source>FORUM_SUBBOARD_LASTTHREAD</source>
-                <target> - last thread opened on %subboard_lastthread%</target>
+                <target> - last thread opened on %subboard_lastthread% by %thread_lastauthor%</target>
             </trans-unit>
             <trans-unit id="13">
                 <source>FORUM_THREAD_LASTPOST</source>

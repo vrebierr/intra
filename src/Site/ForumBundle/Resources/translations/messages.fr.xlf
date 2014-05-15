@@ -52,7 +52,7 @@
             </trans-unit>
             <trans-unit id="13">
                 <source>FORUM_THREAD_LASTPOST</source>
-                <target> - dernier message le %thread_lastpost%</target>
+                <target> - dernier message le %thread_lastpost% par %thread_lastauthor%</target>
             </trans-unit>
             <trans-unit id="14">
                 <source>FORUM_THREAD_AUTHOR</source>

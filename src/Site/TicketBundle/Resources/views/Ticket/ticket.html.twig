@@ -1,0 +1,60 @@
+{% extends "SiteTicketBundle::layout.html.twig" %}
+
+{% block body_ticket %}
+	<div>
+		<h2 class="subsubtitle">{{ 'TICKET_HEADING_TITLE'|trans }}</h1>
+	</div>
+	<div class="view">
+		<div class="row">
+			<a href="{{ path('site_ticket_new') }}">{{ 'TICKET_BUTTON_NEW'|trans }}</a>
+		</div>
+	</div>
+	<div class="table">
+		<table>
+			<thead>
+				<tr>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_SUBJECT'|trans, 't.subject') }}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_DATE'|trans, 't.date') }}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_LASTMESSAGE'|trans, 't.messages.last.date') }}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_PRIORITY'|trans, 't.priority') }}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_ASSIGNED'|trans, 't.assignedTo') }}</th>
+					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_STATUS'|trans, 't.closed') }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for ticket in pagination %}
+					<tr>
+						<td><a href="{{ path('site_ticket_show', { 'id': ticket.id }) }}">{{ ticket.subject }}</a></td>
+						<td>{{ ticket.date|localizeddate("short", "medium") }}</td>
+						<td>{{ ticket.messages.last.date|localizeddate("short", "medium") }}</td>
+						<td>
+							{% if ticket.priority == 0 %}
+								{{ 'TICKET_PRIORITY_INVALID'|trans }}
+							{% elseif ticket.priority == 1 %}
+								{{ 'TICKET_PRIORITY_LOW'|trans }}
+							{% elseif ticket.priority == 2 %}
+								{{ 'TICKET_PRIORITY_MEDIUM'|trans }}
+							{% elseif ticket.priority == 3 %}
+								{{ 'TICKET_PRIORITY_HIGH'|trans }}
+							{% endif %}
+						</td>
+						<td>{% if ticket.assignedTo is not null %} {{ ticket.assignedTo.username }} {% else %} - {% endif %}</td>
+						<td>
+							{% if ticket.closed == 0 %}
+								{{ 'TICKET_STATUS_OPEN'|trans }}
+							{% else %}
+								{{ 'TICKET_STATUS_CLOSED'|trans }}
+							{% endif %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">{{ 'TICKET_NO_TICKETS'|trans }}.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+			{{ knp_pagination_render(pagination) }}
+	</div>
+{% endblock %}
+
