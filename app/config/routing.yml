@@ -9,14 +9,19 @@ site_intra:
     prefix:   /
 
 
-blank_forum:
+site_forum:
     resource: "@SiteForumBundle/Resources/config/routing.yml"
     prefix:   /forum
 
 
 site_ticket:
     resource: "@SiteTicketBundle/Resources/config/routing.yml"
-    prefix:   /tickets/
+    prefix:   /tickets
+
+
+site_directory:
+    resource: "@SiteDirectoryBundle/Resources/config/routing.yml"
+    prefix:   /directory
 
 
 sonata_user_security:

@@ -28,6 +28,10 @@
                 <source>NAVBAR_SEARCH</source>
                 <target>Search...</target>
             </trans-unit>
+            <trans-unit id="7">
+                <source>NAVBAR_DIRECTORY</source>
+                <target>Directory</target>
+            </trans-unit>
 
             <!-- NAVBAR DROPDOWN -->
             <trans-unit id="10">

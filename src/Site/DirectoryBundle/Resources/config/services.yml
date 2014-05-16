@@ -1,0 +1,7 @@
+parameters:
+#    site_directory.example.class: Site\DirectoryBundle\Example
+
+services:
+#    site_directory.example:
+#        class: %site_directory.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
