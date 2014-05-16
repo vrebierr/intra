@@ -33,6 +33,11 @@ class User extends BaseUser implements LdapUserInterface
     protected $posts;
 
     /**
+     * @var \Site\Intra\ForumBundle\Entity\ForumComment
+     */
+    protected $comments;
+
+    /**
      * @var \Site\Intra\TicketBundle\Entity\TicketTicket
      */
     protected $tickets;
@@ -92,8 +97,9 @@ class User extends BaseUser implements LdapUserInterface
         parent::__construct();
         $this->threads = new \Doctrine\Common\Collections\ArrayCollection();
         $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->messsages = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -122,7 +128,7 @@ class User extends BaseUser implements LdapUserInterface
     /**
      * Get threads
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getThreads()
     {
@@ -155,7 +161,7 @@ class User extends BaseUser implements LdapUserInterface
     /**
      * Get posts
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPosts()
     {
@@ -188,7 +194,7 @@ class User extends BaseUser implements LdapUserInterface
     /**
      * Get tickets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTickets()
     {
@@ -221,11 +227,43 @@ class User extends BaseUser implements LdapUserInterface
     /**
      * Get messages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMessages()
     {
         return $this->messages;
     }
 
+    /**
+     * Add comments
+     *
+     * @param \Site\ForumBundle\Entity\ForumComment $comments
+     * @return User
+     */
+    public function addComment(\Site\ForumBundle\Entity\ForumComment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Site\ForumBundle\Entity\ForumComment $comments
+     */
+    public function removeComment(\Site\ForumBundle\Entity\ForumComment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }

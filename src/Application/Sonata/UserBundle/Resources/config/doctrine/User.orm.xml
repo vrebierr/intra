@@ -23,6 +23,12 @@
                 <cascade-remove/>
             </cascade>
         </one-to-many>
+        <one-to-many field="comments" target-entity="Site\ForumBundle\Entity\ForumComment" mapped-by="author" orphan-removal="true">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
         <one-to-many field="tickets" target-entity="Site\TicketBundle\Entity\TicketTicket" mapped-by="author" orphan-removal="true">
             <cascade>
                 <cascade-persist/>
