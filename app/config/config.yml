@@ -129,9 +129,9 @@ sonata_block:
 sonata_admin:
     title: Panel admin
     templates:
-        layout:    SonataAdminBundle::standard_layout.html.twig
+        layout:    SiteIntraBundle:Admin:standard_layout.html.twig
         ajax:      SonataAdminBundle::ajax_layout.html.twig
-        dashboard: SiteIntraBundle:Admin:dashboard.html.twig
+        dashboard: SonataAdminBundle:Core:dashboard.html.twig
         list:      SonataAdminBundle:CRUD:list.html.twig
         show:      SonataAdminBundle:CRUD:show.html.twig
         edit:      SonataAdminBundle:CRUD:edit.html.twig
@@ -153,9 +153,9 @@ fr3d_ldap:
         attributes:
             - { ldap_attr: uid,  user_method: setUsername }
             - { ldap_attr: alias, user_method: setEmail }
-            - { ldap_attr: first-name, user-method: setFirstname }
-            - { ldap_attr: last-name, user-method: setLastname }
-#            - { ldap_attr: mobile-phone, user-method: setPhone }
+            - { ldap_attr: first-name, user_method: setFirstname }
+            - { ldap_attr: last-name, user_method: setLastname }
+            - { ldap_attr: picture, user_method: setAvatar }
 
 # KnpPaginator Configuration
 knp_paginator:

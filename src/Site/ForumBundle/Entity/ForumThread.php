@@ -54,7 +54,7 @@ class ForumThread
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="threads")
      * @ORM\JoinColumn(nullable=false, name="author")
      */
     private $author;
@@ -89,7 +89,7 @@ class ForumThread
         return $this->id;
     }
 
-	/**
+    /**
      * Set locked
      *
      * @param boolean $locked
@@ -100,7 +100,7 @@ class ForumThread
         $this->locked = $locked;
 
         return $this;
-	}
+    }
 
     /**
      * Get locked
@@ -112,7 +112,7 @@ class ForumThread
         return $this->locked;
     }
 
-	/**
+    /**
      * Set pinned
      *
      * @param boolean $pinned
@@ -123,7 +123,7 @@ class ForumThread
         $this->pinned = $pinned;
 
         return $this;
-	}
+    }
 
     /**
      * Get pinned

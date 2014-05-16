@@ -10,7 +10,31 @@
             <generator strategy="AUTO" />
         </id>
         <field name="dn" type="string" length="255" column="dn" nullable="true" />
-
+        <field name="avatar" type="text" column="avatar" nullable="true" />
+        <one-to-many field="threads" target-entity="Site\ForumBundle\Entity\ForumThread" mapped-by="author" orphan-removal="true">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+        <one-to-many field="posts" target-entity="Site\ForumBundle\Entity\ForumPost" mapped-by="author" orphan-removal="true">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+        <one-to-many field="tickets" target-entity="Site\TicketBundle\Entity\TicketTicket" mapped-by="author" orphan-removal="true">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+        <one-to-many field="messages" target-entity="Site\TicketBundle\Entity\TicketMessage" mapped-by="author" orphan-removal="true">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
     </entity>
 
 </doctrine-mapping>

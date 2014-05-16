@@ -18,6 +18,31 @@ class User extends BaseUser implements LdapUserInterface
     private $dn;
 
     /**
+     * @var string $avatar
+     */
+    protected $avatar;
+
+    /**
+     * @var \Site\Intra\ForumBundle\Entity\ForumThread
+     */
+    protected $threads;
+
+    /**
+     * @var \Site\Intra\ForumBundle\Entity\ForumPost
+     */
+    protected $posts;
+
+    /**
+     * @var \Site\Intra\TicketBundle\Entity\TicketTicket
+     */
+    protected $tickets;
+
+    /**
+     * @var \Site\Intra\TicketBundle\Entity\TicketMessage
+     */
+    protected $messages;
+
+    /**
      * Get id
      *
      * @return integer $id
@@ -42,4 +67,165 @@ class User extends BaseUser implements LdapUserInterface
     {
         return $this->dn;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = base64_encode($avatar);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->threads = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add threads
+     *
+     * @param \Site\ForumBundle\Entity\ForumThread $threads
+     * @return User
+     */
+    public function addThread(\Site\ForumBundle\Entity\ForumThread $threads)
+    {
+        $this->threads[] = $threads;
+
+        return $this;
+    }
+
+    /**
+     * Remove threads
+     *
+     * @param \Site\ForumBundle\Entity\ForumThread $threads
+     */
+    public function removeThread(\Site\ForumBundle\Entity\ForumThread $threads)
+    {
+        $this->threads->removeElement($threads);
+    }
+
+    /**
+     * Get threads
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getThreads()
+    {
+        return $this->threads;
+    }
+
+    /**
+     * Add posts
+     *
+     * @param \Site\ForumBundle\Entity\ForumPost $posts
+     * @return User
+     */
+    public function addPost(\Site\ForumBundle\Entity\ForumPost $posts)
+    {
+        $this->posts[] = $posts;
+
+        return $this;
+    }
+
+    /**
+     * Remove posts
+     *
+     * @param \Site\ForumBundle\Entity\ForumPost $posts
+     */
+    public function removePost(\Site\ForumBundle\Entity\ForumPost $posts)
+    {
+        $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param \Site\TicketBundle\Entity\TicketTicket $tickets
+     * @return User
+     */
+    public function addTicket(\Site\TicketBundle\Entity\TicketTicket $tickets)
+    {
+        $this->tickets[] = $tickets;
+
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \Site\TicketBundle\Entity\TicketTicket $tickets
+     */
+    public function removeTicket(\Site\TicketBundle\Entity\TicketTicket $tickets)
+    {
+        $this->tickets->removeElement($tickets);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * Add messages
+     *
+     * @param \Site\TicketBundle\Entity\TicketMessage $messages
+     * @return User
+     */
+    public function addMessage(\Site\TicketBundle\Entity\TicketMessage $messages)
+    {
+        $this->messages[] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Remove messages
+     *
+     * @param \Site\TicketBundle\Entity\TicketMessage $messages
+     */
+    public function removeMessage(\Site\TicketBundle\Entity\TicketMessage $messages)
+    {
+        $this->messages->removeElement($messages);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
 }
