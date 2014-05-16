@@ -7,4 +7,5 @@ $(document).ready(function() {
 	$('.ui.blue.tiny.button.show.comment').click(function() {
 		$(this).parents('.post').children('.form.comment').transition('slide down');
 	});
+	$('.ui.sortable').tablesort();
 });
