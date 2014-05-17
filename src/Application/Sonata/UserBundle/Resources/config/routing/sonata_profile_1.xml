@@ -31,8 +31,9 @@
     </route>
 
     <route id="sonata_user_profile_show_name" pattern="/{user}">
-        <default key="_controller">ApplicationSonataUserBundle:User:showOther</default>
-        <requirement key="_method">GET</requirement>
+		<default key="_controller">ApplicationSonataUserBundle:User:showOther</default>
+        <requirement key="user">\^[a-z]{0,8}$</requirement>
+		<requirement key="_method">GET</requirement>
     </route>
 
 </routes>

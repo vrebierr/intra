@@ -4,6 +4,7 @@ root:
         _controller: FrameworkBundle:Redirect:redirect
         route: intra_index
 
+
 site_intra:
     resource: "@SiteIntraBundle/Resources/config/routing.yml"
     prefix:   /
