@@ -14,7 +14,12 @@
 			<script type="text/javascript" src="{{ asset('javascript/script.js') }}"></script>
 		{% endblock %}
 	</head>
-	<body>
+	{% if is_granted("IS_AUTHENTICATED_FULLY") == false %}
+		<body class="overflow">
+			<div class="overflow"></div>
+	{% else %}
+		<body>
+	{% endif %}
 		<div class="ui secondary pointing blue menu">
 			<a class="{% block active_home '' %} item hide" href="{{ path('intra_index') }}">
 				<i class="home icon"></i> {{ 'NAVBAR_HOME'|trans }}
@@ -42,7 +47,7 @@
 					</div>
 				</div>
 				<div class="ui dropdown item">
-					<i class="user icon"></i> {{ app.user.username }} <i class="icon dropdown"></i>
+					<i class="user icon"></i>{% if app.user is not null %} {{ app.user.username }} {% endif %}<i class="icon dropdown"></i>
 					<div class="menu">
 						<a class="item hide" href="{{ path('sonata_user_profile_show') }}">
 							<i class="unhide icon"></i> {{ 'NAVBAR_DROP_PROFILE'|trans }}

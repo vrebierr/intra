@@ -115,7 +115,13 @@
 						</div>
 					</div>
 					{% if app.user.username == user.username %}
-						<a href="{{ path('sonata_user_profile_edit') }}"><button class="ui right floated button"><i class="edit icon"></i>{{ 'title_user_edit_profile'|trans({}, 'SonataUserBundle') }}</button></a>
+						<div class="item">
+							<a href="{{ path('sonata_user_profile_edit') }}">
+								<button class="ui right floated button">
+									<i class="edit icon"></i>{{ 'title_user_edit_profile'|trans({}, 'SonataUserBundle') }}
+								</button>
+							</a>
+						</div>
 					{% endif %}
 				</div>
 			</div>
