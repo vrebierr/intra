@@ -1,114 +1,199 @@
 {% extends "SonataUserBundle:Profile:action.html.twig" %}
 
 {% block sonata_profile_content %}
-	<h3 class="ui dividing header">
-		<i class="unhide icon"></i>
-		<div class="content">
-			{{ 'title_user_account'|trans({}, 'SonataUserBundle')|upper }}
-		</div>
-	</h3>
-	<div class="ui relaxed divided list">
-		<div class="item">
-			<div class="content">
-				<img style="width:200px;" src="data:image/png;base64,{{ user.avatar }}" />
+	<div class="four wide column">
+		<div class="segment">
+			<h3 class="ui dividing header">
+				<i class="unhide icon"></i>
+				<div class="content">
+					{{ 'title_user_account'|trans({}, 'SonataUserBundle')|upper }}
+				</div>
+			</h3>
+			<div class="ui relaxed divided list">
+				<div class="item">
+					<div class="content">
+						<img style="width: 150px;" src="data:image/png;base64,{{ user.avatar }}" />
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							{{ 'show.label_username'|trans({}, 'SonataUserBundle')|upper }}
+						</div>
+						<span class="description">
+							{{ user.username }}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							{{ 'show.label_lastname'|trans({}, 'SonataUserBundle')|upper }}/{{ 'show.label_firstname'|trans({}, 'SonataUserBundle')|upper }}
+						</div>
+						<span class="description">
+							{{ user.lastname }} {{ user.firstname }}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							{{ 'show.label_gender'|trans({}, 'SonataUserBundle')|upper }}
+						</div>
+						<span class="description">
+							{% if user.gender == "m" %}
+								<i class="male large icon"></i>
+							{% elseif user.gender =="f" %}
+								<i class="female large icon"></i>
+							{% else %}
+								<i class="question large icon"></i>
+							{% endif %}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							{{ 'show.label_date_of_birth'|trans({}, 'SonataUserBundle')|upper }}
+						</div>
+						<span class="description">
+							{{ user.dateofbirth|localizeddate("medium", "short") }}
+					</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="padded label">
+							<i class="mail icon"></i>
+						</div>
+						<span class="description">
+							{{ user.email }}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="padded label">
+							<i class="phone icon"></i>
+						</div>
+						<span class="description">
+								{{ user.phone }}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="padded label">
+							<i class="url icon"></i>
+						</div>
+						<span class="description">
+							{{ user.website }}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							{{ 'show.label_biography'|trans({}, 'SonataUserBundle')|upper }}
+						</div>
+						<span class="description">
+							{{ user.biography }}
+						</span>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<span class="header">
-					{{ 'show.label_username'|trans({}, 'SonataUserBundle')|upper }}
-				</span>
-				<span class="description">
-					{{ user.username }}
-				</span>
-			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<span class="header">
-					{{ 'show.label_lastname'|trans({}, 'SonataUserBundle')|upper }}/{{ 'show.label_firstname'|trans({}, 'SonataUserBundle')|upper }}
-				</span>
-				<span class="description">
-					{{ user.lastname }} {{ user.firstname }}
-				</span>
-			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<span class="header">
-					{{ 'show.label_gender'|trans({}, 'SonataUserBundle')|upper }}
-				</span>
-				<span class="description">
-					{% if user.gender == "m" %}
-						<i class="male large icon"></i>
-					{% elseif user.gender =="f" %}
-						<i class="female large icon"></i>
-					{% else %}
-						<i class="question large icon"></i>
-					{% endif %}
-				</span>
-			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<span class="header">
-					{{ 'show.label_date_of_birth'|trans({}, 'SonataUserBundle')|upper }}
-				</span>
-				<span class="description">
-					{{ user.dateofbirth|localizeddate("medium", "short") }}
-				</span>
-			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<i class="mail icon"></i>
-				<span class="description">
-					{{ user.email }}
-				</span>
-			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<i class="phone icon"></i>
-				<span class="description">
-					{{ user.phone }}
-				</span>
-			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<i class="url icon"></i>
-				<span class="description">
-					{{ user.website }}
-				</span>
-			</div>
-		</div>
-		<div class="item">
-			<div class="content">
-				<span class="header">
-					{{ 'show.label_biography'|trans({}, 'SonataUserBundle')|upper }}
-				</span>
-				<span class="description">
-					{{ user.biography }}
-				</span>
+			<div class="ui relaxed divided list">
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							{{ 'show.label_last_login'|trans({}, 'SonataUserBundle')|upper }}
+						</div>
+						<span class="description">
+							{{ user.updatedat|localizeddate("full", "medium") }}
+						</span>
+					</div>
+				</div>
+				{% if app.user.username == user.username %}
+					<a href="{{ path('sonata_user_profile_edit') }}"><button class="ui right floated button"><i class="edit icon"></i>{{ 'title_user_edit_profile'|trans({}, 'SonataUserBundle') }}</button></a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<div class="ui relaxed divided list">
-		<div class="item">
-			<div class="content">
-				<span class="header">
-					{{ 'show.label_last_login'|trans({}, 'SonataUserBundle')|upper }}
-				</span>
-				<span class="description">
-					{{ user.updatedat|localizeddate("full", "medium") }}
-				</span>
-			</div>
+	<div class="four wide column">
+		<div class="segment">
+			<h3 class="ui dividing header">
+				<i class="chat icon"></i>
+				<div class="content">
+						FORUM
+				</div>
+			</h3>
+			<div class="ui relaxed divided list">
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							THREADS
+						</div>
+						<span class="description">
+							{{ user.threads|length }}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							POSTS
+						</div>
+						<span class="description">
+							{{ user.posts|length }}
+						</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="content">
+						<div class="header padded label">
+							COMMENTAIRES
+						</div>
+						<span class="description">
+							{{ user.comments|length }}
+						</span>
+					</div>
+				</div>
+				{% if user.threads|length != 0 %}
+					<div class="item">
+						<div class="content">
+							<div class="header padded label">
+								DERNIER THREAD
+							</div>
+							<span class="description">
+								<a href="{{ path('site_forum_thread', { id : user.threads.last.id }) }}">{{ user.threads.last.title }}</a>
+							</span>
+						</div>
+					</div>
+				{% endif %}
+				{% if user.posts|length != 0 %}
+					<div class="item">
+						<div class="content">
+							<div class="header padded label">
+								DERNIER POST
+							</div>
+							<span class="description">
+								{{ user.posts.last.content }}
+							</span>
+						</div>
+					</div>
+				{% endif %}
+				{% if user.comments|length != 0 %}
+					<div class="item">
+						<div class="content">
+							<div class="header padded label">
+								DERNIER COMMENTAIRE
+							</div>
+							<span class="description">
+								{{ user.comments.last.content }}
+							</span>
+						</div>
+					</div>
+				{% endif %}
 		</div>
-		{% if app.user.username == user.username %}
-			<a href="{{ path('sonata_user_profile_edit') }}"><button class="ui right floated button"><i class="edit icon"></i>{{ 'title_user_edit_profile'|trans({}, 'SonataUserBundle') }}</button></a>
-		{% endif %}
 	</div>
 {% endblock %}

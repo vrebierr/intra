@@ -1,8 +1,8 @@
-{% extends "::layout.html.twig" %}
+{% extends "ApplicationSonataUserBundle::layout.html.twig" %}
 
 {% block title %} {{ 'sonata_profile_title'|trans({}, 'SonataUserBundle') }} | {{ parent() }} {% endblock %}
 
-{% block body %}
+{% block body_user %}
 	{% block sonata_page_breadcrumb %}
 		{% if breadcrumb_context is not defined %}
 			{% set breadcrumb_context = 'user_index' %}
@@ -18,7 +18,7 @@
 		</div>
 	</h2>
 	<div class="ui clearing divider"></div>
-	<div class="profile">
+	<div class="ui grid">
 		{% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
 		{% block sonata_profile_content %}
 		{% endblock %}

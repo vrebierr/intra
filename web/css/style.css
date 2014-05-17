@@ -82,6 +82,12 @@ div.form.newpost
 	width: 330px;
 }
 
+.padded.label
+{
+	display: inline-block;
+	width: 200px;
+}
+
 .padded.left
 {
 	padding-left: 34px;

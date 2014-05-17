@@ -1,15 +1,6 @@
-<!doctype HTML>
-<html>
-	<head>
-		<meta/>
-		<title>{% block title %} About:blank {% endblock %}</title>
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('css/semantic.css') }}" type="text/css" />
-			<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
-		{% endblock %}
-	</head>
-	<body class="{% block body_background '' %}">
-		{% block fos_user_content %}
-		{% endblock %}
-	</body>
-</html>
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+	{% block body_user %}
+	{% endblock %}
+{% endblock %}
