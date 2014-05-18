@@ -54,9 +54,9 @@
 				{% endif %}
 				{% if thread.locked != true and post.locked != true %}
 					<form class="form comment hidden" action="" method="POST">
-						<input type="text" name="content" required="required">
 						<input type="hidden" name="postid" value="{{ post.id }}">
-						<input class="ui right floated button" type="submit" value="{{ 'FORUM_SEND'|trans }}" name="comment">
+						<input class="commentfield" type="text" placeholder="{{ 'FORUM_CONTENT'|trans }}" name="content" required="required">
+						<input class="ui button" type="submit" value="{{ 'FORUM_SEND'|trans }}" name="comment">
 					</form>
 				{% endif %}
 			</div>

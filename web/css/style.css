@@ -82,6 +82,11 @@ div.form.newpost
 	padding-top: 50px;
 }
 
+form.form.comment input[type=text]
+{
+	width: 60%;
+}
+
 .italic
 {
 	font-style: italic;
