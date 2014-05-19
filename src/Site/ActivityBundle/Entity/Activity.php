@@ -105,6 +105,12 @@ class Activity
      */
     private $type;
 
+    /**
+     * @ORM\ManytoOne(targetEntity="Module", inversedBy="activities")
+     * @ORM\JoinColumn(nullable=false, name="module_id")
+     */
+    private $module;
+
 
     /**
      * Get id
