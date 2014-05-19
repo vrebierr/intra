@@ -71,6 +71,7 @@ doctrine:
                     SiteForumBundle: ~
                     SiteIntraBundle: ~
                     SiteTicketBundle: ~
+                    SiteActivityBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
