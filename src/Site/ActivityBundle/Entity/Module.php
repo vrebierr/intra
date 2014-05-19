@@ -77,6 +77,11 @@ class Module
      */
     private $places;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Activity", mappedBy="module", cascade={"persist", "remove"})
+     */
+    private $activities;
+
 
     /**
      * Get id

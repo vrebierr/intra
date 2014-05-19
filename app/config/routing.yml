@@ -5,14 +5,14 @@ root:
         route: intra_index
 
 
+site_activity:
+    resource: "@SiteActivityBundle/Resources/config/routing.yml"
+    prefix:   /activities
+
+
 site_intra:
     resource: "@SiteIntraBundle/Resources/config/routing.yml"
     prefix:   /index
-
-
-site_activity:
-    resource: "@SiteActivityBundle/Resources/config/routing.yml"
-    prefix:   /module
 
 
 site_forum:
