@@ -3,6 +3,9 @@
 namespace Site\ActivityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Activity
@@ -36,9 +39,13 @@ class Activity
     private $description;
 
     /**
-     * @var string
+     * @Assert\File(
+     *     maxSize="5M",
+     *     mimeTypes={"application/pdf"}
+     * )
+     * @Vich\UploadableField(mapping="subject", fileNameProperty="name")
      *
-     * @ORM\Column(name="subject", type="string", length=255)
+     * @var File $subject
      */
     private $subject;
 
@@ -112,6 +119,11 @@ class Activity
     private $module;
 
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     /**
      * Get id
      *
@@ -171,10 +183,10 @@ class Activity
     /**
      * Set subject
      *
-     * @param string $subject
+     * @param File $subject
      * @return Activity
      */
-    public function setSubject($subject)
+    public function setSubject(File $subject)
     {
         $this->subject = $subject;
 
@@ -184,7 +196,7 @@ class Activity
     /**
      * Get subject
      *
-     * @return string 
+     * @return File 
      */
     public function getSubject()
     {
@@ -396,5 +408,28 @@ class Activity
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set module
+     *
+     * @param \Site\ActivityBundle\Entity\Module $module
+     * @return Activity
+     */
+    public function setModule(\Site\ActivityBundle\Entity\Module $module)
+    {
+        $this->module = $module;
+
+        return $this;
+    }
+
+    /**
+     * Get module
+     *
+     * @return \Site\ActivityBundle\Entity\Module 
+     */
+    public function getModule()
+    {
+        return $this->module;
     }
 }

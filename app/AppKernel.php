@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Site\DirectoryBundle\SiteDirectoryBundle(),
             new Site\ActivityBundle\SiteActivityBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

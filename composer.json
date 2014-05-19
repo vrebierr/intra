@@ -29,7 +29,8 @@
         "sonata-project/datagrid-bundle": "~2.2@dev",
         "sonata-project/user-bundle": "dev-master",
         "fr3d/ldap-bundle": "2.0.x-dev",
-        "knplabs/knp-paginator-bundle": "2.4.*@dev"
+        "knplabs/knp-paginator-bundle": "2.4.*@dev",
+        "vich/uploader-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

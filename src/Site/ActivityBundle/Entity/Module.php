@@ -82,6 +82,10 @@ class Module
      */
     private $activities;
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
      * Get id
@@ -275,5 +279,45 @@ class Module
     public function getPlaces()
     {
         return $this->places;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->activities = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add activities
+     *
+     * @param \Site\ActivityBundle\Entity\Activity $activities
+     * @return Module
+     */
+    public function addActivity(\Site\ActivityBundle\Entity\Activity $activities)
+    {
+        $this->activities[] = $activities;
+
+        return $this;
+    }
+
+    /**
+     * Remove activities
+     *
+     * @param \Site\ActivityBundle\Entity\Activity $activities
+     */
+    public function removeActivity(\Site\ActivityBundle\Entity\Activity $activities)
+    {
+        $this->activities->removeElement($activities);
+    }
+
+    /**
+     * Get activities
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActivities()
+    {
+        return $this->activities;
     }
 }

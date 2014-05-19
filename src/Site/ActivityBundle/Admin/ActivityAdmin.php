@@ -18,7 +18,6 @@ class ActivityAdmin extends Admin
         $datagridMapper
             ->add('name')
             ->add('description')
-            ->add('subject')
             ->add('places')
             ->add('start')
             ->add('end')
@@ -28,6 +27,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
+            ->add('module')
         ;
     }
 
@@ -39,7 +39,6 @@ class ActivityAdmin extends Admin
         $listMapper
             ->add('name')
             ->add('description')
-            ->add('subject')
             ->add('places')
             ->add('start')
             ->add('end')
@@ -49,6 +48,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
+            ->add('module')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -67,7 +67,7 @@ class ActivityAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('description')
-            ->add('subject')
+            ->add('subject', 'file')
             ->add('places')
             ->add('start')
             ->add('end')
@@ -77,6 +77,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
+            ->add('module')
         ;
     }
 
@@ -88,7 +89,6 @@ class ActivityAdmin extends Admin
         $showMapper
             ->add('name')
             ->add('description')
-            ->add('subject')
             ->add('places')
             ->add('start')
             ->add('end')
@@ -98,6 +98,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
+            ->add('module')
         ;
     }
 }
