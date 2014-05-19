@@ -24,6 +24,6 @@ class BoardAdmin extends Admin
 	{
 		$listMapper->addIdentifier('id')
 				->addIdentifier('title')
-				->add('_action', 'actions', array('actions' => array('edit' => array(), 'delete' => array())));
+				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
 }

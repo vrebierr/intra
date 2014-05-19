@@ -31,6 +31,6 @@ class CommentAdmin extends Admin
 				->addIdentifier('post')
 				->add('author')
 				->add('date')
-				->add('_action', 'actions', array('actions' => array('edit' => array(), 'delete' => array())));
+				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
 }

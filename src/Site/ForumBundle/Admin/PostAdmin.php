@@ -32,6 +32,6 @@ class PostAdmin extends Admin
 				->add('author')
 				->add('date')
 				->add('locked', null, array('editable' => true))
-				->add('_action', 'actions', array('actions' => array('edit' => array(), 'delete' => array())));
+				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
 }

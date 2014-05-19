@@ -18,6 +18,16 @@ class User extends BaseUser implements LdapUserInterface
     private $dn;
 
     /**
+     * @var string autotoken
+     */
+    private $autoLoginToken;
+
+	/**
+     * @var string autotoken
+     */
+    private $autoLoginUrl;
+
+    /**
      * @var string $avatar
      */
     protected $avatar;
@@ -56,6 +66,38 @@ class User extends BaseUser implements LdapUserInterface
     {
         return $this->id;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAutoLoginToken($token)
+    {
+        $this->autoLoginToken = $token;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAutoLoginToken()
+    {
+        return $this->autoLoginToken;
+    }
+
+	/**
+     * {@inheritDoc}
+     */
+    public function setAutoLoginUrl($url)
+    {
+        $this->autoLoginUrl = $url;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAutoLoginUrl()
+    {
+        return $this->autoLoginUrl;
+	}
 
     /**
      * {@inheritDoc}

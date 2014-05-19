@@ -38,7 +38,9 @@
             <cascade>
                 <cascade-persist/>
             </cascade>
-        </one-to-many>
+		</one-to-many>
+        <field name="autoLoginToken" type="string" length="10" column="autologin_token" nullable="true" />
+        <field name="autoLoginUrl" type="string" length="255" column="autologin_url" nullable="true" />
     </entity>
 
 </doctrine-mapping>

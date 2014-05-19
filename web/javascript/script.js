@@ -8,4 +8,5 @@ $(document).ready(function() {
 		$(this).parents('.post').children('.form.comment').transition('slide down');
 	});
 	$('.ui.sortable').tablesort();
+	$(".refresh.icon").popup();
 });

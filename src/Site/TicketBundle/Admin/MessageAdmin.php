@@ -31,6 +31,6 @@ class MessageAdmin extends Admin
 				->addIdentifier('author')
 				->addIdentifier('content')
 				->add('date')
-				->add('_action', 'actions', array('actions' => array('edit' => array(), 'delete' => array())));
+				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
 }

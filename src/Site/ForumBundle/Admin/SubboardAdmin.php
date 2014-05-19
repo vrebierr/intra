@@ -30,6 +30,6 @@ class SubboardAdmin extends Admin
 				->addIdentifier('title')
 				->add('threads')
 				->add('ghost', null, array('editable' => true))
-				->add('_action', 'actions', array('actions' => array('edit' => array(), 'delete' => array())));
+				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
 }
