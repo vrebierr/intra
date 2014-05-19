@@ -32,11 +32,11 @@
             </trans-unit>
             <trans-unit id="8">
                 <source>TICKET_STATUS_CLOSED</source>
-                <target>Fermé</target>
+                <target>Resolu</target>
             </trans-unit>
             <trans-unit id="9">
                 <source>TICKET_STATUS_OPEN</source>
-                <target>Ouvert</target>
+                <target>En cours</target>
             </trans-unit>
             <trans-unit id="10">
                 <source>TICKET_BUTTON_NEW</source>
@@ -92,11 +92,15 @@
             </trans-unit>
             <trans-unit id="23">
                 <source>TICKET_INFO_CLOSED</source>
-                <target>Ce ticket est fermé</target>
+                <target>Ce ticket est résolu</target>
             </trans-unit>
             <trans-unit id="24">
                 <source>TICKET_HEADING_LIST</source>
                 <target>Liste des tickets</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>TICKET_HEADING_BACK</source>
+                <target>Retourner à la liste</target>
             </trans-unit>
         </body>
     </file>

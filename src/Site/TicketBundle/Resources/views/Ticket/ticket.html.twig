@@ -1,14 +1,17 @@
 {% extends "SiteTicketBundle::layout.html.twig" %}
 
 {% block body_ticket %}
+	<div class="row">
+	<div class="column">
+	<div class="segment">
 	<h3 class="ui dividing header">
 		<i class="list icon"></i>
 		<div class="content">
 			{{ 'TICKET_HEADING_LIST'|trans|upper }}
 		</div>
 	</h3>
+	<br>
 	{% if form is not null %}
-		<br>
 		<div class="form newticket">
 			<div class="ui blue button show form center">
 				<i class="plus icon"></i>{{ 'TICKET_BUTTON_NEW'|trans }}
@@ -21,12 +24,10 @@
 				</div>
 			</form>
 		</div>
+	<br>
+	<br>
 	{% endif %}
-	<br>
-	<br>
-	<br>
-	<div class="ticket">
-		<table>
+		<table class="ui padded table segment">
 			<thead>
 				<tr>
 					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_SUBJECT'|trans, 't.subject') }} {% if pagination.isSorted('t.subject') %} <i class="triangle down icon"></i> {% endif %}</th>
@@ -39,7 +40,7 @@
 			</thead>
 			<tbody>
 				{% for ticket in pagination %}
-					<tr>
+					<tr {% if ticket.closed == 1 %} class="positive" {% endif %}>
 						<td><a href="{{ path('site_ticket_show', { 'id': ticket.id }) }}">{{ ticket.subject }}</a></td>
 						<td>{{ ticket.date|localizeddate("short", "medium") }}</td>
 						<td>{{ ticket.messages.last.date|localizeddate("short", "medium") }}</td>
@@ -70,7 +71,9 @@
 				{% endfor %}
 			</tbody>
 		</table>
-			{{ knp_pagination_render(pagination) }}
+		{{ knp_pagination_render(pagination) }}
+	</div>
+	</div>
 	</div>
 {% endblock %}
 

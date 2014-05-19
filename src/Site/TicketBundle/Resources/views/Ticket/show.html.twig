@@ -1,36 +1,50 @@
 {% extends "SiteTicketBundle::layout.html.twig" %}
 
 {% block body_ticket %}
-	<div>
-		<h2 class="subsubtitle">{{ 'TICKET_HEADING_SHOW_TITLE'|trans({'%ticket_id%': ticket.id}) }} - {{ ticket.subject }}</h1>
-	</div>
-	{% if ticket.closed == true %}
-		<p class="error"> {{ 'TICKET_INFO_CLOSED'|trans }} </p>
-	{% endif %}
-	<div class="thread">
-		{% for message in ticket.messages %}
-			<div class="post">
-				<div>
-					{{ message.content }}
+	<div class="row">
+		<div class="column">
+			<div class="segment">
+				<h3 class="ui dividing header">
+					<i class="pencil icon"></i>
+					<div class="content">
+						{{ 'TICKET_HEADING_SHOW_TITLE'|trans({'%ticket_id%': ticket.id}) }} - {{ ticket.subject }}
+					</div>
+				</h3>
+				<div class="centered">
+					<a href="{{ path('site_ticket')}}">{{ 'TICKET_HEADING_BACK'|trans }}</a>
 				</div>
-				<span class="right">
-					{{ 'TICKET_MESSAGE_INFOS'|trans({'%message_author%' : message.author, '%message_date%': message.date|localizeddate("medium", "medium")}) }}
-				</span>
-				<br>
+				{% if ticket.closed == true %}
+					<h4 class="ui success message centered">
+						{{ 'TICKET_INFO_CLOSED'|trans }}
+					</h4>
+				{% endif %}
+				<br><br>
+				{% for message in ticket.messages %}
+					<div class="postitem bottombordered">
+						{{ message.content }}
+						<br>
+						<div class="italic float right">
+							{{ 'TICKET_MESSAGE_INFOS'|trans({'%message_author%' : message.author, '%message_date%': message.date|localizeddate("medium", "medium")}) }}
+						</div>
+					</div>
+				{% endfor %}
+				{% if form is not null and ticket.closed != true %}
+					<br><br>
+					<div class="form newreply">
+						<h3 class="ui header">
+							{{ "TICKET_MESSAGE_REPLY"|trans }}
+						</h3>
+						<form class="ui form" action="" method="POST">
+							{{ form_widget(form) }}
+							<br>
+							<div class="field">
+								<input type="submit" value="{{ 'TICKET_SEND'|trans }}" class="ui right floated button" name="post">
+							</div>
+						</form>
+					</div>
+				{% endif %}
 			</div>
-		{% endfor %}
-		{% if form is not null and ticket.closed != true %}
-			<br><br>
-			<div>
-				<h3>{{ "TICKET_MESSAGE_REPLY"|trans }}</h3>
-			</div>
-			<form action="" method="POST">
-				{{ form_widget(form) }}
-				<div>
-					<input type="submit" value="{{ 'TICKET_SEND'|trans }}" class="contactsubmit" name="post">
-				</div>
-			</form>
-		{% endif %}
+		</div>
 	</div>
 {% endblock %}
 
