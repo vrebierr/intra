@@ -39,9 +39,10 @@ class UserController extends BaseController
 	{
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$token = substr(hash('whirlpool', uniqid($user->getUsername(), true)), 0, 10);
-		$url = "intra.local.42.fr:8888/profile/autologin/".$token;
+		$url = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$urlCleaned = substr($url, 0, strrpos($url, "/"))."/autologin/".$token;
 		$user->setAutoLoginToken($token);
-		$user->setAutoLoginUrl($url);
+		$user->setAutoLoginUrl($urlCleaned);
 
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($user);
