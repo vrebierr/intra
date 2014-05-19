@@ -1,0 +1,3 @@
+module:
+    pattern:  /module
+    defaults: { _controller: SiteActivityBundle:Module:index }
