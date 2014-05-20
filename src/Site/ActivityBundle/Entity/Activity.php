@@ -117,6 +117,11 @@ class Activity
      */
     private $students;
 
+    /**
+     * @ORM\OneToMany(targetEntity="\Site\ActivityBundle\Entity\ActivityGroup", mappedBy="activity")
+     */
+    private $groups;
+
 
     public function __toString()
     {
