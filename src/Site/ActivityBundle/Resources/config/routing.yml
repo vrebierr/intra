@@ -1,0 +1,9 @@
+module:
+    pattern:  /
+    defaults: { _controller: SiteActivityBundle:Module:index }
+
+activity_show:
+    pattern:  /show/{id}
+    defaults: { _controller: SiteActivityBundle:Activity:show }
+    requirements:
+        id: \d+

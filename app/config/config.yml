@@ -72,6 +72,8 @@ doctrine:
                     SiteIntraBundle: ~
                     SiteTicketBundle: ~
                     SiteActivityBundle: ~
+                    ApplicationSonataMediaBundle: ~
+                    SonataMediaBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -170,9 +172,20 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
-vich_uploader:
-    db_driver: orm
-    mappings:
-        product_image:
-            uri_prefix:         /projects
-            upload_destination: %kernel.root_dir%/../web/projects
+sonata_media:
+    default_context: default
+    db_driver: doctrine_orm
+    contexts:
+        default:
+            providers:
+                - sonata.media.provider.file
+            formats: ~
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     true

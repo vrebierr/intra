@@ -67,7 +67,10 @@ class ActivityAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('description')
-            ->add('subject', 'file')
+            ->add('subject', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.file',
+                'context'  => 'default'
+            ))
             ->add('places')
             ->add('start')
             ->add('end')
