@@ -35,10 +35,18 @@
 		{% if date() < activity.startregistration or date() > activity.endregistration %}
 			Vous ne pouvez pas encore vous inscrire à ce projet.
 		{% else %}
-			{% if app.user in activity.students %}
-				<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">Se désincrire</a>
+			{% if activity.sizemax > 1 %}
+				{% if app.user in activity.students %}
+					<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">Détruire le groupe</a>
+				{% else %}
+					<form></form>
+				{% endif %}
 			{% else %}
-				<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">S'inscrire</a>
+				{% if app.user in activity.students %}
+					<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">Se désincrire</a>
+				{% else %}
+					<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">S'inscrire</a>
+				{% endif %}
 			{% endif %}
 		{% endif %}
 	{% endif %}

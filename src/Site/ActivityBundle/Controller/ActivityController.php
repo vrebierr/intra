@@ -79,14 +79,45 @@ class ActivityController extends Controller
 		if (!$activity->getModule()->getStudents()->contains($user))
 			throw new AccessDeniedException("You can't register for this activity before register module");
 
-		if ($activity->getStudents()->contains($user))
-			$activity->removeStudent($user);
-		else
-			$activity->addStudent($user);
+		if ($activity->getSizeMax() > 1)
+ 		{
+ 			$form = $this->creatForm(new ActivityGroupType());
+ 			$request = $this->getRequest();
+ 			if ($request->isMethod("POST"))
+ 			{
+ 				$form->bind($request);
+ 				if ($form->isValid() && $group->getStudents()->size() > $activity->getSizeMin() && $group->getStudents()->size() < $activity->getSizeMax())
+ 				{
+ 					$group = $form->getData();
+					$group->setActivity($activity);
 
-		$em = $this->getDoctrine()->getManager();
-		$em->persist($activity);
-		$em->flush();
+					if ($activity->getStudents()->contains($user))
+						$activity->removeStudent($user);
+					else
+						$activity->addStudent($user);
+
+					$em->persist($activity);
+					$em->persist($group);
+					$em->flush();
+ 				}
+ 			}
+ 		}
+ 		else
+ 		{
+ 			$group = new ActivityGroup();
+ 			$group->setName($user->getUsername());
+ 			$group->setActivity($activity);
+ 			$group->addStudent($user);
+
+ 			if ($activity->getStudents()->contains($user))
+				$activity->removeStudent($user);
+			else
+				$activity->addStudent($user);
+
+			$em->persist($activity);
+ 			$em->persist($group);
+ 			$em->flush();
+ 		}
 
 		return $this->redirect($this->generateUrl('site_activities_activity', array('id' => $activity->getId())));
 	}

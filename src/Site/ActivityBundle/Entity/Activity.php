@@ -476,4 +476,37 @@ class Activity
     {
         return $this->students;
     }
+
+    /**
+     * Add groups
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityGroup $groups
+     * @return Activity
+     */
+    public function addGroup(\Site\ActivityBundle\Entity\ActivityGroup $groups)
+    {
+        $this->groups[] = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityGroup $groups
+     */
+    public function removeGroup(\Site\ActivityBundle\Entity\ActivityGroup $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
 }
