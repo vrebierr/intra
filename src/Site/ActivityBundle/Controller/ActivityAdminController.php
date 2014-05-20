@@ -45,10 +45,14 @@ class ActivityAdminController extends CRUDController
                 $this->admin->create($object);
 
                 // create ForumBoard for Module
+                $em = $this->getDoctrine()->getManager();
+                $board = $em->getRepository("SiteForumBundle:ForumBoard")->findOneBy(array("title" => $object->getModule()->getName()));
+
                 $subboard = new ForumSubboard();
 			    $subboard->setTitle($object->getName());
+			    $subboard->setBoard($board);
 
-			    $em = $this->getDoctrine()->getManager();
+			    
 			    $em->persist($subboard);
 			    $em->flush();
 
