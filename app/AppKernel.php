@@ -40,13 +40,9 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Site\DirectoryBundle\SiteDirectoryBundle(),
             new Site\ActivityBundle\SiteActivityBundle(),
-<<<<<<< HEAD
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
-=======
-            new Vich\UploaderBundle\VichUploaderBundle(),
             new Site\PlanningBundle\SitePlanningBundle(),
->>>>>>> f0dc5f0eb0932b3faa413ebbf5efd40f053be673
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
