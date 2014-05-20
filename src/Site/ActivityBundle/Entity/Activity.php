@@ -111,6 +111,12 @@ class Activity
      */
     private $module;
 
+    /**
+     * @ORM\OnetoMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", mappedBy="activities")
+     * @ORM\JoinColumn(nullable=true, name="students")
+     */
+    private $students;
+
 
     public function __toString()
     {
@@ -424,5 +430,45 @@ class Activity
     public function getModule()
     {
         return $this->module;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->students = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add students
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $students
+     * @return Activity
+     */
+    public function addStudent(\Application\Sonata\UserBundle\Entity\User $students)
+    {
+        $this->students[] = $students;
+
+        return $this;
+    }
+
+    /**
+     * Remove students
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $students
+     */
+    public function removeStudent(\Application\Sonata\UserBundle\Entity\User $students)
+    {
+        $this->students->removeElement($students);
+    }
+
+    /**
+     * Get students
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStudents()
+    {
+        return $this->students;
     }
 }

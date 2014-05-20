@@ -1,0 +1,15 @@
+site_activities:
+    pattern:  /
+    defaults: { _controller: SiteActivityBundle:Activity:index }
+
+site_activities_module:
+    pattern:  /module/{id}
+    defaults: { _controller: SiteActivityBundle:Activity:module }
+    requirements:
+        id: \d+
+
+site_activities_activity:
+    pattern:  /activity/{id}
+    defaults: { _controller: SiteActivityBundle:Activity:activity }
+    requirements:
+        id: \d+

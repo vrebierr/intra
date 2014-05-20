@@ -57,6 +57,31 @@ class User extends BaseUser implements LdapUserInterface
      */
     protected $messages;
 
+	/**
+     * @var \Site\Intra\ActivityBundle\Entity\Module
+     */
+	protected $modules;
+
+	/**
+     * @var \Site\Intra\ActivityBundle\Entity\Activity
+     */
+	protected $activities;
+
+	/**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->threads = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->messsages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activities = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->modules = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -129,19 +154,6 @@ class User extends BaseUser implements LdapUserInterface
     public function getAvatar()
     {
         return $this->avatar;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->threads = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->messsages = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -307,5 +319,71 @@ class User extends BaseUser implements LdapUserInterface
     public function getComments()
     {
         return $this->comments;
+	}
+
+    /**
+     * Add modules
+     *
+     * @param \Site\ActivityBundle\Entity\Module $modules
+     * @return User
+     */
+    public function addModule(\Site\ActivityBundle\Entity\Module $modules)
+    {
+        $this->modules[] = $modules;
+
+        return $this;
+    }
+
+    /**
+     * Remove modules
+     *
+     * @param \Site\ActivityBundle\Entity\Module $modules
+     */
+    public function removeModule(\Site\ActivityBundle\Entity\Module $modules)
+    {
+        $this->modules->removeElement($modules);
+    }
+
+    /**
+     * Get modules
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getModules()
+    {
+        return $this->modules;
+    }
+
+    /**
+     * Add activities
+     *
+     * @param \Site\ActivityBundle\Entity\Activity $activities
+     * @return User
+     */
+    public function addActivity(\Site\ActivityBundle\Entity\Activity $activities)
+    {
+        $this->ativities[] = $activities;
+
+        return $this;
+    }
+
+    /**
+     * Remove activities
+     *
+     * @param \Site\ActivityBundle\Entity\Activity $activities
+     */
+    public function removeActivity(\Site\ActivityBundle\Entity\Activity $activities)
+    {
+        $this->activities->removeElement($activities);
+    }
+
+    /**
+     * Get activities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivities()
+    {
+        return $this->activities;
     }
 }

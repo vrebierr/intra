@@ -29,18 +29,28 @@
                 <cascade-remove/>
             </cascade>
         </one-to-many>
-        <one-to-many field="tickets" target-entity="Site\TicketBundle\Entity\TicketTicket" mapped-by="author" orphan-removal="true">
+        <one-to-many field="tickets" target-entity="Site\TicketBundle\Entity\TicketTicket" mapped-by="author">
             <cascade>
                 <cascade-persist/>
             </cascade>
         </one-to-many>
-        <one-to-many field="messages" target-entity="Site\TicketBundle\Entity\TicketMessage" mapped-by="author" orphan-removal="true">
+        <one-to-many field="messages" target-entity="Site\TicketBundle\Entity\TicketMessage" mapped-by="author">
             <cascade>
                 <cascade-persist/>
             </cascade>
 		</one-to-many>
         <field name="autoLoginToken" type="string" length="10" column="autologin_token" nullable="true" />
-        <field name="autoLoginUrl" type="string" length="255" column="autologin_url" nullable="true" />
+		<field name="autoLoginUrl" type="string" length="255" column="autologin_url" nullable="true" />
+        <one-to-many field="modules" target-entity="Site\ActivityBundle\Entity\Module" mapped-by="students">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+		</one-to-many>
+        <one-to-many field="activities" target-entity="Site\ActivityBundle\Entity\Activity" mapped-by="students">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+		</one-to-many>
     </entity>
 
 </doctrine-mapping>

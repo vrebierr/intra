@@ -1,0 +1,7 @@
+parameters:
+#    site_planning.example.class: Site\PlanningBundle\Example
+
+services:
+#    site_planning.example:
+#        class: %site_planning.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

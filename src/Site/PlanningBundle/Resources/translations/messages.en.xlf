@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>PLANNING_HOME</source>
+                <target>Planning</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>FORUM_TITLE</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>FORUM_CONTENT</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>FORUM_SEND</source>
+                <target>Send</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>FORUM_CONNECT</source>
+                <target>You must be connected to post on this forum</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>FORUM_NEW_THREAD</source>
+                <target>Create a new thread</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>FORUM_REPLY</source>
+                <target>Reply</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>THREAD_TITLE</source>
+                <target>%thread_title%, by %thread_author% on %thread_date%</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>POST_TITLE</source>
+                <target>By %post_author% on %post_date%</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>COMMENT</source>
+                <target>%comment_content% | %comment_author% on %comment_date%</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>FORUM_SUBBOARD_NBTHREADS</source>
+                <target>%subboard_nbthreads% thread(s)</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>FORUM_SUBBOARD_LASTTHREAD</source>
+                <target> - last thread opened on %subboard_lastthread% by %thread_lastauthor%</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>FORUM_THREAD_LASTPOST</source>
+                <target> - last post on %thread_lastpost%</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>FORUM_THREAD_AUTHOR</source>
+                <target>by %thread_author%</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>FORUM_THREAD_LOCKED</source>
+                <target>This thread is locked</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>FORUM_TREEE_NO_ITEMS</source>
+                <target>No thread found</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

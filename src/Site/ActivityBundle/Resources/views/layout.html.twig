@@ -13,6 +13,7 @@
 	<div class="ui grid">
 		<div class="left floated two wide column rightbordered">
 			<div class="ui fluid basic accordion">
+<<<<<<< HEAD
 				{% for module in modules %}
 					<div class="title">
 						<h4 class="ui header">
@@ -24,12 +25,52 @@
 						<a href="{{ path('activity_show', { 'id' : activity.id}) }}">{{ activity.name }}</a>
 						<br>
 					{% endfor %}
+=======
+				{% for modulemenu in modules %}
+					{% if activity is not null and activity.module == modulemenu or module is not null and modulemenu == module %}
+						<div class="title active">
+					{% else %}
+						<div class="title">
+					{% endif %}
+						<h4 class="ui header">
+							<i class="dropdown icon"></i>
+							<a href="{{ path('site_activities_module', { 'id': modulemenu.id}) }}">{{ modulemenu.name }}</a>
+						</h4>
+					</div>
+					{% if activity is not null and activity.module == modulemenu or module is not null and modulemenu == module %}
+						<div class="content active">
+					{% else %}
+						<div class="content">
+					{% endif %}
+						{% for activitymenu in modulemenu.activities %}
+							{% if activitymenu == activity %}
+								<h5 class="ui disabled header padded left">
+							{% else %}
+								<h5 class="ui header padded left">
+							{% endif %}
+								<a href="{{ path('site_activities_activity', { 'id': activitymenu.id }) }}">{{ activitymenu.name }}</a>
+							</h5>
+						{% else %}
+							<h5 class="ui header padded left">
+								{{ 'module.noactivity'|trans }}
+							</h5>
+						{% endfor %}
+						</div>
+>>>>>>> f0dc5f0eb0932b3faa413ebbf5efd40f053be673
 				{% endfor %}
 			</div>
 		</div>
 		<div class="left floated fourteen wide column">
+<<<<<<< HEAD
 			{% block activity_body %}
 			{% endblock %}
 		</div>
 	</div>
 {% endblock %}
+=======
+			{% block activities_body %}
+			{% endblock %}
+		</div>
+	</div>
+{% endblock %}
+>>>>>>> f0dc5f0eb0932b3faa413ebbf5efd40f053be673

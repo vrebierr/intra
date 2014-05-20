@@ -61,14 +61,14 @@ class Module
      *
      * @ORM\Column(name="start_registration", type="datetime")
      */
-    private $start_registration;
+    private $startRegistration;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end_registration", type="datetime")
      */
-    private $end_registration;
+    private $endRegistration;
 
     /**
      * @var integer
@@ -81,6 +81,12 @@ class Module
      * @ORM\OneToMany(targetEntity="Activity", mappedBy="module", cascade={"persist", "remove"})
      */
     private $activities;
+
+    /**
+     * @ORM\OnetoMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", mappedBy="modules")
+     * @ORM\JoinColumn(nullable=true, name="students")
+     */
+    private $students;
 
     public function __toString()
     {
@@ -220,7 +226,7 @@ class Module
      */
     public function setStartRegistration($startRegistration)
     {
-        $this->start_registration = $startRegistration;
+        $this->startRegistration = $startRegistration;
 
         return $this;
     }
@@ -232,7 +238,7 @@ class Module
      */
     public function getStartRegistration()
     {
-        return $this->start_registration;
+        return $this->startRegistration;
     }
 
     /**
@@ -243,7 +249,7 @@ class Module
      */
     public function setEndRegistration($endRegistration)
     {
-        $this->end_registration = $endRegistration;
+        $this->endRegistration = $endRegistration;
 
         return $this;
     }
@@ -255,7 +261,7 @@ class Module
      */
     public function getEndRegistration()
     {
-        return $this->end_registration;
+        return $this->endRegistration;
     }
 
     /**
@@ -319,5 +325,38 @@ class Module
     public function getActivities()
     {
         return $this->activities;
+    }
+
+    /**
+     * Add students
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $students
+     * @return Module
+     */
+    public function addStudent(\Application\Sonata\UserBundle\Entity\User $students)
+    {
+        $this->students[] = $students;
+
+        return $this;
+    }
+
+    /**
+     * Remove students
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $students
+     */
+    public function removeStudent(\Application\Sonata\UserBundle\Entity\User $students)
+    {
+        $this->students->removeElement($students);
+    }
+
+    /**
+     * Get students
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStudents()
+    {
+        return $this->students;
     }
 }

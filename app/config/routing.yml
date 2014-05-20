@@ -5,8 +5,13 @@ root:
         route: intra_index
 
 
+site_planning:
+    resource: "@SitePlanningBundle/Resources/config/routing.yml"
+    prefix:   /planning
+
+
 site_activity:
-    resource: "@SiteActivityBundle/Resources/config/routing.yml"
+    resource: "@SiteActivityBundle/Resources/config/routing_activities.yml"
     prefix:   /activities
 
 

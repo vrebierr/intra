@@ -53,8 +53,8 @@ class ModuleAdmin extends Admin
             ->add('description')
             ->add('credits')
             ->add('places')
-            ->add('start_registration')
-            ->add('end_registration')
+            ->add('startRegistration')
+            ->add('endRegistration')
             ->add('start')
             ->add('end')
         ;
@@ -70,8 +70,8 @@ class ModuleAdmin extends Admin
             ->add('description')
             ->add('credits')
             ->add('places')
-            ->add('start_registration')
-            ->add('end_registration')
+            ->add('startRegistration')
+            ->add('endRegistration')
             ->add('start')
             ->add('end')
         ;

@@ -1,0 +1,17 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %} {{ 'PLANNING_HOME'|trans }} - {{ parent() }} {% endblock %}
+{% block active_planning 'active' %}
+{% block body %}
+	<h2 class="ui header padded left">
+		<i class="calendar large icon"></i>
+		<div class="content">
+			{{ 'PLANNING_HOME'|trans|upper }}
+		</div>
+	</h2>
+	<div class="ui clearing divider"></div>
+	<div class="ui grid">
+		{% block planning_body %}
+		{% endblock %}
+	</div>
+{% endblock %}
