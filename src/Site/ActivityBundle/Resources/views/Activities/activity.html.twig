@@ -5,7 +5,7 @@
 	<br>
 	{{ activity.description }}
 	<br>
-	{{ activity.subject }}
+	<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
 	<br>
 	{{ activity.places }}
 	<br>
