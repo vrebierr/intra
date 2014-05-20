@@ -41,16 +41,16 @@
 		</one-to-many>
         <field name="autoLoginToken" type="string" length="10" column="autologin_token" nullable="true" />
 		<field name="autoLoginUrl" type="string" length="255" column="autologin_url" nullable="true" />
-        <one-to-many field="modules" target-entity="Site\ActivityBundle\Entity\Module" mapped-by="students">
+        <many-to-many field="modules" target-entity="Site\ActivityBundle\Entity\Module" mapped-by="students">
             <cascade>
                 <cascade-persist/>
             </cascade>
-		</one-to-many>
-        <one-to-many field="activities" target-entity="Site\ActivityBundle\Entity\Activity" mapped-by="students">
+		</many-to-many>
+        <many-to-many field="activities" target-entity="Site\ActivityBundle\Entity\Activity" mapped-by="students">
             <cascade>
                 <cascade-persist/>
             </cascade>
-		</one-to-many>
+		</many-to-many>
     </entity>
 
 </doctrine-mapping>

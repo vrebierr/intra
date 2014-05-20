@@ -83,8 +83,8 @@ class Module
     private $activities;
 
     /**
-     * @ORM\OnetoMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", mappedBy="modules")
-     * @ORM\JoinColumn(nullable=true, name="students")
+     * @ORM\ManytoMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="modules")
+     * @ORM\JoinTable(name="modules_students")
      */
     private $students;
 

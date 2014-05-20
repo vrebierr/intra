@@ -17,11 +17,11 @@
 	<tbody>
 		{% for module in user.modules %}
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>{{ module.name }}</td>
+				<td>{{ module.credits }}</td>
+				<td>{{ module.places }}</td>
+				<td>{{ module.start|localizeddate("medium", "none") }}</td>
+				<td>{{ module.description }}</td>
 			</tr>
 		{% endfor %}
 	</tbody>
