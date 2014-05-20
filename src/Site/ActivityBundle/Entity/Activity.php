@@ -3,9 +3,6 @@
 namespace Site\ActivityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Activity
@@ -39,13 +36,9 @@ class Activity
     private $description;
 
     /**
-     * @Assert\File(
-     *     maxSize="5M",
-     *     mimeTypes={"application/pdf"}
-     * )
-     * @Vich\UploadableField(mapping="subject", fileNameProperty="name")
+     * @var Media $subject
      *
-     * @var File $subject
+     * @ORM\ManytoOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
      */
     private $subject;
 
@@ -186,7 +179,7 @@ class Activity
      * @param File $subject
      * @return Activity
      */
-    public function setSubject(File $subject)
+    public function setSubject(\Application\Sonata\MediaBundle\Entity\Media $subject)
     {
         $this->subject = $subject;
 

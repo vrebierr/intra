@@ -1,0 +1,6 @@
+{% extends 'SiteActivityBundle::layout.html.twig' %}
+
+{% block activity_body %}
+	{{ activity.name }}
+	<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %} {{ 'module.home'|trans }} - {{ parent() }} {% endblock %}
+{% block active_activities 'active' %}
+{% block body %}
+	<h2 class="ui header padded left">
+		<i class="book large icon"></i>
+		<div class="content">
+			{{ 'module.home'|trans|upper }}
+		</div>
+	</h2>
+	<div class="ui clearing divider"></div>
+	<div class="ui grid">
+		<div class="left floated two wide column rightbordered">
+			<div class="ui fluid basic accordion">
+				{% for module in modules %}
+					<div class="title">
+						<h4 class="ui header">
+							<i class="dropdown icon"></i>
+							{{ module.name }}
+						</h4>
+					</div>
+					{% for activity in module.activities %}
+						<a href="{{ path('activity_show', { 'id' : activity.id}) }}">{{ activity.name }}</a>
+						<br>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+		<div class="left floated fourteen wide column">
+			{% block activity_body %}
+			{% endblock %}
+		</div>
+	</div>
+{% endblock %}
