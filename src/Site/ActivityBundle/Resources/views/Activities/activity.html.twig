@@ -1,0 +1,31 @@
+{% extends "SiteActivityBundle::layout.html.twig" %}
+
+{% block activities_body %}
+	{{ activity.name }}
+	<br>
+	{{ activity.description }}
+	<br>
+	{{ activity.subject }}
+	<br>
+	{{ activity.places }}
+	<br>
+	{{ activity.start|localizeddate("medium", "short") }}
+	<br>
+	{{ activity.end|localizeddate("medium", "short") }}
+	<br>
+	{{ activity.startRegistration|localizeddate("medium", "short") }}
+	<br>
+	{{ activity.endRegistration|localizeddate("medium", "short") }}
+	<br>
+	{% if activity.sizeMin != activity.sizeMax %}
+		{{ activity.sizeMin }} | {{ activity.sizeMax }}
+	{% else %}
+		{{ activity.sizeMin }}
+	{% endif %}
+	<br>
+	{{ activity.peers }}
+	<br>
+	{{ activity.type }}
+	<br>
+	{{ activity.module.name }}
+{% endblock %}

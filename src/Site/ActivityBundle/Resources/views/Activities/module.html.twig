@@ -1,0 +1,19 @@
+{% extends "SiteActivityBundle::layout.html.twig" %}
+
+{% block activities_body %}
+	{{ module.name }}
+	<br>
+	{{ module.description }}
+	<br>
+	{{ module.credits }}
+	<br>
+	{{ module.start|localizeddate("medium", "short") }}
+	<br>
+	{{ module.end|localizeddate("medium", "short") }}
+	<br>
+	{{ module.startRegistration|localizeddate("medium", "short") }}
+	<br>
+	{{ module.endRegistration|localizeddate("medium", "short") }}
+	<br>
+	{{ module.places }}
+{% endblock %}
