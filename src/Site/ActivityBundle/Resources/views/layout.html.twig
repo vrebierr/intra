@@ -13,19 +13,6 @@
 	<div class="ui grid">
 		<div class="left floated two wide column rightbordered">
 			<div class="ui fluid basic accordion">
-<<<<<<< HEAD
-				{% for module in modules %}
-					<div class="title">
-						<h4 class="ui header">
-							<i class="dropdown icon"></i>
-							{{ module.name }}
-						</h4>
-					</div>
-					{% for activity in module.activities %}
-						<a href="{{ path('activity_show', { 'id' : activity.id}) }}">{{ activity.name }}</a>
-						<br>
-					{% endfor %}
-=======
 				{% for modulemenu in modules %}
 					{% if activity is not null and activity.module == modulemenu or module is not null and modulemenu == module %}
 						<div class="title active">
@@ -56,21 +43,12 @@
 							</h5>
 						{% endfor %}
 						</div>
->>>>>>> f0dc5f0eb0932b3faa413ebbf5efd40f053be673
 				{% endfor %}
 			</div>
 		</div>
 		<div class="left floated fourteen wide column">
-<<<<<<< HEAD
 			{% block activity_body %}
 			{% endblock %}
 		</div>
 	</div>
 {% endblock %}
-=======
-			{% block activities_body %}
-			{% endblock %}
-		</div>
-	</div>
-{% endblock %}
->>>>>>> f0dc5f0eb0932b3faa413ebbf5efd40f053be673

@@ -17498,3 +17498,7 @@
 [2014-05-20 13:22:21] event.DEBUG: Notified event "kernel.finish_request" to listener "Symfony\Component\Security\Http\Firewall::onKernelFinishRequest". [] []
 [2014-05-20 13:22:21] event.DEBUG: Notified event "kernel.terminate" to listener "Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener::onTerminate". [] []
 [2014-05-20 13:22:21] event.DEBUG: Notified event "kernel.terminate" to listener "Symfony\Component\HttpKernel\EventListener\ProfilerListener::onKernelTerminate". [] []
+[2014-05-20 18:09:19] event.DEBUG: Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\ProfilerListener::onKernelRequest". [] []
+[2014-05-20 18:09:19] event.DEBUG: Notified event "kernel.request" to listener "Symfony\Bundle\FrameworkBundle\EventListener\SessionListener::onKernelRequest". [] []
+[2014-05-20 18:09:19] event.DEBUG: Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\FragmentListener::onKernelRequest". [] []
+[2014-05-20 18:09:19] event.DEBUG: Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\RouterListener::onKernelRequest". [] []
