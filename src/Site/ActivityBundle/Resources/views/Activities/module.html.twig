@@ -16,4 +16,14 @@
 	{{ module.endRegistration|localizeddate("medium", "short") }}
 	<br>
 	{{ module.places }}
+	<br>
+	{% if date() < module.startregistration or date() > module.endregistration %}
+		Vous ne pouvez pas encore vous inscrire à ce module.
+	{% else %}
+		{% if app.user in module.students %}
+			<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}">Se désincrire</a>
+		{% else %}
+			<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}">S'inscrire</a>
+		{% endif %}
+	{% endif %}
 {% endblock %}

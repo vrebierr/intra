@@ -8,8 +8,20 @@ site_activities_module:
     requirements:
         id: \d+
 
+site_activities_module_registration:
+    pattern:  /module/registration/{id}
+    defaults: { _controller: SiteActivityBundle:Activity:moduleRegistration }
+    requirements:
+        id: \d+
+
 site_activities_activity:
     pattern:  /activity/{id}
     defaults: { _controller: SiteActivityBundle:Activity:activity }
+    requirements:
+        id: \d+
+
+site_activities_activity_registration:
+    pattern:  /activity/registration/{id}
+    defaults: { _controller: SiteActivityBundle:Activity:activityRegistration }
     requirements:
         id: \d+
