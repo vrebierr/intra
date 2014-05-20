@@ -1,3 +1,7 @@
 module:
     home: Modules
     noactivity: Aucune activité trouvée
+
+elearning:
+    home: E-learning
+    nocourse: Aucun cours trouvé

@@ -449,10 +449,10 @@ class Activity
     /**
      * Add students
      *
-     * @param \Site\Application\Sonata\UserBundle\Entity\User $students
+     * @param \Application\Sonata\UserBundle\Entity\User $students
      * @return Activity
      */
-    public function addStudent(\Site\Application\Sonata\UserBundle\Entity\User $students)
+    public function addStudent(\Application\Sonata\UserBundle\Entity\User $students)
     {
         $this->students[] = $students;
 
@@ -462,9 +462,9 @@ class Activity
     /**
      * Remove students
      *
-     * @param \Site\Application\Sonata\UserBundle\Entity\User $students
+     * @param \Application\Sonata\UserBundle\Entity\User $students
      */
-    public function removeStudent(\Site\Application\Sonata\UserBundle\Entity\User $students)
+    public function removeStudent(\Application\Sonata\UserBundle\Entity\User $students)
     {
         $this->students->removeElement($students);
     }

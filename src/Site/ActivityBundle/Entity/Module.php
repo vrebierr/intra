@@ -82,7 +82,7 @@ class Module
      */
     private $activities;
 
-	/**
+    /**
      * @ORM\OnetoMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", mappedBy="modules")
      * @ORM\JoinColumn(nullable=true, name="students")
      */
@@ -330,10 +330,10 @@ class Module
     /**
      * Add students
      *
-     * @param \Site\Application\Sonata\UserBundle\Entity\User $students
+     * @param \Application\Sonata\UserBundle\Entity\User $students
      * @return Module
      */
-    public function addStudent(\Site\Application\Sonata\UserBundle\Entity\User $students)
+    public function addStudent(\Application\Sonata\UserBundle\Entity\User $students)
     {
         $this->students[] = $students;
 
@@ -343,9 +343,9 @@ class Module
     /**
      * Remove students
      *
-     * @param \Site\Application\Sonata\UserBundle\Entity\User $students
+     * @param \Application\Sonata\UserBundle\Entity\User $students
      */
-    public function removeStudent(\Site\Application\Sonata\UserBundle\Entity\User $students)
+    public function removeStudent(\Application\Sonata\UserBundle\Entity\User $students)
     {
         $this->students->removeElement($students);
     }

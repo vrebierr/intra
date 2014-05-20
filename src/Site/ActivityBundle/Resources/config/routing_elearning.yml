@@ -1,0 +1,3 @@
+site_elearning:
+    pattern:  /
+    defaults: { _controller: SiteActivityBundle:Elearning:index }
