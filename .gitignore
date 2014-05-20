@@ -2,6 +2,11 @@ app/config/parameters.yml
 conf/
 vendor/
 bin/
+<<<<<<< HEAD
 app/cache/
 app/logs/
+=======
+app/cache/*
+app/logs/*
+>>>>>>> 749c82e25a007adea12048c22f78412866f5a32c
 web/uploads/

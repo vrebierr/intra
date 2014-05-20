@@ -1,0 +1,74 @@
+<h3 class="ui dividing header">
+	<i class="chat icon"></i>
+	<div class="content">
+		FORUM
+	</div>
+</h3>
+<div class="ui relaxed divided list">
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				THREADS
+			</div>
+			<span class="description">
+				{{ user.threads|length }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				POSTS
+			</div>
+			<span class="description">
+				{{ user.posts|length }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				COMMENTAIRES
+			</div>
+			<span class="description">
+				{{ user.comments|length }}
+			</span>
+		</div>
+	</div>
+	{% if user.threads|length != 0 %}
+		<div class="item">
+			<div class="content">
+				<div class="header padded label">
+					DERNIER THREAD
+				</div>
+				<span class="description">
+					<a href="{{ path('site_forum_thread', { id : user.threads.last.id }) }}">{{ user.threads.last.title|truncate(30, true, '...') }}</a>
+				</span>
+			</div>
+		</div>
+	{% endif %}
+	{% if user.posts|length != 0 %}
+		<div class="item">
+			<div class="content">
+				<div class="header padded label">
+					DERNIER POST
+				</div>
+				<span class="description">
+					{{ user.posts.last.content|truncate(30, true, '...') }}
+				</span>
+			</div>
+		</div>
+	{% endif %}
+	{% if user.comments|length != 0 %}
+		<div class="item">
+			<div class="content">
+				<div class="header padded label">
+					DERNIER COMMENTAIRE
+				</div>
+				<span class="description">
+					{{ user.comments.last.content|truncate(30, true, '...') }}
+				</span>
+			</div>
+		</div>
+	{% endif %}
+</div>

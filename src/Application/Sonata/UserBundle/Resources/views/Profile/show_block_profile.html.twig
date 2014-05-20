@@ -1,0 +1,132 @@
+<h3 class="ui dividing header">
+	<i class="unhide icon"></i>
+	<div class="content">
+	{{ 'title_user_account'|trans({}, 'SonataUserBundle')|upper }}
+	</div>
+</h3>
+<div class="ui relaxed divided list">
+	<div class="item">
+		<div class="content">
+			<img style="width: 150px;" src="data:image/png;base64,{{ user.avatar }}" />
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				{{ 'show.label_username'|trans({}, 'SonataUserBundle')|upper }}
+			</div>
+			<span class="description">
+				{{ user.username }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				{{ 'show.label_lastname'|trans({}, 'SonataUserBundle')|upper }}/{{ 'show.label_firstname'|trans({}, 'SonataUserBundle')|upper }}
+			</div>
+			<span class="description">
+				{{ user.lastname }} {{ user.firstname }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				{{ 'show.label_gender'|trans({}, 'SonataUserBundle')|upper }}
+			</div>
+			<span class="description">
+				{% if user.gender == "m" %}
+					<i class="male large icon"></i>
+				{% elseif user.gender =="f" %}
+					<i class="female large icon"></i>
+				{% else %}
+					<i class="question large icon"></i>
+				{% endif %}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				{{ 'show.label_date_of_birth'|trans({}, 'SonataUserBundle')|upper }}
+			</div>
+			<span class="description">
+				{{ user.dateofbirth|localizeddate("long", "none") }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="padded label">
+				<i class="mail icon"></i>
+			</div>
+			<span class="description">
+				{{ user.email }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="padded label">
+				<i class="phone icon"></i>
+			</div>
+			<span class="description">
+				{{ user.phone }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="padded label">
+				<i class="url icon"></i>
+			</div>
+			<span class="description">
+				{{ user.website }}
+			</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				{{ 'show.label_biography'|trans({}, 'SonataUserBundle')|upper }}
+			</div>
+			<span class="description">
+				{{ user.biography }}
+			</span>
+		</div>
+	</div>
+</div>
+<div class="ui relaxed divided list">
+	{% if app.user.username == user.username %}
+		<div class="item">
+			<div class="content">
+				<div class="header padded label">
+					AUTOLOGIN
+				</div>
+				<span class="description">
+					{{ user.autologinurl }} <a href="{{ path('sonata_user_profile_generate_token') }}"><i class="refresh link icon" data-content="Générer"></i></a>
+				</span>
+			</div>
+		</div>
+	{% endif %}
+	<div class="item">
+		<div class="content">
+			<div class="header padded label">
+				{{ 'show.label_last_login'|trans({}, 'SonataUserBundle')|upper }}
+			</div>
+			<span class="description">
+				{{ user.updatedat|localizeddate("full", "medium") }}
+			</span>
+		</div>
+	</div>
+	{% if app.user.username == user.username %}
+		<div class="item">
+			<a href="{{ path('sonata_user_profile_edit') }}">
+				<button class="ui right floated button">
+					<i class="edit icon"></i>{{ 'title_user_edit_profile'|trans({}, 'SonataUserBundle') }}
+				</button>
+			</a>
+		</div>
+	{% endif %}
+</div>
