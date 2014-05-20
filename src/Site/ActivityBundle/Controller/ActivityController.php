@@ -3,21 +3,6 @@
 namespace Site\ActivityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-<<<<<<< HEAD
-use Site\ActivityBundle\Entity\Activity;
-
-class ActivityController extends Controller
-{
-    public function showAction(Activity $activity)
-    {
-    	$modules = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:Module")->findAll();
-
-        return $this->render('SiteActivityBundle:Activity:show.html.twig', array(
-        	'activity' => $activity,
-        	'modules' => $modules
-        	));
-    }
-=======
 
 class ActivityController extends Controller
 {
@@ -59,5 +44,4 @@ class ActivityController extends Controller
 
 		return $this->render('SiteActivityBundle:Activities:activity.html.twig', $data);
 	}
->>>>>>> f0dc5f0eb0932b3faa413ebbf5efd40f053be673
 }
