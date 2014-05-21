@@ -15,24 +15,54 @@ use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
-
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+use Application\Sonata\UserBundle\Entity\User;
 
 class UserController extends BaseController
 {
-    public function showOtherAction($user)
-    {
-        $repo = $this->getDoctrine()->getManager()->getRepository("ApplicationSonataUserBundle:User");
-        $userObject = $repo->findOneByUsername($user);
-        if (!$userObject)
-        {
-            //ajouter BDD
-        }
-        return $this->render('SonataUserBundle:Profile:show.html.twig', array(
-            'user'   => $userObject,
-            'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
-        ));
+	public function showOtherAction($user)
+	{
+		$repo = $this->getDoctrine()->getManager()->getRepository("ApplicationSonataUserBundle:User");
+		$userObject = $repo->findOneByUsername($user);
+		if (!$userObject)
+		{
+			$username = $this->container->getParameter('ldap_login');
+			$password = $this->container->getParameter('ldap_password');
+
+			$ldaphost = "ldap.42.fr";
+			$ldapconn = ldap_connect($ldaphost);
+
+			ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
+			$ldapbind = ldap_bind($ldapconn, $username, $password);
+
+			$dn = "dc=42,dc=fr";
+			$filter="(uid=".$user.")";
+			$sr = ldap_search($ldapconn, $dn, $filter);
+
+			$info = ldap_get_entries($ldapconn, $sr);
+			if ($info['count'] != 0)
+			{
+				$userObject = new User();
+				$userObject->setUsername($info[0]['uid'][0]);
+				$userObject->setPassword('');
+				$userObject->setDn($info[0]['dn']);
+				$userObject->setFirstname($info[0]['first-name'][0]);
+				$userObject->setLastname($info[0]['last-name'][0]);
+				$userObject->setAvatar($info[0]['picture'][0]);
+				$userObject->setPhone($info[0]['mobile-phone'][0]);
+				$userObject->setEmail($info[0]['alias'][0]);
+				$userObject->setDateOfBirth($info[0]['birth-date'][0]);
+			}
+			else
+				throw new \Exception("Cet utilisateur n'existe pas !");
+
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($userObject);
+			$em->flush();
+		}
+		return $this->render('SonataUserBundle:Profile:show.html.twig', array(
+			'user'   => $userObject,
+			'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
+		));
 	}
 
 	public function generateTokenAction()
