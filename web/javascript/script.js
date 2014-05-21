@@ -9,4 +9,8 @@ $(document).ready(function() {
 	});
 	$('.ui.sortable').tablesort();
 	$(".refresh.icon").popup();
+	$(".donught.chart").knob({
+		readOnly:true,
+		fgColor:"#6ECFF5"
+	});
 });

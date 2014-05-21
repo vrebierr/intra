@@ -75,7 +75,7 @@ class ActivityController extends Controller
 		// if is too early or late to registratration
 		if ($now > $activity->getEndRegistration() || $now < $activity->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
-		
+
 		if (!$activity->getModule()->getStudents()->contains($user))
 			throw new AccessDeniedException("You can't register for this activity before register module");
 

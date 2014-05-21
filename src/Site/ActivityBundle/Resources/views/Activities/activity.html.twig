@@ -1,53 +1,85 @@
 {% extends "SiteActivityBundle::layout.html.twig" %}
 
 {% block activities_body %}
-	{{ activity.name }}
-	<br>
-	{{ activity.description }}
-	<br>
-	{% if activity.subject %}
-		<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
-	{% endif %}
-	<br>
-	{{ activity.places }}
-	<br>
-	{{ activity.start|localizeddate("medium", "short") }}
-	<br>
-	{{ activity.end|localizeddate("medium", "short") }}
-	<br>
-	{{ activity.startRegistration|localizeddate("medium", "short") }}
-	<br>
-	{{ activity.endRegistration|localizeddate("medium", "short") }}
-	<br>
-	{% if activity.sizeMin != activity.sizeMax %}
-		{{ activity.sizeMin }} | {{ activity.sizeMax }}
-	{% else %}
-		{{ activity.sizeMin }}
-	{% endif %}
-	<br>
-	{{ activity.peers }}
-	<br>
-	{{ activity.type }}
-	<br>
-	{{ activity.module.name }}
-	<br>
-	{% if app.user in activity.module.students %}
-		{% if date() < activity.startregistration or date() > activity.endregistration %}
-			Vous ne pouvez pas encore vous inscrire à ce projet.
-		{% else %}
-			{% if activity.sizemax > 1 %}
-				{% if app.user in activity.students %}
-					<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">Détruire le groupe</a>
-				{% else %}
-					<form></form>
+	<div class="ui grid">
+		<div class="row">
+			<div class="column">
+				<div class="segment">
+					<h3 class="ui dividing header">
+						<i class="file outline icon"></i>
+						{{ activity.name }}
+					</h3>
+					{% if date() < activity.startregistration %}
+							<h4 class="ui error message centered">
+							{{ 'ACTIVITY_REGISTRATION_EARLY'|trans }}
+						</h4>
+					{% elseif date() > activity.endregistration %}
+						<h4 class="ui error message centered">
+							{{ 'ACTIVITY_REGISTRATION_LATE'|trans }}
+						</h4>
+					{% endif %}
+					<div class="timeline" style="width: 100%;">
+						<div class="part success" style="width:33.33%"></div>
+						<div class="part warning" style="width:33.33%"></div>
+						<div class="part danger" style="width:33.33%"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="thirteen wide column">
+				<div class="segment">
+					{{ activity.description }}
+				</div>
+			</div>
+			<div class="three wide column">
+				<div class="segment">
+					<input class="donught chart" value="{{ activity.places - activity.students|length }}" data-max="{{ activity.places }}" data-width="150" data-thickness=".4">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				{% if activity.subject %}
+					<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
 				{% endif %}
-			{% else %}
-				{% if app.user in activity.students %}
-					<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">Se désincrire</a>
+				<br>
+				{{ activity.start|localizeddate("medium", "short") }}
+				<br>
+				{{ activity.end|localizeddate("medium", "short") }}
+				<br>
+				{{ activity.startRegistration|localizeddate("medium", "short") }}
+				<br>
+				{{ activity.endRegistration|localizeddate("medium", "short") }}
+				<br>
+				{{ activity.peers }}
+				<br>
+				{{ activity.type }}
+				<br>
+				{% if activity.sizeMin != activity.sizeMax %}
+					{{ activity.sizeMin }} | {{ activity.sizeMax }}
 				{% else %}
-					<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">S'inscrire</a>
+					{{ activity.sizeMin }}
 				{% endif %}
-			{% endif %}
-		{% endif %}
-	{% endif %}
+				<br>
+				{% if app.user in activity.module.students %}
+					{% if date() > activity.startregistration and date() < activity.endregistration %}
+						{% if activity.sizemax > 1 %}
+							{% if app.user in activity.students %}
+								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
+							{% else %}
+								<form></form>
+							{% endif %}
+						{% else %}
+							{% if app.user in activity.students %}
+								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui blue button"><i class="minus icon"></i>Se désincrire</button></a>
+							{% else %}
+								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui blue button"><i class="add icon"></i>S'inscrire</button></a>
+							{% endif %}
+						{% endif %}
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
 {% endblock %}
