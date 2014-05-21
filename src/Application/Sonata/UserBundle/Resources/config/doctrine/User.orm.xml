@@ -51,6 +51,11 @@
                 <cascade-persist/>
             </cascade>
 		</many-to-many>
+        <many-to-many field="activity_groups" target-entity="Site\ActivityBundle\Entity\ActivityGroup" mapped-by="students">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </many-to-many>
     </entity>
 
 </doctrine-mapping>

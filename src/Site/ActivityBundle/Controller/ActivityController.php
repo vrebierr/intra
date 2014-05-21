@@ -5,6 +5,7 @@ namespace Site\ActivityBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Site\ActivityBundle\Entity\Module;
 use Site\ActivityBundle\Entity\Activity;
+use Site\ActivityBundle\Entity\ActivityGroup;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ActivityController extends Controller
@@ -79,6 +80,8 @@ class ActivityController extends Controller
 		if (!$activity->getModule()->getStudents()->contains($user))
 			throw new AccessDeniedException("You can't register for this activity before register module");
 
+		$em = $this->getDoctrine()->getManager();
+
 		if ($activity->getSizeMax() > 1)
  		{
  			$form = $this->creatForm(new ActivityGroupType());
@@ -92,30 +95,44 @@ class ActivityController extends Controller
 					$group->setActivity($activity);
 
 					if ($activity->getStudents()->contains($user))
+					{
 						$activity->removeStudent($user);
+						$em->remove($group);
+					}
 					else
+					{
 						$activity->addStudent($user);
-
+						$em->persist($group);
+					}
 					$em->persist($activity);
-					$em->persist($group);
 					$em->flush();
  				}
  			}
  		}
  		else
  		{
- 			$group = new ActivityGroup();
- 			$group->setName($user->getUsername());
- 			$group->setActivity($activity);
- 			$group->addStudent($user);
-
  			if ($activity->getStudents()->contains($user))
-				$activity->removeStudent($user);
+ 			{
+ 				$group = $em->createQuery('
+ 					SELECT g, a, u FROM SiteActivityBundle:ActivityGroup g
+ 					JOIN g.activity a
+ 					JOIN g.students u
+ 					WHERE u.id = :user_id AND a.id = :a_id
+ 					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()))->getResult();
+ 				$activity->removeStudent($user);
+ 				$em->remove($group[0]);
+ 			}
 			else
+			{
+				$group = new ActivityGroup();
+	 			$group->setName($user->getUsername());
+	 			$group->setActivity($activity);
+	 			$group->addStudent($user);
+	 			$group->setName($user->getUsername());
 				$activity->addStudent($user);
-
+				$em->persist($group);
+			}
 			$em->persist($activity);
- 			$em->persist($group);
  			$em->flush();
  		}
 
