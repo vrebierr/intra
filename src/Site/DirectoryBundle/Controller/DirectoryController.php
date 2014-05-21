@@ -22,7 +22,7 @@ class DirectoryController extends Controller
 		$filter="(&(objectClass=ft-user)(!(close=*))(ou:dn:=2013)(picture=*)(homeDirectory=*))";
 		$sr = ldap_search($ldapconn, $dn, $filter);
 
-        ldap_sort($ldapconn, $sr, 'uid');
+		ldap_sort($ldapconn, $sr, 'uid');
 
 		$info = ldap_get_entries($ldapconn, $sr);
 
@@ -43,10 +43,10 @@ class DirectoryController extends Controller
 		if ($request->query->get('range'))
 			$range = $request->query->get('range');
 
-        $paginator = $this->get('knp_paginator');
+		$paginator = $this->get('knp_paginator');
 
         $slice = $paginator->paginate($info, $page, $range);
-		//var_dump($slice);
+
 		return $this->render('SiteDirectoryBundle:Directory:index.html.twig', array('total' => $info, 'users' => $slice));
 	}
 }

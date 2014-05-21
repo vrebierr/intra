@@ -22,7 +22,7 @@ class User extends BaseUser implements LdapUserInterface
      */
     private $autoLoginToken;
 
-	/**
+    /**
      * @var string autotoken
      */
     private $autoLoginUrl;
@@ -31,6 +31,11 @@ class User extends BaseUser implements LdapUserInterface
      * @var string $avatar
      */
     protected $avatar;
+
+    /**
+     * @var \DateTime
+     */
+    protected $dateOfBirth;
 
     /**
      * @var \Site\Intra\ForumBundle\Entity\ForumThread
@@ -57,22 +62,22 @@ class User extends BaseUser implements LdapUserInterface
      */
     protected $messages;
 
-	/**
+    /**
      * @var \Site\Intra\ActivityBundle\Entity\Module
      */
-	protected $modules;
+    protected $modules;
 
-	/**
+    /**
      * @var \Site\Intra\ActivityBundle\Entity\Activity
      */
-	protected $activities;
+    protected $activities;
 
     /**
      * @var \Site\Intra\ActivityBundle\Entity\ActivityGroup
      */
     protected $activity_groups;
 
-	/**
+    /**
      * Constructor
      */
     public function __construct()
@@ -115,7 +120,7 @@ class User extends BaseUser implements LdapUserInterface
         return $this->autoLoginToken;
     }
 
-	/**
+    /**
      * {@inheritDoc}
      */
     public function setAutoLoginUrl($url)
@@ -129,7 +134,7 @@ class User extends BaseUser implements LdapUserInterface
     public function getAutoLoginUrl()
     {
         return $this->autoLoginUrl;
-	}
+    }
 
     /**
      * {@inheritDoc}
@@ -161,6 +166,31 @@ class User extends BaseUser implements LdapUserInterface
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * @param \DateTime or string $dateOfBirth
+     */
+    public function setDateOfBirth($dateOfBirth)
+    {
+        if ($dateOfBirth instanceOf \Datetime)
+            $this->dateOfBirth = $dateOfBirth;
+        else
+        {
+            $year = substr($dateOfBirth, 0, 4);
+            $month = substr($dateOfBirth, 4, 2);
+            $day = substr($dateOfBirth, 6, 2);
+            $formatedDate = $year. "-" .$month. "-" .$day;
+            $dateOfBirth = new \Datetime($formatedDate);
+        }
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateOfBirth()
+    {
+        return $this->dateOfBirth;
     }
 
     /**
@@ -326,7 +356,7 @@ class User extends BaseUser implements LdapUserInterface
     public function getComments()
     {
         return $this->comments;
-	}
+    }
 
     /**
      * Add modules
