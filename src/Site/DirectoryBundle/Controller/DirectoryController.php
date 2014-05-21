@@ -36,14 +36,17 @@ class DirectoryController extends Controller
 		}
 
         $page = 1;
+		$range = 10;
 
         if ($request->query->get('page'))
             $page = $request->query->get('page');
+		if ($request->query->get('range'))
+			$range = $request->query->get('range');
 
         $paginator = $this->get('knp_paginator');
 
-        $slice = $paginator->paginate($info, $page, 900);
-
+        $slice = $paginator->paginate($info, $page, $range);
+		//var_dump($slice);
 		return $this->render('SiteDirectoryBundle:Directory:index.html.twig', array('total' => $info, 'users' => $slice));
 	}
 }

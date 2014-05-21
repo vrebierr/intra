@@ -13,4 +13,9 @@ $(document).ready(function() {
 		readOnly:true,
 		fgColor:"#6ECFF5"
 	});
+
+	$('.directory_option').click(function ()
+	{
+		$(location).attr('href', "./?range="+$(this).attr("data-text"));
+	});
 });
