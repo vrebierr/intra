@@ -42,7 +42,7 @@ class DirectoryController extends Controller
 
         $paginator = $this->get('knp_paginator');
 
-        $slice = $paginator->paginate($info, $page, 900);
+        $slice = $paginator->paginate($info, $page, 50);
 
 		return $this->render('SiteDirectoryBundle:Directory:index.html.twig', array('total' => $info, 'users' => $slice));
 	}
