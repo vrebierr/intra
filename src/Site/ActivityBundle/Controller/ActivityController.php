@@ -91,7 +91,7 @@ class ActivityController extends Controller
 		if (!$activity->getModule()->getStudents()->contains($user))
 			throw new AccessDeniedException("You can't register for this activity before register module.");
 
-		if ($activity->getStudents()->count >= $activity->getPlaces())
+		if ($activity->getStudents()->count() >= $activity->getPlaces())
 			throw new AccessDeniedException("No more places for this activity.");
 
 		$em = $this->getDoctrine()->getManager();
