@@ -44,12 +44,20 @@ class ActivityController extends Controller
 		if ($now > $module->getEndRegistration() || $now < $module->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
 
+		$em = $this->getDoctrine()->getManager();
 		if ($module->getStudents()->contains($user))
+		{
 			$module->removeStudent($user);
+			$activities = $module->getActivities();
+			foreach ($activities as $a)
+			{
+				$a->removeStudent($user);
+				$em->persist($a);
+			}
+		}
 		else
 			$module->addStudent($user);
-
-		$em = $this->getDoctrine()->getManager();
+		
 		$em->persist($module);
 		$em->flush();
 
