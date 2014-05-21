@@ -8,43 +8,64 @@
 		</div>
 	</h2>
 	<div class="ui clearing divider"></div>
+	<div style="width:90%;margin:auto;" >
+		<p>
+		Il y a {{ total.count }} entrées au total dans l'annuaire.
+		</p>
 
-	Il y a {{ users.count }} entrées.
+		<div style="float:right;margin-bottom:10px;">Afficher&nbsp;
+		  <div class="ui inline dropdown">
+		    <div class="text">10</div>
+		    <i class="dropdown icon"></i>
+		    <div class="menu">
+		      <div class="item active" data-text="10">10</div>
+		      <div class="item" data-text="20">20</div>
+		      <div class="item" data-text="50">50</div>
+			  <div class="item" data-text="100">100</div>
+			  <div class="item" data-text="tous les">Tous</div>
+		    </div>
+		  </div>
+		     résultats.
+		</div>
 
-	<table class="ui sortable six column table segment">
-		<thead>
-			<tr>
-				<th>Photo</th>
-				<th>Login</th>
-				<th>Prénom</th>
-				<th>Nom</th>
-				<th>Numéro de téléphone</th>
-				<th>Adresse e-mail<th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for i in 0..users.count %}
+		<table class="ui sortable six column table segment">
+			<thead>
 				<tr>
-					{% if users[i]['picture'][0] is defined %}
-						<td><img style="width:50px;" src="data:image/png;base64,{{users[i]['picture'][0]}}" /></td>
-					{% endif %}
-					{% if users[i]['uid'][0] is defined %}
-						<td><a href="{{ path('sonata_user_profile_show_name', { 'user' : users[i]['uid'][0]}) }}">{{users[i]['uid'][0] }}</a></td>
-					{% endif %}
-					{% if users[i]['first-name'][0] is defined %}
-						<td>{{users[i]['first-name'][0] }}</td>
-					{% endif %}
-					{% if users[i]['last-name'][0] is defined %}
-						<td>{{users[i]['last-name'][0] }}</td>
-					{% endif %}
-					{% if users[i]['mobile-phone'][0] is defined %}
-						<td>{{users[i]['mobile-phone'][0] }}</td>
-					{% endif %}
-					{% if users[i]['alias'][2] is defined %}
-						<td>{{users[i]['alias'][2] }}</td>
-					{% endif %}
+					<th>Photo</th>
+					<th>Login</th>
+					<th>Prénom</th>
+					<th>Nom</th>
+					<th>Numéro de téléphone</th>
+					<th>Adresse e-mail</th>
 				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{% for i in 0..users.count %}
+					<tr>
+						{% if users[i]['picture'][0] is defined %}
+							<td><img style="width:50px;" src="data:image/png;base64,{{users[i]['picture'][0]}}" /></td>
+						{% endif %}
+						{% if users[i]['uid'][0] is defined %}
+							<td><a href="{{ path('sonata_user_profile_show_name', { 'user' : users[i]['uid'][0]}) }}">{{users[i]['uid'][0] }}</a></td>
+						{% endif %}
+						{% if users[i]['first-name'][0] is defined %}
+							<td>{{users[i]['first-name'][0] }}</td>
+						{% endif %}
+						{% if users[i]['last-name'][0] is defined %}
+							<td>{{users[i]['last-name'][0] }}</td>
+						{% endif %}
+						{% if users[i]['mobile-phone'][0] is defined %}
+							<td>{{users[i]['mobile-phone'][0] }}</td>
+						{% endif %}
+						{% if users[i]['alias'][2] is defined %}
+							<td>{{users[i]['alias'][2] }}</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="navigation">
+	    	{{ knp_pagination_render(users) }}
+		</div>
+	</div>
 {% endblock %}

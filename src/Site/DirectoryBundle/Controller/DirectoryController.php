@@ -3,10 +3,11 @@
 namespace Site\DirectoryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DirectoryController extends Controller
 {
-	public function indexAction()
+	public function indexAction(Request $request)
 	{
 		$username = $this->container->getParameter('ldap_login');
 		$password = $this->container->getParameter('ldap_password');
@@ -21,7 +22,10 @@ class DirectoryController extends Controller
 		$filter="(&(objectClass=ft-user)(!(close=*))(ou:dn:=2013)(picture=*)(homeDirectory=*))";
 		$sr = ldap_search($ldapconn, $dn, $filter);
 
+        ldap_sort($ldapconn, $sr, 'uid');
+
 		$info = ldap_get_entries($ldapconn, $sr);
+
 
 		foreach ($info as $i => $user)
 		{
@@ -31,6 +35,15 @@ class DirectoryController extends Controller
 			}
 		}
 
-		return $this->render('SiteDirectoryBundle:Directory:index.html.twig', array('users' => $info));
+        $page = 1;
+
+        if ($request->query->get('page'))
+            $page = $request->query->get('page');
+
+        $paginator = $this->get('knp_paginator');
+
+        $slice = $paginator->paginate($info, $page, 900);
+
+		return $this->render('SiteDirectoryBundle:Directory:index.html.twig', array('total' => $info, 'users' => $slice));
 	}
 }
