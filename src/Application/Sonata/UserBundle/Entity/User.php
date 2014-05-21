@@ -67,6 +67,11 @@ class User extends BaseUser implements LdapUserInterface
      */
 	protected $activities;
 
+    /**
+     * @var \Site\Intra\ActivityBundle\Entity\ActivityGroup
+     */
+    protected $activity_groups;
+
 	/**
      * Constructor
      */
@@ -80,6 +85,8 @@ class User extends BaseUser implements LdapUserInterface
         $this->messsages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->activities = new \Doctrine\Common\Collections\ArrayCollection();
         $this->modules = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activity_groups = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     /**
@@ -385,5 +392,38 @@ class User extends BaseUser implements LdapUserInterface
     public function getActivities()
     {
         return $this->activities;
+    }
+
+    /**
+     * Add activity_groups
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityGroup $activityGroups
+     * @return User
+     */
+    public function addActivityGroup(\Site\ActivityBundle\Entity\ActivityGroup $activityGroups)
+    {
+        $this->activity_groups[] = $activityGroups;
+
+        return $this;
+    }
+
+    /**
+     * Remove activity_groups
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityGroup $activityGroups
+     */
+    public function removeActivityGroup(\Site\ActivityBundle\Entity\ActivityGroup $activityGroups)
+    {
+        $this->activity_groups->removeElement($activityGroups);
+    }
+
+    /**
+     * Get activity_groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActivityGroups()
+    {
+        return $this->activity_groups;
     }
 }
