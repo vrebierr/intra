@@ -179,6 +179,11 @@ div.form.newreply
 	text-align: center;
 }
 
+.vcentered
+{
+	vertical-align: bottom;
+}
+
 .button.show.form.center
 {
 	display: block;
