@@ -15,14 +15,26 @@
 
 		<div style="float:right;margin-bottom:10px;">Afficher&nbsp;
 		  <div class="ui inline dropdown">
-		    <div class="text">10</div>
+			{% if users.params.range is defined %}
+		    <div class="text">{{users.params.range}}</div>
+			{% else %}
+			<div class="text">10</div>
+			{% endif %}
 		    <i class="dropdown icon"></i>
 		    <div class="menu">
-		      <div class="item active" data-text="10">10</div>
-		      <div class="item" data-text="20">20</div>
-		      <div class="item" data-text="50">50</div>
-			  <div class="item" data-text="100">100</div>
-			  <div class="item" data-text="tous les">Tous</div>
+			  {% if users.params.range is defined %}
+		      <div class="item {% if users.params.range == 10 %}active {% endif %}directory_option" data-text="10">10</div>
+		      <div class="item {% if users.params.range == 20 %}active {% endif %}directory_option" data-text="20">20</div>
+		      <div class="item {% if users.params.range == 50 %}active {% endif %}directory_option" data-text="50">50</div>
+			  <div class="item {% if users.params.range == 100 %}active {% endif %}directory_option" data-text="100">100</div>
+			  <div class="item {% if users.params.range == total.count %}active {% endif %}directory_option" data-text="{{ total.count }}">Tous</div>
+			  {% else %}
+			  <div class="item active directory_option" data-text="10">10</div>
+	          <div class="item directory_option" data-text="20">20</div>
+	          <div class="item directory_option" data-text="50">50</div>
+	          <div class="item directory_option" data-text="100">100</div>
+		      <div class="item directory_option" data-text="{{ total.count }}">Tous</div>
+			  {% endif %}
 		    </div>
 		  </div>
 		     résultats.
