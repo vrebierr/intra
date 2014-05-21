@@ -78,6 +78,20 @@ class Activity
     private $endRegistration;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_correction", type="datetime")
+     */
+    private $startCorrection;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_correction", type="datetime")
+     */
+    private $endCorrection;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="size_min", type="integer")
@@ -508,5 +522,51 @@ class Activity
     public function getGroups()
     {
         return $this->groups;
+    }
+
+    /**
+     * Set startCorrection
+     *
+     * @param \DateTime $startCorrection
+     * @return Activity
+     */
+    public function setStartCorrection($startCorrection)
+    {
+        $this->startCorrection = $startCorrection;
+
+        return $this;
+    }
+
+    /**
+     * Get startCorrection
+     *
+     * @return \DateTime 
+     */
+    public function getStartCorrection()
+    {
+        return $this->startCorrection;
+    }
+
+    /**
+     * Set endCorrection
+     *
+     * @param \DateTime $endCorrection
+     * @return Activity
+     */
+    public function setEndCorrection($endCorrection)
+    {
+        $this->endCorrection = $endCorrection;
+
+        return $this;
+    }
+
+    /**
+     * Get endCorrection
+     *
+     * @return \DateTime 
+     */
+    public function getEndCorrection()
+    {
+        return $this->endCorrection;
     }
 }
