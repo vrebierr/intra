@@ -58,8 +58,8 @@ class ModuleAdmin extends Admin
             ->add('places')
             ->add('startRegistration', 'dateTimePicker')
             ->add('endRegistration', 'dateTimePicker')
-            ->add('start')
-            ->add('end')
+            ->add('start', 'dateTimePicker')
+            ->add('end', 'dateTimePicker')
         ;
     }
 
