@@ -1,59 +1,107 @@
 {% extends "SiteActivityBundle::layout.html.twig" %}
 
 {% block activities_body %}
-	<div class="ui grid">
-		<div class="row">
-			<div class="column">
-				<div class="segment">
-					<h3 class="ui dividing header">
-						<i class="folder outline icon"></i>
-						{{ module.name }}
-					</h3>
-					{% if date() < module.startregistration %}
-							<h4 class="ui error message centered">
-							{{ 'ACTIVITY_REGISTRATION_EARLY'|trans }}
-						</h4>
-					{% elseif date() > module.endregistration %}
+<div class="ui grid">
+	<div class="row">
+		<div class="column">
+			<div class="segment">
+				<h3 class="ui dividing header">
+					<div style="display:inline-block;"><i class="file outline icon"></i></div>{{ module.name }}
+					<div class="ui blue label float right">{{ 'module.credits'|trans({ '%nb_credits%': module.credits }) }}</div>
+				</h3>
+				{% if date() < module.startregistration %}
 						<h4 class="ui error message centered">
-							{{ 'ACTIVITY_REGISTRATION_LATE'|trans }}
-						</h4>
+						{{ 'module.registration.early'|trans }} {{ module.startRegistration|localizeddate("short", "short") }}.
+					</h4>
+				{% elseif date() > module.endregistration and app.user not in module.students %}
+					<h4 class="ui error message centered">
+						{{ 'module.registration.late'|trans }} {{ module.endRegistration|localizeddate("short", "short") }}.
+					</h4>
+				{% endif %}
+
+				{% set d_total = (module.end|date("U") - module.startRegistration|date("U"))|date("U") %}
+				{% set d_gap = (module.start|date("U") - module.endRegistration|date("U"))|date("U") %}
+				{% set d_inscription = (module.endRegistration|date("U") - module.startRegistration|date("U"))|date("U")  %}
+				{% set d_activity = (module.end|date("U") - module.start|date("U"))|date("U")  %}
+				{% set d_today = ("now"|date("U") - module.startRegistration|date("U")) * 100 / d_total %}
+
+				{% set d_inscription = d_inscription * 100 / d_total %}
+				{% set d_activity = d_activity * 100 / d_total %}
+				{% set d_gap = d_gap * 100 / d_total %}
+
+				{% if d_gap < 0 %}
+					{% set d_inscription = d_inscription + (d_gap) %}
+					{% set d_activity = d_activity + (d_gap) %}
+				{% endif %}
+
+				<div class="timeline" style="width: 100%;margin-bottom:5px;">
+					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span>">Inscription</div>
+					{% if d_gap < 0 %}
+					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span><br/><span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">{% if d_inscription < 1 %}Inscription{% endif %}</div>
+					{% else %}
+					<div class="part white" style="width:{{ d_gap }}%"></div>
 					{% endif %}
-					<div class="timeline" style="width: 100%;">
-						<div class="part success" style="width:33.33%"></div>
-						<div class="part warning" style="width:33.33%"></div>
-						<div class="part danger" style="width:33.33%"></div>
+					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">Activité</div>
+				</div>
+				{% if d_today >= 0 and d_today <= 100 %}
+				<div class='today' style="left:{{d_today}}%">
+					<div class='cursor'>
+					</div>
+					<div class='text'>
+						Today
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="equal height row">
-			<div class="thirteen wide column">
-				<div class="segment">
-					<p>
-						{{ module.description }}
-					</p>
-					<p>
-						<span class="ui label blue">{{ 'module.credits'|trans({ '%nb_credits%': module.credits }) }}</span>
-					</p>
-				</div>
-			</div>
-			<div class="three wide column">
-				<div class="segment centered">
-					<input class="donught chart" value="{{ module.places - module.students|length }}" data-max="{{ module.places }}" data-width="150" data-thickness=".4">
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="column">
-				<br>
-				{% if date() > module.startregistration and date() < module.endregistration %}
-					{% if app.user in module.students %}
-						<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui right floated blue button"><i class="minus icon"></i>Se désincrire</button></a>
-					{% else %}
-						<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui right floated blue button"><i class="add icon"></i>S'inscrire</button></a>
-					{% endif %}
 				{% endif %}
 			</div>
 		</div>
+
 	</div>
+
+	<div class="row">
+		<div class="thirteen wide column">
+			<div class="segment">
+				<h4 class="ui dividing header">
+					<i class="reorder icon"></i>
+					{{ 'DESCRIPTION'|trans }}
+				</h4>
+				<p> {{ module.description }} </p>
+			</div>
+		</div>
+
+		<div class="three wide column">
+			<div class='centered'><b>Inscrits</b></div><br/>
+			<div class="segment centered">
+				<input class="donught chart" value="{{ module.students|length }}" data-max="{{ module.places }}" data-width="150" data-thickness=".4">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			{% if date() > module.startregistration and date() < module.endregistration %}
+				{% if app.user in module.students %}
+					<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui right floated blue button"><i class="minus icon"></i>Se désincrire</button></a>
+				{% else %}
+					<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui right floated blue button"><i class="add icon"></i>S'inscrire</button></a>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<div class="segment padded left">
+				<h4 class="ui dividing header">
+					<i class="pencil icon"></i>
+					{{ 'PROJETS'|trans }}
+				</h4>
+				<div class="ui relaxed list">
+					{% for activity in module.activities %}
+					<div class="item">
+						{{ activity.name }}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

@@ -27,10 +27,10 @@
 		{% for thread in subboard.threads %}
 			<h5 class="ui black block header">
 				{% if thread.locked == true %}
-					<i class="lock red icon"></i>
+					<div style="display:inline-block;"><i class="lock red icon"></i></div>
 				{% endif %}
 				{% if thread.pinned == true %}
-					<i class="pin blue icon"></i>
+					<div style="display:inline-block;"><i class="pin blue icon"></i></div>
 				{% endif %}
 				<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
 				<span class="italic float right">
@@ -45,5 +45,3 @@
 		{% endfor %}
 	</div>
 {% endblock %}
-
-
