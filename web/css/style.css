@@ -192,6 +192,12 @@ div.form.newreply
 	background-size: 40px 40px;
 }
 
+.show.activities:hover
+{
+	background-color: #F7F7F7;
+	cursor: pointer;
+}
+
 .hidden
 {
 	display: none;
