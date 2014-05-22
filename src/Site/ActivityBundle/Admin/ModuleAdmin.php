@@ -50,7 +50,7 @@ class ModuleAdmin extends Admin
     {
         $formMapper
             ->add('name')
-            ->add('description')
+            ->add('description', 'genemu_tinymce')
             ->add('credits')
             ->add('places')
             ->add('startRegistration')
