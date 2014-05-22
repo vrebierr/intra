@@ -25,3 +25,9 @@ site_activities_activity_registration:
     defaults: { _controller: SiteActivityBundle:Activity:activityRegistration }
     requirements:
         id: \d+
+
+site_activities_scale_show:
+    pattern:  /activity/{id}/correction
+    defaults: { _controller: SiteActivityBundle:Scale:show }
+    requirements:
+        id: \d+

@@ -1,0 +1,10 @@
+{% extends 'SiteActivityBundle::layout.html.twig' %}
+
+{% block activities_body %}
+	{% for scale in scales %}
+		{{ scale.name }}
+		<br>
+		{{ scale.description }}
+		<br>
+	{% endfor %}
+{% endblock %}

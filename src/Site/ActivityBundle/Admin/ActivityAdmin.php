@@ -16,6 +16,7 @@ class ActivityAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('module')
             ->add('name')
             ->add('description')
             ->add('places')
@@ -27,7 +28,6 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
-            ->add('module')
         ;
     }
 
@@ -37,6 +37,7 @@ class ActivityAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('module')
             ->add('name')
             ->add('description')
             ->add('places')
@@ -48,7 +49,6 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
-            ->add('module')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -65,6 +65,7 @@ class ActivityAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('module')
             ->add('name')
             ->add('description')
             ->add('subject', 'sonata_media_type', array(
@@ -82,7 +83,6 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
-            ->add('module')
         ;
     }
 
@@ -92,6 +92,7 @@ class ActivityAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
+            ->add('module')
             ->add('name')
             ->add('description')
             ->add('places')
@@ -105,7 +106,6 @@ class ActivityAdmin extends Admin
             ->add('sizeMax')
             ->add('peers')
             ->add('type')
-            ->add('module')
         ;
     }
 }

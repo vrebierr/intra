@@ -10,8 +10,15 @@ services:
         arguments: [~, Site\ActivityBundle\Entity\Module, SiteActivityBundle:ModuleAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Modules, label: Module}
+
     site_activity.admin.activity:
         class: Site\ActivityBundle\Admin\ActivityAdmin
         arguments: [~, Site\ActivityBundle\Entity\Activity, SiteActivityBundle:ActivityAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Modules, label: Activity}
+
+    site_activity.admin.scale:
+        class: Site\ActivityBundle\Admin\ScaleAdmin
+        arguments: [~, Site\ActivityBundle\Entity\Scale, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Modules, label: Notation}

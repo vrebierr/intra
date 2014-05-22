@@ -142,7 +142,7 @@ class ActivityController extends Controller
 	 			$group->setName($user->getUsername());
 	 			$group->setActivity($activity);
 	 			$group->addStudent($user);
-	 			$group->setName($user->getUsername());
+	 			$group->setName($user->getUsername()."_".$activity->getName());
 				$activity->addStudent($user);
 				$em->persist($group);
 			}
