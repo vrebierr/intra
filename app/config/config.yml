@@ -28,6 +28,9 @@ framework:
 twig:
     debug: "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'StnwDatePickerBundle:Form:fields.html.twig'
 
 services:
     twig.extension.intl:
