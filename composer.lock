@@ -2339,12 +2339,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "b4562a9850a5cfc23d5ee87abe5e82107ef17d99"
+                "reference": "9a0b1094ae52dff73af42aaa3303b77be36bb5c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/b4562a9850a5cfc23d5ee87abe5e82107ef17d99",
-                "reference": "b4562a9850a5cfc23d5ee87abe5e82107ef17d99",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/9a0b1094ae52dff73af42aaa3303b77be36bb5c2",
+                "reference": "9a0b1094ae52dff73af42aaa3303b77be36bb5c2",
                 "shasum": ""
             },
             "require": {
@@ -2393,7 +2393,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2014-05-16 08:52:16"
+            "time": "2014-05-22 17:44:04"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -3663,7 +3663,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com",
                     "homepage": "http://www.willdurand.fr"
                 }
