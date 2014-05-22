@@ -23,6 +23,7 @@ html a:hover:not(.hide), html a:active:not(.hide), html a:focus:not(.hide)
 
 body
 {
+	background-image:url(../images/background.gif);
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -309,7 +310,7 @@ div.form.newreply
 .today
 {
 	position: relative;
-	top: 40px;
+	top: -28px;
 	width:0;
 }
 
@@ -322,4 +323,15 @@ div.form.newreply
 .part:hover
 {
     opacity: 0.8;
+}
+
+.left-menu
+{
+	background-color: #EEEEEE;
+	min-height: 900px;
+}
+
+.left.floated.fourteen.wide.column
+{
+	margin-top: 20px;
 }
