@@ -24,9 +24,9 @@ class Scale
     /**
      * @var integer
      *
-     * @ORM\Column(name="marks", type="integer")
+     * @ORM\Column(name="mark", type="integer")
      */
-    private $marks;
+    private $mark;
 
     /**
      * @var string
@@ -49,6 +49,14 @@ class Scale
     private $activity;
 
 
+    public function getMarks()
+    {
+        $tab = array();
+        for ($i = 0; $i < $this->getMark(); $i++)
+            $tab[] = $i;
+        return ($tab);
+    }
+
     /**
      * Get id
      *
@@ -60,26 +68,26 @@ class Scale
     }
 
     /**
-     * Set marks
+     * Set mark
      *
-     * @param integer $marks
+     * @param integer $mark
      * @return Scale
      */
-    public function setMarks($marks)
+    public function setMark($mark)
     {
-        $this->marks = $marks;
+        $this->mark = $mark;
 
         return $this;
     }
 
     /**
-     * Get marks
+     * Get mark
      *
      * @return integer 
      */
-    public function getMarks()
+    public function getMark()
     {
-        return $this->marks;
+        return $this->mark;
     }
 
     /**

@@ -1,10 +1,12 @@
 {% extends 'SiteActivityBundle::layout.html.twig' %}
 
 {% block activities_body %}
-	{% for scale in scales %}
-		{{ scale.name }}
-		<br>
-		{{ scale.description }}
-		<br>
-	{% endfor %}
+	<form method="post">
+		{% for scale in scales %}
+			{{ scale.name }}
+			{{ scale.description }}
+		{% endfor %}
+		{{ form_widget(form) }}
+	</form>
+	
 {% endblock %}

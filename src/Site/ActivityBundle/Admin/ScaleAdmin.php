@@ -19,7 +19,7 @@ class ScaleAdmin extends Admin
             ->add('activity')
             ->add('name')
             ->add('description')
-            ->add('marks')
+            ->add('mark')
         ;
     }
 
@@ -32,7 +32,7 @@ class ScaleAdmin extends Admin
             ->add('activity')
             ->add('name')
             ->add('description')
-            ->add('marks')
+            ->add('mark')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -52,7 +52,7 @@ class ScaleAdmin extends Admin
             ->add('activity')
             ->add('name')
             ->add('description')
-            ->add('marks')
+            ->add('mark')
         ;
     }
 
@@ -65,7 +65,7 @@ class ScaleAdmin extends Admin
             ->add('activity')
             ->add('name')
             ->add('description')
-            ->add('marks')
+            ->add('mark')
         ;
     }
 }
