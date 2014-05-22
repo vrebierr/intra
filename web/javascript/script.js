@@ -9,6 +9,7 @@ $(document).ready(function() {
 	});
 	$('.ui.sortable').tablesort();
 	$(".refresh.icon").popup();
+	$(".part").popup();
 	$(".donught.chart").knob({
 		readOnly:true,
 		fgColor:"#6ECFF5"
