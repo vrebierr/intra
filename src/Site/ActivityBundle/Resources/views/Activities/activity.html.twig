@@ -18,14 +18,49 @@
 							{{ 'activity.registration.late'|trans }} {{ activity.endRegistration|localizeddate("short", "short") }}.
 						</h4>
 					{% endif %}
-					<div class="timeline" style="width: 100%;">
-						<div class="part success" style="width:10%"><span class="float left">T</span><span class="float right">O</span></div>
-						<div class="part warning" style="width:80%"></div>
-						<div class="part danger" style="width:10%"></div>
+
+					{% set d_total = (activity.endCorrection|date("U") - activity.startRegistration|date("U"))|date("U") %}
+					{% set d_gap = (activity.start|date("U") - activity.endRegistration|date("U"))|date("U") %}
+					{% set d_inscription = (activity.endRegistration|date("U") - activity.startRegistration|date("U"))|date("U")  %}
+					{% set d_activity = (activity.end|date("U") - activity.start|date("U"))|date("U")  %}
+					{% set d_correction = (activity.endCorrection|date("U") - activity.startCorrection|date("U"))|date("U")  %}
+
+
+					{% set d_today = ("now"|date("U") - activity.startRegistration|date("U")) * 100 / d_total %}
+					{% if d_today >= 0 and d_today <= 100 %}
+					<div class='today' style="left:{{d_today}}%">
+						<div class='cursor'>
+						</div>
+						<div class='text'>
+							Today
+						</div>
+					</div>
+					{% endif %}
+
+
+					{% set d_inscription = d_inscription * 100 / d_total %}
+					{% set d_activity = d_activity * 100 / d_total %}
+					{% set d_correction = d_correction * 100 / d_total %}
+					{% set d_gap = d_gap * 100 / d_total %}
+					{% if d_gap < 0 %}
+						{% set d_inscription = d_inscription + (d_gap) %}
+						{% set d_activity = d_activity + (d_gap) %}
+					{% endif %}
+					<div class="timeline" style="width: 100%;margin-bottom:5px;">
+						<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|date("d/m/Y \\- H:i") }} | {{activity.endRegistration|date("d/m/Y \\- H:i") }}</span>">Inscription</div>
+						{% if d_gap < 0 %}
+						<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|date("d/m/Y \\- H:i") }} | {{activity.endRegistration|date("d/m/Y \\- H:i") }}</span><br><span style='color:#f0ad4e;'>{{ activity.start|date("d/m/Y \\- H:i") }} | {{activity.end|date("d/m/Y \\- H:i") }}</span>">{% if d_inscription < 1 %}Inscription{% endif %}</div>
+						{% else %}
+						<div class="part white" style="width:{{ d_gap }}%"></div>
+						{% endif %}
+						<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ activity.start|date("d/m/Y \\- H:i") }} | {{activity.end|date("d/m/Y \\- H:i") }}</span>">Activité</div>
+						<div class="part red" style="width:{{ d_correction }}%" data-html="<span style='color:#d9534f;'>{{ activity.startCorrection|date("d/m/Y \\- H:i") }} | {{activity.endCorrection|date("d/m/Y \\- H:i") }}</span>">Correction</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
+
 		<div class="row">
 			<div class="thirteen wide column">
 				<div class="segment">
