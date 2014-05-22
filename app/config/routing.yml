@@ -15,6 +15,11 @@ site_activity:
     prefix:   /activities
 
 
+site_elearning:
+    resource: "@SiteActivityBundle/Resources/config/routing_elearning.yml"
+    prefix:   /elearning
+
+
 site_intra:
     resource: "@SiteIntraBundle/Resources/config/routing.yml"
     prefix:   /index

@@ -1,28 +1,36 @@
 <h3 class="ui dividing header">
 	<i class="tasks icon"></i>
 	<div class="content">
-		NEED FIX
+		{{ 'title_user_grades'|trans({}, 'ApplicationSonataUserBundle')|upper }}
 	</div>
 </h3>
-<table class="ui sortable basic table">
+<table class="ui three column basic table">
 	<thead>
 		<tr>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
+			<th>{{ 'label_profile_module_table_module'|trans({}, 'ApplicationSonataUserBundle')|upper }}</th>
+			<th>{{ 'label_profile_module_table_credits'|trans({}, 'ApplicationSonataUserBundle')|upper }}</th>
+			<th>{{ 'label_profile_module_table_grade'|trans({}, 'ApplicationSonataUserBundle')|upper }}</th>
 		</tr>
 	</thead>
 	<tbody>
+		{% set i = 0 %}
 		{% for module in user.modules %}
-			<tr>
+			<tr class="show activities" data-text="{{ i }}">
 				<td>{{ module.name }}</td>
 				<td>{{ module.credits }}</td>
-				<td>{{ module.places }}</td>
-				<td>{{ module.start|localizeddate("medium", "none") }}</td>
-				<td>{{ module.description }}</td>
+				<td>GRADE</td>
 			</tr>
+				<tr class="hidden {{ i }}">
+					<td style="padding-left: 75px;">{{ 'label_profile_module_table_activity'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
+					<td>{{ 'label_profile_module_table_mark'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
+				</tr>
+			{% for activity in module.activities %}
+				<tr class="hidden {{ i }}">
+					<td style="padding-left: 75px;"><a href="{{ path('site_activities_activity', { 'id': activity.id}) }}">{{ activity.name }}</a></td>
+					<td>NOTE</td>
+				</tr>
+			{% endfor %}
+			{% set i = i + 1 %}
 		{% endfor %}
 	</tbody>
 </table>
