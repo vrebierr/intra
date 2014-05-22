@@ -137,7 +137,7 @@ sonata_admin:
         dashboard: SonataAdminBundle:Core:dashboard.html.twig
         list:      SonataAdminBundle:CRUD:list.html.twig
         show:      SonataAdminBundle:CRUD:show.html.twig
-        edit:      SonataAdminBundle:CRUD:edit.html.twig
+        edit:      SiteIntraBundle:Admin:edit.html.twig
 
 #Fr3dLdap Configuration
 fr3d_ldap:
@@ -189,3 +189,6 @@ sonata_media:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media
             create:     true
+
+stfalcon_tinymce:
+    tinymce_jquery: true

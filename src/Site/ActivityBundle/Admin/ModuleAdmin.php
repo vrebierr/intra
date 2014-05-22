@@ -50,7 +50,10 @@ class ModuleAdmin extends Admin
     {
         $formMapper
             ->add('name')
-            ->add('description')
+            ->add('description', 'textarea', array(
+                'attr' => array(
+                    'class' => 'tinymce'
+                )))
             ->add('credits')
             ->add('places')
             ->add('startRegistration')

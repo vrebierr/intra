@@ -64,7 +64,7 @@
 			<div class="thirteen wide column">
 				<div class="segment">
 					<p>
-						{{ activity.description }}
+						{{ activity.description|raw }}
 					</p>
 					<p>
 						{% if activity.sizeMin != activity.sizeMax %}

@@ -30,7 +30,7 @@
 			<div class="thirteen wide column">
 				<div class="segment">
 					<p>
-						{{ module.description }}
+						{{ module.description|raw }}
 					</p>
 					<p>
 						<span class="ui label blue">{{ 'module.credits'|trans({ '%nb_credits%': module.credits }) }}</span>
