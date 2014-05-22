@@ -10,17 +10,25 @@
                 <source>title_user_forum</source>
                 <target>Forum</target>
             </trans-unit>
-            <trans-unit id="label_profile_module_name">
-                <source>label_profile_module_name</source>
+            <trans-unit id="label_profile_module_table_module">
+                <source>label_profile_module_table_module</source>
                 <target>Module</target>
 			</trans-unit>
-            <trans-unit id="label_profile_module_credits">
-                <source>label_profile_module_credits</source>
+            <trans-unit id="label_profile_module_table_credits">
+                <source>label_profile_module_table_credits</source>
                 <target>Crédits</target>
 			</trans-unit>
-            <trans-unit id="label_profile_module_grade">
-                <source>label_profile_module_grade</source>
+            <trans-unit id="label_profile_module_table_grade">
+                <source>label_profile_module_table_grade</source>
                 <target>Grade</target>
+			</trans-unit>
+			<trans-unit id="label_profile_module_table_activity">
+                <source>label_profile_module_table_activity</source>
+                <target>Activité</target>
+			</trans-unit>
+			<trans-unit id="label_profile_module_table_mark">
+                <source>label_profile_module_table_mark</source>
+                <target>Note</target>
 			</trans-unit>
             <trans-unit id="label_profile_forum_threads">
                 <source>label_profile_forum_threads</source>

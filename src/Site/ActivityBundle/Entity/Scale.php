@@ -43,7 +43,7 @@ class Scale
     private $description;
 
     /**
-     * @ORM\ManytoOne(targetEntity="Activity")
+     * @ORM\OnetoOne(targetEntity="Activity")
      * @ORM\JoinColumn(nullable=false, name="activity_id")
      */
     private $activity;
@@ -52,7 +52,7 @@ class Scale
     public function getMarks()
     {
         $tab = array();
-        for ($i = 0; $i < $this->getMark(); $i++)
+        for ($i = 0; $i <= $this->getMark(); $i++)
             $tab[] = $i;
         return ($tab);
     }

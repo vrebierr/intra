@@ -51,7 +51,10 @@ class ScaleAdmin extends Admin
         $formMapper
             ->add('activity')
             ->add('name')
-            ->add('description')
+            ->add('description', 'textarea', array(
+                'attr' => array(
+                    'class' => 'tinymce'
+                )))
             ->add('mark')
         ;
     }

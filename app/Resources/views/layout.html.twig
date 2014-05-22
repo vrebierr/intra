@@ -12,7 +12,10 @@
 			<script type="text/javascript" src="{{ asset('javascript/semantic.js') }}"></script>
 			<script type="text/javascript" src="{{ asset('javascript/jquery.tablesort.js') }}"></script>
 			<script type="text/javascript" src="{{ asset('javascript/jquery.knob.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('javascript/ZeroClipboard.js') }}"></script>
+			<script type="test/javascript" src="{{ asset('javascript/main.js') }}"></script>
 			<script type="text/javascript" src="{{ asset('javascript/script.js') }}"></script>
+			{{ tinymce_init() }}
 		{% endblock %}
 	</head>
 	{% if is_granted("IS_AUTHENTICATED_FULLY") == false %}
