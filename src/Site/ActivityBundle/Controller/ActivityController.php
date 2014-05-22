@@ -44,7 +44,7 @@ class ActivityController extends Controller
 		if ($now > $module->getEndRegistration() || $now < $module->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
 
-		if ($module->getStudents()->count >= $module->getPlaces())
+		if ($module->getStudents()->count() >= $module->getPlaces())
 			throw new AccessDeniedException("No more places for this module.");
 
 		$em = $this->getDoctrine()->getManager();
@@ -60,7 +60,7 @@ class ActivityController extends Controller
 		}
 		else
 			$module->addStudent($user);
-		
+
 		$em->persist($module);
 		$em->flush();
 

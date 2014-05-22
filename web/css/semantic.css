@@ -674,6 +674,9 @@
   font-size: 0em;
   margin: 0% -1.5%;
   padding: 0%;
+  /**/
+  background-color: white;
+  /**/
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -708,10 +711,11 @@ body > .ui.grid {
   vertical-align: top;
 }
 /* Vertical padding when no rows */
-.ui.grid > .column {
+/*
+.ui.grid > .column{
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
+}*/
 /*-------------------
         Rows
 --------------------*/
@@ -2026,7 +2030,7 @@ body > .ui.grid {
    Secondary
 ---------------*/
 .ui.secondary.menu {
-  background-color: transparent;
+  /*background-color: transparent;*/
   border-radius: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -5562,9 +5566,9 @@ i.massive.basic.icon {
             Divider
 *******************************/
 .ui.divider {
-  margin: 1rem 0rem;
+  /*margin: 1rem 0rem;*/
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  /*border-bottom: 1px solid rgba(255, 255, 255, 0.8);*/
   line-height: 1;
   height: 0em;
   -webkit-box-sizing: border-box;

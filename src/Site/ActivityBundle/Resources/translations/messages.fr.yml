@@ -1,15 +1,15 @@
 module:
     home: Modules
     noactivity: Aucune activité trouvée
-    credits: %nb_credits% Credits
+    credits: %nb_credits% Crédits
 elearning:
     home: E-learning
     nocourse: Aucun cours trouvé
 
 activity:
     registration:
-        early: Vous ne pouvez pas encore vous inscrire à ce projet. Les inscription ouvriront le 
-        late: Vous ne pouvez plus vous inscrire à ce projet. Les inscriptions ont fermé le 
+        early: Vous ne pouvez pas encore vous inscrire à ce projet. Les inscription ouvriront le
+        late: Vous ne pouvez plus vous inscrire à ce projet. Les inscriptions sont fermées depuis le
     correction: Pour cette activité, vous devrez vous faire corriger par %nb_peers% étudiants.
     group:
         mult:

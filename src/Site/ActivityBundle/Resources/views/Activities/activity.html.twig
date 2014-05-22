@@ -13,7 +13,7 @@
 							<h4 class="ui error message centered">
 							{{ 'activity.registration.early'|trans }} {{ activity.startRegistration|localizeddate("short", "short") }}.
 						</h4>
-					{% elseif date() > activity.endregistration %}
+					{% elseif date() > activity.endregistration and app.user not in activity.students %}
 						<h4 class="ui error message centered">
 							{{ 'activity.registration.late'|trans }} {{ activity.endRegistration|localizeddate("short", "short") }}.
 						</h4>
@@ -24,28 +24,18 @@
 					{% set d_inscription = (activity.endRegistration|date("U") - activity.startRegistration|date("U"))|date("U")  %}
 					{% set d_activity = (activity.end|date("U") - activity.start|date("U"))|date("U")  %}
 					{% set d_correction = (activity.endCorrection|date("U") - activity.startCorrection|date("U"))|date("U")  %}
-
-
 					{% set d_today = ("now"|date("U") - activity.startRegistration|date("U")) * 100 / d_total %}
-					{% if d_today >= 0 and d_today <= 100 %}
-					<div class='today' style="left:{{d_today}}%">
-						<div class='cursor'>
-						</div>
-						<div class='text'>
-							Today
-						</div>
-					</div>
-					{% endif %}
-
 
 					{% set d_inscription = d_inscription * 100 / d_total %}
 					{% set d_activity = d_activity * 100 / d_total %}
 					{% set d_correction = d_correction * 100 / d_total %}
 					{% set d_gap = d_gap * 100 / d_total %}
+
 					{% if d_gap < 0 %}
 						{% set d_inscription = d_inscription + (d_gap) %}
 						{% set d_activity = d_activity + (d_gap) %}
 					{% endif %}
+
 					<div class="timeline" style="width: 100%;margin-bottom:5px;">
 						<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|date("d/m/Y \\- H:i") }} | {{activity.endRegistration|date("d/m/Y \\- H:i") }}</span>">Inscription</div>
 						{% if d_gap < 0 %}
@@ -56,6 +46,15 @@
 						<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ activity.start|date("d/m/Y \\- H:i") }} | {{activity.end|date("d/m/Y \\- H:i") }}</span>">Activité</div>
 						<div class="part red" style="width:{{ d_correction }}%" data-html="<span style='color:#d9534f;'>{{ activity.startCorrection|date("d/m/Y \\- H:i") }} | {{activity.endCorrection|date("d/m/Y \\- H:i") }}</span>">Correction</div>
 					</div>
+					{% if d_today >= 0 and d_today <= 100 %}
+					<div class='today' style="left:{{d_today}}%">
+						<div class='cursor'>
+						</div>
+						<div class='text'>
+							Today
+						</div>
+					</div>
+					{% endif %}
 				</div>
 			</div>
 
@@ -91,14 +90,14 @@
 			</div>
 			<div class="three wide column">
 				<div class="segment">
-					<input class="donught chart" value="{{ activity.places - activity.students|length }}" data-max="{{ activity.places }}" data-width="150" data-thickness=".4">
+					<input class="donught chart" value="{{ activity.students|length }}" data-max="{{ activity.places }}" data-width="150" data-thickness=".4">
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
 				{% if app.user in activity.module.students %}
-					{% if date() > activity.startregistration and date() < activity.endregistration %}
+					{% if date() > activity.startRegistration and date() < activity.endRegistration %}
 						{% if activity.sizemax > 1 %}
 							{% if app.user in activity.students %}
 								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
@@ -107,7 +106,7 @@
 							{% endif %}
 						{% else %}
 							{% if app.user in activity.students %}
-								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="minus icon"></i>Se désincrire</button></a>
+								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="minus icon"></i>Se désinscrire</button></a>
 							{% else %}
 								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="add icon"></i>S'inscrire</button></a>
 							{% endif %}
@@ -120,8 +119,8 @@
 			<div class="column">
 				<div class="segment padded left">
 					<h4 class="ui dividing header">
-						<i class="laptop icon"></i>
-						{{ 'ACTIVITY_TITLE_ELEARNING'|trans }}
+						<i class="pencil icon"></i>
+						{{ 'NOTES_AND_NOTATION'|trans }}
 					</h4>
 				</div>
 			</div>
