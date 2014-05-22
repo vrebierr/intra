@@ -11,11 +11,11 @@
 					</h3>
 					{% if date() < activity.startregistration %}
 							<h4 class="ui error message centered">
-							{{ 'ACTIVITY_REGISTRATION_EARLY'|trans }}
+							{{ 'activity.registration.early'|trans }} {{ activity.startRegistration|localizeddate("short", "short") }}.
 						</h4>
 					{% elseif date() > activity.endregistration %}
 						<h4 class="ui error message centered">
-							{{ 'ACTIVITY_REGISTRATION_LATE'|trans }}
+							{{ 'activity.registration.late'|trans }} {{ activity.endRegistration|localizeddate("short", "short") }}.
 						</h4>
 					{% endif %}
 					<div class="timeline" style="width: 100%;">
@@ -29,7 +29,29 @@
 		<div class="row">
 			<div class="thirteen wide column">
 				<div class="segment">
-					{{ activity.description }}
+					<p>
+						{{ activity.description }}
+					</p>
+					<p>
+						{% if activity.sizeMin != activity.sizeMax %}
+							{{ 'activity.group.mult.free'|trans({ '%nb_students_min%': activity.sizeMin, '%nb_students_max%': activity.sizeMax}) }}
+						{% elseif activity.sizeMin != 1 %}
+							{{ 'activity.group.mult.strict'|trans({ '%nb_students%': activity.sizeMin }) }}
+						{% else %}
+							{{ 'activity.group.one'|trans }}
+						{% endif %}
+					</p>
+					<p>
+						{{ 'activity.correction'|trans({ '%nb_peers%': activity.peers }) }}
+					</p>
+					<p>
+						{{ activity.type }}
+					</p>
+					<p>
+						{% if activity.subject %}
+							<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
+						{% endif %}
+					</p>
 				</div>
 			</div>
 			<div class="three wide column">
@@ -40,41 +62,19 @@
 		</div>
 		<div class="row">
 			<div class="column">
-				{% if activity.subject %}
-					<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
-				{% endif %}
-				<br>
-				{{ activity.start|localizeddate("medium", "short") }}
-				<br>
-				{{ activity.end|localizeddate("medium", "short") }}
-				<br>
-				{{ activity.startRegistration|localizeddate("medium", "short") }}
-				<br>
-				{{ activity.endRegistration|localizeddate("medium", "short") }}
-				<br>
-				{{ activity.peers }}
-				<br>
-				{{ activity.type }}
-				<br>
-				{% if activity.sizeMin != activity.sizeMax %}
-					{{ activity.sizeMin }} | {{ activity.sizeMax }}
-				{% else %}
-					{{ activity.sizeMin }}
-				{% endif %}
-				<br>
 				{% if app.user in activity.module.students %}
 					{% if date() > activity.startregistration and date() < activity.endregistration %}
 						{% if activity.sizemax > 1 %}
 							{% if app.user in activity.students %}
-								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
+								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
 							{% else %}
 								<form></form>
 							{% endif %}
 						{% else %}
 							{% if app.user in activity.students %}
-								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui blue button"><i class="minus icon"></i>Se désincrire</button></a>
+								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="minus icon"></i>Se désincrire</button></a>
 							{% else %}
-								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui blue button"><i class="add icon"></i>S'inscrire</button></a>
+								<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="add icon"></i>S'inscrire</button></a>
 							{% endif %}
 						{% endif %}
 					{% endif %}
