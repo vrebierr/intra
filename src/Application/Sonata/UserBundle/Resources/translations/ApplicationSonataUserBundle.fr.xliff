@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+		<body>
+            <trans-unit id="title_user_grades">
+                <source>title_user_grades</source>
+                <target>Notes</target>
+			</trans-unit>
+            <trans-unit id="title_user_forum">
+                <source>title_user_forum</source>
+                <target>Forum</target>
+            </trans-unit>
+            <trans-unit id="label_profile_module_name">
+                <source>label_profile_module_name</source>
+                <target>Module</target>
+			</trans-unit>
+            <trans-unit id="label_profile_module_credits">
+                <source>label_profile_module_credits</source>
+                <target>Crédits</target>
+			</trans-unit>
+            <trans-unit id="label_profile_module_grade">
+                <source>label_profile_module_grade</source>
+                <target>Grade</target>
+			</trans-unit>
+            <trans-unit id="label_profile_forum_threads">
+                <source>label_profile_forum_threads</source>
+                <target>Threads</target>
+			</trans-unit>
+            <trans-unit id="label_profile_forum_posts">
+                <source>label_profile_forum_posts</source>
+                <target>Posts</target>
+			</trans-unit>
+            <trans-unit id="label_profile_forum_comments">
+                <source>label_profile_forum_comments</source>
+                <target>Commentaires</target>
+			</trans-unit>
+            <trans-unit id="label_profile_forum_last_thread">
+                <source>label_profile_forum_last_thread</source>
+                <target>Dernier thread</target>
+			</trans-unit>
+            <trans-unit id="label_profile_forum_last_post">
+                <source>label_profile_forum_last_post</source>
+                <target>Dernier post</target>
+			</trans-unit>
+			<trans-unit id="label_profile_forum_last_comment">
+                <source>label_profile_forum_last_comment</source>
+                <target>Dernier commentaire</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

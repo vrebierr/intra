@@ -1,27 +1,28 @@
 <h3 class="ui dividing header">
 	<i class="tasks icon"></i>
 	<div class="content">
-		NEED FIX
+		{{ 'title_user_grades'|trans({}, 'ApplicationSonataUserBundle')|upper }}
 	</div>
 </h3>
 <table class="ui sortable basic table">
 	<thead>
 		<tr>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
-			<th>NEED FIX</th>
+			<th>{{ 'label_profile_module_name'|trans({}, 'ApplicationSonataUserBundle')|upper }}</th>
+			<th>{{ 'label_profile_module_credits'|trans({}, 'ApplicationSonataUserBundle')|upper }}</th>
+			<th>{{ 'label_profile_module_grade'|trans({}, 'ApplicationSonataUserBundle')|upper }}</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for module in user.modules %}
-			<tr>
+			<tr class="show activities">
 				<td>{{ module.name }}</td>
 				<td>{{ module.credits }}</td>
-				<td>{{ module.places }}</td>
-				<td>{{ module.start|localizeddate("medium", "none") }}</td>
-				<td>{{ module.description }}</td>
+				<td>NEED FIX</td>
+			</tr>
+			<tr class="content activities hidden">
+				<td>{{ module.activities.last.name }}</td>
+				<td>NEED FIX</td>
+				<td>NEED FIX</td>
 			</tr>
 		{% endfor %}
 	</tbody>
