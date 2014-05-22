@@ -29,7 +29,12 @@
 		<div class="equal height row">
 			<div class="thirteen wide column">
 				<div class="segment">
-					{{ module.description }}
+					<p>
+						{{ module.description }}
+					</p>
+					<p>
+						<span class="ui label blue">{{ 'module.credits'|trans({ '%nb_credits%': module.credits }) }}</span>
+					</p>
 				</div>
 			</div>
 			<div class="three wide column">
@@ -40,21 +45,12 @@
 		</div>
 		<div class="row">
 			<div class="column">
-				{{ module.credits }}
-				<br>
-				{{ module.start|localizeddate("medium", "short") }}
-				<br>
-				{{ module.end|localizeddate("medium", "short") }}
-				<br>
-				{{ module.startRegistration|localizeddate("medium", "short") }}
-				<br>
-				{{ module.endRegistration|localizeddate("medium", "short") }}
 				<br>
 				{% if date() > module.startregistration and date() < module.endregistration %}
 					{% if app.user in module.students %}
-						<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui blue button"><i class="minus icon"></i>Se désincrire</button></a>
+						<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui right floated blue button"><i class="minus icon"></i>Se désincrire</button></a>
 					{% else %}
-						<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui blue button"><i class="add icon"></i>S'inscrire</button></a>
+						<a href="{{ path('site_activities_module_registration', {'id': module.id }) }}"><button class="ui right floated blue button"><i class="add icon"></i>S'inscrire</button></a>
 					{% endif %}
 				{% endif %}
 			</div>
