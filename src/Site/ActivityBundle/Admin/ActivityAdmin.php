@@ -70,7 +70,8 @@ class ActivityAdmin extends Admin
             ->add('description')
             ->add('subject', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.file',
-                'context'  => 'default'
+                'context'  => 'default',
+                'required' => false
             ))
             ->add('places')
             ->add('start')
@@ -82,7 +83,9 @@ class ActivityAdmin extends Admin
             ->add('sizeMin')
             ->add('sizeMax')
             ->add('peers')
-            ->add('type')
+            ->add('type', 'choice', array(
+                'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD')
+                ))
         ;
     }
 

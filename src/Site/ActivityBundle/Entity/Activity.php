@@ -1,6 +1,7 @@
 <?php
 
 namespace Site\ActivityBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -116,6 +117,7 @@ class Activity
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\Choice(choices = {"projet", "examen", "TD"})
      */
     private $type;
 
