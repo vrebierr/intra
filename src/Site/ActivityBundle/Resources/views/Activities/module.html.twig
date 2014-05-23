@@ -9,8 +9,12 @@
 					<div style="display:inline-block;"><i class="file outline icon"></i></div>{{ module.name }}
 					<div class="ui blue label float right">{{ 'module.credits'|trans({ '%nb_credits%': module.credits }) }}</div>
 				</h3>
-				{% if date() < module.startregistration %}
-						<h4 class="ui error message centered">
+				{% if date() > module.end %}
+				<h4 class="ui info message centered">
+					{{ 'module.registration.end'|trans }} {{ module.end|localizeddate("short", "short") }}.
+				</h4>
+				{% elseif date() < module.startregistration %}
+					<h4 class="ui error message centered">
 						{{ 'module.registration.early'|trans }} {{ module.startRegistration|localizeddate("short", "short") }}.
 					</h4>
 				{% elseif date() > module.endregistration and app.user not in module.students %}
@@ -95,7 +99,21 @@
 				<div class="ui relaxed list">
 					{% for activity in module.activities %}
 					<div class="item">
-						{{ activity.name }}
+						{% if date() > activity.startRegistration and date() < activity.endRegistration %}
+						{% set color = '#5cb85c' %}
+						{% elseif date() > activity.start and date() < activity.end %}
+						{% set color = '#f0ad4e' %}
+						{% elseif date() > activity.startCorrection and date() < activity.endCorrection %}
+						{% set color = '#d9534f' %}
+						{% elseif date() > activity.endCorrection %}
+						{% set color = '#9C9C9C' %}
+						{% else %}
+						{% set color = '#EEEEEE' %}
+						{% endif %}
+						<h5 class="ui black block header project-list" style="{% if date() > activity.endCorrection %}opacity:0.3; {% endif %}border-left: 5px solid {{ color }};">
+							<a href="{{ path('site_activities_activity', { 'id': activity.id}) }}">{{ activity.name }}</a>
+							<span class='float right'>Du {{ activity.startRegistration|date("d/m/Y \\- H:i") }} au {{ activity.endCorrection|date("d/m/Y \\- H:i") }}</span>
+						</h5>
 					</div>
 					{% endfor %}
 				</div>
