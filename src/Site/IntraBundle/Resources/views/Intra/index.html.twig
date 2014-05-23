@@ -1,5 +1,21 @@
-{% extends "::layout.html.twig" %}
+{% extends "SiteIntraBundle::layout.html.twig" %}
 
-{% block active_home 'active' %}
-{% block body %}
+{% block body_index %}
+	<div class="equal height three column row">
+		<div class="column">
+			<div class="segment">
+				{% include "SiteIntraBundle:Intra:block_index_activities.html.twig" %}
+			</div>
+		</div>
+		<div class="column">
+			<div class="segment">
+				{% include "SiteIntraBundle:Intra:block_index_corrections.html.twig" %}
+			</div>
+		</div>
+		<div class="column">
+			<div class="segment">
+				{% include "SiteIntraBundle:Intra:block_index_activities.html.twig" %}
+			</div>
+		</div>
+	</div>
 {% endblock %}

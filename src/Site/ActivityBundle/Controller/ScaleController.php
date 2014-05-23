@@ -14,7 +14,7 @@ class ScaleController extends Controller
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$em = $this->getDoctrine()->getManager();
-		$correction = $em->getRepository('SiteActivityBundle:ScaleGroup')->findOneBy("activity" => $group->getActivity(), "group" => $group);
+		$correction = $em->getRepository('SiteActivityBundle:ScaleGroup')->findOneBy(array("activity" => $group->getActivity(), "group" => $group));
 
 		if ($now < $group->getActivity()->getStartCorrection() || $now > $group->getActivity()->getEndCorrection())
 			throw new AccessDeniedException("You can't correct this group now.");
