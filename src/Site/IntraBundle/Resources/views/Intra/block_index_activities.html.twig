@@ -1,0 +1,9 @@
+<h3 class="ui dividing header">
+	<i class="file outline icon"></i>
+	<div class="content">
+		{{ "INDEX_HEADING_ACTIVITIES"|trans|upper }}
+	</div>
+</h3>
+{% for activity in currentActivities %}
+	{{ activity.name }}
+{% endfor %}
