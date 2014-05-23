@@ -13,7 +13,7 @@ class MessageAdmin extends Admin
 	{
 		$formMapper->add('ticket', null, array('label' => 'Ticket'))
 				->add('author', null, array('label' => 'Author'))
-				->add('content', 'textarea', array('attr' => array('label' => 'Content', 'cols' => 70, 'rows' => 15)));
+				->add('content', 'textarea', array('attr' => array('class' => 'tinymce')));
 	}
 
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)

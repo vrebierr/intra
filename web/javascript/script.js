@@ -9,7 +9,6 @@ $(document).ready(function() {
 	});
 	$('.ui.sortable').tablesort();
 	$(".refresh.icon").popup();
-	$(".copy.icon").popup();
 	$(".part").popup();
 	$(".donught.chart").knob({
 		readOnly:true,
