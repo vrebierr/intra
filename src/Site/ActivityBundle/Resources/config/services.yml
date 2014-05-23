@@ -22,3 +22,9 @@ services:
         arguments: [~, Site\ActivityBundle\Entity\Scale, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Modules, label: Notation}
+
+    site_elearning.admin.lesson:
+        class: Site\ActivityBundle\Admin\LessonAdmin
+        arguments: [~, Site\ActivityBundle\Entity\Lesson, SiteActivityBundle:ModuleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Elearning, label: Lesson}

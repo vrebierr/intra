@@ -331,6 +331,12 @@ div.form.newreply
 	min-height: 900px;
 }
 
+.right-menu
+{
+	background-color: #EEEEEE;
+	min-height: 600px;
+}
+
 .left.floated.fourteen.wide.column
 {
 	margin-top: 20px;
