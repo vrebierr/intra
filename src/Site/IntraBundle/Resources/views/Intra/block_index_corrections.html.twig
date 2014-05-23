@@ -1,9 +1,17 @@
 <h3 class="ui dividing header">
 	<i class="pencil icon"></i>
 	<div class="content">
-		{{ "INDEX_HEADING_CORRECTIONS"|trans|upper }}
+		{{ "BLOCK_HEADING_CORRECTIONS"|trans|upper }}
 	</div>
 </h3>
-{% for activity in correctionActivities %}
-	{{ activity.name }}
-{% endfor %}
+{% if correctionActivities is defined %}
+	{% for activity in correctionActivities %}
+		<p>
+			<a href="{{ path('site_activities_scale_show', { 'id': activity.id }) }}">{{ activity.name }}</a> {{ 'BLOCK_CONTENT_CORRECTIONS_NAME'|trans({ '%nb_peers%': activity.peers }) }}
+		</p>
+	{% endfor %}
+{% else %}
+	<p>
+		{{ 'BLOCK_CONTENT_CORRECTIONS_NONE'|trans }}
+	</p>
+{% endif %}

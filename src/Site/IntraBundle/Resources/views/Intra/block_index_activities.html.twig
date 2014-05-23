@@ -1,9 +1,29 @@
 <h3 class="ui dividing header">
 	<i class="file outline icon"></i>
 	<div class="content">
-		{{ "INDEX_HEADING_ACTIVITIES"|trans|upper }}
+		{{ "BLOCK_HEADING_ACTIVITIES"|trans|upper }}
 	</div>
 </h3>
-{% for activity in currentActivities %}
-	{{ activity.name }}
-{% endfor %}
+{% if currentActivities is defined %}
+	{% for activity in currentActivities %}
+		<p>
+			<a href="{{ path('site_activities_activity', { 'id': activity.id }) }}">{{ activity.name }}</a> {{ 'BLOCK_CONTENT_ACTIVITIES_NAME'|trans }}
+		</p>
+		Rendu le
+		{% if date()|date_modify("+1 day") > activity.end %}
+			<span class="red">
+				{{ activity.end|localizeddate("long", "short") }}
+			</span>
+		{% elseif date()|date_modify("+2 day") > activity.end %}
+			<span class="orange">
+				{{ activity.end|localizeddate("long", "short") }}
+			</span>
+		{% else %}
+			{{ activity.end|localizeddate("long", "short") }}
+		{% endif %}
+	{% endfor %}
+{% else %}
+	<p>
+		{{ 'BLOCK_CONTENT_ACTIVITIES_NONE'|trans }}
+	</p>
+{% endif%}

@@ -199,6 +199,16 @@ div.form.newreply
 	cursor: pointer;
 }
 
+.orange
+{
+	color: #f0ad4e;
+}
+
+.red
+{
+	color: #d9534f;
+}
+
 .hidden
 {
 	display: none;
