@@ -14,6 +14,7 @@
 	</thead>
 	<tbody>
 		{% set i = 0 %}
+		{% set total_credits = 0 %}
 		{% for module in user.modules %}
 			<tr class="show activities" data-text="{{ i }}">
 				<td>{{ module.name }}</td>
@@ -31,6 +32,12 @@
 				</tr>
 			{% endfor %}
 			{% set i = i + 1 %}
+			{% set total_credits = total_credits + module.credits %}
 		{% endfor %}
+			<tr>
+				<td>{{ 'label_profile_module_table_total'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
+				<td>X/{{ total_credits }}</td>
+				<td></td>
+			</tr>
 	</tbody>
 </table>
