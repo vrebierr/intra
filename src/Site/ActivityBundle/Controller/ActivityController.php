@@ -118,6 +118,7 @@ class ActivityController extends Controller
 	 			if ($request->isMethod("POST"))
 	 			{
 	 				$form->bind($request);
+	 				$group = $form->getData();
 	 				if ($form->isValid() && $group->getStudents()->size() > $activity->getSizeMin() && $group->getStudents()->size() < $activity->getSizeMax())
 	 				{
 	 					$group = $form->getData();

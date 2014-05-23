@@ -30,6 +30,7 @@ class ScaleController extends Controller
 			));
 		$modules = $em->getRepository('SiteActivityBundle:Module')->findAll();
 
+		$this->generatePeers($group->getActivity(), $scale);
 		$fb = $this->createFormBuilder();
 
 		$fb->add('comment', 'textarea');
@@ -53,6 +54,7 @@ class ScaleController extends Controller
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($correction);
 				$em->flush();
+				$this->redirect($this->generateUrl('site_activities_activity', array('id' => $group->getActivity())));
 			}
 		}
 
@@ -64,5 +66,21 @@ class ScaleController extends Controller
 			"form" => $form->createView(),
 			"group" => $group
 			));
+	}
+
+	public function generatePeers(Activity $activity, Scale $scale)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$groups = $em->getRepository('SiteActivityBundle:ActivityGroup')->findBy(array("activity" => $activity))->toArray();
+		shuffle($groups);
+		foreach ($groups as $group)
+		{
+			$scale_group = new ScaleGroup();
+			$scale_group->setGroup($group);
+			$scale_group->setRater($activity->getStudents()->toArray()[rand(0, $raters->count())]);
+			$scale_group->setScale($scale);
+			$em->persist($scale_group);
+		}
+		$em->flush();
 	}
 }
