@@ -9,7 +9,11 @@
 					<div style="display:inline-block;"><i class="file outline icon"></i></div>{{ activity.name }}
 					<div class="ui blue label float right">{{ activity.type }}</div>
 				</h3>
-				{% if date() < activity.startregistration %}
+				{% if date() > activity.end %}
+				<h4 class="ui info message centered">
+					{{ 'activity.registration.end'|trans }} {{ activity.endCorrection|localizeddate("short", "short") }}.
+				</h4>
+				{% elseif date() < activity.startregistration %}
 						<h4 class="ui error message centered">
 						{{ 'activity.registration.early'|trans }} {{ activity.startRegistration|localizeddate("short", "short") }}.
 					</h4>
@@ -89,7 +93,7 @@
 				</p>
 				<br/>
 				<p>
-					<i class="download icon"></i>
+					<i class="download icon nomargin"></i>
 					<b>Sujet :</b>
 					{% if activity.subject %}
 						<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>

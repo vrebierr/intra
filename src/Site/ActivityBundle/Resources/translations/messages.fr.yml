@@ -5,6 +5,7 @@ module:
     registration:
         early: Vous ne pouvez pas encore vous inscrire à ce module. Les inscription ouvriront le
         late: Vous ne pouvez plus vous inscrire à ce module. Les inscriptions sont fermées depuis le
+        end: Ce module est terminé depuis le
 
 elearning:
     home: E-learning
@@ -14,6 +15,7 @@ activity:
     registration:
         early: Vous ne pouvez pas encore vous inscrire à ce projet. Les inscription ouvriront le
         late: Vous ne pouvez plus vous inscrire à ce projet. Les inscriptions sont fermées depuis le
+        end: Cette activité est terminée depuis le
     correction: Pour cette activité, vous devrez vous faire corriger par %nb_peers% étudiants.
     group:
         mult:
