@@ -56,10 +56,10 @@ class ModuleAdmin extends Admin
                 )))
             ->add('credits')
             ->add('places')
-            ->add('startRegistration')
-            ->add('endRegistration')
-            ->add('start')
-            ->add('end')
+            ->add('startRegistration', 'dateTimePicker')
+            ->add('endRegistration', 'dateTimePicker')
+            ->add('start', 'dateTimePicker')
+            ->add('end', 'dateTimePicker')
         ;
     }
 

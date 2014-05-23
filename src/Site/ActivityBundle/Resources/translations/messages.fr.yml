@@ -1,7 +1,11 @@
 module:
-    home: Modules
+    home: Activités
     noactivity: Aucune activité trouvée
     credits: %nb_credits% Crédits
+    registration:
+        early: Vous ne pouvez pas encore vous inscrire à ce module. Les inscription ouvriront le
+        late: Vous ne pouvez plus vous inscrire à ce module. Les inscriptions sont fermées depuis le
+
 elearning:
     home: E-learning
     nocourse: Aucun cours trouvé

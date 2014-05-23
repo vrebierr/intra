@@ -6,7 +6,7 @@
             <!-- NAVBAR -->
             <trans-unit id="1">
                 <source>NAVBAR_HOME</source>
-                <target>Index</target>
+                <target>Accueil</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>NAVBAR_ACTIVITIES</source>

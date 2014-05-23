@@ -3,10 +3,10 @@
 {% block forum_body %}
 	<h4 class="ui dividing header">
 		{% if thread.locked == true %}
-			<i class="lock red large icon"></i>
+			<div style="display:inline-block;"><i class="lock red large icon"></i></div>
 		{% endif %}
 		{% if thread.pinned == true %}
-			<i class="pin blue large icon"></i>
+			<div style="display:inline-block;"><i class="pin blue large icon"></i></div>
 		{% endif %}
 		{{ thread.title }}
 	</h4>
@@ -39,7 +39,7 @@
 							</div>
 						{% elseif post.locked == true %}
 							--
-							 <i class="lock icon"></i>
+							 <div style="display:inline-block;"><i class="lock icon"></i></div>
 						{% endif %}
 					</div>
 				</div>

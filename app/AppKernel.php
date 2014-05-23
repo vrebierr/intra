@@ -44,6 +44,7 @@ class AppKernel extends Kernel
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Site\PlanningBundle\SitePlanningBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new Stnw\DatePickerBundle\StnwDatePickerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

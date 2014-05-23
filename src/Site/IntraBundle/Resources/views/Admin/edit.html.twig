@@ -3,4 +3,10 @@
 {% block javascripts %}
 	{{ parent() }}
 	{{ tinymce_init() }}
+	<script src="{{ asset('bundles/stnwdatepicker/date_picker.js') }}"></script>
+	<script type="text/javascript">
+        global = {
+            locale   : '{{ app.request.locale }}'
+        }
+    </script>
 {% endblock %}
