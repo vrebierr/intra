@@ -335,3 +335,14 @@ div.form.newreply
 {
 	margin-top: 20px;
 }
+
+.nomargin
+{
+	margin: 0 !important;
+}
+
+.project-list
+{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
