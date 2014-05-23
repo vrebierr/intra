@@ -139,7 +139,7 @@ class ScaleGroup
      * @param \Application\Sonata\UserBundle\Entity\User $rater
      * @return ScaleGroup
      */
-    public function setrRater(\Application\Sonata\UserBundle\Entity\User $rater)
+    public function setRater(\Application\Sonata\UserBundle\Entity\User $rater)
     {
         $this->rater = $rater;
 
@@ -154,5 +154,28 @@ class ScaleGroup
     public function getRater()
     {
         return $this->rater;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return ScaleGroup
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

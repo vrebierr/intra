@@ -11,7 +11,20 @@ class ScaleController extends Controller
 {
 	public function showAction(ActivityGroup $group)
 	{
+		$now = new \Datetime("NOW");
+		$user = $this->container->get("security.context")->getToken()->getUser();
 		$em = $this->getDoctrine()->getManager();
+		$correction = $em->getRepository('SiteActivityBundle:ScaleGroup')->findOneBy("activity" => $group->getActivity(), "group" => $group);
+
+		if ($now < $group->getActivity()->getStartCorrection() || $now > $group->getActivity()->getEndCorrection())
+			throw new AccessDeniedException("You can't correct this group now.");
+
+		if ($correction->getRater() != $user)
+			throw new AccessDeniedException("You can't correct this group.");
+
+		if ($correction->isDone())
+			throw new AccessDeniedException("Correction is done.");
+
 		$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array(
 			"activity" => $group->getActivity()->getId()
 			));
@@ -33,10 +46,9 @@ class ScaleController extends Controller
 			$form->bind($request);
 			if ($form->isValid())
 			{
-				$correction = $form->getData();
-				$correction->setRater($user);
-				$correction->setScale($scale);
-				$correction->setGroup($group);
+				$data = $form->getData();
+				$correction->setComment($data['comment']);
+				$correction->setNote($data['note']);
 
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($correction);
