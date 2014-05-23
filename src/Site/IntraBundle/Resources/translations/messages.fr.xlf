@@ -57,7 +57,35 @@
             <trans-unit id="15">
                 <source>NAVBAR_DROP_LOGOUT</source>
                 <target>Déconnexion</target>
-            </trans-unit>
+			</trans-unit>
+
+			<!-- BLOCK HEADINGS -->
+            <trans-unit id="20">
+                <source>BLOCK_HEADING_CORRECTIONS</source>
+                <target>Corrections</target>
+			</trans-unit>
+            <trans-unit id="21">
+                <source>BLOCK_HEADING_ACTIVITIES</source>
+                <target>Activités en cours</target>
+			</trans-unit>
+
+			<!-- BLOCK CONTENT -->
+            <trans-unit id="30">
+				<source>BLOCK_CONTENT_ACTIVITIES_NAME</source>
+                <target>est en cours !</target>
+			</trans-unit>
+            <trans-unit id="31">
+				<source>BLOCK_CONTENT_CORRECTIONS_NAME</source>
+                <target>est terminé, vous devez faire et donner %nb_peers% corrections !</target>
+			</trans-unit>
+            <trans-unit id="32">
+				<source>BLOCK_CONTENT_ACTIVITIES_NONE</source>
+                <target>Aucune activité en cours</target>
+			</trans-unit>
+            <trans-unit id="33">
+				<source>BLOCK_CONTENT_CORRECTIONS_NONE</source>
+                <target>Auncune correction à donner ou recevoir</target>
+			</trans-unit>
         </body>
     </file>
 </xliff>

@@ -117,7 +117,7 @@
 						{% if app.user in activity.students %}
 							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
 						{% else %}
-							<form></form>
+							{{ form_widget(form) }}
 						{% endif %}
 					{% else %}
 						{% if app.user in activity.students %}
