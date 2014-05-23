@@ -1,0 +1,35 @@
+{% extends 'SiteActivityBundle::layout_elearning.html.twig' %}
+
+{% block elearning_body %}
+<div class="ui grid">
+    <div class="row">
+        <div class="column">
+            <div class="segment">
+                <h3 class="ui dividing header">
+                    <div style="display:inline-block;"><i class="file outline icon"></i></div>Cours du {{ activity.name }}
+                    <div class="ui blue label float right">{{ activity.type }}</div>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="thirteen wide column">
+            <div class="segment padded left">
+            <h4 class="ui dividing header">
+                <i class="{% if activity.lessons[0].type == 'video' %}video{% elseif activity.lessons[0].type == 'pdf' %}file{% else %}code{% endif %} icon"></i>
+                {{ activity.lessons[0].name }}
+            </h4>
+            </div>
+        </div>
+
+    <div class="three wide column right-menu">
+        {% for lesson in activity.lessons %}
+        <i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}<br/>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
