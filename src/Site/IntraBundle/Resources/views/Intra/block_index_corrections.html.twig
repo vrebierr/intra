@@ -1,0 +1,9 @@
+<h3 class="ui dividing header">
+	<i class="pencil icon"></i>
+	<div class="content">
+		{{ "INDEX_HEADING_CORRECTIONS"|trans|upper }}
+	</div>
+</h3>
+{% for activity in correctionActivities %}
+	{{ activity.name }}
+{% endfor %}
