@@ -54,6 +54,9 @@
 						<a class="item hide" href="{{ path('sonata_user_profile_show') }}">
 							<i class="unhide icon"></i> {{ 'NAVBAR_DROP_PROFILE'|trans }}
 						</a>
+						<a class="item hide" href="{{ path('fos_message_inbox') }}">
+							<i class="mail icon"></i>{{ 'NAVBAR_DROP_MESSAGES'|trans }}
+						</a>
 						<a class="item hide" href="{{ path('sonata_user_change_password') }}">
 							<i class="settings icon"></i>{{ 'NAVBAR_DROP_SETTINGS'|trans }}
 						</a>
@@ -61,7 +64,7 @@
 							<i class="ticket icon"></i>{{ 'NAVBAR_DROP_TICKETS'|trans }}
 						</a>
 						{% if is_granted('ROLE_ADMIN') %}
-							<a class="item hide" href="{{ path("sonata_admin_redirect") }}">
+							<a class="item hide" href="{{ path('sonata_admin_redirect') }}">
 								<i class="table icon"></i>{{ 'NAVBAR_DROP_ADMIN'|trans }}
 							</a>
 						{% endif %}

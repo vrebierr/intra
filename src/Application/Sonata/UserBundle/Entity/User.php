@@ -3,9 +3,10 @@
 namespace Application\Sonata\UserBundle\Entity;
 
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
+use FOS\MessageBundle\Model\ParticipantInterface;
 use FR3D\LdapBundle\Model\LdapUserInterface;
 
-class User extends BaseUser implements LdapUserInterface
+class User extends BaseUser implements LdapUserInterface, ParticipantInterface
 {
     /**
      * @var integer $id

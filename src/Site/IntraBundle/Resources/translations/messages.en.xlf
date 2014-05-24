@@ -39,25 +39,58 @@
                 <target>Profile</target>
             </trans-unit>
             <trans-unit id="11">
+                <source>NAVBAR_DROP_MESSAGES</source>
+                <target>Messenger</target>
+            </trans-unit>
+            <trans-unit id="12">
                 <source>NAVBAR_DROP_SETTINGS</source>
                 <target>Parameters</target>
             </trans-unit>
-            <trans-unit id="12">
+            <trans-unit id="13">
                 <source>NAVBAR_DROP_TICKETS</source>
                 <target>Tickets</target>
             </trans-unit>
-            <trans-unit id="13">
+            <trans-unit id="14">
                 <source>NAVBAR_DROP_ADMIN</source>
                 <target>Admin panel</target>
             </trans-unit>
-            <trans-unit id="14">
+            <trans-unit id="15">
                 <source>NAVBAR_DROP_LOGOUTAS</source>
                 <target>Exit impersonating</target>
             </trans-unit>
-            <trans-unit id="15">
+            <trans-unit id="16">
                 <source>NAVBAR_DROP_LOGOUT</source>
                 <target>Logout</target>
             </trans-unit>
+
+            <!-- BLOCK HEADINGS -->
+            <trans-unit id="20">
+                <source>BLOCK_HEADING_CORRECTIONS</source>
+                <target>Corrections</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>BLOCK_HEADING_ACTIVITIES</source>
+                <target>Current activities</target>
+            </trans-unit>
+
+            <!-- BLOCK CONTENT -->
+            <trans-unit id="30">
+                <source>BLOCK_CONTENT_ACTIVITIES_NAME</source>
+                <target>is ongoing !</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>BLOCK_CONTENT_CORRECTIONS_NAME</source>
+                <target>is finished, you need to get and give %nb_peers% corrections !</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>BLOCK_CONTENT_ACTIVITIES_NONE</source>
+                <target>No current activity</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>BLOCK_CONTENT_CORRECTIONS_NONE</source>
+                <target>No correction to give or get</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

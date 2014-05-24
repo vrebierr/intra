@@ -27,7 +27,7 @@ class TicketTicket
     private $messages;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="tickets", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false, name = "author")
      */
     private $author;
