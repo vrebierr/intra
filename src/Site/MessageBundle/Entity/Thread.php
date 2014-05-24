@@ -26,7 +26,7 @@ class Thread extends BaseThread
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      */
-    protected $author;
+    protected $createdBy;
 
     /**
      * @ORM\OneToMany(targetEntity="Site\MessageBundle\Entity\Message", mappedBy="thread")

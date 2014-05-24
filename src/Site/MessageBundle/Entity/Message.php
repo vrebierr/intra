@@ -24,7 +24,7 @@ class Message extends BaseMessage
     protected $id;
 
     /**
-     *      * @ORM\ManyToOne(targetEntity="Site\MessageBundle\Entity\Thread", inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity="Site\MessageBundle\Entity\Thread", inversedBy="messages")
      * @var ThreadInterface
      */
     protected $thread;
@@ -33,7 +33,7 @@ class Message extends BaseMessage
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @var ParticipantInterface
      */
-    protected $author;
+    protected $sender;
 
     /**
      * @ORM\OneToMany(targetEntity="Site\MessageBundle\Entity\MessageMetadata", mappedBy="message", cascade={"all"})

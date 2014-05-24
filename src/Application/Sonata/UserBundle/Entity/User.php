@@ -95,6 +95,14 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
 
     }
 
+
+    /**
+     * Stringer
+     */
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
     /**
      * Get id
      *

@@ -1,13 +1,16 @@
 {% extends "SiteMessageBundle::layout.html.twig" %}
 
+{% block item_new 'disabled' %}
 {% block body_messages %}
-
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
-
-<form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
-
-    <input type="submit" />
-</form>
-
+	<h3 class="ui dividing header">
+		<i class="pencil icon"></i>
+		{{ 'HEADING_NEW'|trans }}
+	</h3>
+	<div class="form newpost">
+		<form class="ui form" action="{{ path("fos_message_thread_new") }}" method="post">
+			{{ form_widget(form) }}
+			<br>
+			<input type="submit" class="ui blue button floated right"/>
+		</form>
+	</div>
 {% endblock %}

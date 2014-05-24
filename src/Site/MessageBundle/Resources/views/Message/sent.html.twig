@@ -1,9 +1,10 @@
-{% extends "SiteMessageBundl::layout.html.twig" %}
+{% extends "SiteMessageBundle::layout.html.twig" %}
 
+{% block item_sent 'disabled' %}
 {% block body_messages %}
-
-<h2>{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</h2>
-
-{% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
-
+	<h3 class="ui dividing header">
+		<i class="list icon"></i>
+		{{ 'HEADING_SENT'|trans }}
+	</h3>
+	{% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 {% endblock %}

@@ -205,3 +205,4 @@ fos_message:
     db_driver: orm
     thread_class: Site\MessageBundle\Entity\Thread
     message_class: Site\MessageBundle\Entity\Message
+    spam_detector: fos_message.noop_spam_detector

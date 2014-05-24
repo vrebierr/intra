@@ -1,9 +1,10 @@
 {% extends "SiteMessageBundle::layout.html.twig" %}
 
+{% block item_inbox 'disabled' %}
 {% block body_messages %}
-	<h2>
-		{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}
-	</h2>
-	<a href="{{ url('fos_message_thread_new' )}}">{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
+	<h3 class="ui dividing header">
+		<i class="inbox icon"></i>
+		{{ 'HEADING_INBOX'|trans }}
+	</h3>
 	{% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 {% endblock %}

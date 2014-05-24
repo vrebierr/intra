@@ -1,9 +1,10 @@
 {% extends "SiteMessageBundle::layout.html.twig" %}
 
+{% block item_trash 'disabled' %}
 {% block body_messages %}
-
-<h2>{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</h2>
-
-{% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
-
+	<h3 class="ui dividing header">
+		<i class="trash icon"></i>
+		{{ 'HEADING_TRASH'|trans }}
+	</h3>
+	{% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 {% endblock %}
