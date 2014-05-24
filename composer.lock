@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ff2ec0d3c422f58c5cfd0008700460db",
+    "hash": "f58cc0e58731e0fb207158e4b2e0b260",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3943,10 +3943,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-<<<<<<< HEAD
         "symfony/symfony": 20,
-=======
->>>>>>> 6aa99571dd8ad5becb2f26513bfac996b17178a6
         "sensio/distribution-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
         "sonata-project/core-bundle": 20,
