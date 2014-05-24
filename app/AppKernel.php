@@ -45,6 +45,8 @@ class AppKernel extends Kernel
             new Site\PlanningBundle\SitePlanningBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Stnw\DatePickerBundle\StnwDatePickerBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
+            new Site\MessageBundle\SiteMessageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
