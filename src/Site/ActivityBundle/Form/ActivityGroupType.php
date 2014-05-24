@@ -28,7 +28,8 @@ class ActivityGroupType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('students', 'choice', array(
+            ->add('students', 'entity', array(
+                'class' => 'ApplicationSonataUserBundle:User',
                 'choices' => $this->students,
                 'expanded' => false,
                 'multiple' => true

@@ -77,7 +77,11 @@ class ActivityController extends Controller
 		$data['modules'] = $modules;
 		$data['activity'] = $activity;
 		$data['module'] = $activity->getModule();
-		$data['form'] = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity))->createView();
+		$user = $this->container->get("security.context")->getToken()->getUser();
+		$students = $activity->getModule()->getStudents();
+		$students->removeElement($user);
+		$data['form'] = $this->createForm(new ActivityGroupType($students->toArray(), $activity))->createView();
+		$students->add($user);
 
 		return $this->render('SiteActivityBundle:Activities:activity.html.twig', $data);
 	}
@@ -102,28 +106,33 @@ class ActivityController extends Controller
  		{
  			if ($activity->getStudents()->contains($user))
 			{
-				$group = $em->createQuery('
+				$groups = $em->createQuery('
  					SELECT g, a, u FROM SiteActivityBundle:ActivityGroup g
  					JOIN g.activity a
  					JOIN g.students u
  					WHERE u.id = :user_id AND a.id = :a_id
- 					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()))->getResult(); 
-				$activity->removeStudent($user);
-				$em->remove($group[0]);
+ 					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()));
+				$group = $groups->getSingleResult();
+
+				foreach ($group->getStudents() as $student)
+					$activity->removeStudent($student);
+				$em->remove($group);
 			}
 			else
 			{
-	 			$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents(), $activity));
+	 			$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity));
 	 			$request = $this->getRequest();
 	 			if ($request->isMethod("POST"))
 	 			{
 	 				$form->bind($request);
 	 				$group = $form->getData();
-	 				if ($form->isValid() && $group->getStudents()->size() > $activity->getSizeMin() && $group->getStudents()->size() < $activity->getSizeMax())
+	 				$group->addStudent($user);
+	 				if ($form->isValid() && $group->getStudents()->count() >= $activity->getSizeMin() && $group->getStudents()->count() <= $activity->getSizeMax())
 	 				{
 	 					$group = $form->getData();
 						$group->setActivity($activity);
-						$activity->addStudent($user);
+						foreach ($group->getStudents() as $student)
+							$activity->addStudent($student);
 						$em->persist($group);
 	 				}
 	 			}
