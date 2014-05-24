@@ -106,14 +106,11 @@ class ActivityController extends Controller
  		{
  			if ($activity->getStudents()->contains($user))
 			{
-				$groups = $em->createQuery('
- 					SELECT g, a, u FROM SiteActivityBundle:ActivityGroup g
- 					JOIN g.activity a
- 					JOIN g.students u
- 					WHERE u.id = :user_id AND a.id = :a_id
- 					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()));
-				$group = $groups->getSingleResult();
+				die("toto");
+				$group = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findOneBy(array('activity' => $activity, 'students' => $user));
 
+				echo($group->getStudents()->count());
+				return;
 				foreach ($group->getStudents() as $student)
 					$activity->removeStudent($student);
 				$em->remove($group);
