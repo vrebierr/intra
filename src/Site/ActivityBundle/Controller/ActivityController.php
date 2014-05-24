@@ -77,7 +77,11 @@ class ActivityController extends Controller
 		$data['modules'] = $modules;
 		$data['activity'] = $activity;
 		$data['module'] = $activity->getModule();
-		$data['form'] = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity))->createView();
+		$user = $this->container->get("security.context")->getToken()->getUser();
+		$students = $activity->getModule()->getStudents();
+		$students->removeElement($user);
+		$data['form'] = $this->createForm(new ActivityGroupType($students->toArray(), $activity))->createView();
+		$students->add($user);
 
 		return $this->render('SiteActivityBundle:Activities:activity.html.twig', $data);
 	}
@@ -113,7 +117,7 @@ class ActivityController extends Controller
 			}
 			else
 			{
-	 			$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents(), $activity));
+	 			$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity));
 	 			$request = $this->getRequest();
 	 			if ($request->isMethod("POST"))
 	 			{
