@@ -1,3 +1,0 @@
-site_message_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SiteMessageBundle:Default:index }

@@ -40,4 +40,9 @@ class Message extends BaseMessage
      * @var MessageMetadata
      */
     protected $metadata;
+
+    public function __toString()
+    {
+        return $this->body;
+    }
 }

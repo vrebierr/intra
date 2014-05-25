@@ -1,27 +1,59 @@
 {% extends "SiteMessageBundle::layout.html.twig" %}
 
 {% block body_messages %}
+	<h4 class="ui dividing header">
+		{% if thread.type == 1 %}
+			<i class="chat icon"></i>
+		{% elseif thread.type == 2 %}
+			<i class="pencil icon"></i>
+		{% elseif thread.type == 3 %}
+			<i class="info letter icon"></i>
+		{% endif %}
+		{{ thread.subject }}
+	</h4>
+	<div class="thread">
+		{% for message in thread.messages %}
+			<div class="post">
+				<div class="postitem bottombordered">
+					{{ message.body }}
+					<br>
+					<div class="italic float right">
+						{% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 
-<h2>{{ thread.subject }}</h2>
-
-{% for message in thread.messages %}
-    <div class="messenger_thread_message">
-        <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
-        </div>
-
-        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
-            {{ message.body }}
-        </div>
-    </div>
-{% endfor %}
-
-<h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
-
-<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
-
-    <input type="submit" />
-</form>
+{% if thread.type == 1 %}
+	<div class="form newpost">
+		<h3 class="ui header">
+			{{ 'reply'|trans({}, 'FOSMessageBundle') }}
+		</h3>
+		<form class="ui form" action="{{ path('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+			{{ form_widget(form) }}
+			<br>
+			<div class="field">
+				<input class="ui blue button floated right" type="submit" value="{{ 'FORM_SEND'|trans }}" />
+			</div>
+		</form>
+	</div>
+{% elseif thread.type == 2 %}
+	<div class="form newpost">
+		<h3 class="ui header">
+			{{ 'reply'|trans({}, 'FOSMessageBundle') }}
+		</h3>
+		<form class="ui form" action="{{ path('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+			<div class="ui two fields">
+				<div class="field">
+					<input class="ui green button" type="submit" value="{{ 'FORM_ACCEPT'|trans }}" name="accept" />
+				</div>
+				<div class="field">
+					<input class="ui red button" type="submit" value="{{ 'FORM_PROPOSE'|trans }}" name="propose" />
+				</div>
+			</div>
+		</form>
+	</div>
+{% endif %}
 
 {% endblock %}

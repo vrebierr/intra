@@ -18,7 +18,7 @@
 				<a class="item {% block item_new '' %}" href="{{ path('fos_message_thread_new' )}}">
 					<i class="pencil icon"></i>{{ 'MENU_NEW'|trans }}
 				</a>
-				<a class="item {% block item_inbox '' %}" href="{{ url('fos_message_inbox') }}">
+				<a class="item {% block item_inbox '' %}" href="{{ path('fos_message_inbox') }}">
 					<i class="inbox icon"></i>
 					{% if fos_message_nb_unread() %}
 						<label class="ui small blue label float right">
@@ -27,10 +27,10 @@
 					{% endif %}
 					{{ 'MENU_INBOX'|trans }}
 				</a>
-				<a class="item {% block item_sent '' %}" href="{{ url('fos_message_sent') }}">
+				<a class="item {% block item_sent '' %}" href="{{ path('fos_message_sent') }}">
 					<i class="list icon"></i> {{ 'MENU_SENT'|trans }}
 				</a>
-				<a class="item {% block item_trash '' %}" href="{{ url('fos_message_deleted') }}">
+				<a class="item {% block item_trash '' %}" href="{{ path('fos_message_deleted') }}">
 					<i class="trash icon"></i> {{ 'MENU_TRASH'|trans }}
 				</a>
 			</div>

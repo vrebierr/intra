@@ -12,7 +12,13 @@
 		</thead>
 		<tbody>
 			{% for thread in threads %}
+			 {% if thread.type == 1 %}
 				<tr>
+			{% elseif thread.type == 2 %}
+				<tr class="warning">
+			{% elseif thread.type == 3 %}
+				<tr class="error">
+			{% endif %}
 					<td>
 						{% if not fos_message_is_read(thread) %}
 						<i class="exclamation icon red"></i>

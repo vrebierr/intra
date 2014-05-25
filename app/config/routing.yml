@@ -40,7 +40,7 @@ site_ticket:
 
 
 site_message:
-    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    resource: "@SiteMessageBundle/Resources/config/routing.xml"
     prefix: /messages
 
 
