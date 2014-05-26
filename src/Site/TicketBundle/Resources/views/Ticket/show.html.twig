@@ -35,8 +35,12 @@
 							{{ "TICKET_MESSAGE_REPLY"|trans }}
 						</h3>
 						<form class="ui form" action="" method="POST">
-							{{ form_widget(form) }}
-							<br>
+							<div class="field">
+								{{ form_widget(form.content) }}
+							</div>
+							<div class="field">
+								{{ form_rest(form) }}
+							</div>
 							<div class="field">
 								<input type="submit" value="{{ 'TICKET_SEND'|trans }}" class="ui right floated button" name="post">
 							</div>

@@ -12,8 +12,15 @@
 				<i class="plus icon"></i>{{ 'FORUM_NEW_THREAD'|trans }}
 			</div>
 			<form class="form thread hidden" action="" method="POST">
-				{{ form_widget(form) }}
-				<br>
+				<div class="field">
+					{{ form_widget(form.title) }}
+				</div>
+				<div class="field">
+					{{ form_widget(form.content) }}
+				</div>
+				<div class="field">
+					{{ form_rest(form) }}
+				</div>
 				<div class="field">
 					<input type="submit" id="_submit" class="ui right floated button" name="_submit" value="{{ 'FORUM_SEND'|trans }}"/>
 				</div>

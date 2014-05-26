@@ -67,8 +67,12 @@
 					{{ "FORUM_REPLY"|trans }}
 				</h3>
 				<form class="ui form" action="" method="POST">
-					{{ form_widget(formpost) }}
-				<br>
+				<div class="field">
+					{{ form_widget(formpost.content) }}
+				</div>
+				<div class="field">
+					{{ form_rest(formpost) }}
+				</div>
 				<div class="field">
 					<input type="submit" id="_submit" class="ui right floated button" name="post" value="{{ 'FORUM_SEND'|trans }}"/>
 				</div>
