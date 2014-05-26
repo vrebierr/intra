@@ -1,5 +1,6 @@
 {% extends "::layout.html.twig" %}
 
+{% block title %} {{ 'TICKET_HEADING_TITLE'|trans }} | {{ parent() }} {% endblock %}
 {% block body %}
 	<h2 class="ui header padded left">
 		<i class="ticket large icon"></i>
