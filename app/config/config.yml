@@ -98,6 +98,11 @@ fos_user:
         group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager
+    change_password:
+        form:
+            type:               site_user_change_password
+            name:               site_user_change_password_form
+            validation_groups:  [ChangePassword, Default]
 
 # SonataUser Configuration
 sonata_user:

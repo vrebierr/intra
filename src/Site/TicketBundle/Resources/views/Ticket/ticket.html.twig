@@ -41,92 +41,93 @@
 
 {% block body_ticket %}
 	<div class="row">
-	<div class="column">
-	<div class="segment">
-	<h3 class="ui dividing header">
-		<i class="list icon"></i>
-		<div class="content">
-			{{ 'TICKET_HEADING_LIST'|trans|upper }}
-		</div>
-	</h3>
-	<br>
-	{% if form is not null %}
-		<div class="form newticket">
-			<div class="ui blue button show form center">
-				<i class="plus icon"></i>{{ 'TICKET_BUTTON_NEW'|trans }}
-			</div>
-			<form class="form thread hidden" action="" method="POST">
-				<div class="field">
-					{{ form_widget(form.subject) }}
-				</div>
-				<div class="field">
-					{{ form_widget(form.content) }}
-				</div>
-				<div class="field">
-					<div class="ui selection dropdown">
-						<div class="default text">{{ 'TICKET_HEADING_PRIORITY'|trans }}</div>
-						<i class="dropdown icon"></i>
-						{{ form_widget(form.priority) }}
+		<div class="column">
+			<div class="segment">
+				<br>
+				<h3 class="ui dividing header">
+					<i class="list icon"></i>
+					<div class="content">
+						{{ 'TICKET_HEADING_LIST'|trans|upper }}
 					</div>
-				</div>
-				<div class="field">
-					{{ form_rest(form) }}
-				</div>
-				<div class="field">
-					<input type="submit" class="ui right floated button" value="{{ 'TICKET_SEND'|trans }}"/>
-				</div>
-			</form>
+				</h3>
+				<br>
+				{% if form is not null %}
+					<div class="form newticket">
+						<div class="ui blue button show form center">
+							<i class="plus icon"></i>{{ 'TICKET_BUTTON_NEW'|trans }}
+						</div>
+						<form class="form thread hidden" action="" method="POST">
+							<div class="field">
+								{{ form_widget(form.subject) }}
+							</div>
+							<div class="field">
+								{{ form_widget(form.content) }}
+							</div>
+							<div class="field">
+								<div class="ui selection dropdown">
+									<div class="default text">{{ 'TICKET_HEADING_PRIORITY'|trans }}</div>
+									<i class="dropdown icon"></i>
+									{{ form_widget(form.priority) }}
+								</div>
+							</div>
+							<div class="field">
+								{{ form_rest(form) }}
+							</div>
+							<div class="field">
+								<input type="submit" class="ui right floated button" value="{{ 'TICKET_SEND'|trans }}"/>
+							</div>
+						</form>
+					</div>
+					<br>
+					<br>
+				{% endif %}
+				<table class="ui padded table segment">
+					<thead>
+						<tr>
+							<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_SUBJECT'|trans, 't.subject') }} {% if pagination.isSorted('t.subject') %} <i class="triangle down icon"></i> {% endif %}</th>
+							<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_DATE'|trans, 't.date') }}{% if pagination.isSorted('t.date') %} <i class="triangle down icon"></i> {% endif %}</th>
+							<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_LASTMESSAGE'|trans, 't.messages.last.date') }}{% if pagination.isSorted('t.messages.last.date') %} <i class="triangle down icon"></i> {% endif %}</th>
+							<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_PRIORITY'|trans, 't.priority') }}{% if pagination.isSorted('t.priority') %} <i class="triangle down icon"></i> {% endif %}</th>
+							<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_ASSIGNED'|trans, 't.assignedTo') }}{% if pagination.isSorted('t.assignedTo') %} <i class="triangle down icon"></i> {% endif %}</th>
+							<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_STATUS'|trans, 't.closed') }}{% if pagination.isSorted('t.closed') %} <i class="triangle down icon"></i> {% endif %}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for ticket in pagination %}
+							<tr {% if ticket.closed == 1 %} class="positive" {% endif %}>
+								<td><a href="{{ path('site_ticket_show', { 'id': ticket.id }) }}">{{ ticket.subject }}</a></td>
+								<td>{{ ticket.date|localizeddate("short", "medium") }}</td>
+								<td>{{ ticket.messages.last.date|localizeddate("short", "medium") }}</td>
+								<td>
+									{% if ticket.priority == 0 %}
+										{{ 'TICKET_PRIORITY_INVALID'|trans }}
+									{% elseif ticket.priority == 1 %}
+										{{ 'TICKET_PRIORITY_LOW'|trans }}
+									{% elseif ticket.priority == 2 %}
+										{{ 'TICKET_PRIORITY_MEDIUM'|trans }}
+									{% elseif ticket.priority == 3 %}
+										{{ 'TICKET_PRIORITY_HIGH'|trans }}
+									{% endif %}
+								</td>
+								<td>{% if ticket.assignedTo is not null %} {{ ticket.assignedTo.username }} {% else %} - {% endif %}</td>
+								<td>
+									{% if ticket.closed == 0 %}
+										{{ 'TICKET_STATUS_OPEN'|trans }}
+									{% else %}
+										{{ 'TICKET_STATUS_CLOSED'|trans }}
+									{% endif %}
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="6">{{ 'TICKET_NO_TICKETS'|trans }}.</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				{{ knp_pagination_render(pagination) }}
+			</div>
 		</div>
-	<br>
-	<br>
-	{% endif %}
-		<table class="ui padded table segment">
-			<thead>
-				<tr>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_SUBJECT'|trans, 't.subject') }} {% if pagination.isSorted('t.subject') %} <i class="triangle down icon"></i> {% endif %}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_DATE'|trans, 't.date') }}{% if pagination.isSorted('t.date') %} <i class="triangle down icon"></i> {% endif %}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_LASTMESSAGE'|trans, 't.messages.last.date') }}{% if pagination.isSorted('t.messages.last.date') %} <i class="triangle down icon"></i> {% endif %}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_PRIORITY'|trans, 't.priority') }}{% if pagination.isSorted('t.priority') %} <i class="triangle down icon"></i> {% endif %}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_ASSIGNED'|trans, 't.assignedTo') }}{% if pagination.isSorted('t.assignedTo') %} <i class="triangle down icon"></i> {% endif %}</th>
-					<th>{{ knp_pagination_sortable(pagination, 'TICKET_HEADING_STATUS'|trans, 't.closed') }}{% if pagination.isSorted('t.closed') %} <i class="triangle down icon"></i> {% endif %}</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for ticket in pagination %}
-					<tr {% if ticket.closed == 1 %} class="positive" {% endif %}>
-						<td><a href="{{ path('site_ticket_show', { 'id': ticket.id }) }}">{{ ticket.subject }}</a></td>
-						<td>{{ ticket.date|localizeddate("short", "medium") }}</td>
-						<td>{{ ticket.messages.last.date|localizeddate("short", "medium") }}</td>
-						<td>
-							{% if ticket.priority == 0 %}
-								{{ 'TICKET_PRIORITY_INVALID'|trans }}
-							{% elseif ticket.priority == 1 %}
-								{{ 'TICKET_PRIORITY_LOW'|trans }}
-							{% elseif ticket.priority == 2 %}
-								{{ 'TICKET_PRIORITY_MEDIUM'|trans }}
-							{% elseif ticket.priority == 3 %}
-								{{ 'TICKET_PRIORITY_HIGH'|trans }}
-							{% endif %}
-						</td>
-						<td>{% if ticket.assignedTo is not null %} {{ ticket.assignedTo.username }} {% else %} - {% endif %}</td>
-						<td>
-							{% if ticket.closed == 0 %}
-								{{ 'TICKET_STATUS_OPEN'|trans }}
-							{% else %}
-								{{ 'TICKET_STATUS_CLOSED'|trans }}
-							{% endif %}
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="6">{{ 'TICKET_NO_TICKETS'|trans }}.</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		{{ knp_pagination_render(pagination) }}
-	</div>
-	</div>
 	</div>
 {% endblock %}
 
