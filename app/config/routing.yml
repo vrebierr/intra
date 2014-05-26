@@ -1,7 +1,3 @@
-site_message:
-    resource: "@SiteMessageBundle/Resources/config/routing.yml"
-    prefix:   /
-
 root:
     pattern: /
     defaults:

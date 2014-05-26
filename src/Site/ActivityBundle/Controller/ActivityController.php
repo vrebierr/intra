@@ -41,7 +41,7 @@ class ActivityController extends Controller
 	{
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
-		// if is too early or late to registratration
+
 		if ($now > $module->getEndRegistration() || $now < $module->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
 
@@ -90,7 +90,7 @@ class ActivityController extends Controller
 	{
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
-		// if is too early or late to registratration
+
 		if ($now > $activity->getEndRegistration() || $now < $activity->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
 
@@ -107,7 +107,7 @@ class ActivityController extends Controller
  			if ($activity->getStudents()->contains($user))
 			{
 				die("toto");
-				$group = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findOneBy(array('activity' => $activity, 'students' => $user));
+				$group = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findBy(array('activity' => $activity, 'students' => $user));
 
 				echo($group->getStudents()->count());
 				return;
