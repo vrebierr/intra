@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Site\ActivityBundle\Entity\Module;
 use Site\ActivityBundle\Entity\Activity;
 use Site\ActivityBundle\Entity\ActivityGroup;
+use Site\ActivityBundle\Form\ActivityGroupType;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ActivityController extends Controller
@@ -76,6 +77,11 @@ class ActivityController extends Controller
 		$data['modules'] = $modules;
 		$data['activity'] = $activity;
 		$data['module'] = $activity->getModule();
+		$user = $this->container->get("security.context")->getToken()->getUser();
+		$students = $activity->getModule()->getStudents();
+		$students->removeElement($user);
+		$data['form'] = $this->createForm(new ActivityGroupType($students->toArray(), $activity))->createView();
+		$students->add($user);
 
 		return $this->render('SiteActivityBundle:Activities:activity.html.twig', $data);
 	}
@@ -98,30 +104,38 @@ class ActivityController extends Controller
 
 		if ($activity->getSizeMax() > 1)
  		{
- 			$form = $this->creatForm(new ActivityGroupType());
- 			$request = $this->getRequest();
- 			if ($request->isMethod("POST"))
- 			{
- 				$form->bind($request);
- 				if ($form->isValid() && $group->getStudents()->size() > $activity->getSizeMin() && $group->getStudents()->size() < $activity->getSizeMax())
- 				{
- 					$group = $form->getData();
-					$group->setActivity($activity);
+ 			if ($activity->getStudents()->contains($user))
+			{
+				die("toto");
+				$group = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findOneBy(array('activity' => $activity, 'students' => $user));
 
-					if ($activity->getStudents()->contains($user))
-					{
-						$activity->removeStudent($user);
-						$em->remove($group);
-					}
-					else
-					{
-						$activity->addStudent($user);
+				echo($group->getStudents()->count());
+				return;
+				foreach ($group->getStudents() as $student)
+					$activity->removeStudent($student);
+				$em->remove($group);
+			}
+			else
+			{
+	 			$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity));
+	 			$request = $this->getRequest();
+	 			if ($request->isMethod("POST"))
+	 			{
+	 				$form->bind($request);
+	 				$group = $form->getData();
+	 				$group->addStudent($user);
+	 				if ($form->isValid() && $group->getStudents()->count() >= $activity->getSizeMin() && $group->getStudents()->count() <= $activity->getSizeMax())
+	 				{
+	 					$group = $form->getData();
+						$group->setActivity($activity);
+						foreach ($group->getStudents() as $student)
+							$activity->addStudent($student);
 						$em->persist($group);
-					}
-					$em->persist($activity);
-					$em->flush();
- 				}
- 			}
+	 				}
+	 			}
+	 		}
+	 		$em->persist($activity);
+			$em->flush();
  		}
  		else
  		{

@@ -94,6 +94,6 @@ class UserController extends BaseController
 		$event = new InteractiveLoginEvent($this->getRequest(), $token);
 		$this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
 
-		return $this->redirect($this->generateUrl('intra_index'));
+		return $this->redirect($this->generateUrl('site_intra'));
 	}
 }

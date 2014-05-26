@@ -1,3 +1,15 @@
 site_elearning:
     pattern:  /
     defaults: { _controller: SiteActivityBundle:Elearning:index }
+
+site_module_elearning:
+    pattern:  /module/{id}
+    defaults: { _controller: SiteActivityBundle:Elearning:module }
+    requirements:
+        id: \d+
+
+site_activity_elearning:
+    pattern:  /activity/{id}
+    defaults: { _controller: SiteActivityBundle:Elearning:activity }
+    requirements:
+        id: \d+

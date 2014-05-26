@@ -1,4 +1,4 @@
-{% extends "SiteActivityBundle::layout.html.twig" %}
+{% extends "SiteActivityBundle::layout_activities.html.twig" %}
 
 {% block activities_body %}
 <div class="ui grid">
@@ -117,7 +117,10 @@
 						{% if app.user in activity.students %}
 							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
 						{% else %}
-							<form></form>
+							<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
+								{{ form_widget(form) }}
+								<input type="submit" />
+							</form>
 						{% endif %}
 					{% else %}
 						{% if app.user in activity.students %}

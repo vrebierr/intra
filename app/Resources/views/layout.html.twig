@@ -24,7 +24,7 @@
 		<body>
 	{% endif %}
 		<div class="ui secondary pointing blue menu">
-			<a class="{% block active_home '' %} item hide" href="{{ path('intra_index') }}">
+			<a class="{% block active_home '' %} item hide" href="{{ path('site_intra') }}">
 				<i class="home icon"></i> {{ 'NAVBAR_HOME'|trans }}
 			</a>
 			<a class="{% block active_activities '' %} item hide" href="{{ path('site_activities') }}">
@@ -39,7 +39,7 @@
 			<a class="{% block active_forum '' %} item hide" href="{{ path('site_forum') }}">
 				<i class="chat icon"></i> {{ 'NAVBAR_FORUM'|trans }}
 			</a>
-			<a class="{% block active_directory '' %} item hide" href="{{ path('directory_index') }}">
+			<a class="{% block active_directory '' %} item hide" href="{{ path('site_directory') }}">
 				<i class="book icon"></i> {{ 'NAVBAR_DIRECTORY'|trans }}
 			</a>
 			<div class="right menu">
@@ -55,6 +55,9 @@
 						<a class="item hide" href="{{ path('sonata_user_profile_show') }}">
 							<i class="unhide icon"></i> {{ 'NAVBAR_DROP_PROFILE'|trans }}
 						</a>
+						<a class="item hide" href="{{ path('fos_message_inbox') }}">
+							<i class="mail icon"></i>{{ 'NAVBAR_DROP_MESSAGES'|trans }}
+						</a>
 						<a class="item hide" href="{{ path('sonata_user_change_password') }}">
 							<i class="settings icon"></i>{{ 'NAVBAR_DROP_SETTINGS'|trans }}
 						</a>
@@ -62,7 +65,7 @@
 							<i class="ticket icon"></i>{{ 'NAVBAR_DROP_TICKETS'|trans }}
 						</a>
 						{% if is_granted('ROLE_ADMIN') %}
-							<a class="item hide" href="{{ path("sonata_admin_redirect") }}">
+							<a class="item hide" href="{{ path('sonata_admin_redirect') }}">
 								<i class="table icon"></i>{{ 'NAVBAR_DROP_ADMIN'|trans }}
 							</a>
 						{% endif %}

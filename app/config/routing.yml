@@ -1,8 +1,12 @@
+site_message:
+    resource: "@SiteMessageBundle/Resources/config/routing.yml"
+    prefix:   /
+
 root:
     pattern: /
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
-        route: intra_index
+        route: site_intra
 
 
 site_planning:
@@ -33,6 +37,11 @@ site_forum:
 site_ticket:
     resource: "@SiteTicketBundle/Resources/config/routing.yml"
     prefix:   /tickets
+
+
+site_message:
+    resource: "@SiteMessageBundle/Resources/config/routing.xml"
+    prefix: /messages
 
 
 site_directory:

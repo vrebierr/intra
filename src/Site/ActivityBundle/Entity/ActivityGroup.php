@@ -35,7 +35,7 @@ class ActivityGroup
     private $activity;
 
     /**
-     * @ORM\ManyToMany(targetEntity="\Application\Sonata\UserBundle\Entity\User")
+     * @ORM\ManyToMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="activity_groups")
      * @ORM\JoinTable(name="activity_groups_users")
      */
     private $students;

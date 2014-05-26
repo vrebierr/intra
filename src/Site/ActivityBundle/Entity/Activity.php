@@ -138,6 +138,11 @@ class Activity
      */
     private $groups;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Lesson", mappedBy="activity", cascade={"persist", "remove"})
+     */
+    private $lessons;
+
 
     public function __toString()
     {
@@ -147,7 +152,7 @@ class Activity
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -170,7 +175,7 @@ class Activity
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -193,7 +198,7 @@ class Activity
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -216,7 +221,7 @@ class Activity
     /**
      * Get subject
      *
-     * @return File 
+     * @return File
      */
     public function getSubject()
     {
@@ -239,7 +244,7 @@ class Activity
     /**
      * Get places
      *
-     * @return integer 
+     * @return integer
      */
     public function getPlaces()
     {
@@ -262,7 +267,7 @@ class Activity
     /**
      * Get start
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStart()
     {
@@ -285,7 +290,7 @@ class Activity
     /**
      * Get end
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEnd()
     {
@@ -308,7 +313,7 @@ class Activity
     /**
      * Get startRegistration
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartRegistration()
     {
@@ -331,7 +336,7 @@ class Activity
     /**
      * Get endRegistration
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndRegistration()
     {
@@ -354,7 +359,7 @@ class Activity
     /**
      * Get sizeMin
      *
-     * @return integer 
+     * @return integer
      */
     public function getSizeMin()
     {
@@ -377,7 +382,7 @@ class Activity
     /**
      * Get sizeMax
      *
-     * @return integer 
+     * @return integer
      */
     public function getSizeMax()
     {
@@ -400,7 +405,7 @@ class Activity
     /**
      * Get peers
      *
-     * @return integer 
+     * @return integer
      */
     public function getPeers()
     {
@@ -423,7 +428,7 @@ class Activity
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -446,7 +451,7 @@ class Activity
     /**
      * Get module
      *
-     * @return \Site\ActivityBundle\Entity\Module 
+     * @return \Site\ActivityBundle\Entity\Module
      */
     public function getModule()
     {
@@ -486,7 +491,7 @@ class Activity
     /**
      * Get students
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getStudents()
     {
@@ -519,7 +524,7 @@ class Activity
     /**
      * Get groups
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGroups()
     {
@@ -542,7 +547,7 @@ class Activity
     /**
      * Get startCorrection
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartCorrection()
     {
@@ -565,10 +570,43 @@ class Activity
     /**
      * Get endCorrection
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndCorrection()
     {
         return $this->endCorrection;
+    }
+
+    /**
+     * Add lessons
+     *
+     * @param \Site\ActivityBundle\Entity\Lesson $lessons
+     * @return Activity
+     */
+    public function addLesson(\Site\ActivityBundle\Entity\Lesson $lessons)
+    {
+        $this->lessons[] = $lessons;
+
+        return $this;
+    }
+
+    /**
+     * Remove lessons
+     *
+     * @param \Site\ActivityBundle\Entity\Lesson $lessons
+     */
+    public function removeLesson(\Site\ActivityBundle\Entity\Lesson $lessons)
+    {
+        $this->lessons->removeElement($lessons);
+    }
+
+    /**
+     * Get lessons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLessons()
+    {
+        return $this->lessons;
     }
 }

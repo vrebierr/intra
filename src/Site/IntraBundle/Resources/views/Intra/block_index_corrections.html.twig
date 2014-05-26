@@ -1,0 +1,17 @@
+<h3 class="ui dividing header">
+	<i class="pencil icon"></i>
+	<div class="content">
+		{{ "BLOCK_HEADING_CORRECTIONS"|trans|upper }}
+	</div>
+</h3>
+{% if correctionActivities is defined %}
+	{% for activity in correctionActivities %}
+		<p>
+			<a href="{{ path('site_activities_scale_show', { 'id': activity.id }) }}">{{ activity.name }}</a> {{ 'BLOCK_CONTENT_CORRECTIONS_NAME'|trans({ '%nb_peers%': activity.peers }) }}
+		</p>
+	{% endfor %}
+{% else %}
+	<p>
+		{{ 'BLOCK_CONTENT_CORRECTIONS_NONE'|trans }}
+	</p>
+{% endif %}

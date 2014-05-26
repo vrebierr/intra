@@ -21,7 +21,7 @@ security:
                 use_forward:    false
                 check_path:     fos_user_security_check
                 always_use_default_target_path: true
-                default_target_path: intra_index
+                default_target_path: site_intra
                 failure_path:   null
                 remember_me: true
             remember_me:
@@ -30,7 +30,7 @@ security:
                 path: /
             logout:
                 path: fos_user_security_logout
-                target: intra_index
+                target: site_intra
             anonymous:    true
             switch_user: true
         dev:

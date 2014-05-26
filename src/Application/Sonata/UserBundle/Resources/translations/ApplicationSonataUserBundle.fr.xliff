@@ -22,6 +22,10 @@
                 <source>label_profile_module_table_grade</source>
                 <target>Grade</target>
 			</trans-unit>
+            <trans-unit id="label_profile_module_table_total">
+                <source>label_profile_module_table_total</source>
+                <target>Total</target>
+			</trans-unit>
 			<trans-unit id="label_profile_module_table_activity">
                 <source>label_profile_module_table_activity</source>
                 <target>Activité</target>

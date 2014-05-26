@@ -69,14 +69,16 @@ doctrine:
             default:
                 mappings:
                     ApplicationSonataUserBundle: ~
+                    ApplicationSonataMediaBundle: ~
                     SonataUserBundle: ~
+                    SonataMediaBundle: ~
                     FOSUserBundle: ~
+                    FOSMessageBundle: ~
                     SiteForumBundle: ~
                     SiteIntraBundle: ~
                     SiteTicketBundle: ~
                     SiteActivityBundle: ~
-                    ApplicationSonataMediaBundle: ~
-                    SonataMediaBundle: ~
+                    SiteMessageBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -117,6 +119,12 @@ sonata_user:
             class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
+    profile:
+        form:
+            type: application_sonata_user_profile
+            handler: sonata.user.profile.form.handler.default
+            name: application_sonata_user_profile
+            validation_groups: [Profile]
 
 # SonataBlock Configuration
 sonata_block:
@@ -175,6 +183,7 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
+# SonataMedia Configuration
 sonata_media:
     default_context: default
     db_driver: doctrine_orm
@@ -193,5 +202,17 @@ sonata_media:
             directory:  %kernel.root_dir%/../web/uploads/media
             create:     true
 
+# Stfalcon Configuration
 stfalcon_tinymce:
     tinymce_jquery: true
+
+# FOSMessage Configuration
+fos_message:
+    db_driver: orm
+    thread_class: Site\MessageBundle\Entity\Thread
+    message_class: Site\MessageBundle\Entity\Message
+    spam_detector: fos_message.noop_spam_detector
+    new_thread_form:
+        type:               site_message.new_thread_form.type
+    reply_form:
+        type:               site_message.reply_form.type

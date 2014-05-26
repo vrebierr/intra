@@ -205,6 +205,16 @@ div.form.newreply
 	cursor: pointer;
 }
 
+.orange
+{
+	color: #f0ad4e;
+}
+
+.red
+{
+	color: #d9534f;
+}
+
 .hidden
 {
 	display: none;
@@ -341,6 +351,12 @@ div.form.newreply
 {
 	background-color: #EEEEEE;
 	min-height: 900px;
+}
+
+.right-menu
+{
+	background-color: #EEEEEE;
+	min-height: 600px;
 }
 
 .left.floated.fourteen.wide.column

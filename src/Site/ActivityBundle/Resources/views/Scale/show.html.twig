@@ -1,4 +1,4 @@
-{% extends 'SiteActivityBundle::layout.html.twig' %}
+{% extends 'SiteActivityBundle::layout_activities.html.twig' %}
 
 {% block activities_body %}
 	<form method="post" action="{{ path('site_activities_scale_show', {'id': group.id }) }}">
@@ -9,5 +9,5 @@
 		{{ form_widget(form) }}
 		<input type="submit" />
 	</form>
-	
+
 {% endblock %}

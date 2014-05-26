@@ -28,7 +28,7 @@ class ForumComment
     private $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="comments", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false, name="author")
      */
     private $author;
