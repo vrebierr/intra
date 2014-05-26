@@ -70,9 +70,7 @@ class ProfileType extends BaseType
 					'fr_FR' => 'French',
 					'en' => 'English'
 				),
-				'attr' => array(
-					'class' => 'ui selection dropdown'
-			)))
+			))
 		;
 	}
 
