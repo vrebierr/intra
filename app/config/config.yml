@@ -119,6 +119,12 @@ sonata_user:
             class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
+    profile:
+        form:
+            type: application_sonata_user_profile
+            handler: sonata.user.profile.form.handler.default
+            name: application_sonata_user_profile
+            validation_groups: [Profile]
 
 # SonataBlock Configuration
 sonata_block:
