@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\MessageBundle\DependencyInjection;
+namespace Application\Sonata\UserBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class SiteMessageExtension extends Extension
+class ApplicationSonataUserExtension extends Extension
 {
     /**
      * {@inheritDoc}
@@ -22,8 +22,6 @@ class SiteMessageExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('form.xml');
     }

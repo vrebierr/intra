@@ -52,6 +52,18 @@
 				<source>FORM_PROPOSE</source>
 				<target>Proposer une autre date</target>
 			</trans-unit>
+			<trans-unit id="23">
+				<source>FORM_RECIPIENT</source>
+				<target>Destinataire</target>
+			</trans-unit>
+			<trans-unit id="24">
+				<source>FORM_SUBJECT</source>
+				<target>Sujet</target>
+			</trans-unit>
+			<trans-unit id="25">
+				<source>FORM_BODY</source>
+				<target>Message</target>
+			</trans-unit>
         </body>
     </file>
 </xliff>

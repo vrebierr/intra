@@ -212,3 +212,7 @@ fos_message:
     thread_class: Site\MessageBundle\Entity\Thread
     message_class: Site\MessageBundle\Entity\Message
     spam_detector: fos_message.noop_spam_detector
+    new_thread_form:
+        type:               site_message.new_thread_form.type
+    reply_form:
+        type:               site_message.reply_form.type

@@ -8,9 +8,21 @@
 	</h3>
 	<div class="form newpost">
 		<form class="ui form" action="{{ path("fos_message_thread_new") }}" method="post">
-			{{ form_widget(form) }}
-			<br>
-			<input type="submit" class="ui blue button floated right"/>
+			<div class="field">
+				{{ form_widget(form.recipient) }}
+			</div>
+			<div class="field">
+				{{ form_widget(form.subject) }}
+			</div>
+			<div class="field">
+				{{ form_widget(form.body) }}
+			</div>
+			<div class="field">
+				{{ form_rest(form) }}
+			</div>
+			<div class="field">
+				<input type="submit" class="ui blue button floated right" value="{{ 'FORM_SEND'|trans }}"/>
+			</div>
 		</form>
 	</div>
 {% endblock %}
