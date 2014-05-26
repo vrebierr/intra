@@ -182,16 +182,7 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
      */
     public function setDateOfBirth($dateOfBirth)
     {
-        if ($dateOfBirth instanceOf \Datetime)
-            $this->dateOfBirth = $dateOfBirth;
-        else
-        {
-            $year = substr($dateOfBirth, 0, 4);
-            $month = substr($dateOfBirth, 4, 2);
-            $day = substr($dateOfBirth, 6, 2);
-            $formatedDate = $year. "-" .$month. "-" .$day;
-            $dateOfBirth = new \Datetime($formatedDate);
-        }
+        $this->dateOfBirth = $dateOfBirth;
     }
 
     /**

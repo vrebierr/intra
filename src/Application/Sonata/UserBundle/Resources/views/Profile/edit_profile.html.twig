@@ -7,8 +7,8 @@
 	{% if required and empty_value is none and not empty_value_in_choices and not multiple %}
 		{% set required = false %}
 	{% endif %}
+	<input type="hidden" {{ block('widget_attributes') }}>
 	<div class="menu">
-		<input type="hidden" {{ block('widget_attributes') }}>
 		{% if preferred_choices|length > 0 %}
 			{% set options = preferred_choices %}
 			{{ block('choice_widget_options') }}
@@ -36,6 +36,8 @@
 	{% endfor %}
 {% endspaceless %}
 {% endblock choice_widget_options %}
+
+
 
 {% block sonata_profile_content %}
 	<div class="centered row">
@@ -77,10 +79,13 @@
 					</div>
 					<div class="field">
 						<div class="ui selection dropdown">
-							<div class="default text">Gender</div>
+							<div class="default text">Locale</div>
 							<i class="dropdown icon"></i>
 							{{ form_widget(form.locale) }}
 						</div>
+					</div>
+					<div class="field">
+						{{ form_rest(form) }}
 					</div>
 					<div class="field">
 						<input type="submit" name="submit" class="ui button floated right" value="{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}">
