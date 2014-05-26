@@ -30,4 +30,20 @@ $(document).ready(function() {
 	{
 		$(location).attr('href', "./?range="+$(this).attr("data-text"));
 	});
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var h = {};
+
+    $("#calendar").fullCalendar({
+        header: h,
+        selectable: true,
+        editable: true,
+        draggable: true,
+        droppable: false
+    });
+
+
 });
