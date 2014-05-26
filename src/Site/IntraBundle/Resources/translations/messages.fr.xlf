@@ -90,6 +90,12 @@
                 <source>BLOCK_CONTENT_CORRECTIONS_NONE</source>
                 <target>Auncune correction à donner ou recevoir</target>
             </trans-unit>
+
+            <!-- HEADING -->
+            <trans-unit id="40">
+                <source>HEADING_INTRA_HOME</source>
+                <target>Accueil</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

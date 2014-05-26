@@ -91,6 +91,11 @@
                 <target>No correction to give or get</target>
             </trans-unit>
 
+            <!-- HEADING -->
+            <trans-unit id="40">
+                <source>HEADING_INTRA_HOME</source>
+                <target>Home</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
