@@ -117,8 +117,8 @@ class UserController extends BaseController
 		{
 			$data['title'] = $activity->getName();
 			$data['id'] = $activity->getId();
-			$data['start'] = $activity->getStart()->format("Y-m-d H:i:s");
-			$data['end'] = $activity->getEnd()->format("Y-m-d H:i:s");
+			$data['start'] = $activity->getStartRegistration()->format("Y-m-d H:i:s");
+			$data['end'] = $activity->getEndCorrection()->format("Y-m-d H:i:s");
 			$data['url'] = $this->generateUrl('site_activities_activity', array('id' => $activity->getId()));
 			$data['allDay'] = false;
 			$data['color'] = '#6ECFF5';
