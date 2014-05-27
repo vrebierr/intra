@@ -126,16 +126,25 @@
 							<div class="header">
 							Inscription d'un groupe
 							</div>
-							<div class="content">
+							<div class="content ui form">
 							<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
-								{{ form_widget(form) }}
+
+								<div class="field">
+								  <label>Nom : </label>
+									{{ form_widget(form.name) }}
+								  </div>
+
+									{{ form_widget(form.students, { 'attr': {'class': 'select'} }) }}
+
 
 							</div>
 							  <div class="actions">
 							<div class="red ui button">Annuler</div>
 						    <input class="green ui button" type="submit" value="S'inscrire" />
-						</form>
-						  </div>
+							</div>
+								{{ form_widget(form) }}
+							</form>
+							</div>
 						</div>
 						<button class="register-group ui right floated blue button"><i class="add icon"></i>S'inscrire</button>
 						{% endif %}
