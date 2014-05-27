@@ -16,18 +16,35 @@
 
     <div class="row">
         <div class="thirteen wide column">
+
             <div class="segment padded left">
+            {%if activity.lessons[0] is defined %}
+            {% for lesson in activity.lessons %}
+            <div {%if loop.index0 != 0 %}style="display:none"{% endif %} class="elearning_content" id="{{ loop.index0 }}">
             <h4 class="ui dividing header">
-                <i class="{% if activity.lessons[0].type == 'video' %}video{% elseif activity.lessons[0].type == 'pdf' %}file{% else %}code{% endif %} icon"></i>
-                {{ activity.lessons[0].name }}
+                <i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>
+                {{ lesson.name }}
             </h4>
+            {% if lesson.type == 'video' %}
+            <video width="320" height="240" controls>
+              <source src="{{ lesson.link|sonata_urlsafeid }}" type="video/mp4">
+            </video>
+            {% endif %}
+            <a href="{{ path('sonata_media_download', {'id': lesson.link|sonata_urlsafeid }) }}">{{ lesson.link }}</a>
             </div>
+            {% endfor %}
+            {% else %}
+            <p class="centered">Il n'y a pas de cours pour cette activité.</p>
+            {% endif %}
+        </div>
         </div>
 
     <div class="three wide column right-menu">
+        <ul>
         {% for lesson in activity.lessons %}
-        <i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}<br/>
+        <li><a href="#" class="elearning_menu" id="{{ loop.index0 }}"><i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}</a></li>
         {% endfor %}
+        </ul>
     </div>
 </div>
 

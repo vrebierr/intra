@@ -9,7 +9,7 @@
 					<div style="display:inline-block;"><i class="file outline icon"></i></div>{{ activity.name }}
 					<div class="ui blue label float right">{{ activity.type }}</div>
 				</h3>
-				{% if date() > activity.end %}
+				{% if date() > activity.endCorrection %}
 				<h4 class="ui info message centered">
 					{{ 'activity.registration.end'|trans }} {{ activity.endCorrection|localizeddate("short", "short") }}.
 				</h4>
