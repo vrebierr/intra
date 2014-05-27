@@ -1,0 +1,14 @@
+directory:
+    title: Directory
+    entries: There are %count% entries in the directory
+    form:
+        show: Show
+        all: All
+        results: results
+        heading:
+            photo: Picture
+            login: Login
+            firstname: Firstname
+            lastname: Lastname
+            phone: Phone number
+            mail: Email address

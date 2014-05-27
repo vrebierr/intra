@@ -4,51 +4,49 @@
 	<h2 class="ui header padded left">
 		<i class="book large icon"></i>
 		<div class="content">
-			{{ 'NAVBAR_DIRECTORY'|trans|upper }}
+			{{ 'directory.title'|trans|upper }}
 		</div>
 	</h2>
 	<div class="ui clearing divider"></div>
 	<div style="width:90%;margin:auto;">
 		<p>
-		Il y a {{ total.count }} entrées au total dans l'annuaire.
+			{{ 'directory.entries'|trans({ '%count%': total.count }) }}
 		</p>
-
-		<div style="float:right;margin-bottom:10px;">Afficher&nbsp;
-		  <div class="ui inline dropdown">
-			{% if users.params.range is defined %}
-		    <div class="text">{{users.params.range}}</div>
-			{% else %}
-			<div class="text">10</div>
-			{% endif %}
-		    <i class="dropdown icon"></i>
-		    <div class="menu">
-			  {% if users.params.range is defined %}
-		      <div class="item {% if users.params.range == 10 %}active {% endif %}directory_option" data-text="10">10</div>
-		      <div class="item {% if users.params.range == 20 %}active {% endif %}directory_option" data-text="20">20</div>
-		      <div class="item {% if users.params.range == 50 %}active {% endif %}directory_option" data-text="50">50</div>
-			  <div class="item {% if users.params.range == 100 %}active {% endif %}directory_option" data-text="100">100</div>
-			  <div class="item {% if users.params.range == total.count %}active {% endif %}directory_option" data-text="{{ total.count }}">Tous</div>
-			  {% else %}
-			  <div class="item active directory_option" data-text="10">10</div>
-	          <div class="item directory_option" data-text="20">20</div>
-	          <div class="item directory_option" data-text="50">50</div>
-	          <div class="item directory_option" data-text="100">100</div>
-		      <div class="item directory_option" data-text="{{ total.count }}">Tous</div>
-			  {% endif %}
-		    </div>
-		  </div>
-		     résultats.
+		<div style="float:right;margin-bottom:10px;"> {{ 'directory.form.show'|trans }}&nbsp;
+			<div class="ui inline dropdown">
+				{% if users.params.range is defined %}
+					<div class="text">{{ users.params.range }}</div>
+				{% else %}
+					<div class="text">10</div>
+				{% endif %}
+				<i class="dropdown icon"></i>
+				<div class="menu">
+					{% if users.params.range is defined %}
+						<div class="item {% if users.params.range == 10 %}active {% endif %}directory_option" data-text="10">10</div>
+						<div class="item {% if users.params.range == 20 %}active {% endif %}directory_option" data-text="20">20</div>
+						<div class="item {% if users.params.range == 50 %}active {% endif %}directory_option" data-text="50">50</div>
+						<div class="item {% if users.params.range == 100 %}active {% endif %}directory_option" data-text="100">100</div>
+						<div class="item {% if users.params.range == total.count %}active {% endif %}directory_option" data-text="{{ total.count }}">{{ 'directory.form.all'|trans }}</div>
+					{% else %}
+						<div class="item active directory_option" data-text="10">10</div>
+						<div class="item directory_option" data-text="20">20</div>
+						<div class="item directory_option" data-text="50">50</div>
+						<div class="item directory_option" data-text="100">100</div>
+						<div class="item directory_option" data-text="{{ total.count }}">{{ 'directory.form.all'|trans }}</div>
+					{% endif %}
+				</div>
+			</div>
+			{{ 'directory.form.results'|trans }}
 		</div>
-
 		<table class="ui sortable six column table segment">
 			<thead>
 				<tr>
-					<th>Photo</th>
-					<th>Login</th>
-					<th>Prénom</th>
-					<th>Nom</th>
-					<th>Numéro de téléphone</th>
-					<th>Adresse e-mail</th>
+					<th>{{ 'directory.form.heading.photo'|trans }}</th>
+					<th>{{ 'directory.form.heading.login'|trans }}</th>
+					<th>{{ 'directory.form.heading.firstname'|trans }}</th>
+					<th>{{ 'directory.form.heading.lastname'|trans }}</th>
+					<th>{{ 'directory.form.heading.phone'|trans }}</th>
+					<th>{{ 'directory.form.heading.mail'|trans }}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -77,7 +75,7 @@
 			</tbody>
 		</table>
 		<div class="navigation">
-	    	{{ knp_pagination_render(users) }}
+			{{ knp_pagination_render(users) }}
 		</div>
 	</div>
 {% endblock %}

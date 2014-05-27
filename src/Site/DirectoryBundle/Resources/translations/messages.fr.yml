@@ -1,0 +1,14 @@
+directory:
+    title: Annuaire
+    entries: "Il y a %count% entrées dans l'annuaire"
+    form:
+        show: Afficher
+        all: Tous
+        results: résultats
+        heading:
+            photo: Photo
+            login: Login
+            firstname: Prénom
+            lastname: Nom
+            phone: Numéro de téléphone
+            mail: Adresse email
