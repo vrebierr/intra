@@ -53,7 +53,8 @@ $(document).ready(function() {
 			left: 'title',
 			center: '',
 			right: 'month,agendaWeek,agendaDay, today, prev,next'
-				},
+		},
+		firstDay: 1,
 		defaultView: 'agendaWeek',
 		events: 'http://intra.local.42.fr:8888/app_dev.php/profile/activitiesfeed',
 		monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Novembre', 'Décembre'],
