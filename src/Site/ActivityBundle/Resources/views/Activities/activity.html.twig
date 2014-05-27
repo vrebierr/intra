@@ -41,21 +41,21 @@
 				{% endif %}
 
 				<div class="timeline" style="width: 100%;margin-bottom:5px;">
-					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|date("d/m/Y \\- H:i") }} | {{activity.endRegistration|date("d/m/Y \\- H:i") }}</span>">Inscription</div>
+					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|date("d/m/Y \\- H:i") }} | {{activity.endRegistration|date("d/m/Y \\- H:i") }}</span>">{{ 'activity.timeline.registration'|trans }}</div>
 					{% if d_gap < 0 %}
-					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|date("d/m/Y \\- H:i") }} | {{activity.endRegistration|date("d/m/Y \\- H:i") }}</span><br/><span style='color:#f0ad4e;'>{{ activity.start|date("d/m/Y \\- H:i") }} | {{activity.end|date("d/m/Y \\- H:i") }}</span>">{% if d_inscription < 1 %}Inscription{% endif %}</div>
+					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|date("d/m/Y \\- H:i") }} | {{activity.endRegistration|date("d/m/Y \\- H:i") }}</span><br/><span style='color:#f0ad4e;'>{{ activity.start|date("d/m/Y \\- H:i") }} | {{activity.end|date("d/m/Y \\- H:i") }}</span>">{% if d_inscription < 1 %} {{ 'activity.timeline.registration'|trans }}{% endif %}</div>
 					{% else %}
 					<div class="part white" style="width:{{ d_gap }}%"></div>
 					{% endif %}
-					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ activity.start|date("d/m/Y \\- H:i") }} | {{activity.end|date("d/m/Y \\- H:i") }}</span>">Activité</div>
-					<div class="part red" style="width:{{ d_correction }}%" data-html="<span style='color:#d9534f;'>{{ activity.startCorrection|date("d/m/Y \\- H:i") }} | {{activity.endCorrection|date("d/m/Y \\- H:i") }}</span>">Correction</div>
+					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ activity.start|date("d/m/Y \\- H:i") }} | {{activity.end|date("d/m/Y \\- H:i") }}</span>">{{ 'activity.timeline.activity'|trans }}</div>
+					<div class="part red" style="width:{{ d_correction }}%" data-html="<span style='color:#d9534f;'>{{ activity.startCorrection|date("d/m/Y \\- H:i") }} | {{activity.endCorrection|date("d/m/Y \\- H:i") }}</span>">{{ 'activity.timeline.correction'|trans }}</div>
 				</div>
 				{% if d_today >= 0 and d_today <= 100 %}
 				<div class='today' style="left:{{d_today}}%">
 					<div class='cursor'>
 					</div>
 					<div class='text'>
-						Today
+						{{ 'activity.cursor'|trans }}
 					</div>
 				</div>
 				{% endif %}
@@ -68,12 +68,12 @@
 			<div class="segment">
 				<h4 class="ui dividing header">
 					<i class="reorder icon"></i>
-					{{ 'DESCRIPTION'|trans }}
+					{{ 'activity.heading.description'|trans|upper }}
 				</h4>
 				<p> {{ activity.description|raw }} </p>
 				<h4 class="ui dividing header">
 					<i class="reorder icon"></i>
-					{{ 'TYPE'|trans }}
+					{{ 'activity.heading.type'|trans|upper }}
 				</h4>
 				<p>
 					{% if activity.sizeMin != activity.sizeMax %}
@@ -86,7 +86,7 @@
 				</p>
 				<h4 class="ui dividing header">
 					<i class="reorder icon"></i>
-					{{ 'CORRECTION'|trans }}
+					{{ 'activity.heading.correction'|trans|upper }}
 				</h4>
 				<p>
 					{{ 'activity.correction'|trans({ '%nb_peers%': activity.peers }) }}
@@ -94,13 +94,13 @@
 				<br/>
 				<p>
 					<i class="download icon nomargin"></i>
-					<b>Sujet :</b>
+					<b>{{ 'activity.heading.subject'|trans }}</b>
 					{% if activity.subject %}
 						<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
 					{% endif %}
 					<br/>
 					<i class="laptop icon nomargin"></i>
-					<b>E-Learning :</b>
+					<b>{{ 'activity.heading.elearning'|trans }}</b>
 					<a href="{{ path('site_activity_elearning', {'id': activity.id }) }}">Voir le cours dans l'elearning</a>
 				</p>
 			</div>
@@ -155,7 +155,7 @@
 			<div class="segment padded left">
 				<h4 class="ui dividing header">
 					<i class="pencil icon"></i>
-					{{ 'NOTES_AND_NOTATION'|trans }}
+					{{ 'activity.heading.notes'|trans|upper }}
 				</h4>
 			</div>
 		</div>

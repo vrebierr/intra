@@ -39,20 +39,20 @@
 				{% endif %}
 
 				<div class="timeline" style="width: 100%;margin-bottom:5px;">
-					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span>">Inscription</div>
+					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span>">{{ 'module.timeline.registration'|trans }}</div>
 					{% if d_gap < 0 %}
-					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span><br/><span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">{% if d_inscription < 1 %}Inscription{% endif %}</div>
+					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span><br/><span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">{% if d_inscription < 1 %}{{ 'module.timeline.registration'|trans }}{% endif %}</div>
 					{% else %}
 					<div class="part white" style="width:{{ d_gap }}%"></div>
 					{% endif %}
-					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">Activité</div>
+					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">{{ 'module.timeline.activity'|trans }}</div>
 				</div>
 				{% if d_today >= 0 and d_today <= 100 %}
 				<div class='today' style="left:{{d_today}}%">
 					<div class='cursor'>
 					</div>
 					<div class='text'>
-						Today
+						{{ 'module.cursor'|trans }}
 					</div>
 				</div>
 				{% endif %}
@@ -65,7 +65,7 @@
 			<div class="segment">
 				<h4 class="ui dividing header">
 					<i class="reorder icon"></i>
-					{{ 'DESCRIPTION'|trans }}
+					{{ 'module.heading.description'|trans|upper }}
 				</h4>
 				<p> {{ module.description|raw }} </p>
 			</div>
@@ -94,25 +94,25 @@
 			<div class="segment padded left">
 				<h4 class="ui dividing header">
 					<i class="pencil icon"></i>
-					{{ 'PROJETS'|trans }}
+					{{ 'module.heading.projects'|trans|upper }}
 				</h4>
 				<div class="ui relaxed list">
 					{% for activity in module.activities %}
 					<div class="item">
 						{% if date() > activity.startRegistration and date() < activity.endRegistration %}
-						{% set color = '#5cb85c' %}
+							{% set color = '#5cb85c' %}
 						{% elseif date() > activity.start and date() < activity.end %}
-						{% set color = '#f0ad4e' %}
+							{% set color = '#f0ad4e' %}
 						{% elseif date() > activity.startCorrection and date() < activity.endCorrection %}
-						{% set color = '#d9534f' %}
+							{% set color = '#d9534f' %}
 						{% elseif date() > activity.endCorrection %}
-						{% set color = '#9C9C9C' %}
+							{% set color = '#9C9C9C' %}
 						{% else %}
-						{% set color = '#EEEEEE' %}
+							{% set color = '#EEEEEE' %}
 						{% endif %}
 						<h5 class="ui black block header project-list" style="{% if date() > activity.endCorrection %}opacity:0.3; {% endif %}border-left: 5px solid {{ color }};">
 							<a href="{{ path('site_activities_activity', { 'id': activity.id}) }}">{{ activity.name }}</a>
-							<span class='float right'>Du {{ activity.startRegistration|date("d/m/Y \\- H:i") }} au {{ activity.endCorrection|date("d/m/Y \\- H:i") }}</span>
+							<span class='float right'>{{ 'module.subtitle.project.date'|trans({ '%start%': activity.startRegistration|localizeddate("short", "short"), '%end%': activity.endCorrection|localizeddate("short", "short") }) }}</span>
 						</h5>
 					</div>
 					{% endfor %}
