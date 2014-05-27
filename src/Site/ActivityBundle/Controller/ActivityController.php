@@ -79,9 +79,14 @@ class ActivityController extends Controller
 		$data['module'] = $activity->getModule();
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$students = $activity->getModule()->getStudents();
-		$students->removeElement($user);
-		$data['form'] = $this->createForm(new ActivityGroupType($students->toArray(), $activity))->createView();
-		$students->add($user);
+		if ($students->contains($user))
+		{
+			$students->removeElement($user);
+			$data['form'] = $this->createForm(new ActivityGroupType($students->toArray(), $activity))->createView();
+			$students->add($user);
+		}
+		else
+			$data['form'] = $this->createForm(new ActivityGroupType($students->toArray(), $activity))->createView();
 
 		return $this->render('SiteActivityBundle:Activities:activity.html.twig', $data);
 	}

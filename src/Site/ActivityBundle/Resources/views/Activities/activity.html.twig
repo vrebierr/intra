@@ -121,10 +121,23 @@
 						{% if app.user in activity.students %}
 							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
 						{% else %}
+						<div class="ui modal">
+							<i class="close icon"></i>
+							<div class="header">
+							Inscription d'un groupe
+							</div>
+							<div class="content">
 							<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
 								{{ form_widget(form) }}
-								<input type="submit" />
-							</form>
+
+							</div>
+							  <div class="actions">
+							<div class="red ui button">Annuler</div>
+						    <input class="green ui button" type="submit" value="S'inscrire" />
+						</form>
+						  </div>
+						</div>
+						<button class="register-group ui right floated blue button"><i class="add icon"></i>S'inscrire</button>
 						{% endif %}
 					{% else %}
 						{% if app.user in activity.students %}

@@ -54,6 +54,7 @@ $(document).ready(function() {
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
+	var href = $(location).attr('href');
 	$("#calendar").fullCalendar({
 		header: {
 			left: 'title',
@@ -61,8 +62,9 @@ $(document).ready(function() {
 			right: 'month,agendaWeek,agendaDay, today, prev,next'
 		},
 		firstDay: 1,
+		firstHour: 0,
 		defaultView: 'agendaWeek',
-		events: 'http://intra.local.42.fr:8888/app_dev.php/profile/activitiesfeed',
+		events: href.substr(0, href.length - 10) + '/profile/activitiesfeed',
 		monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Novembre', 'Décembre'],
 		monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jui','Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
 		dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
@@ -94,4 +96,6 @@ $(document).ready(function() {
            $('.elearning_content').hide();
            $el.show();
    });
+
+	$('.ui.modal').modal('attach events', '.register-group', 'show');
 });
