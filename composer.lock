@@ -3530,12 +3530,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "a11645c63740c29c10f49af961c9856676778349"
+                "reference": "76ccb280fbb966d3d1c612a8dff600cc2228bc58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/a11645c63740c29c10f49af961c9856676778349",
-                "reference": "a11645c63740c29c10f49af961c9856676778349",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/76ccb280fbb966d3d1c612a8dff600cc2228bc58",
+                "reference": "76ccb280fbb966d3d1c612a8dff600cc2228bc58",
                 "shasum": ""
             },
             "require": {
@@ -3638,7 +3638,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-05-23 14:36:49"
+            "time": "2014-05-26 19:03:08"
         },
         {
             "name": "twig/extensions",
@@ -3778,7 +3778,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com",
                     "homepage": "http://www.willdurand.fr"
                 }

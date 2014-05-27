@@ -43,4 +43,11 @@ $(document).ready(function() {
         draggable: true,
         droppable: false
     });
+
+	$(".elearning_menu").click(function (){
+		var $i = $(this).attr("id");
+		var $el = $('.elearning_content#' + $i);
+		$('.elearning_content').hide();
+		$el.show();
+	});
 });
