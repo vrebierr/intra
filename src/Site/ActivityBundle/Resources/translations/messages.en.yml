@@ -17,6 +17,8 @@ module:
     subtitle:
         project:
             date: From %start% to %end%
+            list: Activities for %module%
+
 elearning:
     home: E-learning
     nocourse: No lesson found

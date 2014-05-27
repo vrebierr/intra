@@ -39,13 +39,13 @@
 				{% endif %}
 
 				<div class="timeline" style="width: 100%;margin-bottom:5px;">
-					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span>">{{ 'module.timeline.registration'|trans }}</div>
+					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|localizeddate("short", "short") }} | {{module.endRegistration|localizeddate("short", "short") }}</span>">{{ 'module.timeline.registration'|trans }}</div>
 					{% if d_gap < 0 %}
-					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|date("d/m/Y \\- H:i") }} | {{module.endRegistration|date("d/m/Y \\- H:i") }}</span><br/><span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">{% if d_inscription < 1 %}{{ 'module.timeline.registration'|trans }}{% endif %}</div>
+					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ module.startRegistration|localizeddate("short", "short") }} | {{module.endRegistration|localizeddate("short", "short") }}</span><br/><span style='color:#f0ad4e;'>{{ module.start|localizeddate("short", "short") }} | {{module.end|localizeddate("short", "short") }}</span>">{% if d_inscription < 1 %}{{ 'module.timeline.registration'|trans }}{% endif %}</div>
 					{% else %}
 					<div class="part white" style="width:{{ d_gap }}%"></div>
 					{% endif %}
-					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ module.start|date("d/m/Y \\- H:i") }} | {{module.end|date("d/m/Y \\- H:i") }}</span>">{{ 'module.timeline.activity'|trans }}</div>
+					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ module.start|localizeddate("short", "short") }} | {{module.end|localizeddate("short", "short") }}</span>">{{ 'module.timeline.activity'|trans }}</div>
 				</div>
 				{% if d_today >= 0 and d_today <= 100 %}
 				<div class='today' style="left:{{d_today}}%">

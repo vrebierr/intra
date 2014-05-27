@@ -17,6 +17,7 @@ module:
     subtitle:
         project:
             date: Du %start% au %end%
+            list: Activités du module %module%
 
 elearning:
     home: E-learning
