@@ -22,7 +22,6 @@
 			<div class="overflow"></div>
 	{% else %}
 		<body>
-	{% endif %}
 		<div class="ui secondary pointing blue menu">
 			<a class="{% block active_home '' %} item hide" href="{{ path('site_intra') }}">
 				<i class="home icon"></i> {{ 'NAVBAR_HOME'|trans }}
@@ -81,6 +80,7 @@
 				</div>
 			</div>
 		</div>
+	{% endif %}
 		{% block body %}
 		{% endblock %}
 	</body>
