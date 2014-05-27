@@ -59,7 +59,7 @@ class UserController extends BaseController
 			$em->persist($userObject);
 			$em->flush();
 		}
-		return $this->render('SonataUserBundle:Profile:show.html.twig', array(
+		return $this->render('ApplicationSonataUserBundle:Profile:show.html.twig', array(
 			'user'   => $userObject,
 			'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
 		));
@@ -95,5 +95,37 @@ class UserController extends BaseController
 		$this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
 
 		return $this->redirect($this->generateUrl('site_intra'));
+	}
+
+	public function activitiesFeedAction()
+	{
+		$data = array();
+		$res = array();
+		$user = $this->container->get("security.context")->getToken()->getUser();
+
+		foreach($user->getModules() as $module)
+		{
+			$data['title'] = $module->getName();
+			$data['id'] = $module->getId();
+			$data['start'] = $module->getStart()->format("Y-m-d H:i:s");
+			$data['end'] = $module->getEnd()->format("Y-m-d H:i:s");
+			$data['url'] = $this->generateUrl('site_activities_module', array('id' => $module->getId()));
+			$data['color'] = '#00B5AD';
+			$res[] = $data;
+		}
+		foreach($user->getActivities() as $activity)
+		{
+			$data['title'] = $activity->getName();
+			$data['id'] = $activity->getId();
+			$data['start'] = $activity->getStart()->format("Y-m-d H:i:s");
+			$data['end'] = $activity->getEnd()->format("Y-m-d H:i:s");
+			$data['url'] = $this->generateUrl('site_activities_activity', array('id' => $activity->getId()));
+			$data['allDay'] = false;
+			$data['color'] = '#6ECFF5';
+			$res[] = $data;
+		}
+
+		echo (json_encode($res));
+		return $this->render('ApplicationSonataUserBundle:Profile:activitiesfeed.html.twig', $res);
 	}
 }

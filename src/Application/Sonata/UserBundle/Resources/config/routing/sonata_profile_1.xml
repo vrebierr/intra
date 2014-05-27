@@ -38,11 +38,14 @@
 
     <route id="sonata_user_profile_generate_token" pattern="/generate_token">
         <default key="_controller">ApplicationSonataUserBundle:User:generateToken</default>
-	</route>
+    </route>
 
-	<route id="sonata_user_profile_autologin" pattern="/autologin/{secret}">
-		<default key="_controller">ApplicationSonataUserBundle:User:autoLogin</default>
-		<requirement key="secret">^[[:alnum:]]{10}$</requirement>
+    <route id="sonata_user_profile_autologin" pattern="/autologin/{secret}">
+        <default key="_controller">ApplicationSonataUserBundle:User:autoLogin</default>
+        <requirement key="secret">^[[:alnum:]]{10}$</requirement>
         <requirement key="_method">GET</requirement>
+    </route>
+    <route id="sonata_user_profile_fetch_activities" pattern="/activitiesfeed">
+        <default key="_controller">ApplicationSonataUserBundle:User:activitiesfeed</default>
     </route>
 </routes>
