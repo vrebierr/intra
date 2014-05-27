@@ -32,7 +32,8 @@ class ActivityGroupType extends AbstractType
                 'class' => 'ApplicationSonataUserBundle:User',
                 'choices' => $this->students,
                 'expanded' => false,
-                'multiple' => true
+                'multiple' => true,
+                'required' => false
             ))
         ;
     }
