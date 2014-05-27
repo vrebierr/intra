@@ -381,7 +381,6 @@ div.form.newreply
  * (c) 2013 Adam Shaw
  */
 
-
 .fc {
   direction: ltr;
   text-align: left;
@@ -402,8 +401,6 @@ html .fc,
   padding: 0;
   vertical-align: top;
   }
-
-
 
 /* Header
 ------------------------------------------------------------------------*/
@@ -472,8 +469,6 @@ html .fc,
   z-index: 4;
   }
 
-
-
 /* Content
 ------------------------------------------------------------------------*/
 
@@ -487,8 +482,6 @@ html .fc,
   overflow: hidden;
   }
 
-
-
 /* Cell Styles
 ------------------------------------------------------------------------*/
 
@@ -498,7 +491,7 @@ html .fc,
   }
 
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-  background: #fcf8e3;
+  background: #E5E5E5;
   }
 
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
@@ -506,8 +499,6 @@ html .fc,
   opacity: .3;
   filter: alpha(opacity=30); /* for IE */
   }
-
-
 
 /* Buttons
 ------------------------------------------------------------------------*/

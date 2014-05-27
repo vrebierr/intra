@@ -48,17 +48,37 @@ $(document).ready(function() {
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
-	var h = {
-		left: 'title',
-		center: '',
-		right: 'month,agendaWeek,agendaDay, today, prev,next'
-	};
 	$("#calendar").fullCalendar({
-		header: h,
-		selectable: true,
-		editable: true,
-		draggable: true,
-		droppable: false
+		header: {
+			left: 'title',
+			center: '',
+			right: 'month,agendaWeek,agendaDay, today, prev,next'
+				},
+		defaultView: 'agendaWeek',
+		events: 'http://intra.local.42.fr:8888/app_dev.php/profile/activitiesfeed',
+		monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Novembre', 'Décembre'],
+		monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jui','Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+		dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+		dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+		allDayText: 'Continu',
+		timeFormat: 'HH:mm{ - H:mm}',
+		axisFormat: 'HH:mm',
+		buttonText: {
+			today: "Aujourd'hui",
+			month: 'MOIS',
+			week: 'SEMAINE',
+			day: 'JOUR'
+		},
+		columnFormat: {
+			month: 'ddd',
+			week: 'ddd d/M',
+			day: 'dddd d/M'
+		},
+		titleFormat: {
+			month: 'MMMM yyyy',
+			week: "d[ MMM] [ yyyy]{ '&#8211;' d} {MMM} {yyyy}",
+			day: 'dddd d MMM yyyy'
+		}
 	});
 
    $(".elearning_menu").click(function (){
