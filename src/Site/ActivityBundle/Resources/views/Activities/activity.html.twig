@@ -98,6 +98,10 @@
 					{% if activity.subject %}
 						<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
 					{% endif %}
+					<br/>
+					<i class="laptop icon nomargin"></i>
+					<b>E-Learning :</b>
+					<a href="{{ path('site_activity_elearning', {'id': activity.id }) }}">Voir le cours dans l'elearning</a>
 				</p>
 			</div>
 		</div>
