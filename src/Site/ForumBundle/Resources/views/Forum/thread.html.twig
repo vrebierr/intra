@@ -56,7 +56,7 @@
 					<form class="form comment hidden" action="" method="POST">
 						<input type="hidden" name="postid" value="{{ post.id }}">
 						<input class="commentfield" type="text" placeholder="{{ 'FORUM_CONTENT'|trans }}" name="content" required="required">
-						<input class="ui button" type="submit" value="{{ 'FORUM_SEND'|trans }}" name="comment">
+						<input class="ui blue button" type="submit" value="{{ 'FORUM_SEND'|trans }}" name="comment">
 					</form>
 				{% endif %}
 			</div>
@@ -74,7 +74,7 @@
 					{{ form_rest(formpost) }}
 				</div>
 				<div class="field">
-					<input type="submit" id="_submit" class="ui right floated button" name="post" value="{{ 'FORUM_SEND'|trans }}"/>
+					<input type="submit" id="_submit" class="ui blue right floated button" name="post" value="{{ 'FORUM_SEND'|trans }}"/>
 				</div>
 				</form>
 			</div>
