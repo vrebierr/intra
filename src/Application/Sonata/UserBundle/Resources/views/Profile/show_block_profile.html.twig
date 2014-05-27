@@ -105,7 +105,7 @@
 					AUTOLOGIN
 				</div>
 				<span class="description">
-					{{ user.autologinurl }} <a href="{{ path('sonata_user_profile_generate_token') }}"><i class="refresh link icon" data-content="Générer"></i></a>
+					<span class="ui content hidden">{{ user.autologinurl }}</span> <button class="ui tiny icon button zclip" data-content="Copier"><i class="tiny copy icon"></i></button> <a href="{{ path('sonata_user_profile_generate_token') }}"><button class="ui tiny icon button" data-content="Générer"><i class="refresh link icon"></i></button></a>
 				</span>
 			</div>
 		</div>

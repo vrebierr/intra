@@ -25,6 +25,12 @@ $(document).ready(function() {
 			$(this).parents('tbody').children("."+$(this).attr("data-text")).attr("class", "hidden "+$(this).attr("data-text"));
 	});
 
+	/* COPYBUTTON */
+	$('.zclip').zclip({
+		path:'/flash/zClip.swf',
+		copy:$('.ui.content.hidden').text()
+	});
+
 	/* SORT */
 	$('.ui.sortable').tablesort();
 
@@ -34,7 +40,7 @@ $(document).ready(function() {
 	});
 
 	/* POPUPS */
-	$(".refresh.icon").popup();
+	$(".ui.tiny.icon.button").popup();
 	$(".part").popup();
 
 	/* KNOB */
