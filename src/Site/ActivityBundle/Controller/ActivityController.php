@@ -114,9 +114,9 @@ class ActivityController extends Controller
 					{
 						foreach ($group->getStudents() as $student)
 							$activity->removeStudent($student);
+						$em->remove($group);
 					}
 				}
-				$em->remove($group);
 			}
 			else
 			{
