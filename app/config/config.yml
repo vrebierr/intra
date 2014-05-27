@@ -196,7 +196,9 @@ sonata_media:
         default:
             providers:
                 - sonata.media.provider.file
-            formats: ~
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
 
     cdn:
         server:
