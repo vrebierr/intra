@@ -106,13 +106,16 @@ class ActivityController extends Controller
  		{
  			if ($activity->getStudents()->contains($user))
 			{
-				die("toto");
-				$group = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findBy(array('activity' => $activity, 'students' => $user));
+				$groups = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findBy(array('activity' => $activity));
 
-				echo($group->getStudents()->count());
-				return;
-				foreach ($group->getStudents() as $student)
-					$activity->removeStudent($student);
+				foreach ($groups as $group)
+				{
+					if ($group->getStudents()->contains($user))
+					{
+						foreach ($group->getStudents() as $student)
+							$activity->removeStudent($student);
+					}
+				}
 				$em->remove($group);
 			}
 			else
