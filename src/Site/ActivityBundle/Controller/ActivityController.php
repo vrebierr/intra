@@ -103,8 +103,8 @@ class ActivityController extends Controller
 		$em = $this->getDoctrine()->getManager();
 
 		if ($activity->getSizeMax() > 1)
- 		{
- 			if ($activity->getStudents()->contains($user))
+		{
+			if ($activity->getStudents()->contains($user))
 			{
 				$groups = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findBy(array('activity' => $activity));
 
@@ -120,52 +120,52 @@ class ActivityController extends Controller
 			}
 			else
 			{
-	 			$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity));
-	 			$request = $this->getRequest();
-	 			if ($request->isMethod("POST"))
-	 			{
-	 				$form->bind($request);
-	 				$group = $form->getData();
-	 				$group->addStudent($user);
-	 				if ($form->isValid() && $group->getStudents()->count() >= $activity->getSizeMin() && $group->getStudents()->count() <= $activity->getSizeMax())
-	 				{
-	 					$group = $form->getData();
+				$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity));
+				$request = $this->getRequest();
+				if ($request->isMethod("POST"))
+				{
+					$form->bind($request);
+					$group = $form->getData();
+					$group->addStudent($user);
+					if ($form->isValid() && $group->getStudents()->count() >= $activity->getSizeMin() && $group->getStudents()->count() <= $activity->getSizeMax())
+					{
+						$group = $form->getData();
 						$group->setActivity($activity);
 						foreach ($group->getStudents() as $student)
 							$activity->addStudent($student);
 						$em->persist($group);
-	 				}
-	 			}
-	 		}
-	 		$em->persist($activity);
+					}
+				}
+			}
+			$em->persist($activity);
 			$em->flush();
- 		}
- 		else
- 		{
- 			if ($activity->getStudents()->contains($user))
- 			{
- 				$group = $em->createQuery('
- 					SELECT g, a, u FROM SiteActivityBundle:ActivityGroup g
- 					JOIN g.activity a
- 					JOIN g.students u
- 					WHERE u.id = :user_id AND a.id = :a_id
- 					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()))->getResult();
- 				$activity->removeStudent($user);
- 				$em->remove($group[0]);
- 			}
+		}
+		else
+		{
+			if ($activity->getStudents()->contains($user))
+			{
+				$group = $em->createQuery('
+					SELECT g, a, u FROM SiteActivityBundle:ActivityGroup g
+					JOIN g.activity a
+					JOIN g.students u
+					WHERE u.id = :user_id AND a.id = :a_id
+					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()))->getResult();
+				$activity->removeStudent($user);
+				$em->remove($group[0]);
+			}
 			else
 			{
 				$group = new ActivityGroup();
-	 			$group->setName($user->getUsername());
-	 			$group->setActivity($activity);
-	 			$group->addStudent($user);
-	 			$group->setName($user->getUsername()."_".$activity->getName());
+				$group->setName($user->getUsername());
+				$group->setActivity($activity);
+				$group->addStudent($user);
+				$group->setName($user->getUsername()."_".$activity->getName());
 				$activity->addStudent($user);
 				$em->persist($group);
 			}
 			$em->persist($activity);
- 			$em->flush();
- 		}
+			$em->flush();
+		}
 
 		return $this->redirect($this->generateUrl('site_activities_activity', array('id' => $activity->getId())));
 	}
