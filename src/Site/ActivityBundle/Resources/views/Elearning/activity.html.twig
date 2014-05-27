@@ -25,12 +25,18 @@
                 <i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>
                 {{ lesson.name }}
             </h4>
+            <div class="centered" >
             {% if lesson.type == 'video' %}
-            <video width="320" height="240" controls>
-              <source src="{{ lesson.link|sonata_urlsafeid }}" type="video/mp4">
+            <video width="70%" controls>
+              <source src="{% path lesson.link, 'reference' %}" type="video/mp4">
             </video>
+            {% elseif lesson.type == 'pdf' %}
+            <embed src="{% path lesson.link, 'reference' %}" width="100%" height="600px" />
             {% endif %}
-            <a href="{{ path('sonata_media_download', {'id': lesson.link|sonata_urlsafeid }) }}">{{ lesson.link }}</a>
+            </div>
+            <h3 class="ui dividing header">
+            <i class="reorder icon"></i>Description</h3>
+            {{ lesson.description|raw }}
             </div>
             {% endfor %}
             {% else %}
