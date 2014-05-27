@@ -34,6 +34,9 @@
             <embed src="{% path lesson.link, 'reference' %}" width="100%" height="600px" />
             {% endif %}
             </div>
+            <h3 class="ui dividing header">
+            <i class="reorder icon"></i>Description</h3>
+            {{ lesson.description|raw }}
             </div>
             {% endfor %}
             {% else %}

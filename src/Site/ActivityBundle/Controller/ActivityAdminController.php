@@ -52,7 +52,7 @@ class ActivityAdminController extends CRUDController
 			    $subboard->setTitle($object->getName());
 			    $subboard->setBoard($board);
 
-			    
+
 			    $em->persist($subboard);
 			    $em->flush();
 
