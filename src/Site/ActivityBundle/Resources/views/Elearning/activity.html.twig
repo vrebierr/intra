@@ -1,58 +1,62 @@
 {% extends 'SiteActivityBundle::layout_elearning.html.twig' %}
 
 {% block elearning_body %}
-<div class="ui grid">
-    <div class="row">
-        <div class="column">
-            <div class="segment">
-                <h3 class="ui dividing header">
-                    <div style="display:inline-block;"><i class="file outline icon"></i></div>Cours du {{ activity.name }}
-                    <div class="ui blue label float right">{{ activity.type }}</div>
-                </h3>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="thirteen wide column">
-
-            <div class="segment padded left">
-            {%if activity.lessons[0] is defined %}
-            {% for lesson in activity.lessons %}
-            <div {%if loop.index0 != 0 %}style="display:none"{% endif %} class="elearning_content" id="{{ loop.index0 }}">
-            <h4 class="ui dividing header">
-                <i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>
-                {{ lesson.name }}
-            </h4>
-            <div class="centered" >
-            {% if lesson.type == 'video' %}
-            <video width="70%" controls>
-              <source src="{% path lesson.link, 'reference' %}" type="video/mp4">
-            </video>
-            {% elseif lesson.type == 'pdf' %}
-            <embed src="{% path lesson.link, 'reference' %}" width="100%" height="600px" />
-            {% endif %}
-            </div>
-            <h3 class="ui dividing header">
-            <i class="reorder icon"></i>Description</h3>
-            {{ lesson.description|raw }}
-            </div>
-            {% endfor %}
-            {% else %}
-            <p class="centered">Il n'y a pas de cours pour cette activité.</p>
-            {% endif %}
-        </div>
-        </div>
-
-    <div class="three wide column right-menu">
-        <ul>
-        {% for lesson in activity.lessons %}
-        <li><a href="#" class="elearning_menu" id="{{ loop.index0 }}"><i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-</div>
-
-
+	<div class="ui grid">
+		<div class="row">
+			<div class="column">
+				<div class="segment">
+					<h3 class="ui dividing header">
+						<div style="display:inline-block;">
+							<i class="text file outline icon"></i>
+						</div>
+							{{ 'elearning.subtitle.lessons.list'|trans({ '%module%': activity.name }) }}
+						<div class="ui blue label float right">
+							{{ activity.type }}
+						</div>
+					</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="thirteen wide column">
+				<div class="segment padded left">
+					{% if activity.lessons[0] is defined %}
+						{% for lesson in activity.lessons %}
+							<div {%if loop.index0 != 0 %}style="display:none"{% endif %} class="elearning_content" id="{{ loop.index0 }}">
+								<h4 class="ui dividing header">
+									<i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>
+									{{ lesson.name }}
+								</h4>
+								<div class="centered" >
+									{% if lesson.type == 'video' %}
+										<video width="70%" controls>
+											<source src="{% path lesson.link, 'reference' %}" type="video/mp4">
+										</video>
+									{% elseif lesson.type == 'pdf' %}
+										<embed src="{% path lesson.link, 'reference' %}" width="100%" height="600px" />
+									{% endif %}
+								</div>
+								<h3 class="ui dividing header">
+									<i class="reorder icon"></i>
+									{{ 'elearning.heading.description'|trans|upper }}
+								</h3>
+								<p>{{ lesson.description|raw }}</p>
+							</div>
+						{% endfor %}
+					{% else %}
+						<p class="centered">{{ 'elearning.nocourse'|trans }}</p>
+					{% endif %}
+				</div>
+			</div>
+			<div class="three wide column right-menu">
+				<ul>
+					{% for lesson in activity.lessons %}
+						<li>
+							<a href="#" class="elearning_menu" id="{{ loop.index0 }}"><i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 {% endblock %}

@@ -22,6 +22,11 @@ module:
 elearning:
     home: E-learning
     nocourse: Aucun cours trouvé
+    heading:
+        description: Description
+    subtitle:
+        lessons:
+            list: Cours du module %module%
 
 activity:
     timeline:
