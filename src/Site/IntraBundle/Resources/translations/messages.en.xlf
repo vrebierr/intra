@@ -142,6 +142,11 @@
                 <source>FEED_TICKET_CREATE</source>
                 <target>You created a ticket with the subject:</target>
             </trans-unit>
+            <trans-unit id="59">
+                <source>FEED_MESSAGE_RECEIVED</source>
+                <target>You received a message from</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
