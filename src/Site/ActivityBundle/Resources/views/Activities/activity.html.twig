@@ -130,17 +130,19 @@
 							<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
 
 								<div class="field">
-								  <label>Nom : </label>
+								<div style="display:none; position: absolute; top: -5px;" class="error-group ui red pointing below ui label">Entrez un nom de groupe</div>
 									{{ form_widget(form.name) }}
+
 								  </div>
 
 									{{ form_widget(form.students, { 'attr': {'class': 'select'} }) }}
 
-
 							</div>
-							  <div class="actions">
+							<div class="actions">
 							<div class="red ui button">Annuler</div>
-						    <input class="green ui button" type="submit" value="S'inscrire" />
+							<div class="target-validate-group" style="display:inline-block">
+						    <input disabled class="validate-group green ui button" type="submit" value="S'inscrire" />
+							</div>
 							</div>
 								{{ form_widget(form) }}
 							</form>

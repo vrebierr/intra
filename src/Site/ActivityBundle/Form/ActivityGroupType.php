@@ -27,7 +27,7 @@ class ActivityGroupType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text', array('label' => false, 'attr' => array('placeholder' => 'activity.form.name')))
             ->add('students', 'entity', array(
                 'class' => 'ApplicationSonataUserBundle:User',
                 'choices' => $this->students,
@@ -37,7 +37,7 @@ class ActivityGroupType extends AbstractType
             ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
