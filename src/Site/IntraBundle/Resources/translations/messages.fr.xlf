@@ -104,6 +104,44 @@
                 <source>HEADING_INTRA_HOME</source>
                 <target>Accueil</target>
             </trans-unit>
+
+            <!-- FEED -->
+            <trans-unit id="50">
+                <source>FEED_REGISTRATION_ACTIVITY_GROUP_OWNER</source>
+                <target>Vous avez inscrit votre groupe à l'activité</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>FEED_REGISTRATION_ACTIVITY_GROUP</source>
+                <target>Vous avez été inscrit en groupe à l'activité</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>FEED_REGISTRATION_ACTIVITY_ONE</source>
+                <target>Vous vous êtes inscrit à l'activité</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>FEED_UNREGISTRATION_ACTIVITY_GROUP_OWNER</source>
+                <target>Vous avez désinscrit votre groupe de l'activité</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>FEED_UNREGISTRATION_ACTIVITY_GROUP</source>
+                <target>Votre groupe a été désinscrit de l'activité</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>FEED_UNREGISTRATION_ACTIVITY_ONE</source>
+                <target>Vous vous êtes désinscrit de l'activité</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>FEED_REGISTRATION_MODULE</source>
+                <target>Vous vous êtes inscrit au module</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>FEED_UNREGISTRATION_MODULE</source>
+                <target>Vous vous êtes désinscrit du module</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>FEED_TICKET_CREATE</source>
+                <target>Vous avez créé un ticket ayant pour sujet :</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

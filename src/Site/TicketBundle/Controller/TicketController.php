@@ -22,8 +22,6 @@ class TicketController extends Controller
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$em = $this->getDoctrine()->getManager();
 
-		$event = new Event();
-		$event->setUser($user);
 
 		$form = $this->createForm(new TicketType());
 		$data['form'] = $form->createView();
@@ -46,9 +44,13 @@ class TicketController extends Controller
 				$message->setContent($postVal['content']);
 
 				$ticket->addMessages($message);
+
+				$event = new Event();
+				$event->setUser($user);
 				$event->setType("ticket");
 				$event->setdate(new \Datetime());
-				$event->setDescription("Vous avez créé un nouveau ticket : '" .$ticket->getSubject(). "'");
+				$event->setDescription("FEED_TICKET_CREATE");
+				$event->setInfo($ticket->getSubject());
 
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($event);

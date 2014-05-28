@@ -44,6 +44,7 @@ class ActivityController extends Controller
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$event = new Event();
 		$event->setUser($user);
+		$event->setInfo($module->getName());
 
 		if ($now > $module->getEndRegistration() || $now < $module->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
@@ -63,7 +64,7 @@ class ActivityController extends Controller
 			}
 			$event->setDate($now);
 			$event->setType("deregistration");
-			$event->setDescription("Vous vous etes désinscrit du module " .$module->getName());
+			$event->setDescription("FEED_UNREGISTRATION_MODULE");
 		}
 		else
 		{
@@ -71,7 +72,7 @@ class ActivityController extends Controller
 
 			$event->setDate($now);
 			$event->setType("registration");
-			$event->setDescription("Vous vous etes inscrit au module " .$module->getName());
+			$event->setDescription("FEED_REGISTRATION_MODULE");
 		}
 
 		$em->persist($event);
@@ -85,8 +86,7 @@ class ActivityController extends Controller
 	{
 		$data = array();
 
-$user = $this->container->get("security.context")->getToken()->getUser();
-
+		$user = $this->container->get("security.context")->getToken()->getUser();
 
 		$modules = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:Module")->findAll();
 
@@ -94,15 +94,12 @@ $user = $this->container->get("security.context")->getToken()->getUser();
 		$data['activity'] = $activity;
 		$data['module'] = $activity->getModule();
 
-
 		$groups = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findBy(array('activity' => $activity));
-
 		foreach ($groups as $group)
 		{
 			if ($group->getStudents()->contains($user))
 				$data['group'] = $group;
 		}
-
 
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$students = $activity->getModule()->getStudents();
@@ -122,8 +119,6 @@ $user = $this->container->get("security.context")->getToken()->getUser();
 	{
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
-		$event = new Event();
-		$event->setUser($user);
 
 		if ($now > $activity->getEndRegistration() || $now < $activity->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
@@ -147,13 +142,22 @@ $user = $this->container->get("security.context")->getToken()->getUser();
 					if ($group->getStudents()->contains($user))
 					{
 						foreach ($group->getStudents() as $student)
+						{
 							$activity->removeStudent($student);
+							$event = new Event();
+							$event->setInfo($activity->getName());
+							$event->setUser($student);
+							$event->setDate($now);
+							$event->setType("deregistration");
+							if ($user == $student)
+								$event->setDescription("FEED_UNREGISTRATION_ACTIVITY_GROUP_OWNER");
+							else
+								$event->setDescription("FEED_UNREGISTRATION_ACTIVITY_GROUP");
+							$em->persist($event);
+						}
 						$em->remove($group);
 					}
 				}
-				$event->setDate($now);
-				$event->setType("deregistration");
-				$event->setDescription("Vous vous etes désinscrit de l'activité " .$activity->getName());
 			}
 			else
 			{
@@ -169,20 +173,31 @@ $user = $this->container->get("security.context")->getToken()->getUser();
 						$group = $form->getData();
 						$group->setActivity($activity);
 						foreach ($group->getStudents() as $student)
+						{
 							$activity->addStudent($student);
+							$event = new Event();
+							$event->setInfo($activity->getName());
+							$event->setUser($student);
+							$event->setDate($now);
+							$event->setType("registration");
+							if ($user == $student)
+								$event->setDescription("FEED_REGISTRATION_ACTIVITY_GROUP_OWNER");
+							else
+								$event->setDescription("FEED_REGISTRATION_ACTIVITY_GROUP");
+							$em->persist($event);
+						}
 						$em->persist($group);
-						$event->setDate($now);
-						$event->setType("registration");
-						$event->setDescription("Vous vous etes inscrit à l'activité " .$activity->getName());
 					}
 				}
 			}
-			$em->persist($event);
 			$em->persist($activity);
 			$em->flush();
 		}
 		else
 		{
+			$event = new Event();
+			$event->setDate($now);
+			$event->setInfo($activity->getName());
 			if ($activity->getStudents()->contains($user))
 			{
 				$group = $em->createQuery('
@@ -193,9 +208,8 @@ $user = $this->container->get("security.context")->getToken()->getUser();
 					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()))->getResult();
 				$activity->removeStudent($user);
 				$em->remove($group[0]);
-				$event->setDate($now);
 				$event->setType("deregistration");
-				$event->setDescription("Vous vous etes désinscrit de l'activité " .$activity->getName());
+				$event->setDescription("FEED_UNREGISTRATION_ACTIVITY_ONE");
 			}
 			else
 			{
@@ -206,9 +220,8 @@ $user = $this->container->get("security.context")->getToken()->getUser();
 				$group->setName($user->getUsername()."_".$activity->getName());
 				$activity->addStudent($user);
 				$em->persist($group);
-				$event->setDate($now);
 				$event->setType("registration");
-				$event->setDescription("Vous vous etes inscrit à l'activité " .$activity->getName());
+				$event->setDescription("FEED_REGISTRATION_ACTIVITY_ONE");
 			}
 			$em->persist($event);
 			$em->persist($activity);

@@ -46,8 +46,15 @@ class Event
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
-    private $description;
+	private $description;
 
+	/**
+	 * @var string
+	 *
+	 *
+	 * @ORM\Column(name="info", type="string", length=255)
+	 */
+	private $info;
 
     /**
      * Get id
@@ -149,5 +156,28 @@ class Event
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set info
+     *
+     * @param string $info
+     * @return Event
+     */
+    public function setInfo($info)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * Get info
+     *
+     * @return string 
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
 }

@@ -14,13 +14,15 @@
 					</div>
 					<div class="summary">
 						{% if event.type == 'registration' %}
-							<i class="circular green check icon"></i> {{ event.description }}
+							<i class="circular green check icon"></i>
 						{% elseif event.type == 'deregistration' %}
-							<i class="circular red remove icon"></i> {{ event.description }}
+							<i class="circular red remove icon"></i>
 						{% elseif event.type == 'ticket' %}
-							<i class="circular ticket icon"></i> {{ event.description }}
+							<i class="circular ticket icon"></i>
 						{% else %}
+							<i class="circular mail icon"></i>
 						{% endif %}
+						{{ event.description|trans }} {{ event.info }}
 					</div>
 				</div>
 			</div>
