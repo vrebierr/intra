@@ -12,10 +12,18 @@
 				<i class="plus icon"></i>{{ 'FORUM_NEW_THREAD'|trans }}
 			</div>
 			<form class="form thread hidden" action="" method="POST">
-				<div class="field">
+				{% if form.title.vars.valid == false %}
+					<div class="error field">
+				{% else %}
+					<div class="field">
+				{% endif %}
 					{{ form_widget(form.title) }}
 				</div>
-				<div class="field">
+				{% if form.content.vars.valid == false %}
+					<div class="error field">
+				{% else %}
+					<div class="field">
+				{% endif %}
 					{{ form_widget(form.content) }}
 				</div>
 				<div class="field">

@@ -8,13 +8,25 @@
 	</h3>
 	<div class="form newpost">
 		<form class="ui form" action="{{ path("fos_message_thread_new") }}" method="post">
-			<div class="field">
+			{% if form.recipient.vars.valid == false %}
+				<div class="error field">
+			{% else %}
+				<div class="field">
+			{% endif %}
 				{{ form_widget(form.recipient) }}
 			</div>
-			<div class="field">
+			{% if form.subject.vars.valid == false %}
+				<div class="error field">
+			{% else %}
+				<div class="field">
+			{% endif %}
 				{{ form_widget(form.subject) }}
 			</div>
-			<div class="field">
+			{% if form.body.vars.valid == false %}
+				<div class="error field">
+			{% else %}
+				<div class="field">
+			{% endif %}
 				{{ form_widget(form.body) }}
 			</div>
 			<div class="field">

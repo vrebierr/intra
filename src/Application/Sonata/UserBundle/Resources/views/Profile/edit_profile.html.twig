@@ -70,28 +70,61 @@
 			{% form_theme form _self %}
 			<div class="ui form">
 				<form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal">
-					<div class="field">
+					{% if form.firstname.vars.valid == false %}
+						<div class="error field">
+					{% else %}
+						<div class="field">
+					{% endif %}
 						{{ form_widget(form.firstname) }}
 					</div>
-					<div class="field">
+					{% if form.lastname.vars.valid == false %}
+						<div class="error field">
+					{% else %}
+						<div class="field">
+					{% endif %}
 						{{ form_widget(form.lastname) }}
 					</div>
+					{% if form.gender.vars.valid == false %}
+						<div class="error grouped inline field">
+					{% else %}
+						<div class="grouped inline field">
+					{% endif %}
 					<div class="grouped inline field">
 						{{ form_widget(form.gender) }}
 					</div>
-					<div class="field">
+					{% if form.phone.vars.valid == false %}
+						<div class="error field">
+					{% else %}
+						<div class="field">
+					{% endif %}
 						{{ form_widget(form.phone) }}
 					</div>
-					<div class="field">
+					{% if form.dateOfBirth.vars.valid == false %}
+						<div class="error field">
+					{% else %}
+						<div class="field">
+					{% endif %}
 						{{ form_widget(form.dateOfBirth) }}
 					</div>
-					<div class="field">
+					{% if form.website.vars.valid == false %}
+						<div class="error field">
+					{% else %}
+						<div class="field">
+					{% endif %}
 						{{ form_widget(form.website) }}
 					</div>
-					<div class="field">
+					{% if form.biography.vars.valid == false %}
+						<div class="error field">
+					{% else %}
+						<div class="field">
+					{% endif %}
 						{{ form_widget(form.biography) }}
 					</div>
-					<div class="field">
+					{% if form.locale.vars.valid == false %}
+						<div class="error field">
+					{% else %}
+						<div class="field">
+					{% endif %}
 						<div class="ui selection dropdown">
 							<div class="default text">Locale</div>
 							<i class="dropdown icon"></i>
