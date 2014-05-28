@@ -105,6 +105,7 @@ $(document).ready(function() {
         if ($(this).val() != "")
 		{
 			$('.error-group').hide();
+			$('.validate-group').removeAttr("style");
 			$('.validate-group').prop("disabled", false);
 		}
     });
