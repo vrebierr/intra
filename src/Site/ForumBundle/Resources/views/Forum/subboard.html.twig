@@ -50,11 +50,13 @@
 				<a href="{{ path('site_forum_thread', { 'id' : thread.id}) }}">{{ thread.title }}</a>
 				<span class="italic float right">
 					{{ 'FORUM_THREAD_AUTHOR'|trans({'%thread_author%': thread.author}) }}
-					{% if thread.posts|length != 0 %}
-						{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium"), '%thread_lastauthor%': thread.posts.last.author}) }}
-					{% else %}
-						{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.date|localizeddate("medium", "medium"), '%thread_lastauthor%': thread.author}) }}
-					{% endif %}
+					<span class="computer only">
+						{% if thread.posts|length != 0 %}
+							{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.posts.last.date|localizeddate("medium", "medium"), '%thread_lastauthor%': thread.posts.last.author}) }}
+						{% else %}
+							{{ 'FORUM_THREAD_LASTPOST'|trans({'%thread_lastpost%': thread.date|localizeddate("medium", "medium"), '%thread_lastauthor%': thread.author}) }}
+						{% endif %}
+					</span>
 				</span>
 			</h5>
 		{% endfor %}
