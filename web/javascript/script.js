@@ -98,4 +98,24 @@ $(document).ready(function() {
    });
 
 	$('.ui.modal').modal('attach events', '.register-group', 'show');
+
+
+    $('#site_activitybundle_activitygroup_name').keyup(function(event)
+    {
+        if ($(this).val() != "")
+		{
+			$('.error-group').hide();
+			$('.validate-group').prop("disabled", false);
+		}
+    });
+
+
+	$('.target-validate-group').click(function(){
+		if ($('#site_activitybundle_activitygroup_name').val() == "")
+		{
+			$('.error-group').show();
+		}
+	});
+
+
 });

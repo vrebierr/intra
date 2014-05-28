@@ -155,33 +155,34 @@
 								</button>
 							</a>
 						{% else %}
-							<div class="ui modal">
-								<i class="close icon"></i>
-								<div class="header">
-									{{ 'activity.group.create'|trans }}
-								</div>
-								<div class="content ui form">
-									<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
-										<div class="field">
-											{{ form_widget(form.name) }}
-										</div>
-										<div class="field">
-											{{ form_widget(form.students, { 'attr': {'class': 'select'} }) }}
-										</div>
-										<div class="actions">
-											<div class="red ui button">
-												{{ 'activity.form.cancel'|trans }}
-											</div>
-											<input class="green ui button" type="submit" value="{{ 'activity.form.register'|trans }}" />
-										</div>
-										{{ form_rest(form) }}
-									</form>
-								</div>
+						<div class="ui modal">
+							<i class="close icon"></i>
+							<div class="header">
+							Inscription d'un groupe
 							</div>
-							<button class="register-group ui right floated blue button">
-								<i class="add icon"></i>
-								{{ 'activity.form.register'|trans }}
-							</button>
+							<div class="content ui form">
+							<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
+
+								<div class="field">
+								<div style="display:none; position: absolute; top: -5px;" class="error-group ui red pointing below ui label">Entrez un nom de groupe</div>
+									{{ form_widget(form.name) }}
+
+								  </div>
+
+									{{ form_widget(form.students, { 'attr': {'class': 'select'} }) }}
+
+							</div>
+							<div class="actions">
+							<div class="red ui button">Annuler</div>
+							<div class="target-validate-group" style="display:inline-block">
+						    <input disabled class="validate-group green ui button" type="submit" value="S'inscrire" />
+							</div>
+							</div>
+								{{ form_widget(form) }}
+							</form>
+							</div>
+						</div>
+						<button class="register-group ui right floated blue button"><i class="add icon"></i>S'inscrire</button>
 						{% endif %}
 					{% else %}
 						{% if app.user in activity.students %}
