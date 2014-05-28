@@ -12,17 +12,25 @@
 				<i class="plus icon"></i>{{ 'FORUM_NEW_THREAD'|trans }}
 			</div>
 			<form class="form thread hidden" action="" method="POST">
-				<div class="field">
+				{% if form.title.vars.valid == false %}
+					<div class="error field">
+				{% else %}
+					<div class="field">
+				{% endif %}
 					{{ form_widget(form.title) }}
 				</div>
-				<div class="field">
+				{% if form.content.vars.valid == false %}
+					<div class="error field">
+				{% else %}
+					<div class="field">
+				{% endif %}
 					{{ form_widget(form.content) }}
 				</div>
 				<div class="field">
 					{{ form_rest(form) }}
 				</div>
 				<div class="field">
-					<input type="submit" id="_submit" class="ui right floated button" name="_submit" value="{{ 'FORUM_SEND'|trans }}"/>
+					<input type="submit" id="_submit" class="ui blue right floated button" name="_submit" value="{{ 'FORUM_SEND'|trans }}"/>
 				</div>
 			</form>
 		</div>

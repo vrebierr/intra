@@ -1,27 +1,27 @@
 {% extends 'SiteActivityBundle::layout_elearning.html.twig' %}
 
 {% block elearning_body %}
-
-<div class="ui items">
-{% for activity in module.activities %}
-  <a href="{{ path('site_activity_elearning', {'id': activity.id }) }}" class="item" style="text-decoration:none">
-    <div class="content">
-      <div class="ui blue label meta">{{ activity.type }}</div>
-      <div class="name">{{ activity.name }}</div>
-      <p class="description">
-          {% if activity.lessons[0] is defined %}
-          <ul>
-          {% for lesson in activity.lessons %}
-          <li><i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}</li>
-          {% endfor %}
-          </ul>
-          {% else %}
-          <p>Il n'y a pas de cours pour cette activité.</p>
-          {% endif %}
-          </p>
-        </div>
-    </a>
-{% endfor %}
-</div>
-
+	<div class="ui items">
+		{% for activity in module.activities %}
+			<a href="{{ path('site_activity_elearning', {'id': activity.id }) }}" class="item" style="text-decoration:none">
+				<div class="content">
+					<div class="ui blue label meta">{{ activity.type }}</div>
+					<div class="name">{{ activity.name }}</div>
+					<p class="description">
+						{% if activity.lessons[0] is defined %}
+							<ul>
+								{% for lesson in activity.lessons %}
+									<li>
+										<i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}
+									</li>
+								{% endfor %}
+							</ul>
+						{% else %}
+							<p> {{ 'elearning.nocourse'|trans }}</p>
+						{% endif %}
+					</p>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
 {% endblock %}

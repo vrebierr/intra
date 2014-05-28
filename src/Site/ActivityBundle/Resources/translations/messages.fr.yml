@@ -6,19 +6,57 @@ module:
         early: Vous ne pouvez pas encore vous inscrire à ce module. Les inscription ouvriront le
         late: Vous ne pouvez plus vous inscrire à ce module. Les inscriptions sont fermées depuis le
         end: Ce module est terminé depuis le
+    timeline:
+        activity: Activité
+        registration: Inscription
+        correction: Correction
+    heading:
+        description: Description
+        projects: Projets
+    cursor: Maintenant
+    subtitle:
+        project:
+            date: Du %start% au %end%
+            list: Activités du module %module%
 
 elearning:
     home: E-learning
     nocourse: Aucun cours trouvé
+    heading:
+        description: Description
+    subtitle:
+        lessons:
+            list: Cours du module %module%
 
 activity:
+    timeline:
+        activity: Activité
+        registration: Inscription
+        correction: Correction
+    heading:
+        description: Description
+        type: Type
+        correction: Correction
+        subject: "Sujet :"
+        elearning: "E-Learning :"
+        notes: Notes et notation
     registration:
-        early: Vous ne pouvez pas encore vous inscrire à ce projet. Les inscription ouvriront le
-        late: Vous ne pouvez plus vous inscrire à ce projet. Les inscriptions sont fermées depuis le
+        early: Vous ne pouvez pas encore vous inscrire à cette activité. Les inscription ouvriront le
+        late: Vous ne pouvez plus vous inscrire à ce activité. Les inscriptions sont fermées depuis le
         end: Cette activité est terminée depuis le
+    link:
+        elearning: "Voir le cours dans l'E-learning"
     correction: Pour cette activité, vous devrez vous faire corriger par %nb_peers% étudiants.
     group:
         mult:
             strict: Projet de groupe de %nb_students% personnes.
             free: Projet de groupe de %nb_students_min% à %nb_students_max% personnes.
         one: Projet individuel.
+        create: Créer un groupe
+        destroy: Détruire le groupe
+    form:
+        name: Nom
+        register: "S'inscrire"
+        deregister: Se désinscrire
+        cancel: Annuler
+    cursor: Maintenant

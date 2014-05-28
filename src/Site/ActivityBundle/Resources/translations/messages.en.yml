@@ -1,0 +1,62 @@
+module:
+    home: Activities
+    noactivity: No activity found
+    credits: %nb_credits% Credits
+    registration:
+        early: You can not register to this module yet. Registrations will be open on
+        late: You can not register to this module anymore. Registrations are closed since
+        end: This module is done since
+    timeline:
+        activity: Activity
+        registration: Registration
+        correction: Correction
+    heading:
+        description: Description
+        projects: Projects
+    cursor: Now
+    subtitle:
+        project:
+            date: From %start% to %end%
+            list: Activities for %module%
+
+elearning:
+    home: E-learning
+    nocourse: No lesson found
+    heading:
+        description: Description
+    subtitle:
+        lessons:
+            list: Lessons for %module%
+
+activity:
+    timeline:
+        activity: Activity
+        registration: Registration
+        correction: Correction
+    heading:
+        description: Description
+        type: Type
+        correction: Correction
+        subject: "Subject:"
+        elearning: "E-Learning:"
+        notes: Marks and notation
+    registration:
+        early: You can not register to this activity yet. Registrations will be open on
+        late: You can not register to this activity anymore. Registrations are closed since
+        end: This activity is done since
+    link:
+        elearning: View course in E-learning
+    correction: For this activity, you will need to be corrected by %nb_peers% students.
+    group:
+        mult:
+            strict: Group project composed by %nb_students% students.
+            free: Group project composed from %nb_students_min% to %nb_students_max% students.
+        one: Individual project.
+        create: Create a group
+        destroy: Destroy this group
+    form:
+        name: Name
+        register: Register
+        cancel: Cancel
+        deregister: Deregister
+    cursor: Now
