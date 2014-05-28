@@ -31,6 +31,14 @@ body
 	padding: 0;
 }
 
+
+@media only screen and (max-width: 991px) {
+  .computer.only
+  {
+    display: none;
+  }
+}
+
 body.overflow
 {
 	background: rgba(68, 68, 68, 0.5);

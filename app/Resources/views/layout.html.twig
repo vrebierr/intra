@@ -23,24 +23,24 @@
 			<div class="overflow"></div>
 	{% else %}
 		<body>
-		<div class="ui secondary pointing blue menu">
+		<div class="ui secondary pointing blue menu grid">
 			<a class="{% block active_home '' %} item hide" href="{{ path('site_intra') }}">
-				<i class="home icon"></i> {{ 'NAVBAR_HOME'|trans }}
+				<i class="home icon"></i><span class="computer only"> {{ 'NAVBAR_HOME'|trans }}</span>
 			</a>
 			<a class="{% block active_activities '' %} item hide" href="{{ path('site_activities') }}">
-				<i class="tasks icon"></i> {{ 'NAVBAR_ACTIVITIES'|trans }}
+				<i class="tasks icon"></i><span class="computer only"> {{ 'NAVBAR_ACTIVITIES'|trans }}</span>
 			</a>
 			<a class="{% block active_planning '' %} item hide" href="{{ path('site_planning') }}">
-				<i class="calendar icon"></i> {{ 'NAVBAR_PLANNING'|trans }}
+				<i class="calendar icon"></i><span class="computer only"> {{ 'NAVBAR_PLANNING'|trans }}</span>
 			</a>
 			<a class="{% block active_elearning '' %} item hide" href="{{ path('site_elearning') }}">
-				<i class="laptop icon"></i> {{ 'NAVBAR_ELEARNING'|trans }}
+				<i class="laptop icon"></i><span class="computer only"> {{ 'NAVBAR_ELEARNING'|trans }}</span>
 			</a>
 			<a class="{% block active_forum '' %} item hide" href="{{ path('site_forum') }}">
-				<i class="chat icon"></i> {{ 'NAVBAR_FORUM'|trans }}
+				<i class="chat icon"></i><span class="computer only"> {{ 'NAVBAR_FORUM'|trans }}</span>
 			</a>
 			<a class="{% block active_directory '' %} item hide" href="{{ path('site_directory') }}">
-				<i class="book icon"></i> {{ 'NAVBAR_DIRECTORY'|trans }}
+				<i class="book icon"></i><span class="computer only"> {{ 'NAVBAR_DIRECTORY'|trans }}</span>
 			</a>
 			<div class="right menu">
 				<div class="item">
@@ -51,7 +51,7 @@
 				</div>
 				{% if fos_message_nb_unread() %}<label class="ui small blue label"><a href="{{ path('fos_message_inbox') }}"><i class="mail outline icon"></i>{{ fos_message_nb_unread() }}</a></label>{% endif %}&nbsp;&nbsp;
 				<div class="ui dropdown item">
-					<i class="user icon"></i>{% if app.user is not null %} {{ app.user.username }} {% endif %}<i class="icon dropdown"></i>
+					<i class="user icon"></i><span class="computer only">{% if app.user is not null %} {{ app.user.username }} {% endif %}</span><i class="icon dropdown"></i>
 					<div class="menu">
 						<a class="item hide" href="{{ path('sonata_user_profile_show') }}">
 							<i class="unhide icon"></i> {{ 'NAVBAR_DROP_PROFILE'|trans }}
