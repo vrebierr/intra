@@ -72,6 +72,10 @@
                 <source>BLOCK_HEADING_ACTIVITIES</source>
                 <target>Activités en cours</target>
             </trans-unit>
+            <trans-unit id="22">
+                <source>BLOCK_HEADING_FEED</source>
+                <target>Fil d'actualité</target>
+            </trans-unit>
 
             <!-- BLOCK CONTENT -->
             <trans-unit id="30">
@@ -89,6 +93,10 @@
             <trans-unit id="33">
                 <source>BLOCK_CONTENT_CORRECTIONS_NONE</source>
                 <target>Auncune correction à donner ou recevoir</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>BLOCK_CONTENT_FEED_NONE</source>
+                <target>Aucune action récente à afficher</target>
             </trans-unit>
 
             <!-- HEADING -->

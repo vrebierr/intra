@@ -29,6 +29,13 @@ class ActivityGroup
     private $name;
 
     /**
+     * @var Datetime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
      * @ORM\ManytoOne(targetEntity="\Site\ActivityBundle\Entity\Activity", inversedBy="groups")
      * @ORM\JoinColumn(name="activity")
      */
@@ -78,11 +85,35 @@ class ActivityGroup
     {
         return $this->name;
     }
+
+
+    /**
+     * Set createdAt
+     *
+     * @param string $date
+     * @return ActivityGroup
+     */
+    public function setCreatedAt($date)
+    {
+        $this->createdAt = $date;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return datetime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->createdAt = new \Datetime();
         $this->students = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

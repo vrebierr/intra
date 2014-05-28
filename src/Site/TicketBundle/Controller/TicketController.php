@@ -12,8 +12,7 @@ use Site\TicketBundle\Entity\TicketMessage;
 use Site\TicketBundle\Form\TicketType;
 use Site\TicketBundle\Form\MessageType;
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+use Site\IntraBundle\Entity\Event;
 
 class TicketController extends Controller
 {
@@ -22,6 +21,9 @@ class TicketController extends Controller
 		$data = array();
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$em = $this->getDoctrine()->getManager();
+
+		$event = new Event();
+		$event->setUser($user);
 
 		$form = $this->createForm(new TicketType());
 		$data['form'] = $form->createView();
@@ -44,8 +46,12 @@ class TicketController extends Controller
 				$message->setContent($postVal['content']);
 
 				$ticket->addMessages($message);
+				$event->setType("ticket");
+				$event->setdate(new \Datetime());
+				$event->setDescription("Vous avez créé un nouveau ticket : '" .$ticket->getSubject(). "'");
 
 				$em = $this->getDoctrine()->getManager();
+				$em->persist($event);
 				$em->persist($ticket);
 				$em->flush();
 

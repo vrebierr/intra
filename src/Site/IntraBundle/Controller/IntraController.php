@@ -27,6 +27,13 @@ class IntraController extends Controller
 				$data['correctionActivities'][] = $activity;
 		}
 
+		$repo = $this->getDoctrine()->getManager()->getRepository("SiteIntraBundle:Event");
+		$events = $repo->findBy(array('user' => $user), array('date' => 'DESC'), 20);
+		if ($events != null)
+			$data['events'] = $events;
+		else
+			$data['events']= null;
+
         return $this->render('SiteIntraBundle:Intra:index.html.twig', $data);
     }
 }

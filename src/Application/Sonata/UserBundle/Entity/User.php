@@ -76,7 +76,12 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
     /**
      * @var \Site\Intra\ActivityBundle\Entity\ActivityGroup
      */
-    protected $activity_groups;
+     protected $activity_groups;
+
+    /**
+     * @var \Site\Intra\IntraBundle\Entitiy\Event
+     */
+    protected $events;
 
     /**
      * Constructor

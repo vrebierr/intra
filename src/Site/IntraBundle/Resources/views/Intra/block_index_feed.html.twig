@@ -1,0 +1,33 @@
+<h3 class="ui dividing header">
+	<i class="unordered list icon"></i>
+	<div class="content">
+		{{ "BLOCK_HEADING_FEED"|trans|upper }}
+	</div>
+</h3>
+{% if events is not null %}
+	<div class="ui feed segment">
+		{% for event in events %}
+			<div class="event">
+				<div class="content">
+					<div class="date">
+						{{ event.date|localizeddate("medium", "short") }}
+					</div>
+					<div class="summary">
+						{% if event.type == 'registration' %}
+							<i class="circular green check icon"></i> {{ event.description }}
+						{% elseif event.type == 'deregistration' %}
+							<i class="circular red remove icon"></i> {{ event.description }}
+						{% elseif event.type == 'ticket' %}
+							<i class="circular ticket icon"></i> {{ event.description }}
+						{% else %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% else %}
+	<p class="centered">
+		{{ 'BLOCK_CONTENT_FEED_NONE'|trans }}
+	</p>
+{% endif %}

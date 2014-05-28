@@ -7,6 +7,7 @@ use Site\ActivityBundle\Entity\Module;
 use Site\ActivityBundle\Entity\Activity;
 use Site\ActivityBundle\Entity\ActivityGroup;
 use Site\ActivityBundle\Form\ActivityGroupType;
+use Site\IntraBundle\Entity\Event;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ActivityController extends Controller
@@ -41,6 +42,8 @@ class ActivityController extends Controller
 	{
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
+		$event = new Event();
+		$event->setUser($user);
 
 		if ($now > $module->getEndRegistration() || $now < $module->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
@@ -58,10 +61,20 @@ class ActivityController extends Controller
 				$a->removeStudent($user);
 				$em->persist($a);
 			}
+			$event->setDate($now);
+			$event->setType("deregistration");
+			$event->setDescription("Vous vous etes désinscrit du module " .$module->getName());
 		}
 		else
+		{
 			$module->addStudent($user);
 
+			$event->setDate($now);
+			$event->setType("registration");
+			$event->setDescription("Vous vous etes inscrit au module " .$module->getName());
+		}
+
+		$em->persist($event);
 		$em->persist($module);
 		$em->flush();
 
@@ -95,6 +108,8 @@ class ActivityController extends Controller
 	{
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
+		$event = new Event();
+		$event->setUser($user);
 
 		if ($now > $activity->getEndRegistration() || $now < $activity->getStartRegistration())
 			throw new AccessDeniedException("You can't register for this activity now.");
@@ -122,6 +137,9 @@ class ActivityController extends Controller
 						$em->remove($group);
 					}
 				}
+				$event->setDate($now);
+				$event->setType("deregistration");
+				$event->setDescription("Vous vous etes désinscrit de l'activité " .$activity->getName());
 			}
 			else
 			{
@@ -139,9 +157,13 @@ class ActivityController extends Controller
 						foreach ($group->getStudents() as $student)
 							$activity->addStudent($student);
 						$em->persist($group);
+						$event->setDate($now);
+						$event->setType("registration");
+						$event->setDescription("Vous vous etes inscrit à l'activité " .$activity->getName());
 					}
 				}
 			}
+			$em->persist($event);
 			$em->persist($activity);
 			$em->flush();
 		}
@@ -157,6 +179,9 @@ class ActivityController extends Controller
 					')->setParameters(array('user_id' => $user->getId(), 'a_id' => $activity->getId()))->getResult();
 				$activity->removeStudent($user);
 				$em->remove($group[0]);
+				$event->setDate($now);
+				$event->setType("deregistration");
+				$event->setDescription("Vous vous etes désinscrit de l'activité " .$activity->getName());
 			}
 			else
 			{
@@ -167,7 +192,11 @@ class ActivityController extends Controller
 				$group->setName($user->getUsername()."_".$activity->getName());
 				$activity->addStudent($user);
 				$em->persist($group);
+				$event->setDate($now);
+				$event->setType("registration");
+				$event->setDescription("Vous vous etes inscrit à l'activité " .$activity->getName());
 			}
+			$em->persist($event);
 			$em->persist($activity);
 			$em->flush();
 		}
