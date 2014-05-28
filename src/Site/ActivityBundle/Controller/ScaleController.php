@@ -72,14 +72,24 @@ class ScaleController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$groups = $em->getRepository('SiteActivityBundle:ActivityGroup')->findBy(array("activity" => $activity))->toArray();
+		$students = $activity->getStudents()->toArray();
 		shuffle($groups);
-		foreach ($groups as $group)
+		shuffle($students);
+		$limit = 0;
+		$i = 0;
+		foreach ($students as $student)
 		{
-			$scale_group = new ScaleGroup();
-			$scale_group->setGroup($group);
-			$scale_group->setRater($activity->getStudents()->toArray()[rand(0, $raters->count())]);
-			$scale_group->setScale($scale);
-			$em->persist($scale_group);
+			for ($i = 0; $i < 4; $i++)
+			{
+				$scale_group = new ScaleGroup();
+				$rand = rand(0, $groups->count());
+				$scale_group->setGroup($groups[$rand]);
+				$scale_group->setRater($student);
+				$em->persist($scale_group);
+				$groups[$rand]->setPeers($groups[$rand]->getPeers() + 1);
+				if ($groups[$rand]->getPeers() == 4)
+					unset($groups[$rand]);
+			}
 		}
 		$em->flush();
 	}
