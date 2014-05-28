@@ -6,15 +6,20 @@
 		<div class="column">
 			<div class="segment">
 				<h3 class="ui dividing header">
-					<div style="display:inline-block;"><i class="file outline icon"></i></div>{{ activity.name }}
-					<div class="ui blue label float right">{{ activity.type }}</div>
+					<div style="display:inline-block;">
+						<i class="file outline icon"></i>
+					</div>
+					{{ activity.name }}
+					<div class="ui blue label float right">
+						{{ activity.type }}
+					</div>
 				</h3>
 				{% if date() > activity.endCorrection %}
-				<h4 class="ui info message centered">
-					{{ 'activity.registration.end'|trans }} {{ activity.endCorrection|localizeddate("short", "short") }}.
-				</h4>
+					<h4 class="ui info message centered">
+						{{ 'activity.registration.end'|trans }} {{ activity.endCorrection|localizeddate("short", "short") }}.
+					</h4>
 				{% elseif date() < activity.startregistration %}
-						<h4 class="ui error message centered">
+					<h4 class="ui error message centered">
 						{{ 'activity.registration.early'|trans }} {{ activity.startRegistration|localizeddate("short", "short") }}.
 					</h4>
 				{% elseif date() > activity.endregistration and app.user not in activity.students %}
@@ -41,23 +46,32 @@
 				{% endif %}
 
 				<div class="timeline" style="width: 100%;margin-bottom:5px;">
-					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|localizeddate("short", "short") }} | {{activity.endRegistration|localizeddate("short", "short") }}</span>">{{ 'activity.timeline.registration'|trans }}</div>
+					<div class="part green" style="width:{{ d_inscription }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|localizeddate("short", "short") }} | {{activity.endRegistration|localizeddate("short", "short") }}</span>">
+						{{ 'activity.timeline.registration'|trans }}
+					</div>
 					{% if d_gap < 0 %}
-					<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|localizeddate("short", "short") }} | {{activity.endRegistration|localizeddate("short", "short") }}</span><br/><span style='color:#f0ad4e;'>{{ activity.start|localizeddate("short", "short") }} | {{activity.end|localizeddate("short", "short") }}</span>">{% if d_inscription < 1 %} {{ 'activity.timeline.registration'|trans }}{% endif %}</div>
+						<div class="part green striped-orange" style="width:{{ - d_gap }}%" data-html="<span style='color:#5cb85c;'>{{ activity.startRegistration|localizeddate("short", "short") }} | {{activity.endRegistration|localizeddate("short", "short") }}</span><br/><span style='color:#f0ad4e;'>{{ activity.start|localizeddate("short", "short") }} | {{activity.end|localizeddate("short", "short") }}</span>">
+							{% if d_inscription < 1 %}
+								{{ 'activity.timeline.registration'|trans }}
+							{% endif %}
+						</div>
 					{% else %}
-					<div class="part white" style="width:{{ d_gap }}%"></div>
+						<div class="part white" style="width:{{ d_gap }}%"></div>
 					{% endif %}
-					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ activity.start|localizeddate("short", "short") }} | {{activity.end|localizeddate("short", "short") }}</span>">{{ 'activity.timeline.activity'|trans }}</div>
-					<div class="part red" style="width:{{ d_correction }}%" data-html="<span style='color:#d9534f;'>{{ activity.startCorrection|localizeddate("short", "short") }} | {{activity.endCorrection|localizeddate("short", "short") }}</span>">{{ 'activity.timeline.correction'|trans }}</div>
+					<div class="part orange" style="width:{{ d_activity }}%" data-html="<span style='color:#f0ad4e;'>{{ activity.start|localizeddate("short", "short") }} | {{activity.end|localizeddate("short", "short") }}</span>">
+						{{ 'activity.timeline.activity'|trans }}
+					</div>
+					<div class="part red" style="width:{{ d_correction }}%" data-html="<span style='color:#d9534f;'>{{ activity.startCorrection|localizeddate("short", "short") }} | {{activity.endCorrection|localizeddate("short", "short") }}</span>">
+						{{ 'activity.timeline.correction'|trans }}
+					</div>
 				</div>
 				{% if d_today >= 0 and d_today <= 100 %}
-				<div class='today' style="left:{{d_today}}%">
-					<div class='cursor'>
+					<div class='today' style="left:{{d_today}}%">
+						<div class='cursor'></div>
+						<div class='text'>
+							{{ 'activity.cursor'|trans }}
+						</div>
 					</div>
-					<div class='text'>
-						{{ 'activity.cursor'|trans }}
-					</div>
-				</div>
 				{% endif %}
 			</div>
 		</div>
@@ -70,7 +84,9 @@
 					<i class="reorder icon"></i>
 					{{ 'activity.heading.description'|trans|upper }}
 				</h4>
-				<p> {{ activity.description|raw }} </p>
+				<p>
+					{{ activity.description|raw }}
+				</p>
 				<h4 class="ui dividing header">
 					<i class="reorder icon"></i>
 					{{ 'activity.heading.type'|trans|upper }}
@@ -94,65 +110,94 @@
 				<br/>
 				<p>
 					<i class="download icon nomargin"></i>
-					<b>{{ 'activity.heading.subject'|trans }}</b>
+					<b>
+						{{ 'activity.heading.subject'|trans }}
+					</b>
 					{% if activity.subject %}
-						<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">{{ activity.subject }}</a>
+						<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">
+							{{ activity.subject }}
+						</a>
 					{% endif %}
 					<br/>
 					<i class="laptop icon nomargin"></i>
-					<b>{{ 'activity.heading.elearning'|trans }}</b>
-					<a href="{{ path('site_activity_elearning', {'id': activity.id }) }}">Voir le cours dans l'elearning</a>
+					<b>
+						{{ 'activity.heading.elearning'|trans }}
+					</b>
+					<a href="{{ path('site_activity_elearning', {'id': activity.id }) }}">
+						{{ 'activity.link.elearning'|trans }}
+					</a>
 				</p>
 			</div>
 		</div>
-
 		<div class="three wide column">
-			<div class='centered'><b>Inscrits</b></div><br/>
+			<div class='centered'>
+				<b>
+					Inscrits
+				</b>
+			</div>
+			<br/>
 			<div class="segment centered">
 				<input class="donught chart" value="{{ activity.students|length }}" data-max="{{ activity.places }}" data-width="150" data-thickness=".4">
 			</div>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="column">
 			{% if app.user in activity.module.students %}
 				{% if date() > activity.startRegistration and date() < activity.endRegistration %}
 					{% if activity.sizemax > 1 %}
 						{% if app.user in activity.students %}
-							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="remove icon"></i>Détruire le groupe</button></a>
+							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">
+								<button class="ui right floated blue button">
+									<i class="remove icon"></i>
+									{{ 'activity.group.destroy'|trans }}
+								</button>
+							</a>
 						{% else %}
-						<div class="ui modal">
-							<i class="close icon"></i>
-							<div class="header">
-							Inscription d'un groupe
+							<div class="ui modal">
+								<i class="close icon"></i>
+								<div class="header">
+									{{ 'activity.group.create'|trans }}
+								</div>
+								<div class="content ui form">
+									<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
+										<div class="field">
+											{{ form_widget(form.name) }}
+										</div>
+										<div class="field">
+											{{ form_widget(form.students, { 'attr': {'class': 'select'} }) }}
+										</div>
+										<div class="actions">
+											<div class="red ui button">
+												{{ 'activity.form.cancel'|trans }}
+											</div>
+											<input class="green ui button" type="submit" value="{{ 'activity.form.register'|trans }}" />
+										</div>
+										{{ form_rest(form) }}
+									</form>
+								</div>
 							</div>
-							<div class="content ui form">
-							<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
-
-								<div class="field">
-								  <label>Nom : </label>
-									{{ form_widget(form.name) }}
-								  </div>
-
-									{{ form_widget(form.students, { 'attr': {'class': 'select'} }) }}
-
-
-							</div>
-							  <div class="actions">
-							<div class="red ui button">Annuler</div>
-						    <input class="green ui button" type="submit" value="S'inscrire" />
-							</div>
-								{{ form_widget(form) }}
-							</form>
-							</div>
-						</div>
-						<button class="register-group ui right floated blue button"><i class="add icon"></i>S'inscrire</button>
+							<button class="register-group ui right floated blue button">
+								<i class="add icon"></i>
+								{{ 'activity.form.register'|trans }}
+							</button>
 						{% endif %}
 					{% else %}
 						{% if app.user in activity.students %}
-							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="minus icon"></i>Se désinscrire</button></a>
+							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">
+								<button class="ui right floated blue button">
+									<i class="minus icon"></i>
+									{{ 'activity.form.deregister'|trans }}
+								</button>
+							</a>
 						{% else %}
-							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}"><button class="ui right floated blue button"><i class="add icon"></i>S'inscrire</button></a>
+							<a href="{{ path('site_activities_activity_registration', {'id': activity.id }) }}">
+								<button class="ui right floated blue button">
+									<i class="add icon"></i>
+									{{ 'activity.form.register'|trans }}
+								</button>
+							</a>
 						{% endif %}
 					{% endif %}
 				{% endif %}

@@ -44,10 +44,19 @@ activity:
         early: You can not register to this activity yet. Registrations will be open on
         late: You can not register to this activity anymore. Registrations are closed since
         end: This activity is done since
+    link:
+        elearning: View course in E-learning
     correction: For this activity, you will need to be corrected by %nb_peers% students.
     group:
         mult:
             strict: Group project composed by %nb_students% students.
             free: Group project composed from %nb_students_min% to %nb_students_max% students.
         one: Individual project.
+        create: Create a group
+        destroy: Destroy this group
+    form:
+        name: Name
+        register: Register
+        cancel: Cancel
+        deregister: Deregister
     cursor: Now
