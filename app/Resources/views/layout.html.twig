@@ -49,8 +49,9 @@
 						<i class="search icon"></i>
 					</div>
 				</div>
+				{% if fos_message_nb_unread() %}<label class="ui small blue label"><a href="{{ path('fos_message_inbox') }}"><i class="mail outline icon"></i>{{ fos_message_nb_unread() }}</a></label>{% endif %}&nbsp;&nbsp;
 				<div class="ui dropdown item">
-					{% if fos_message_nb_unread() %}<label class="ui small blue label"><i class="mail outline icon"></i>{{ fos_message_nb_unread() }}</label>{% endif %}&nbsp;&nbsp;<i class="user icon"></i>{% if app.user is not null %} {{ app.user.username }} {% endif %}<i class="icon dropdown"></i>
+					<i class="user icon"></i>{% if app.user is not null %} {{ app.user.username }} {% endif %}<i class="icon dropdown"></i>
 					<div class="menu">
 						<a class="item hide" href="{{ path('sonata_user_profile_show') }}">
 							<i class="unhide icon"></i> {{ 'NAVBAR_DROP_PROFILE'|trans }}
