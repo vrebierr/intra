@@ -127,13 +127,24 @@
 						{{ 'activity.link.elearning'|trans }}
 					</a>
 				</p>
+				<br>
+				{% if group is defined %}
+				<h4 class="ui dividing header">
+					<i class="users icon"></i>
+					{{ 'activity.group.title'|trans|upper }} : {{ group.name }}
+				</h4>
+					{% for student in group.students %}
+					<a href="{{ path('sonata_user_profile_show_name', { 'user' : student }) }}" class="ui segment" style="display:inline-block;margin-left:10px;margin-right:10px;">
+					<img style="width:50px;" src="data:image/png;base64,{{ student.avatar }}" /><br>
+					{{ student }}
+					</a>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 		<div class="three wide column">
 			<div class='centered'>
-				<b>
-					Inscrits
-				</b>
+				<b>Inscrits</b>
 			</div>
 			<br/>
 			<div class="segment centered">
@@ -157,9 +168,7 @@
 						{% else %}
 						<div class="ui modal">
 							<i class="close icon"></i>
-							<div class="header">
-							Inscription d'un groupe
-							</div>
+							<div class="header">Inscription d'un groupe</div>
 							<div class="content ui form">
 							<form method="post" action="{{ path('site_activities_activity_registration', {'id': activity.id}) }}">
 
@@ -172,14 +181,14 @@
 									{{ form_widget(form.students, { 'attr': {'class': 'select'} }) }}
 
 							</div>
-							<div class="actions">
-							<div class="red ui button">Annuler</div>
-							<div class="target-validate-group" style="display:inline-block">
-						    <input disabled class="validate-group green ui button" type="submit" value="S'inscrire" />
-							</div>
-							</div>
-								{{ form_widget(form) }}
-							</form>
+								<div class="actions">
+									<div class="red ui button">Annuler</div>
+									<div class="target-validate-group" style="display:inline-block">
+								    	<input disabled style="opacity:0.5;" class="validate-group green ui button" type="submit" value="S'inscrire" />
+									</div>
+								</div>
+									{{ form_widget(form) }}
+								</form>
 							</div>
 						</div>
 						<button class="register-group ui right floated blue button"><i class="add icon"></i>S'inscrire</button>

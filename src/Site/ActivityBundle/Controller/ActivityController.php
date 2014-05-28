@@ -85,11 +85,25 @@ class ActivityController extends Controller
 	{
 		$data = array();
 
+$user = $this->container->get("security.context")->getToken()->getUser();
+
+
 		$modules = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:Module")->findAll();
 
 		$data['modules'] = $modules;
 		$data['activity'] = $activity;
 		$data['module'] = $activity->getModule();
+
+
+		$groups = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup")->findBy(array('activity' => $activity));
+
+		foreach ($groups as $group)
+		{
+			if ($group->getStudents()->contains($user))
+				$data['group'] = $group;
+		}
+
+
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$students = $activity->getModule()->getStudents();
 		if ($students->contains($user))
@@ -115,10 +129,10 @@ class ActivityController extends Controller
 			throw new AccessDeniedException("You can't register for this activity now.");
 
 		if (!$activity->getModule()->getStudents()->contains($user))
-			throw new AccessDeniedException("You can't register for this activity before register module.");
+			throw new AccessDeniedException("You can't register for this activity before register to module.");
 
 		if ($activity->getStudents()->count() >= $activity->getPlaces())
-			throw new AccessDeniedException("No more places for this activity.");
+			throw new AccessDeniedException("No more places left for this activity.");
 
 		$em = $this->getDoctrine()->getManager();
 
