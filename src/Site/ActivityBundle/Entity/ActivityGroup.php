@@ -40,7 +40,7 @@ class ActivityGroup
      */
     private $students;
 
-    private $peers;
+    public $peers;
 
 
     public function __toString()

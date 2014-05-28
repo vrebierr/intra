@@ -31,3 +31,9 @@ site_activities_scale_show:
     defaults: { _controller: SiteActivityBundle:Scale:show }
     requirements:
         id: \d+
+
+site_activities_generate_peers:
+    pattern:  /activity/{id}/peers-generate
+    defaults: { _controller: SiteActivityBundle:Scale:generatePeers }
+    requirements:
+        id: \d+

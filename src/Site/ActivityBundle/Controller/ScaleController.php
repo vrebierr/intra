@@ -3,6 +3,7 @@
 namespace Site\ActivityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Site\ActivityBundle\Entity\Activity;
 use Site\ActivityBundle\Entity\ActivityGroup;
 use Site\ActivityBundle\Entity\ScaleGroup;
 use Site\ActivityBundle\Form\ScaleGroupType;
@@ -68,29 +69,31 @@ class ScaleController extends Controller
 			));
 	}
 
-	public function generatePeers(Activity $activity, Scale $scale)
+	public function generatePeersAction(Activity $activity)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$groups = $em->getRepository('SiteActivityBundle:ActivityGroup')->findBy(array("activity" => $activity))->toArray();
+		$groups = $em->getRepository('SiteActivityBundle:ActivityGroup')->findBy(array("activity" => $activity));
 		$students = $activity->getStudents()->toArray();
 		shuffle($groups);
 		shuffle($students);
-		$limit = 0;
-		$i = 0;
 		foreach ($students as $student)
 		{
 			for ($i = 0; $i < 4; $i++)
 			{
 				$scale_group = new ScaleGroup();
-				$rand = rand(0, $groups->count());
+				$rand = rand(0, count($groups) - 1);
+				while ($groups[$rand]->getStudents()->contains($student))
+					$rand = rand(0, count($groups) - 1);
 				$scale_group->setGroup($groups[$rand]);
 				$scale_group->setRater($student);
 				$em->persist($scale_group);
-				$groups[$rand]->setPeers($groups[$rand]->getPeers() + 1);
-				if ($groups[$rand]->getPeers() == 4)
-					unset($groups[$rand]);
+				echo("debug\n");
+				$groups[$rand]->peers += 1;
+				if ($groups[$rand]->peers == 4)
+					$groups = array_splice($groups, $rand);
 			}
 		}
 		$em->flush();
+		return;
 	}
 }
