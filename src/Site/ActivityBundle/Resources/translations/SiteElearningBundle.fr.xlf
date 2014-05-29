@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+
+            <!-- ADMIN -->
+            <trans-unit id="0">
+                <source>ADMIN_HEADING_ELEARNING</source>
+                <target>E-learning</target>
+            </trans-unit>
+
+            <!-- ELEARNINGS -->
+            <trans-unit id="1">
+                <source>ADMIN_HEADING_ID</source>
+                <target>Identifiant</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>ADMIN_HEADING_LESSONS</source>
+                <target>Cours</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>ADMIN_ELEARNING_ACTIVITY</source>
+                <target>Activité</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>ADMIN_ELEARNING_NAME</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>ADMIN_ELEARNING_DESCRIPTION</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>ADMIN_ELEARNING_LINK</source>
+                <target>Lien</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>ADMIN_ELEARNING_TYPE</source>
+                <target>Type</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

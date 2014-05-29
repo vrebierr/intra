@@ -27,4 +27,4 @@ services:
         class: Site\ActivityBundle\Admin\LessonAdmin
         arguments: [~, Site\ActivityBundle\Entity\Lesson, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: "E-learning", label: "Cours"}
+            - {name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_ELEARNING", label: "ADMIN_HEADING_LESSONS"}
