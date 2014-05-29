@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+		<body>
+
+			<!-- HEADING -->
+			<trans-unit id="1">
+				<source>HEADING_NEW</source>
+				<target>Write a new message</target>
+			</trans-unit>
+			<trans-unit id="2">
+				<source>HEADING_INBOX</source>
+				<target>Received messages</target>
+			</trans-unit>
+			<trans-unit id="3">
+				<source>HEADING_SENT</source>
+				<target>Sent messages</target>
+			</trans-unit>
+			<trans-unit id="4">
+				<source>HEADING_TRASH</source>
+				<target>Deleted messages</target>
+			</trans-unit>
+
+			<!-- MENU -->
+			<trans-unit id="10">
+				<source>MENU_NEW</source>
+				<target>New message</target>
+			</trans-unit>
+			<trans-unit id="11">
+				<source>MENU_INBOX</source>
+				<target>Inbox</target>
+			</trans-unit>
+			<trans-unit id="12">
+				<source>MENU_SENT</source>
+				<target>Outbox</target>
+			</trans-unit>
+			<trans-unit id="13">
+				<source>MENU_TRASH</source>
+				<target>Basket</target>
+			</trans-unit>
+
+			<!-- FORM -->
+			<trans-unit id="20">
+				<source>FORM_SEND</source>
+				<target>Send</target>
+			</trans-unit>
+			<trans-unit id="21">
+				<source>FORM_ACCEPT</source>
+				<target>Accept this appointment</target>
+			</trans-unit>
+			<trans-unit id="22">
+				<source>FORM_PROPOSE</source>
+				<target>Propose another date</target>
+			</trans-unit>
+			<trans-unit id="23">
+				<source>FORM_RECIPIENT</source>
+				<target>Recipient</target>
+			</trans-unit>
+			<trans-unit id="24">
+				<source>FORM_SUBJECT</source>
+				<target>Subject</target>
+			</trans-unit>
+			<trans-unit id="25">
+				<source>FORM_BODY</source>
+				<target>Message</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>
