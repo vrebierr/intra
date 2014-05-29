@@ -9,22 +9,22 @@ services:
         class: Site\ActivityBundle\Admin\ModuleAdmin
         arguments: [~, Site\ActivityBundle\Entity\Module, SiteActivityBundle:ModuleAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_ACTIVITIES", label: "ADMIN_HEADING_MODULES"}
+            - {name: sonata.admin, manager_type: orm, group: "Activites", label: "ADMIN_HEADING_MODULES"}
 
     site_activity.admin.activity:
         class: Site\ActivityBundle\Admin\ActivityAdmin
         arguments: [~, Site\ActivityBundle\Entity\Activity, SiteActivityBundle:ActivityAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_ACTIVITIES", label: "ADMIN_HEADING_ACTIVITIES"}
+            - {name: sonata.admin, manager_type: orm, group: "Activites", label: "ADMIN_HEADING_ACTIVITIES"}
 
     site_activity.admin.scale:
         class: Site\ActivityBundle\Admin\ScaleAdmin
         arguments: [~, Site\ActivityBundle\Entity\Scale, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_ACTIVITIES", label: "ADMIN_HEADING_SCALES"}
+            - {name: sonata.admin, manager_type: orm, group: "Activites", label: "ADMIN_HEADING_SCALES"}
 
     site_elearning.admin.lesson:
         class: Site\ActivityBundle\Admin\LessonAdmin
         arguments: [~, Site\ActivityBundle\Entity\Lesson, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_ELEARNING", label: "ADMIN_HEADING_LESSONS"}
+            - {name: sonata.admin, manager_type: orm, group: "E-learning", label: "ADMIN_HEADING_LESSONS"}

@@ -5,7 +5,7 @@ services:
     sonata.admin.ticket:
         class: Site\TicketBundle\Admin\TicketAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_TICKET", label: "ADMIN_HEADING_TICKETS" }
+            - { name: sonata.admin, manager_type: orm, group: "Tickets", label: "ADMIN_HEADING_TICKETS" }
         arguments:
             - ~
             - Site\TicketBundle\Entity\TicketTicket
@@ -13,7 +13,7 @@ services:
     sonata.admin.message:
         class: Site\TicketBundle\Admin\MessageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_TICKET", label: "ADMIN_HEADING_MESSAGES" }
+            - { name: sonata.admin, manager_type: orm, group: "Tickets", label: "ADMIN_HEADING_MESSAGES" }
         arguments:
             - ~
             - Site\TicketBundle\Entity\TicketMessage
