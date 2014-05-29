@@ -9,32 +9,36 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class TicketAdmin extends Admin
 {
+	protected $translationDomain = 'SiteTicketBundle';
+
 	protected function configureFormFields(FormMapper $formMapper)
 	{
-		$formMapper->add('author', null, array('label' => 'Author'))
-				->add('subject', 'text', array('attr' => array('label' => 'Subject', 'size' => 75)))
-				->add('date', 'datetime', array('label' => 'Created at'))
-				->add('priority', 'choice', array('choices' => array(1 => 'low', 2 => 'medium', 3 => 'high'), 'label' => 'Priority'))
-				->add('assignedTo', null, array('label' => 'Assigned to'));
+		$formMapper->add('author', null, array('label' => 'ADMIN_TICKET_AUTHOR'))
+				->add('subject', 'text', array('attr' => array('label' => 'ADMIN_TICKET_SUBJECT', 'size' => 75)))
+				->add('date', 'datetime', array('label' => 'ADMIN_TICKET_DATE'))
+				->add('priority', 'choice', array('choices' => array(1 => 'low', 2 => 'medium', 3 => 'high'), 'label' => 'ADMIN_TICKET_PROORITY'))
+				->add('assignedTo', null, array('label' => 'ADMIN_TICKET_ASSIGNEDTO'));
 	}
 
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)
 	{
-		$datagridMapper->add('id')
-					->add('author')
-					->add('closed')
-					->add('date')
-					->add('assignedTo');
+		$datagridMapper->add('id', null, array('label' => 'ADMIN_TICKET_ID'))
+					->add('author', null, array('label' => 'ADMIN_TICKET_AUTHOR'))
+					->add('priority', null, array('label' => 'ADMIN_TICKET_PRIORITY'))
+					->add('closed', null, array('label' => 'ADMIN_TICKET_CLOSED'))
+					->add('date', null, array('label' => 'ADMIN_TICKET_DATE'))
+					->add('assignedTo', null, array('label' => 'ADMIN_TICKET_ASSIGNEDTO'));
 	}
 
 	protected function configureListFields(ListMapper $listMapper)
 	{
-		$listMapper->addIdentifier('id')
-				->addIdentifier('author')
-				->addIdentifier('subject')
-				->add('date')
-				->add('closed', null, array('editable' => true))
-				->addIdentifier('assignedTo')
+		$listMapper->addIdentifier('id', null, array('label' => 'ADMIN_TICKET_ID'))
+				->addIdentifier('author', null, array('label' => 'ADMIN_TICKET_AUTHOR'))
+				->addIdentifier('subject', null, array('label' => 'ADMIN_TICKET_SUBJECT'))
+				->add('date', null, array('label' => 'ADMIN_TICKET_DATE'))
+				->add('closed', null, array('label' => 'ADMIN_TICKET_CLOSED', 'editable' => true))
+				->add('priority', null, array('label' => 'ADMIN_TICKET_PRIORITY'))
+				->addIdentifier('assignedTo', null, array('label' => 'ADMIN_TICKET_ASSIGNEDTO'))
 				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+
+            <!-- ADMIN -->
+            <trans-unit id="0">
+                <source>ADMIN_HEADING_TICKET</source>
+                <target>Tickets</target>
+            </trans-unit>
+
+            <!-- TICKETS -->
+            <trans-unit id="1">
+                <source>ADMIN_HEADING_TICKETS</source>
+                <target>Tickets</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>ADMIN_TICKET_ID</source>
+                <target>Identifier</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>ADMIN_TICKET_TITLE</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>ADMIN_TICKET_SUBJECT</source>
+                <target>Subject</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>ADMIN_TICKET_DATE</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>ADMIN_TICKET_CLOSED</source>
+                <target>Closed</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>ADMIN_TICKET_ASSIGNEDTO</source>
+                <target>Assigned to</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>ADMIN_TICKET_PRIORITY</source>
+                <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>ADMIN_TICKET_AUTHOR</source>
+                <target>Author</target>
+            </trans-unit>
+
+            <!-- MESSAGES -->
+            <trans-unit id="10">
+                <source>ADMIN_HEADING_MESSAGES</source>
+                <target>Messages</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>ADMIN_MESSAGE_ID</source>
+                <target>Identifier</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>ADMIN_MESSAGE_TICKET</source>
+                <target>Ticket</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>ADMIN_MESSAGE_AUTHOR</source>
+                <target>Author</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>ADMIN_MESSAGE_CONTENT</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>ADMIN_MESSAGE_DATE</source>
+                <target>Date</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
