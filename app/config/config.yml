@@ -154,6 +154,19 @@ sonata_admin:
         list:      SonataAdminBundle:CRUD:list.html.twig
         show:      SonataAdminBundle:CRUD:show.html.twig
         edit:      SiteIntraBundle:Admin:edit.html.twig
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_user, Forum, Tickets]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [Activites, E-learning, sonata_media]
+
 
 #Fr3dLdap Configuration
 fr3d_ldap:
