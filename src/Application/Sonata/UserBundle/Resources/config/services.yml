@@ -1,0 +1,12 @@
+services:
+    application.sonata.user.login:
+        class: Application\Sonata\UserBundle\EventListener\LoginListener
+        arguments: [@security.context, @router]
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.success, method: handle }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+    acme_locale.locale_listener:
+        class: Application\Sonata\UserBundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
