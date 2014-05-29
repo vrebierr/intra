@@ -92,7 +92,7 @@
             </trans-unit>
             <trans-unit id="33">
                 <source>BLOCK_CONTENT_CORRECTIONS_NONE</source>
-                <target>Auncune correction à donner ou recevoir</target>
+                <target>Aucune correction à donner ou recevoir</target>
             </trans-unit>
             <trans-unit id="34">
                 <source>BLOCK_CONTENT_FEED_NONE</source>
