@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
-		<body>
+        <body>
             <trans-unit id="title_user_grades">
                 <source>title_user_grades</source>
                 <target>Notes</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="title_user_forum">
                 <source>title_user_forum</source>
                 <target>Forum</target>
@@ -13,51 +13,51 @@
             <trans-unit id="label_profile_module_table_module">
                 <source>label_profile_module_table_module</source>
                 <target>Module</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_module_table_credits">
                 <source>label_profile_module_table_credits</source>
                 <target>Crédits</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_module_table_grade">
                 <source>label_profile_module_table_grade</source>
                 <target>Grade</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_module_table_total">
                 <source>label_profile_module_table_total</source>
                 <target>Total</target>
-			</trans-unit>
-			<trans-unit id="label_profile_module_table_activity">
+            </trans-unit>
+            <trans-unit id="label_profile_module_table_activity">
                 <source>label_profile_module_table_activity</source>
                 <target>Activité</target>
-			</trans-unit>
-			<trans-unit id="label_profile_module_table_mark">
+            </trans-unit>
+            <trans-unit id="label_profile_module_table_mark">
                 <source>label_profile_module_table_mark</source>
                 <target>Note</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_forum_threads">
                 <source>label_profile_forum_threads</source>
                 <target>Threads</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_forum_posts">
                 <source>label_profile_forum_posts</source>
                 <target>Posts</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_forum_comments">
                 <source>label_profile_forum_comments</source>
                 <target>Commentaires</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_forum_last_thread">
                 <source>label_profile_forum_last_thread</source>
                 <target>Dernier thread</target>
-			</trans-unit>
+            </trans-unit>
             <trans-unit id="label_profile_forum_last_post">
                 <source>label_profile_forum_last_post</source>
                 <target>Dernier post</target>
-			</trans-unit>
-			<trans-unit id="label_profile_forum_last_comment">
+            </trans-unit>
+            <trans-unit id="label_profile_forum_last_comment">
                 <source>label_profile_forum_last_comment</source>
                 <target>Dernier commentaire</target>
-			</trans-unit>
+            </trans-unit>
         </body>
     </file>
 </xliff>
