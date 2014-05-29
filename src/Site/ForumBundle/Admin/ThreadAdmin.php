@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class ThreadAdmin extends Admin
 {
@@ -41,5 +42,14 @@ class ThreadAdmin extends Admin
 				->add('pinned', null, array('label' => 'ADMIN_THREAD_PINNED', 'editable' => true))
 				->add('locked', null, array('label' => 'ADMIN_THREAD_LOCKED', 'editable' => true))
 				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
+	}
+
+	protected function configureShowFields(ShowMapper $showMapper)
+	{
+		$showMapper->add('subboard', null, array('label' => 'ADMIN_THREAD_SUBBOARD'))
+				->add('title', 'text', array('attr' => array('label' => 'ADMIN_THREAD_TITLE', 'size' => 75)))
+				->add('author', null, array('label' => 'ADMIN_THREAD_AUTHOR'))
+				->add('date', 'datetime', array('label' => 'ADMIN_THREAD_DATE'))
+				->add('content', 'textarea', array('attr' => array('label' => 'ADMIN_THREAD_CONTENT', 'cols' => 100, 'rows' => 15)));
 	}
 }

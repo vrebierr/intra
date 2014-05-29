@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class SubboardAdmin extends Admin
 {
@@ -34,4 +35,12 @@ class SubboardAdmin extends Admin
 				->add('ghost', null, array('label' => 'ADMIN_SUBBOARD_GHOST', 'editable' => true))
 				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
+
+	protected function configureShowFields(ShowMapper $showMapper)
+	{
+		$showMapper->add('board', null, array('label' => 'ADMIN_SUBBOARD_BOARD'))
+				->add('title', 'text', array('attr' => array('size' => 50), 'label' => 'ADMIN_SUBBOARD_TITLE'))
+				->add('ghost', null, array('label' => 'ADMIN_SUBBOARD_GHOST', 'required' => false));
+	}
+
 }

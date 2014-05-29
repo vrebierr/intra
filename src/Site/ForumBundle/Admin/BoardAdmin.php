@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class BoardAdmin extends Admin
 {
@@ -27,5 +28,10 @@ class BoardAdmin extends Admin
 		$listMapper->addIdentifier('id', null, array('label' => 'ADMIN_BOARD_ID'))
 				->addIdentifier('title', null, array('label' => 'ADMIN_BOARD_TITLE'))
 				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
+	}
+
+    protected function configureShowFields(ShowMapper $showMapper)
+	{
+		$showMapper->add('title', 'text', array('label' => 'ADMIN_BOARD_TITLE'));
 	}
 }

@@ -46,7 +46,7 @@
             </trans-unit>
             <trans-unit id="9">
                 <source>ADMIN_SUBBOARD_GHOST</source>
-                <target>Display</target>
+                <target>Hidden</target>
             </trans-unit>
 
             <!-- THREADS -->

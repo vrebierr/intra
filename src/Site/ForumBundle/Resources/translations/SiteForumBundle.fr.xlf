@@ -12,7 +12,7 @@
             <!-- BOARDS -->
             <trans-unit id="1">
                 <source>ADMIN_HEADING_BOARDS</source>
-                <target>Categories</target>
+                <target>Catégories</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>ADMIN_BOARD_TITLE</source>
@@ -46,7 +46,7 @@
             </trans-unit>
             <trans-unit id="9">
                 <source>ADMIN_SUBBOARD_GHOST</source>
-                <target>Affichage</target>
+                <target>Caché</target>
             </trans-unit>
 
             <!-- THREADS -->

@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class PostAdmin extends Admin
 {
@@ -35,5 +36,13 @@ class PostAdmin extends Admin
 				->add('date', null, array('label' => 'ADMIN_POST_DATE'))
 				->add('locked', null, array('label' => 'ADMIN_POST_LOCKED', 'editable' => true))
 				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
+	}
+
+    protected function configureShowFields(ShowMapper $showMapper)
+	{
+		$showMapper->add('thread', null, array('label' => 'ADMIN_POST_THREAD'))
+				->add('author', null, array('label' => 'ADMIN_POST_AUTHOR'))
+				->add('date', 'datetime', array('label' => 'ADMIN_POST_DATE'))
+				->add('content', 'textarea', array('attr' => array('label' => 'Content', 'cols' => 100, 'rows' => 15)));
 	}
 }
