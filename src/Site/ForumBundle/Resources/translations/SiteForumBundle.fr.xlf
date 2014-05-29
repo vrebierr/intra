@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+
+            <!-- ADMIN -->
+            <trans-unit id="0">
+                <source>ADMIN_HEADING_FORUM</source>
+                <target>Forum</target>
+            </trans-unit>
+
+            <!-- BOARDS -->
+            <trans-unit id="1">
+                <source>ADMIN_HEADING_BOARDS</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>ADMIN_BOARD_TITLE</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>ADMIN_BOARD_ID</source>
+                <target>Identifiant</target>
+            </trans-unit>
+
+            <!-- SUBBOARDS -->
+            <trans-unit id="4">
+                <source>ADMIN_HEADING_SUBBOARDS</source>
+                <target>Sous-catégories</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>ADMIN_SUBBOARD_ID</source>
+                <target>Identifiant</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>ADMIN_SUBBOARD_BOARD</source>
+                <target>Catégorie</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>ADMIN_SUBBOARD_TITLE</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>ADMIN_SUBBOARD_THREADS</source>
+                <target>Discussions</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>ADMIN_SUBBOARD_GHOST</source>
+                <target>Affichage</target>
+            </trans-unit>
+
+            <!-- THREADS -->
+            <trans-unit id="10">
+                <source>ADMIN_HEADING_THREADS</source>
+                <target>Discussions</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>ADMIN_THREAD_ID</source>
+                <target>Identifiant</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>ADMIN_THREAD_SUBBOARD</source>
+                <target>Sous-catégorie</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>ADMIN_THREAD_TITLE</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>ADMIN_THREAD_AUTHOR</source>
+                <target>Auteur</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>ADMIN_THREAD_DATE</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>ADMIN_THREAD_PINNED</source>
+                <target>Épinglé</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>ADMIN_THREAD_LOCKED</source>
+                <target>Fermé</target>
+            </trans-unit>
+
+            <!-- POSTS -->
+            <trans-unit id="18">
+                <source>ADMIN_HEADING_POSTS</source>
+                <target>Messages</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>ADMIN_POST_ID</source>
+                <target>Identifiant</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>ADMIN_POST_THREAD</source>
+                <target>Discussion</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>ADMIN_POST_AUTHOR</source>
+                <target>Auteur</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>ADMIN_POST_DATE</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>ADMIN_POST_LOCKED</source>
+                <target>Fermé</target>
+            </trans-unit>
+
+            <!-- COMMENTS -->
+            <trans-unit id="24">
+                <source>ADMIN_HEADING_COMMENTS</source>
+                <target>Commentaires</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>ADMIN_COMMENT_ID</source>
+                <target>Identifiant</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>ADMIN_COMMENT_POST</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>ADMIN_COMMENT_AUTHOR</source>
+                <target>Auteur</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>ADMIN_COMMENT_DATE</source>
+                <target>Date</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

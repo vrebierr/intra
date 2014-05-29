@@ -5,50 +5,40 @@ services:
     sonata.admin.board:
         class: Site\ForumBundle\Admin\BoardAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Boards" }
+            - { name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_FORUM", label: "ADMIN_HEADING_BOARDS" }
         arguments:
             - ~
             - Site\ForumBundle\Entity\ForumBoard
             - ~
-        calls:
-            - [ setTranslationDomain, ['SiteForumBundle'] ]
     sonata.admin.subboard:
         class: Site\ForumBundle\Admin\SubboardAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Subboards" }
+            - { name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_FORUM", label: "ADMIN_HEADING_SUBBOARDS" }
         arguments:
             - ~
             - Site\ForumBundle\Entity\ForumSubboard
             - ~
-        calls:
-            - [ setTranslationDomain, ['SiteForumBundle'] ]
     sonata.admin.thread:
         class: Site\ForumBundle\Admin\ThreadAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Threads" }
+            - { name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_FORUM", label: "ADMIN_HEADING_THREADS" }
         arguments:
             - ~
             - Site\ForumBundle\Entity\ForumThread
             - ~
-        calls:
-            - [ setTranslationDomain, ['SiteForumBundle'] ]
     sonata.admin.post:
         class: Site\ForumBundle\Admin\PostAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Posts" }
+            - { name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_FORUM", label: "ADMIN_HEADING_POSTS" }
         arguments:
             - ~
             - Site\ForumBundle\Entity\ForumPost
             - ~
-        calls:
-            - [ setTranslationDomain, ['SiteForumBundle'] ]
     sonata.admin.comment:
         class: Site\ForumBundle\Admin\CommentAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Forum", label: "Comments" }
+            - { name: sonata.admin, manager_type: orm, group: "ADMIN_HEADING_FORUM", label: "ADMIN_HEADING_COMMENTS" }
         arguments:
             - ~
             - Site\ForumBundle\Entity\ForumComment
             - ~
-        calls:
-            - [ setTranslationDomain, ['SiteForumBundle'] ]

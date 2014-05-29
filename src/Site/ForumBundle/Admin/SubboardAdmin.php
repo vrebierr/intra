@@ -9,27 +9,29 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class SubboardAdmin extends Admin
 {
+	protected $translationDomain = 'SiteForumBundle';
+
 	protected function configureFormFields(FormMapper $formMapper)
 	{
-		$formMapper->add('board', null, array('label' => 'Board'))
-				->add('title', 'text', array('attr' => array('size' => 50), 'label' => 'Board Title'))
-				->add('ghost', null, array('label' => 'Ghost subboard', 'required' => false));
+		$formMapper->add('board', null, array('label' => 'ADMIN_SUBBOARD_BOARD'))
+				->add('title', 'text', array('attr' => array('size' => 50), 'label' => 'ADMIN_SUBBOARD_TITLE'))
+				->add('ghost', null, array('label' => 'ADMIN_SUBBOARD_GHOST', 'required' => false));
 	}
 
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)
 	{
-		$datagridMapper->add('id')
-					->add('board')
-					->add('title');
+		$datagridMapper->add('id', null, array('label' => 'ADMIN_SUBBOARD_ID'))
+					->add('board', null, array('label' => 'ADMIN_SUBBOARD_BOARD'))
+					->add('title', null, array('label' => 'ADMIN_SUBBOARD_TITLE'));
 	}
 
 	protected function configureListFields(ListMapper $listMapper)
 	{
-		$listMapper->addIdentifier('id')
-				->addIdentifier('board')
-				->addIdentifier('title')
-				->add('threads')
-				->add('ghost', null, array('editable' => true))
+		$listMapper->addIdentifier('id', null, array('label' => 'ADMIN_SUBBOARD_ID'))
+				->addIdentifier('board', null, array('label' => 'ADMIN_SUBBOARD_BOARD'))
+				->addIdentifier('title', null, array('label' => 'ADMIN_SUBBOARD_TITLE'))
+				->add('threads', null, array('label' => 'ADMIN_SUBBOARD_THREADS'))
+				->add('ghost', null, array('label' => 'ADMIN_SUBBOARD_GHOST', 'editable' => true))
 				->add('_action', 'actions', array('actions' => array('show' => array(), 'edit' => array(), 'delete' => array())));
 	}
 }
