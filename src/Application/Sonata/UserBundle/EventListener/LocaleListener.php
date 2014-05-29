@@ -19,12 +19,8 @@ class LocaleListener implements EventSubscriberInterface
 	{
 		$request = $event->getRequest();
 		if (!$request->hasPreviousSession())
-		{
 			return;
-		}
 
-		// on essaie de voir si la locale a été fixée dans le paramètre de routing _locale
-		// si aucune locale n'a été fixée explicitement dans la requête, on utilise celle de la session
 		if ($locale = $request->attributes->get('_locale'))
 			$request->getSession()->set('_locale', $locale);
 		else
@@ -34,7 +30,6 @@ class LocaleListener implements EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return array(
-			// doit être enregistré avant le Locale listener par défaut
 			KernelEvents::REQUEST => array(array('onKernelRequest', 17)),
 		);
 	}
