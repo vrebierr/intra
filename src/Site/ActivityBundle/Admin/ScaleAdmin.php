@@ -10,16 +10,19 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ScaleAdmin extends Admin
 {
+
+	protected $translationDomain = 'SiteActivityBundle';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('activity')
-            ->add('name')
-            ->add('description')
-            ->add('mark')
+            ->add('activity', null, array('label' => 'ADMIN_SCALE_ACTIVITY'))
+            ->add('name', null, array('label' => 'ADMIN_SCALE_NAME'))
+            ->add('description', null, array('label' => 'ADMIN_SCALE_DESCRIPTION'))
+            ->add('mark', null, array('label' => 'ADMIN_SCALE_MARK'))
         ;
     }
 
@@ -29,10 +32,10 @@ class ScaleAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('activity')
-            ->add('name')
-            ->add('description')
-            ->add('mark')
+            ->add('activity', null, array('label' => 'ADMIN_SCALE_ACTIVITY'))
+            ->add('name', null, array('label' => 'ADMIN_SCALE_NAME'))
+            ->add('description', null, array('label' => 'ADMIN_SCALE_DESCRIPTION'))
+            ->add('mark', null, array('label' => 'ADMIN_SCALE_MARK'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -49,13 +52,14 @@ class ScaleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('activity')
-            ->add('name')
-            ->add('description', 'textarea', array(
+            ->add('activity', null, array('label' => 'ADMIN_SCALE_ACTIVITY'))
+            ->add('name', null, array('label' => 'ADMIN_SCALE_NAME'))
+			->add('description', 'textarea', array(
+				'label' => 'ADMIN_SCALE_DESCRIPTION',
                 'attr' => array(
                     'class' => 'tinymce'
                 )))
-            ->add('mark')
+            ->add('mark', null, array('label' => 'ADMIN_SCALE_MARK'))
         ;
     }
 
@@ -65,10 +69,10 @@ class ScaleAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('activity')
-            ->add('name')
-            ->add('description')
-            ->add('mark')
+            ->add('activity', null, array('label' => 'ADMIN_SCALE_ACTIVITY'))
+            ->add('name', null, array('label' => 'ADMIN_SCALE_NAME'))
+            ->add('description', null, array('label' => 'ADMIN_SCALE_DESCRIPTION'))
+            ->add('mark', null, array('label' => 'ADMIN_SCALE_MARK'))
         ;
     }
 }

@@ -18,6 +18,7 @@ class LessonAdmin extends Admin
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)
 	{
 		$datagridMapper
+			->add('id', null, array('label' => 'ADMIN_ELEARNING_ID'))
 			->add('activity', null, array('label' => 'ADMIN_ELEARNING_ACTIVITY'))
 			->add('name', null, array('label' => 'ADMIN_ELEARNING_NAME'))
 			->add('description', null, array('label' => 'ADMIN_ELEARNING_DESCRIPTION'))
@@ -32,10 +33,11 @@ class LessonAdmin extends Admin
 	protected function configureListFields(ListMapper $listMapper)
 	{
 		$listMapper
-			->add('activity', null, array('label' => 'ADMIN_ELEARNING_ACTIVITY'))
+			->add('id', null, array('label' => 'ADMIN_ELEARNING_ID'))
+			->addIdentifier('activity', null, array('label' => 'ADMIN_ELEARNING_ACTIVITY'))
 			->add('name', null, array('label' => 'ADMIN_ELEARNING_NAME'))
 			->add('description', null, array('label' => 'ADMIN_ELEARNING_DESCRIPTION'))
-			->add('link', null, array('label' => 'ADMIN_ELEARNING_LINK'))
+			->addIdentifier('link', null, array('label' => 'ADMIN_ELEARNING_LINK'))
 			->add('type', null, array('label' => 'ADMIN_ELEARNING_TYPE'))
 			->add('_action', 'actions', array(
 				'actions' => array(

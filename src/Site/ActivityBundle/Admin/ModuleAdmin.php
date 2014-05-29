@@ -10,16 +10,20 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ModuleAdmin extends Admin
 {
+
+    protected $translationDomain = 'SiteActivityBundle';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('description')
-            ->add('credits')
-            ->add('places')
+            ->add('name', null, array('label' => 'ADMIN_MODULE_NAME'))
+            ->add('credits', null, array('label' => 'ADMIN_MODULE_CREDITS'))
+            ->add('places', null, array('label' => 'ADMIN_MODULE_PLACES'))
+            ->add('start', null, array('label' => 'ADMIN_MODULE_START'))
+            ->add('end', null, array('label' => 'ADMIN_MODULE_END'))
         ;
     }
 
@@ -29,10 +33,13 @@ class ModuleAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
-            ->add('description')
-            ->add('credits')
-            ->add('places')
+            ->add('name', null, array('label' => 'ADMIN_MODULE_NAME'))
+            ->add('credits', null, array('label' => 'ADMIN_MODULE_CREDITS'))
+            ->add('places', null, array('label' => 'ADMIN_MODULE_PLACES'))
+            ->add('start', null, array('label' => 'ADMIN_MODULE_START'))
+            ->add('end', null, array('label' => 'ADMIN_MODULE_END'))
+            ->add('startRegistration', null, array('label' => 'ADMIN_MODULE_STARTREGISTRATION'))
+            ->add('endRegistration', null, array('label' => 'ADMIN_MODULE_ENDREGISTRATION'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -49,17 +56,18 @@ class ModuleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add('name', null, array('label' => 'ADMIN_MODULE_NAME'))
             ->add('description', 'textarea', array(
+                'label' => 'ADMIN_MODULE_DESCRIPTION',
                 'attr' => array(
                     'class' => 'tinymce'
                 )))
-            ->add('credits')
-            ->add('places')
-            ->add('startRegistration', 'dateTimePicker')
-            ->add('endRegistration', 'dateTimePicker')
-            ->add('start', 'dateTimePicker')
-            ->add('end', 'dateTimePicker')
+            ->add('credits', null, array('label' => 'ADMIN_MODULE_CREDITS'))
+            ->add('places', null, array('label' => 'ADMIN_MODULE_PLACES'))
+            ->add('start', 'dateTimePicker', array('label' => 'ADMIN_MODULE_START'))
+            ->add('end', 'dateTimePicker', array('label' => 'ADMIN_MODULE_END'))
+            ->add('startRegistration', 'dateTimePicker', array('label' => 'ADMIN_MODULE_STARTREGISTRATION'))
+            ->add('endRegistration', 'dateTimePicker', array('label' => 'ADMIN_MODULE_ENDREGISTRATION'))
         ;
     }
 
@@ -69,14 +77,14 @@ class ModuleAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('description')
-            ->add('credits')
-            ->add('places')
-            ->add('startRegistration')
-            ->add('endRegistration')
-            ->add('start')
-            ->add('end')
+            ->add('name', null, array('label' => 'ADMIN_MODULE_NAME'))
+            ->add('description', null, array('label' => 'ADMIN_MODULE_DESCRIPTION'))
+            ->add('credits', null, array('label' => 'ADMIN_MODULE_CREDITS'))
+            ->add('places', null, array('label' => 'ADMIN_MODULE_PLACES'))
+            ->add('start', null, array('label' => 'ADMIN_MODULE_START'))
+            ->add('end', null, array('label' => 'ADMIN_MODULE_END'))
+            ->add('startRegistration', null, array('label' => 'ADMIN_MODULE_STARTREGISTRATION'))
+            ->add('endRegistration', null, array('label' => 'ADMIN_MODULE_ENDREGISTRATION'))
         ;
     }
 }

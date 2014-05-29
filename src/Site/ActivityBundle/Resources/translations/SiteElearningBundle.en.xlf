@@ -11,12 +11,12 @@
 
             <!-- ELEARNINGS -->
             <trans-unit id="1">
-                <source>ADMIN_HEADING_ID</source>
-                <target>Identifier</target>
-            </trans-unit>
-            <trans-unit id="2">
                 <source>ADMIN_HEADING_LESSONS</source>
                 <target>Lessons</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>ADMIN_ELEARNING_ID</source>
+                <target>Identifier</target>
             </trans-unit>
             <trans-unit id="3">
                 <source>ADMIN_ELEARNING_ACTIVITY</source>

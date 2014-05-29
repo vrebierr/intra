@@ -10,24 +10,28 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ActivityAdmin extends Admin
 {
+
+    protected $translationDomain = 'SiteActivityBundle';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('module')
-            ->add('name')
-            ->add('description')
-            ->add('places')
-            ->add('start')
-            ->add('end')
-            ->add('startRegistration')
-            ->add('endRegistration')
-            ->add('sizeMin')
-            ->add('sizeMax')
-            ->add('peers')
-            ->add('type')
+            ->add('module', null, array('label' => 'ADMIN_ACTIVITY_MODULE'))
+            ->add('name', null, array('label' => 'ADMIN_ACTIVITY_NAME'))
+            ->add('places', null, array('label' => 'ADMIN_ACTIVITY_PLACES'))
+            ->add('start', null, array('label' => 'ADMIN_ACTIVITY_START'))
+            ->add('end', null, array('label' => 'ADMIN_ACTIVITY_END'))
+            ->add('startRegistration', null, array('label' => 'ADMIN_ACTIVITY_STARTREGISTRATION'))
+            ->add('endRegistration', null, array('label' => 'ADMIN_ACTIVITY_ENDREGISTRATION'))
+            ->add('startCorrection', null, array('label' => 'ADMIN_ACTIVITY_STARTCORRECTION'))
+            ->add('endCorrection', null, array('label' => 'ADMIN_ACTIVITY_ENDCORRECTION'))
+            ->add('sizeMin', null, array('label' => 'ADMIN_ACTIVITY_SIZEMIN'))
+            ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
+            ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
+            ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
         ;
     }
 
@@ -37,18 +41,19 @@ class ActivityAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('module')
-            ->add('name')
-            ->add('description')
-            ->add('places')
-            ->add('start')
-            ->add('end')
-            ->add('startRegistration')
-            ->add('endRegistration')
-            ->add('sizeMin')
-            ->add('sizeMax')
-            ->add('peers')
-            ->add('type')
+            ->add('module', null, array('label' => 'ADMIN_ACTIVITY_MODULE'))
+            ->add('name', null, array('label' => 'ADMIN_ACTIVITY_NAME'))
+            ->add('places', null, array('label' => 'ADMIN_ACTIVITY_PLACES'))
+            ->add('start', null, array('label' => 'ADMIN_ACTIVITY_START'))
+            ->add('end', null, array('label' => 'ADMIN_ACTIVITY_END'))
+            ->add('startRegistration', null, array('label' => 'ADMIN_ACTIVITY_STARTREGISTRATION'))
+            ->add('endRegistration', null, array('label' => 'ADMIN_ACTIVITY_ENDREGISTRATION'))
+            ->add('startCorrection', null, array('label' => 'ADMIN_ACTIVITY_STARTCORRECTION'))
+            ->add('endCorrection', null, array('label' => 'ADMIN_ACTIVITY_ENDCORRECTION'))
+            ->add('sizeMin', null, array('label' => 'ADMIN_ACTIVITY_SIZEMIN'))
+            ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
+            ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
+            ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -65,28 +70,31 @@ class ActivityAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('module')
-            ->add('name')
+            ->add('module', null, array('label' => 'ADMIN_ACTIVITY_MODULE'))
+            ->add('name', null, array('label' => 'ADMIN_ACTIVITY_NAME'))
             ->add('description', 'textarea', array(
+                'label' => 'ADMIN_ACTIVITY_DESCRIPTION',
                 'attr' => array(
                     'class' => 'tinymce'
                 )))
             ->add('subject', 'sonata_media_type', array(
+                'label' => 'ADMIN_ACTIVITY_SUBJECT',
                 'provider' => 'sonata.media.provider.file',
                 'context'  => 'default',
                 'required' => false
             ))
-            ->add('places')
-            ->add('start', 'dateTimePicker')
-            ->add('end', 'dateTimePicker')
-            ->add('startRegistration', 'dateTimePicker')
-            ->add('endRegistration', 'dateTimePicker')
-            ->add('startCorrection', 'dateTimePicker')
-            ->add('endCorrection', 'dateTimePicker')
-            ->add('sizeMin')
-            ->add('sizeMax')
-            ->add('peers')
+            ->add('places', null, array('label' => 'ADMIN_ACTIVITY_PLACES'))
+            ->add('start', 'dateTimePicker', array('label' => 'ADMIN_ACTIVITY_START'))
+            ->add('end', 'dateTimePicker', array('label' => 'ADMIN_ACTIVITY_END'))
+            ->add('startRegistration', 'dateTimePicker', array('label' => 'ADMIN_ACTIVITY_STARTREGISTRATION'))
+            ->add('endRegistration', 'dateTimePicker', array('label' => 'ADMIN_ACTIVITY_ENDREGISTRATION'))
+            ->add('startCorrection', 'dateTimePicker', array('label' => 'ADMIN_ACTIVITY_STARTCORRECTION'))
+            ->add('endCorrection', 'dateTimePicker', array('label' => 'ADMIN_ACTIVITY_ENDCORRECTION'))
+            ->add('sizeMin', null, array('label' => 'ADMIN_ACTIVITY_SIZEMIN'))
+            ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
+            ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', 'choice', array(
+                'label' => 'ADMIN_ACTIVITY_TYPE',
                 'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD')
                 ))
         ;
@@ -98,20 +106,20 @@ class ActivityAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('module')
-            ->add('name')
-            ->add('description')
-            ->add('places')
-            ->add('start')
-            ->add('end')
-            ->add('startRegistration')
-            ->add('endRegistration')
-            ->add('startCorrection')
-            ->add('endCorrection')
-            ->add('sizeMin')
-            ->add('sizeMax')
-            ->add('peers')
-            ->add('type')
+            ->add('module', null, array('label' => 'ADMIN_ACTIVITY_MODULE'))
+            ->add('name', null, array('label' => 'ADMIN_ACTIVITY_NAME'))
+            ->add('description', null, array('label' => 'ADMIN_ACTIVITY_DESCRIPTION'))
+            ->add('places', null, array('label' => 'ADMIN_ACTIVITY_PLACES'))
+            ->add('start', null, array('label' => 'ADMIN_ACTIVITY_START'))
+            ->add('end', null, array('label' => 'ADMIN_ACTIVITY_END'))
+            ->add('startRegistration', null, array('label' => 'ADMIN_ACTIVITY_STARTREGISTRATION'))
+            ->add('endRegistration', null, array('label' => 'ADMIN_ACTIVITY_ENDREGISTRATION'))
+            ->add('startCorrection', null, array('label' => 'ADMIN_ACTIVITY_STARTCORRECTION'))
+            ->add('endCorrection', null, array('label' => 'ADMIN_ACTIVITY_ENDCORRECTION'))
+            ->add('sizeMin', null, array('label' => 'ADMIN_ACTIVITY_SIZEMIN'))
+            ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
+            ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
+            ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
         ;
     }
 }
