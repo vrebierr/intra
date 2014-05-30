@@ -196,6 +196,7 @@ class ActivityController extends Controller
 		else
 		{
 			$event = new Event();
+			$event->setUser($user);
 			$event->setDate($now);
 			$event->setInfo($activity->getName());
 			if ($activity->getStudents()->contains($user))

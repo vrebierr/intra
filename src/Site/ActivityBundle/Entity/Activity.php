@@ -117,7 +117,7 @@ class Activity
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
-     * @Assert\Choice(choices = {"projet", "examen", "TD"})
+     * @Assert\Choice(choices = {"projet", "examen", "TD", "rush"})
      */
     private $type;
 

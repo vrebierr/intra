@@ -95,7 +95,7 @@ class ActivityAdmin extends Admin
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', 'choice', array(
                 'label' => 'ADMIN_ACTIVITY_TYPE',
-                'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD')
+				'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD', 'rush' => 'Rush')
                 ))
         ;
     }

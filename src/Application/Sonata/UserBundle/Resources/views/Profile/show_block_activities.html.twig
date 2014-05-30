@@ -25,11 +25,13 @@
 					<td style="padding-left: 75px;">{{ 'label_profile_module_table_activity'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
 					<td>{{ 'label_profile_module_table_mark'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
 				</tr>
-			{% for activity in module.activities %}
-				<tr class="hidden {{ i }}">
-					<td style="padding-left: 75px;"><a href="{{ path('site_activities_activity', { 'id': activity.id}) }}">{{ activity.name }}</a></td>
-					<td>NOTE</td>
-				</tr>
+			{% for activity in user.activities %}
+				{% if activity.module == module %}
+					<tr class="hidden {{ i }}">
+						<td style="padding-left: 75px;"><a href="{{ path('site_activities_activity', { 'id': activity.id}) }}">{{ activity.name }}</a></td>
+						<td>NOTE</td>
+					</tr>
+				{% endif %}
 			{% endfor %}
 			{% set i = i + 1 %}
 			{% set total_credits = total_credits + module.credits %}
