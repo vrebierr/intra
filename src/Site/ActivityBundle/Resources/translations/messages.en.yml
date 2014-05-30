@@ -47,6 +47,8 @@ activity:
     link:
         elearning: View course in E-learning
     correction: For this activity, you will need to be corrected by %nb_peers% students.
+    nocorrection: For this activity, there is not correction done by the students.
+    nosubject: There is not subject for this activity.
     group:
         title: Your group
         mult:

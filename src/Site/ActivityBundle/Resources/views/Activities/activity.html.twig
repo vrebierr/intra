@@ -105,7 +105,12 @@
 					{{ 'activity.heading.correction'|trans|upper }}
 				</h4>
 				<p>
-					{{ 'activity.correction'|trans({ '%nb_peers%': activity.peers }) }}
+					{% if activity.peers != 0 %}
+						{% set peers = activity.peers / 2 %}
+						{{ 'activity.correction'|trans({ '%nb_peers%': peers|round }) }}
+					{% else %}
+						{{ 'activity.nocorrection'|trans }}
+					{% endif %}
 				</p>
 				<br/>
 				<p>
@@ -117,6 +122,8 @@
 						<a href="{{ path('sonata_media_download', {'id': activity.subject|sonata_urlsafeid }) }}">
 							{{ activity.subject }}
 						</a>
+					{% else %}
+						{{ 'activity.nosubject'|trans }}
 					{% endif %}
 					<br/>
 					<i class="laptop icon nomargin"></i>

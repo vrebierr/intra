@@ -47,6 +47,8 @@ activity:
     link:
         elearning: "Voir le cours dans l'E-learning"
     correction: Pour cette activité, vous devrez vous faire corriger par %nb_peers% étudiants.
+    nocorrection: "Pour cette activité, il n'y aura pas de correction effectuée par des étudiants."
+    nosubject: "Il n'y a pas de sujet pour cette activité."
     group:
         title: Votre groupe
         mult:
