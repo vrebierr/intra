@@ -23,10 +23,11 @@
 					{% if activity.lessons[0] is defined %}
 						{% for lesson in activity.lessons %}
 							<div {%if loop.index0 != 0 %}style="display:none"{% endif %} class="elearning_content" id="{{ loop.index0 }}">
-								<h4 class="ui dividing header">
-									<i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>
-									{{ lesson.name }}
-								</h4>
+								<h3 class="ui dividing header">
+									<i class="reorder icon"></i>
+									{{ 'elearning.heading.description'|trans|upper }}
+								</h3>
+								<p>{{ lesson.description|raw }}</p>
 								<div class="centered" >
 									{% if lesson.type == 'video' %}
 										<video width="70%" controls>
@@ -36,11 +37,6 @@
 										<embed src="{% path lesson.link, 'reference' %}" width="100%" height="600px" />
 									{% endif %}
 								</div>
-								<h3 class="ui dividing header">
-									<i class="reorder icon"></i>
-									{{ 'elearning.heading.description'|trans|upper }}
-								</h3>
-								<p>{{ lesson.description|raw }}</p>
 							</div>
 						{% endfor %}
 					{% else %}
