@@ -58,6 +58,14 @@
                 <source>label_profile_forum_last_comment</source>
                 <target>Last comment</target>
             </trans-unit>
+            <trans-unit id="generate_autologin">
+                <source>generate_autologin</source>
+                <target>Generate</target>
+            </trans-unit>
+            <trans-unit id="copy_autologin">
+                <source>copy_autologin</source>
+                <target>Copy</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
