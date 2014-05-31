@@ -68,37 +68,4 @@ class ScaleController extends Controller
 			"group" => $group
 			));
 	}
-
-	public function generatePeersAction(Activity $activity)
-	{
-		$em = $this->getDoctrine()->getManager();
-		$groups = $em->getRepository('SiteActivityBundle:ActivityGroup')->findBy(array("activity" => $activity));
-		$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array("activity" => $activity));
-		$students = $activity->getStudents()->toArray();
-		shuffle($groups);
-		shuffle($students);
-		foreach ($students as $student)
-		{
-			for ($i = 0; $i < 4; $i++)
-			{
-				$scale_group = new ScaleGroup();
-				$rand = rand(0, count($groups) - 1);
-				while ($groups[$rand]->getStudents()->contains($student))
-				{
-					if (!isset($groups[1]))
-						break;
-					$rand = rand(0, count($groups) - 1);
-				}
-				$scale_group->setGroup($groups[$rand]);
-				$scale_group->setRater($student);
-				$scale_group->setScale($scale);
-				$em->persist($scale_group);
-				$groups[$rand]->peers += 1;
-				if ($groups[$rand]->peers == 4)
-					$groups = array_splice($groups, $rand);
-			}
-		}
-		$em->flush();
-		return;
-	}
 }
