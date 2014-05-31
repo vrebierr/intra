@@ -8,7 +8,7 @@
 	{% for activity in currentActivities %}
 	<div class="ui segment">
 			<a href="{{ path('site_activities_activity', { 'id': activity.id }) }}">{{ activity.name }}</a> {{ 'BLOCK_CONTENT_ACTIVITIES_NAME'|trans }}
-		<div class="float right" style="opacity:0.4; font-style:italic; padding-right:4px;">
+		<div class="float right" style="color: rgba(0, 0, 0, 0.4); font-style:italic; padding-right:4px;">
 			Rendu le
 		{% if date()|date_modify("+1 day") > activity.end %}
 			<span class="red">

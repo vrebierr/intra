@@ -118,5 +118,15 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.search-bar').keypress(function (e){
+		if (e.which == 13)
+		{
+			var href = $(location).attr('href');
+			var n = href.indexOf('/', 33);
+			var url = href.substr(0, n) + '/profile/';
+			window.location.href = url + $(this).val();
+		}
+	});
+
 
 });
