@@ -55,7 +55,8 @@ $(document).ready(function() {
 	var m = date.getMonth();
 	var y = date.getFullYear();
 	var href = $(location).attr('href');
-	$("#calendar").fullCalendar({
+
+	$("#calendarfr").fullCalendar({
 		header: {
 			left: 'title',
 			center: '',
@@ -90,26 +91,42 @@ $(document).ready(function() {
 		}
 	});
 
-   $(".elearning_menu").click(function (){
-           var $i = $(this).attr("id");
-           var $el = $('.elearning_content#' + $i);
-           $('.elearning_content').hide();
-           $el.show();
-   });
+	$("#calendaren").fullCalendar({
+		header: {
+			left: 'title',
+			center: '',
+			right: 'month,agendaWeek,agendaDay, today, prev,next'
+		},
+		firstDay: 1,
+		firstHour: 0,
+		defaultView: 'agendaWeek',
+		events: href.substr(0, href.length - 10) + '/profile/activitiesfeed',
+		buttonText: {
+			today: "Today",
+			month: 'MONTH',
+			week: 'WEEK',
+			day: 'DAY'
+		},
+	});
+
+	$(".elearning_menu").click(function (){
+		var $i = $(this).attr("id");
+		var $el = $('.elearning_content#' + $i);
+		$('.elearning_content').hide();
+		$el.show();
+	});
 
 	$('.ui.modal').modal('attach events', '.register-group', 'show');
 
-
-    $('#site_activitybundle_activitygroup_name').keyup(function(event)
-    {
-        if ($(this).val() != "")
+	$('#site_activitybundle_activitygroup_name').keyup(function(event)
+	{
+		if ($(this).val() != "")
 		{
 			$('.error-group').hide();
 			$('.validate-group').removeAttr("style");
 			$('.validate-group').prop("disabled", false);
 		}
-    });
-
+	});
 
 	$('.target-validate-group').click(function(){
 		if ($('#site_activitybundle_activitygroup_name').val() == "")
@@ -127,6 +144,5 @@ $(document).ready(function() {
 			window.location.href = url + $(this).val();
 		}
 	});
-
 
 });

@@ -1,5 +1,9 @@
 {% extends "SitePlanningBundle::layout.html.twig" %}
 
 {% block planning_body %}
-	<div id ="calendar" class="calendar blockcentered"></div>
+	{% if app.request.locale == "fr_FR" %}
+		<div id ="calendarfr" class="calendar blockcentered"></div>
+	{% else %}
+		<div id ="calendaren" class="calendar blockcentered"></div>
+	{% endif %}
 {% endblock %}
