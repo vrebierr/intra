@@ -139,9 +139,18 @@ $(document).ready(function() {
 		if (e.which == 13)
 		{
 			var href = $(location).attr('href');
-			var n = href.indexOf('/', 33);
+			var n = href.indexOf('/', 10);
 			var url = href.substr(0, n) + '/profile/';
-			window.location.href = url + $(this).val();
+			url = url + $(this).val();
+			$.ajax({
+			  url: url,
+			  success: function (){
+				window.location.href = url;
+			  },
+			  error: function (){
+				$('.ui.small.icon.input').addClass('error');
+			  },
+		});
 		}
 	});
 
