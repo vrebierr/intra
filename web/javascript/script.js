@@ -143,14 +143,14 @@ $(document).ready(function() {
 			var url = href.substr(0, n) + '/profile/';
 			url = url + $(this).val();
 			$.ajax({
-			  url: url,
-			  success: function (){
-				window.location.href = url;
-			  },
-			  error: function (){
-				$('.ui.small.icon.input').addClass('error');
-			  },
-		});
+				url: url,
+				success: function (){
+					window.location.href = url;
+				},
+				error: function (){
+					$('.ui.small.icon.input').addClass('error');
+				},
+			});
 		}
 	});
 
