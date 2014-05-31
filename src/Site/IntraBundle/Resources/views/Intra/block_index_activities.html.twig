@@ -6,10 +6,10 @@
 </h3>
 {% if currentActivities is defined %}
 	{% for activity in currentActivities %}
-		<p>
+	<div class="ui segment">
 			<a href="{{ path('site_activities_activity', { 'id': activity.id }) }}">{{ activity.name }}</a> {{ 'BLOCK_CONTENT_ACTIVITIES_NAME'|trans }}
-		</p>
-		Rendu le
+		<div class="float right" style="opacity:0.4; font-style:italic; padding-right:4px;">
+			Rendu le
 		{% if date()|date_modify("+1 day") > activity.end %}
 			<span class="red">
 				{{ activity.end|localizeddate("long", "short") }}
@@ -21,6 +21,8 @@
 		{% else %}
 			{{ activity.end|localizeddate("long", "short") }}
 		{% endif %}
+	</div>
+	</div>
 	{% endfor %}
 {% else %}
 	<p>
