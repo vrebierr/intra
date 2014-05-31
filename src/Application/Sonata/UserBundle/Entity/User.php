@@ -3,7 +3,9 @@
 namespace Application\Sonata\UserBundle\Entity;
 
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
+
 use FOS\MessageBundle\Model\ParticipantInterface;
+
 use FR3D\LdapBundle\Model\LdapUserInterface;
 
 class User extends BaseUser implements LdapUserInterface, ParticipantInterface
@@ -186,8 +188,14 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
      * @param \DateTime or string $dateOfBirth
      */
     public function setDateOfBirth($dateOfBirth)
-    {
-        $this->dateOfBirth = $dateOfBirth;
+	{
+		if ($dateOfBirth instanceOf \DateTime)
+			$this->dateOfBirth = $dateOfBirth;
+		else
+		{
+			$date = substr($dateOfBirth, 0, 8);
+			$this->dateOfBirth = new \DateTime($date);
+		}
     }
 
     /**
