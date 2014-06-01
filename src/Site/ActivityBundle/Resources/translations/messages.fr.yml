@@ -40,12 +40,14 @@ activity:
         subject: "Sujet :"
         elearning: "E-Learning :"
         notes: Notes et notation
+        forum: "Forum :"
     registration:
         early: Vous ne pouvez pas encore vous inscrire à cette activité. Les inscription ouvriront le
         late: Vous ne pouvez plus vous inscrire à ce activité. Les inscriptions sont fermées depuis le
         end: Cette activité est terminée depuis le
     link:
         elearning: "Voir le cours dans l'E-learning"
+        forum: Voir les discussions dans le forum
     correction: Pour cette activité, vous devrez vous faire corriger par %nb_peers% étudiants.
     nocorrection: "Pour cette activité, il n'y aura pas de correction effectuée par des étudiants."
     nosubject: "Il n'y a pas de sujet pour cette activité."

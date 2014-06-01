@@ -40,12 +40,14 @@ activity:
         subject: "Subject:"
         elearning: "E-Learning:"
         notes: Marks and notation
+        forum: "Forum:"
     registration:
         early: You can not register to this activity yet. Registrations will be open on
         late: You can not register to this activity anymore. Registrations are closed since
         end: This activity is done since
     link:
         elearning: View course in E-learning
+        forum: View threads in Forum
     correction: For this activity, you will need to be corrected by %nb_peers% students.
     nocorrection: For this activity, there is not correction done by the students.
     nosubject: There is not subject for this activity.

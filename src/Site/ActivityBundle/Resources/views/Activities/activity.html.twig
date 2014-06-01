@@ -133,6 +133,14 @@
 					<a href="{{ path('site_activity_elearning', {'id': activity.id }) }}">
 						{{ 'activity.link.elearning'|trans }}
 					</a>
+					<br/>
+					<i class="chat icon nomargin"></i>
+					<b>
+						{{ 'activity.heading.forum'|trans }}
+					</b>
+					<a href="{{ path('site_forum_subboard', {'id': activity.id }) }}">
+						{{ 'activity.link.forum'|trans }}
+					</a>
 				</p>
 				<br>
 				{% if group is defined %}
