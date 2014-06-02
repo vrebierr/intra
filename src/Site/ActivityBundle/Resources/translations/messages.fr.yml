@@ -26,7 +26,7 @@ elearning:
         description: Description
     subtitle:
         lessons:
-            list: Cours du module %module%
+            list: Cours de %module%
 
 activity:
     timeline:
