@@ -1,13 +1,80 @@
 {% extends 'SiteActivityBundle::layout_activities.html.twig' %}
 
-{% block activities_body %}
-	<form method="post" action="{{ path('site_activities_scale_show', {'id': group.id }) }}">
-		<h1>{{ scale.name }}</h1>
-		{{ scale.description }}
-		{{ form_widget(form.note) }}
-		{{ form_widget(form.comment) }}
-		{{ form_widget(form) }}
-		<input type="submit" />
-	</form>
+{# BLOCK FORM_RENDERING#}
+{% form_theme form _self %}
 
+{% block choice_widget_collapsed %}
+	{% spaceless %}
+		{% if required and empty_value is none and not empty_value_in_choices and not multiple %}
+			{% set required = false %}
+		{% endif %}
+		<input type="hidden" {{ block('widget_attributes') }}>
+		<div class="menu">
+			{% if preferred_choices|length > 0 %}
+				{% set options = preferred_choices %}
+				{{ block('choice_widget_options') }}
+				{% if choices|length > 0 and separator is not none %}
+					<option disabled="disabled">{{ separator }}</option>
+				{% endif %}
+			{% endif %}
+			{% set options = choices %}
+			{{ block('choice_widget_options') }}
+		</div>
+	{% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block choice_widget_options %}
+	{% spaceless %}
+		{% for group_label, choice in options %}
+			{% if choice is iterable %}
+				<optgroup label="{{ group_label|trans({}, translation_domain) }}">
+					{% set options = choice %}
+					{{ block('choice_widget_options') }}
+				</optgroup>
+			{% else %}
+				<div class="item" data-value="{{ choice.value }}" value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain) }}</div>
+			{% endif %}
+		{% endfor %}
+	{% endspaceless %}
+{% endblock choice_widget_options %}
+{# ENDBLOCK FORM_RENDERING #}
+
+{% block activities_body %}
+	<h3 class="ui dividing header">
+		<div style="display:inline-block;">
+			<i class="pencil icon"></i>
+		</div>
+		{{ 'scale.heading'|trans({"%activity%": activity.name}) }}
+	</h3>
+	{% if correction.done == 1 %}
+		<div class="correction">
+			<h4 class="ui error message centered">
+				{{ 'scale.correction.done'|trans }}
+			</h4>
+		</div>
+	{% else %}
+		<div class="correction">
+			{{ scale.description|raw }}
+		</div>
+		<div class="form correction">
+			<form class="ui form" method="post" action="{{ path('site_activities_scale_show', {'id': group.id }) }}">
+				<div class="field">
+					<div class="ui selection dropdown">
+						<div class="default text">{{ 'scale.form.mark'|trans }}</div>
+						<i class="dropdown icon"></i>
+						{{ form_widget(form.note) }}
+					</div>
+				</div>
+				<div class="field">
+					{{ form_widget(form.comment) }}
+				</div>
+				<div class="field">
+					{{ form_widget(form) }}
+				</div>
+				<div class="field">
+					<input class="ui blue button floated right" type="submit" value="{{ 'scale.form.send'|trans }}" />
+				</div>
+			</form>
+		</div>
+	{% endif %}
 {% endblock %}

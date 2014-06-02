@@ -24,7 +24,32 @@ class IntraController extends Controller
 			if ($activity->getStudents()->contains($user) && $activity->getEnd() > $date)
 				$data['currentActivities'][] = $activity;
 			else if ($activity->getStudents()->contains($user) && $activity->getStartCorrection() < $date && $activity->getEndCorrection() > $date)
+			{
 				$data['correctionActivities'][] = $activity;
+				$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:Scale");
+				$scale = $repo->findByActivity($activity);
+				$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ScaleGroup");
+				foreach($user->getActivityGroups() as $activityGroup)
+				{
+					if ($activityGroup->getActivity() == $activity)
+					{
+						if (($corrections = $repo->findBy(array("activity" => $activity, "group" => $activityGroup))) != null)
+						{
+							foreach($corrections as $correction)
+								$data['corrected'][] = $correction;
+						}
+						else
+							$data['corrected'] = null;
+						if (($corrections = $repo->findBy(array("activity" => $activity, "rater" => $user))) != null)
+						{
+							foreach($corrections as $correction)
+								$data['correcting'][] = $correction;
+						}
+						else
+							$data['correcting'] = null;
+					}
+				}
+			}
 		}
 
 		$repo = $this->getDoctrine()->getManager()->getRepository("SiteIntraBundle:Event");

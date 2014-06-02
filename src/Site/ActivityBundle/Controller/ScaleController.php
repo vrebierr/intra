@@ -23,22 +23,18 @@ class ScaleController extends Controller
 		if ($correction->getRater() != $user)
 			throw new AccessDeniedException("You can't correct this group.");
 
-		if ($correction->isDone())
-			throw new AccessDeniedException("Correction is done.");
-
 		$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array(
 			"activity" => $group->getActivity()->getId()
 			));
 		$modules = $em->getRepository('SiteActivityBundle:Module')->findAll();
 
-		$this->generatePeers($group->getActivity(), $scale);
 		$fb = $this->createFormBuilder();
 
-		$fb->add('comment', 'textarea');
+		$fb->add('comment', 'textarea', array('label' => false, 'required' => true, 'attr' => array('placeholder' => 'scale.form.comment')));
 		$fb->add('note', 'choice', array(
+			'label' => false,
+			'required' => true,
 			'choices' => $scale->getMarks(),
-			'expanded' => true,
-			'multiple' => false
 		));
 		$form = $fb->getForm();
 
@@ -51,15 +47,16 @@ class ScaleController extends Controller
 				$data = $form->getData();
 				$correction->setComment($data['comment']);
 				$correction->setNote($data['note']);
-
+				$correction->setDone(true);
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($correction);
 				$em->flush();
-				$this->redirect($this->generateUrl('site_activities_activity', array('id' => $group->getActivity())));
+				$this->redirect($this->generateUrl('site_activities_activity', array('id' => $group->getActivity()->getId())));
 			}
 		}
 
 		return $this->render('SiteActivityBundle:Scale:show.html.twig', array(
+			"correction" => $correction,
 			"scale" => $scale,
 			"modules" => $modules,
 			"activity" => $group->getActivity(),
@@ -67,38 +64,5 @@ class ScaleController extends Controller
 			"form" => $form->createView(),
 			"group" => $group
 			));
-	}
-
-	public function generatePeersAction(Activity $activity)
-	{
-		$em = $this->getDoctrine()->getManager();
-		$groups = $em->getRepository('SiteActivityBundle:ActivityGroup')->findBy(array("activity" => $activity));
-		$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array("activity" => $activity));
-		$students = $activity->getStudents()->toArray();
-		shuffle($groups);
-		shuffle($students);
-		foreach ($students as $student)
-		{
-			for ($i = 0; $i < 4; $i++)
-			{
-				$scale_group = new ScaleGroup();
-				$rand = rand(0, count($groups) - 1);
-				while ($groups[$rand]->getStudents()->contains($student))
-				{
-					if (!isset($groups[1]))
-						break;
-					$rand = rand(0, count($groups) - 1);
-				}
-				$scale_group->setGroup($groups[$rand]);
-				$scale_group->setRater($student);
-				$scale_group->setScale($scale);
-				$em->persist($scale_group);
-				$groups[$rand]->peers += 1;
-				if ($groups[$rand]->peers == 4)
-					$groups = array_splice($groups, $rand);
-			}
-		}
-		$em->flush();
-		return;
 	}
 }

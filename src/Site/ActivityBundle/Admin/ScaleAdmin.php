@@ -57,7 +57,8 @@ class ScaleAdmin extends Admin
 			->add('description', 'textarea', array(
 				'label' => 'ADMIN_SCALE_DESCRIPTION',
                 'attr' => array(
-                    'class' => 'tinymce'
+					'class' => 'tinymce',
+					'rows' => 30
                 )))
             ->add('mark', null, array('label' => 'ADMIN_SCALE_MARK'))
         ;
