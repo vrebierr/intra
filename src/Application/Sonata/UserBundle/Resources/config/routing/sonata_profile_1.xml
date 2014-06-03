@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="fos_user_profile_show" pattern="/">
-        <default key="_controller">SonataUserBundle:ProfileFOSUser1:show</default>
+        <default key="_controller">ApplicationSonataUserBundle:User:show</default>
         <requirement key="_method">GET</requirement>
     </route>
 
@@ -18,7 +18,7 @@
     </route>
 
     <route id="sonata_user_profile_show" pattern="/">
-        <default key="_controller">SonataUserBundle:ProfileFOSUser1:show</default>
+        <default key="_controller">ApplicationSonataUserBundle:User:show</default>
         <requirement key="_method">GET</requirement>
     </route>
 
@@ -47,5 +47,8 @@
     </route>
     <route id="sonata_user_profile_fetch_activities" pattern="/activitiesfeed">
         <default key="_controller">ApplicationSonataUserBundle:User:activitiesfeed</default>
+    </route>
+    <route id="sonata_user_profile_export" pattern="/exportnotes">
+        <default key="_controller">ApplicationSonataUserBundle:User:export</default>
     </route>
 </routes>

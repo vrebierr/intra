@@ -19,12 +19,15 @@ class ActivityCommand extends ContainerAwareCommand
 	}
 
 
-	private function checkKeysValidity(array $keys, array $students, $student)
+	private function checkKeysValidity(array $keys, array $corrected, $corrector)
 	{
 		foreach($keys as $key)
 		{
-			if ($students[$key] == $student)
-				return (false);
+			foreach($corrected[$key]->getStudents() as $student)
+			{
+				if ($student == $corrector)
+					return (false);
+			}
 		}
 		return (true);
 	}
@@ -36,60 +39,38 @@ class ActivityCommand extends ContainerAwareCommand
 		$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array("activity" => $activity));
 		$students = $activity->getStudents()->toArray();
 
-		if ($activity->getSizeMax() == 1)
+		foreach($students as $student)
 		{
-			foreach($groups as $group)
-			{
+			if ($activity->getPeers() > count($groups))
+				$keys = array_rand($groups, count($groups));
+			else
 				$keys = array_rand($groups, $activity->getPeers());
-				if ($keys)
-				{
-					while (!$this->checkKeysValidity($keys, $groups, $group))
-						$keys = array_rand($groups, $activity->getPeers());
-					foreach($keys as $key)
-					{
-						$scaleGroup = new ScaleGroup();
-						$scaleGroup->setGroup($group);
-						$scaleGroup->setRater($groups[$key]->getStudents()->first());
-						$scaleGroup->setScale($scale);
-						$scaleGroup->setActivity($activity);
-						$groups[$key]->peers += 1;
-						if ($groups[$key]->peers == $activity->getPeers())
-							unset($groups[$key]);
-						$em->persist($scaleGroup);
-					}
-				}
-			}
-			$activity->setCorrectionGenerated(true);
-			$em->persist($activity);
-			$em->flush();
-		}
-		else
-		{
-			;
-		}
-/*		foreach ($students as $student)
-		{
-			for ($i = 0; $i < 4; $i++)
+			if ($keys)
 			{
-				$scaleGroup = new ScaleGroup();
-				$rand = rand(0, count($groups) - 1);
-				while ($groups[$rand]->getStudents()->contains($student))
+				while (!$this->checkKeysValidity($keys, $groups, $student))
 				{
-					if (!isset($groups[1]))
-						break;
-					$rand = rand(0, count($groups) - 1);
+					if ($activity->getPeers() > count($groups))
+						$keys = array_rand($groups, count($groups));
+					else
+						$keys = array_rand($groups, $activity->getPeers());
 				}
-				$scaleGroup->setGroup($groups[$rand]);
-				$scaleGroup->setRater($student);
-				$scaleGroup->setScale($scale);
-				$scaleGroup->setActivity($activity);
-				$em->persist($scaleGroup);
-				$groups[$rand]->peers += 1;
-				if ($groups[$rand]->peers == 4)
-					$groups = array_splice($groups, $rand);
+				foreach($keys as $key)
+				{
+					$scaleGroup = new ScaleGroup();
+					$scaleGroup->setGroup($groups[$key]);
+					$scaleGroup->setRater($student);
+					$scaleGroup->setScale($scale);
+					$scaleGroup->setActivity($activity);
+					$groups[$key]->peers += 1;
+					if ($groups[$key]->peers == $activity->getPeers())
+						unset($groups[$key]);
+					$em->persist($scaleGroup);
+				}
 			}
 		}
-		$em->flush();*/
+		$activity->setCorrectionGenerated(true);
+		$em->persist($activity);
+		$em->flush();
 		return;
 	}
 

@@ -15,12 +15,21 @@ class ScaleController extends Controller
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$em = $this->getDoctrine()->getManager();
-		$correction = $em->getRepository('SiteActivityBundle:ScaleGroup')->findOneBy(array("activity" => $group->getActivity(), "group" => $group));
+		$corrections = $em->getRepository('SiteActivityBundle:ScaleGroup')->findBy(array("activity" => $group->getActivity(), "group" => $group));
 
 		if ($now < $group->getActivity()->getStartCorrection() || $now > $group->getActivity()->getEndCorrection())
 			throw new AccessDeniedException("You can't correct this group now.");
 
-		if ($correction->getRater() != $user)
+		$i = 0;
+		foreach ($corrections as $elem)
+		{
+			if ($elem->getRater() == $user)
+			{
+				$correction = $elem;
+				$i++;
+			}
+		}
+		if (!$i)
 			throw new AccessDeniedException("You can't correct this group.");
 
 		$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array(

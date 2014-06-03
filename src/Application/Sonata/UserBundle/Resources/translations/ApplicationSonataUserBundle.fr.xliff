@@ -64,8 +64,12 @@
             </trans-unit>
             <trans-unit id="copy_autologin">
                 <source>copy_autologin</source>
-                <target>Copier</target>
+                <target>copier</target>
             </trans-unit>
-        </body>
+            <trans-unit id="export">
+                <source>export</source>
+                <target>Exporter les notes</target>
+            </trans-unit>
+         </body>
     </file>
 </xliff>

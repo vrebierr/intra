@@ -16,6 +16,11 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
     protected $id;
 
     /**
+     * @var integer peers
+     */
+    public $peers = 0;
+
+    /**
      * @var string $dn
      */
     private $dn;

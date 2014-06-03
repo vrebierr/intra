@@ -9,26 +9,30 @@
 		<div class="ui segment">
 			<p>
 				{% set peers = activity.peers / 2 %}
-				<a href="{{ path('site_activities_scale_show', { 'id': activity.id }) }}">{{ activity.name }}</a> {{ 'BLOCK_CONTENT_CORRECTIONS_NAME'|trans({ '%nb_peers%': peers|round }) }}
+				{{ activity.name }} {{ 'BLOCK_CONTENT_CORRECTIONS_NAME'|trans({ '%nb_peers%': peers|round }) }}
 			</p>
 			<p>
 				{% for correction in correcting %}
-					{% if correction.done == 1 %}
-						<i class="green check icon"></i>
-					{% else %}
-						<i class="red remove icon"></i>
+					{% if correction.activity == activity %}
+						{% if correction.done == 1 %}
+							<i class="green check icon"></i>
+						{% else %}
+							<i class="red remove icon"></i>
+						{% endif %}
+						Vous devez corriger <a href="{{ path("site_activities_scale_show", {"id": correction.group.id}) }}">{{ correction.group.name }}</a><br>
 					{% endif %}
-					Vous devez corriger <a href="{{ path("site_activities_scale_show", {"id": correction.group.id}) }}">{{ correction.group.name }}</a><br>
 				{% endfor %}
 			</p>
 			<p>
 				{% for correction in corrected %}
-					{% if correction.done == 1 %}
-						<i class="green check icon"></i>
-					{% else %}
-						<i class="red remove icon"></i>
+					{% if correction.activity == activity %}
+						{% if correction.done == 1 %}
+							<i class="green check icon"></i>
+						{% else %}
+							<i class="red remove icon"></i>
+						{% endif %}
+						Vous devez vous faire corriger par {{ correction.rater.username }}<br>
 					{% endif %}
-					Vous devez vous faire corriger par {{ correction.rater.username }}<br>
 				{% endfor %}
 			</p>
 		</div>

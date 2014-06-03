@@ -33,13 +33,6 @@ class IntraController extends Controller
 				{
 					if ($activityGroup->getActivity() == $activity)
 					{
-						if (($corrections = $repo->findBy(array("activity" => $activity, "group" => $activityGroup))) != null)
-						{
-							foreach($corrections as $correction)
-								$data['corrected'][] = $correction;
-						}
-						else
-							$data['corrected'] = null;
 						if (($corrections = $repo->findBy(array("activity" => $activity, "rater" => $user))) != null)
 						{
 							foreach($corrections as $correction)
@@ -47,6 +40,13 @@ class IntraController extends Controller
 						}
 						else
 							$data['correcting'] = null;
+						if (($corrections = $repo->findBy(array("activity" => $activity, "group" => $activityGroup))) != null)
+						{
+							foreach($corrections as $correction)
+								$data['corrected'][] = $correction;
+						}
+						else
+							$data['corrected'] = null;
 					}
 				}
 			}
