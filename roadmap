@@ -1,0 +1,49 @@
+BASE:
+DONE	Forum
+DONE	Connexion LDAP
+DONE	Annuaire
+DONE	Panel Admin
+DONE	Système de ticket
+
+MODULES:
+DONE	nom / description
+DONE	restriction du nombre de place
+DONE	date de début et de ﬁn d’inscription
+DONE	date de début et de ﬁn du module
+DONE	valeur du module en crédits
+DONE	création automatique de la catégorie dans le forum à la création d’un nouveau module à la ﬁn du module, les crédits sont attribués ou non (import via .csv) aux étudiants et un grade est donné
+
+ACTIVITES:
+DONE	nom / description / sujet (.pdf)
+DONE	restriction du nombre de place
+DONE	date de début et de ﬁn d’inscription
+DONE	date de début et de ﬁn de l’activité
+DONE	inscription par groupe de taille variable
+DONE	choix du nombre de pairs (peer correcting) pour les projets génération automatique de groupe ou inscription manuelle
+DONE	une activité doit forcément appartenir à un Module
+DONE	un type (projet / examen ou TD)
+
+BAREMES:
+DONE	on doit pouvoir selectionner une note en fonction des éléments décrits dans le barème
+DONE	on doit pouvoir associé un barème à une activité de type projet
+
+NOTES/CORRECTIONS:
+DONE	Générer des paires de correction
+		Pour les examen un fichier .csv doit être importé
+
+PROFILS:
+DONE	nom / prénom
+DONE	photo
+		nombre de crédits acquis / possibles
+DONE	liste des modules / activités en cours, ceux qui sont passés et ceux qui vont débuter
+		liste des personnes liées aux activités et corrections
+
+PLANNING:
+DONE	Planning des activités de l’étudiant par semaine
+
+ELEARNING:
+DONE	Categories créées automatiquement
+DONE	Ajout possible
+
+AUTOLOGIN:
+DONE	Generation d’un lien permettant la connexion automatique
