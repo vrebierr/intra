@@ -19,7 +19,8 @@ DONE	restriction du nombre de place
 DONE	date de début et de ﬁn d’inscription
 DONE	date de début et de ﬁn de l’activité
 DONE	inscription par groupe de taille variable
-DONE	choix du nombre de pairs (peer correcting) pour les projets génération automatique de groupe ou inscription manuelle
+DONE	choix du nombre de pairs (peer correcting) pour les projets
+		génération automatique de groupe ou inscription manuelle
 DONE	une activité doit forcément appartenir à un Module
 DONE	un type (projet / examen ou TD)
 
