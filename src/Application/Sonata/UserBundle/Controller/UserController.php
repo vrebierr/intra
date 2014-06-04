@@ -79,10 +79,11 @@ class UserController extends BaseController
 		foreach($user->getActivityGroups() as $activityGroup)
 		{
 			$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ScaleGroup");
-			$scale = $repo->findOneBy(array("activity" => $activityGroup->getActivity(), "group" => $activityGroup));
-			if ($scale)
+			$scales = $repo->findBy(array("activity" => $activityGroup->getActivity(), "group" => $activityGroup), array("activity" => 'DESC'));
+			if ($scales)
 			{
-				$data['scales'][] = $scale;
+				foreach ($scales as $scale)
+					$data['scales'][] = $scale;
 				$i++;
 			}
 		}

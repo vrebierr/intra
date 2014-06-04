@@ -9,8 +9,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Site\ActivityBundle\Entity\ScaleGroup;
 
-use Site\ActivityBundle\Entity\ScaleGroup;
-
 class ActivityCommand extends ContainerAwareCommand
 {
 	protected function configure()
