@@ -82,45 +82,11 @@ class ActivityCommand extends ContainerAwareCommand
 
 		foreach($activities as $activity)
 		{
-<<<<<<< HEAD
 			if ($activity->getEnd() < $date && $activity->getEndCorrection() > $date && !$activity->AreCorrectionGroupsGenerated())
 			{
 				$output->writeln("Generating correction groups for " .$activity->getName());
 				$this->generateCorrectionGroups($activity);
 				$output->writeln("<info>" .$activity->getName(). " correction groups generated !</info>");
-=======
-			if ($activity->getEnd() < $date && $activity->getEndCorrection() > $date)
-			{
-				$em = $this->getContainer()->get('doctrine')->getManager();
-				$groups = $em->getRepository('SiteActivityBundle:ActivityGroup')->findBy(array("activity" => $activity));
-				$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array("activity" => $activity));
-				$students = $activity->getStudents()->toArray();
-				shuffle($groups);
-				shuffle($students);
-				foreach ($students as $student)
-				{
-					for ($i = 0; $i < 4; $i++)
-					{
-						$scale_group = new ScaleGroup();
-						$rand = rand(0, count($groups) - 1);
-						while ($groups[$rand]->getStudents()->contains($student))
-						{
-							if (!isset($groups[1]))
-								break;
-							$rand = rand(0, count($groups) - 1);
-						}
-						$scale_group->setGroup($groups[$rand]);
-						$scale_group->setRater($student);
-						$scale_group->setScale($scale);
-						$em->persist($scale_group);
-						$groups[$rand]->peers += 1;
-						if ($groups[$rand]->peers == 4)
-							$groups = array_splice($groups, $rand);
-					}
-				}
-				$em->flush();
-				$output->writeln($activity->getName());
->>>>>>> 5406605ecba47f118397300ca995a490fbc0bc2a
 			}
 		}
 	}
