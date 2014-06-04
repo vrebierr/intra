@@ -174,26 +174,26 @@ class TicketTicket
     }
 
     /**
-     * Add message
+     * Add messages
      *
-     * @param \Site\TicketBundle\Entity\TicketMessage $message
+     * @param \Site\TicketBundle\Entity\TicketMessage $messages
      * @return TicketTicket
      */
-    public function addMessages(\Site\TicketBundle\Entity\TicketMessage $message)
+    public function addMessage(\Site\TicketBundle\Entity\TicketMessage $messages)
     {
-        $this->messages[] = $message;
+        $this->messages[] = $messages;
 
         return $this;
     }
 
     /**
-     * Remove message
+     * Remove messages
      *
-     * @param \Site\TicketBundle\Entity\TicketMessage $message
+     * @param \Site\TicketBundle\Entity\TicketMessage $messages
      */
-    public function removeMessages(\Site\TicketBundle\Entity\TicketMessage $message)
+    public function removeMessage(\Site\TicketBundle\Entity\TicketMessage $messages)
     {
-        $this->messages->removeElement($message);
+        $this->messages->removeElement($messages);
     }
 
     /**

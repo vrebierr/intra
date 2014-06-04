@@ -149,6 +149,12 @@ class Activity
      */
     private $correctionGenerated = false;
 
+    /**
+     * @var boolean
+     * @ORM\Column(name="random_groups", type="boolean")
+     */
+    private $randomGroups = false;
+
 
     public function __toString()
     {
@@ -616,8 +622,6 @@ class Activity
         return $this->lessons;
     }
 
-
-
     /**
      * Set correctionGenerated
      *
@@ -650,5 +654,28 @@ class Activity
             return (true);
         else
             return (false);
+    }
+
+    /**
+     * Set randomGroups
+     *
+     * @param boolean $randomGroups
+     * @return Activity
+     */
+    public function setRandomGroups($randomGroups)
+    {
+        $this->randomGroups = $randomGroups;
+
+        return $this;
+    }
+
+    /**
+     * Get randomGroups
+     *
+     * @return boolean 
+     */
+    public function getRandomGroups()
+    {
+        return $this->randomGroups;
     }
 }

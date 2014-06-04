@@ -32,6 +32,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
+            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
         ;
     }
 
@@ -54,6 +55,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
+            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -95,8 +97,9 @@ class ActivityAdmin extends Admin
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', 'choice', array(
                 'label' => 'ADMIN_ACTIVITY_TYPE',
-				'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD', 'rush' => 'Rush')
+                'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD', 'rush' => 'Rush')
                 ))
+            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
         ;
     }
 
@@ -120,6 +123,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
+            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS', 'editable' => true))
         ;
     }
 }
