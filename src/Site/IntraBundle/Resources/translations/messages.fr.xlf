@@ -84,7 +84,7 @@
             </trans-unit>
             <trans-unit id="31">
                 <source>BLOCK_CONTENT_CORRECTIONS_NAME</source>
-                <target>est terminé, vous devez faire et donner %nb_peers% corrections !</target>
+                <target>est terminé, vous devez faire et donner au minimum %nb_peers% corrections !</target>
             </trans-unit>
             <trans-unit id="32">
                 <source>BLOCK_CONTENT_ACTIVITIES_NONE</source>

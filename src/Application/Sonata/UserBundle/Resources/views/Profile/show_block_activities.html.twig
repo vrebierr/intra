@@ -19,7 +19,7 @@
 			<tr class="show activities" data-text="{{ i }}">
 				<td>{{ module.name }}</td>
 				<td>{{ module.credits }}</td>
-				<td>GRADE</td>
+				<td></td>
 			</tr>
 				<tr class="hidden {{ i }}">
 					<td style="padding-left: 75px;">{{ 'label_profile_module_table_activity'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
@@ -29,7 +29,13 @@
 				{% if activity.module == module %}
 					<tr class="hidden {{ i }}">
 						<td style="padding-left: 75px;"><a href="{{ path('site_activities_activity', { 'id': activity.id}) }}">{{ activity.name }}</a></td>
-						<td>NOTE</td>
+						<td>
+							{% for scale in scales %}
+								{% if scale.activity == activity %}
+									{{ scale.note }}
+								{% endif %}
+							{% endfor %}
+							</td>
 					</tr>
 				{% endif %}
 			{% endfor %}
@@ -39,7 +45,13 @@
 			<tr>
 				<td>{{ 'label_profile_module_table_total'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
 				<td>X/{{ total_credits }}</td>
-				<td></td>
+				<td>
+					<a href="{{ path('sonata_user_profile_export') }}">
+						<button class="ui blue right floated button">
+							<i class="download icon"></i>{{ 'export'|trans({}, 'ApplicationSonataUserBundle') }}
+						</button>
+					</a>
+				</td>
 			</tr>
 	</tbody>
 </table>

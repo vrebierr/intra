@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\HttpFoundation\Request;
 
 use Application\Sonata\UserBundle\Entity\User;
 
@@ -63,6 +64,33 @@ class UserController extends BaseController
 			'user'   => $userObject,
 			'blocks' => $this->container->getParameter('sonata.user.configuration.profile_blocks')
 		));
+	}
+
+	public function showAction()
+	{
+		$data = array();
+		$user = $this->container->get('security.context')->getToken()->getUser();
+		if (!is_object($user) || !$user instanceof UserInterface)
+			throw new AccessDeniedException('This user does not have access to this section.');
+		else
+			$data['user'] = $user;
+
+		$i = 0;
+		foreach($user->getActivityGroups() as $activityGroup)
+		{
+			$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ScaleGroup");
+			$scale = $repo->findOneBy(array("activity" => $activityGroup->getActivity(), "group" => $activityGroup));
+			if ($scale)
+			{
+				$data['scales'][] = $scale;
+				$i++;
+			}
+		}
+		if (!$i)
+			$data['scales'] = null;
+
+		$data['blocks'] = $this->container->getParameter('sonata.user.configuration.profile_blocks');
+		return $this->render('SonataUserBundle:Profile:show.html.twig', $data);
 	}
 
 	public function generateTokenAction()
@@ -125,21 +153,21 @@ class UserController extends BaseController
 			$res[] = $data;
 		}
 
-		echo (json_encode($res));
+		echo(json_encode($res));
 		return $this->render('ApplicationSonataUserBundle:Profile:activitiesfeed.html.twig', $res);
 	}
 
-    public function editProfileAction()
-    {
+	public function editProfileAction()
+	{
 		$user = $this->container->get('security.context')->getToken()->getUser();
 
-        if (!is_object($user) || !$user instanceof UserInterface)
-            throw new AccessDeniedException('This user does not have access to this section.');
+		if (!is_object($user) || !$user instanceof UserInterface)
+			throw new AccessDeniedException('This user does not have access to this section.');
 
-        $form = $this->container->get('sonata.user.profile.form');
-        $formHandler = $this->container->get('sonata.user.profile.form.handler');
+		$form = $this->container->get('sonata.user.profile.form');
+		$formHandler = $this->container->get('sonata.user.profile.form.handler');
 
-        $process = $formHandler->process($user);
+		$process = $formHandler->process($user);
 		if ($process)
 		{
 			$locale = $user->getLocale();
@@ -149,13 +177,60 @@ class UserController extends BaseController
 				$request->setLocale($request->getSession()->get('_locale', $locale));
 				$request->getSession()->set('_locale', $locale);
 			}
-            return new RedirectResponse($this->generateUrl('sonata_user_profile_show'));
-        }
+			return new RedirectResponse($this->generateUrl('sonata_user_profile_show'));
+		}
 
-        return $this->render('SonataUserBundle:Profile:edit_profile.html.twig', array(
-            'form'               => $form->createView(),
-            'breadcrumb_context' => 'user_profile',
-        ));
-    }
+		return $this->render('SonataUserBundle:Profile:edit_profile.html.twig', array(
+			'form'               => $form->createView(),
+			'breadcrumb_context' => 'user_profile'
+		));
+	}
 
+	public function exportAction(Request $request)
+	{
+		$data = array();
+		$user = $this->container->get('security.context')->getToken()->getUser();
+		$date = new \Datetime();
+
+		$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ScaleGroup");
+		if ($request->getLocale() == "en")
+		{
+			$filename = $user->getUsername(). "_notes_" .$date->format("m_d_Y_H_i_s").".csv";
+			$data['content'][] = "Module,Activity,Note";
+		}
+		else
+		{
+			$filename = $user->getUsername(). "_notes_" .$date->format("d_m_Y_H_i_s").".csv";
+			$data['content'][] = "Module,Activité,Note";
+		}
+		foreach ($user->getModules() as $module)
+		{
+			foreach ($user->getActivities() as $activity)
+			{
+				$data['activities'][] = $activity;
+				foreach ($user->getActivityGroups() as $group)
+				{
+					if (($corrections = $repo->findBy(array("activity" => $activity, "group" => $group))) != null)
+					{
+						foreach ($corrections as $correction)
+						{
+							if ($correction->getActivity() == $activity && $correction->getActivity()->getModule() == $module && $correction->isDone())
+								$data['content'][] = $module->getName(). "," .$activity->getName(). "," .$correction->getNote();
+						}
+					}
+				}
+			}
+		}
+
+		$response = $this->render('ApplicationSonataUserBundle:Profile:export.html.twig', $data);
+		$response->setStatusCode(200);
+		$response->headers->set('Content-Type', 'text/csv');
+		$response->headers->set('Content-Description', 'Submissions Export');
+		$response->headers->set('Content-Disposition', 'attachment; filename='.$filename);
+		$response->headers->set('Content-Transfer-Encoding', 'binary');
+		$response->headers->set('Pragma', 'no-cache');
+		$response->headers->set('Expires', '0');
+
+		return ($response);
+	}
 }

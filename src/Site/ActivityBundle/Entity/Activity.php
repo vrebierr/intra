@@ -143,6 +143,12 @@ class Activity
      */
     private $lessons;
 
+    /**
+     * @var boolean
+     * @ORM\Column(name="correction_generated", type="boolean")
+     */
+    private $correctionGenerated = false;
+
 
     public function __toString()
     {
@@ -608,5 +614,41 @@ class Activity
     public function getLessons()
     {
         return $this->lessons;
+    }
+
+
+
+    /**
+     * Set correctionGenerated
+     *
+     * @param boolean $correctionGenerated
+     * @return Activity
+     */
+    public function setCorrectionGenerated($correctionGenerated)
+    {
+        $this->correctionGenerated = $correctionGenerated;
+
+        return $this;
+    }
+
+    /**
+     * Get correctionGenerated
+     *
+     * @return boolean 
+     */
+    public function getCorrectionGenerated()
+    {
+        return $this->correctionGenerated;
+    }
+
+    /**
+     * Return true if correction have been generated, else return false.
+     */
+    public function AreCorrectionGroupsGenerated()
+    {
+        if ($this->correctionGenerated == true)
+            return (true);
+        else
+            return (false);
     }
 }

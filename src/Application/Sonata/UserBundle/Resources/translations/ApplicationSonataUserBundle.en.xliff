@@ -66,6 +66,10 @@
                 <source>copy_autologin</source>
                 <target>Copy</target>
             </trans-unit>
+            <trans-unit id="export">
+                <source>export</source>
+                <target>Exporter notes</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

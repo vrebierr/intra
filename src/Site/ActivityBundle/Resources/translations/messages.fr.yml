@@ -65,3 +65,12 @@ activity:
         deregister: Se désinscrire
         cancel: Annuler
     cursor: Maintenant
+
+scale:
+    heading: %activity% - Correction
+    correction:
+        done: Cette correction a déjà été effectuée.
+    form:
+        mark: Note
+        comment: Commentaires
+        send: Envoyer

@@ -54,6 +54,8 @@ class Scale
         $tab = array();
         for ($i = 0; $i <= $this->getMark(); $i++)
             $tab[] = $i;
+        array_unshift($tab, -42);
+
         return ($tab);
     }
 

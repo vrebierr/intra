@@ -53,6 +53,17 @@ class ScaleGroup
      */
     private $rater;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="\Site\ActivityBundle\Entity\Activity")
+     * @ORM\Joincolumn(nullable=false, name="activity_id")
+     */
+    private $activity;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="done", type="boolean")
+     */
+    private $done = false;
 
     /**
      * Get id
@@ -178,4 +189,62 @@ class ScaleGroup
     {
         return $this->comment;
     }
+
+    /**
+     * Set activity
+     *
+     * @param \Site\ActivityBundle\Entity\Activity $activity
+     * @return Scale
+     */
+    public function setActivity(\Site\ActivityBundle\Entity\Activity $activity)
+    {
+        $this->activity = $activity;
+
+        return $this;
+    }
+
+    /**
+     * Get activity
+     *
+     * @return \Site\ActivityBundle\Entity\Activity 
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
+
+    /**
+     * Set done
+     *
+     * @param boolean $done
+     * @return ScaleGroup
+     */
+    public function setDone($done)
+    {
+        $this->done = $done;
+
+        return $this;
+    }
+
+    /**
+     * Get done
+     *
+     * @return boolean 
+     */
+    public function getDone()
+    {
+        return $this->done;
+    }
+
+    /**
+     * Return true if correction is done, else return false.
+     */
+    public function isDone()
+    {
+        if ($this->done == true)
+            return (true);
+        else
+            return (false);
+    }
+
 }

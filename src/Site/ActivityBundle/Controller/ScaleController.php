@@ -15,30 +15,35 @@ class ScaleController extends Controller
 		$now = new \Datetime("NOW");
 		$user = $this->container->get("security.context")->getToken()->getUser();
 		$em = $this->getDoctrine()->getManager();
-		$correction = $em->getRepository('SiteActivityBundle:ScaleGroup')->findOneBy(array("activity" => $group->getActivity(), "group" => $group));
+		$corrections = $em->getRepository('SiteActivityBundle:ScaleGroup')->findBy(array("activity" => $group->getActivity(), "group" => $group));
 
 		if ($now < $group->getActivity()->getStartCorrection() || $now > $group->getActivity()->getEndCorrection())
 			throw new AccessDeniedException("You can't correct this group now.");
 
-		if ($correction->getRater() != $user)
+		$i = 0;
+		foreach ($corrections as $elem)
+		{
+			if ($elem->getRater() == $user)
+			{
+				$correction = $elem;
+				$i++;
+			}
+		}
+		if (!$i)
 			throw new AccessDeniedException("You can't correct this group.");
-
-		if ($correction->isDone())
-			throw new AccessDeniedException("Correction is done.");
 
 		$scale = $em->getRepository('SiteActivityBundle:Scale')->findOneBy(array(
 			"activity" => $group->getActivity()->getId()
 			));
 		$modules = $em->getRepository('SiteActivityBundle:Module')->findAll();
 
-		$this->generatePeers($group->getActivity(), $scale);
 		$fb = $this->createFormBuilder();
 
-		$fb->add('comment', 'textarea');
+		$fb->add('comment', 'textarea', array('label' => false, 'required' => true, 'attr' => array('placeholder' => 'scale.form.comment')));
 		$fb->add('note', 'choice', array(
+			'label' => false,
+			'required' => true,
 			'choices' => $scale->getMarks(),
-			'expanded' => true,
-			'multiple' => false
 		));
 		$form = $fb->getForm();
 
@@ -51,15 +56,16 @@ class ScaleController extends Controller
 				$data = $form->getData();
 				$correction->setComment($data['comment']);
 				$correction->setNote($data['note']);
-
+				$correction->setDone(true);
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($correction);
 				$em->flush();
-				$this->redirect($this->generateUrl('site_activities_activity', array('id' => $group->getActivity())));
+				$this->redirect($this->generateUrl('site_activities_activity', array('id' => $group->getActivity()->getId())));
 			}
 		}
 
 		return $this->render('SiteActivityBundle:Scale:show.html.twig', array(
+			"correction" => $correction,
 			"scale" => $scale,
 			"modules" => $modules,
 			"activity" => $group->getActivity(),
