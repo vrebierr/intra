@@ -76,10 +76,7 @@ class ActivityAdminController extends CRUDController
 								$event->setUser($users[$key]);
 								$event->setDate(new \Datetime());
 								$event->setType("registration");
-								if ($object->getSizeMax() == 1)
-									$event->setDescription("FEED_REGISTRATION_ACTIVITY_ONE_RANDOM");
-								else
-									$event->setDescription("FEED_REGISTRATION_ACTIVITY_GROUP_RANDOM");
+								$event->setDescription("FEED_REGISTRATION_ACTIVITY_GROUP_RANDOM");
 								$em->persist($event);
 								$group->addStudent($users[$key]);
 								unset($users[$key]);

@@ -121,36 +121,32 @@
             <trans-unit id="53">
                 <source>FEED_REGISTRATION_ACTIVITY_ONE</source>
                 <target>You have registered to the activity</target>
-			</trans-unit>
-            <trans-unit id="54">
-                <source>FEED_REGISTRATION_ACTIVITY_ONE_RANDOM</source>
-                <target>You have been registered by an admin to the activity</target>
             </trans-unit>
-            <trans-unit id="55">
+            <trans-unit id="54">
                 <source>FEED_UNREGISTRATION_ACTIVITY_GROUP_OWNER</source>
                 <target>You have unregistered your group from the activity</target>
             </trans-unit>
-            <trans-unit id="56">
+            <trans-unit id="55">
                 <source>FEED_UNREGISTRATION_ACTIVITY_GROUP</source>
                 <target>Your group have been unregistered from the activity</target>
             </trans-unit>
-            <trans-unit id="57">
+            <trans-unit id="56">
                 <source>FEED_UNREGISTRATION_ACTIVITY_ONE</source>
                 <target>You have unregistered from the activity</target>
             </trans-unit>
-            <trans-unit id="58">
+            <trans-unit id="57">
                 <source>FEED_REGISTRATION_MODULE</source>
                 <target>You registered to the module</target>
             </trans-unit>
-            <trans-unit id="59">
+            <trans-unit id="58">
                 <source>FEED_UNREGISTRATION_MODULE</source>
                 <target>You have unregistered from the module</target>
             </trans-unit>
-            <trans-unit id="60">
+            <trans-unit id="59">
                 <source>FEED_TICKET_CREATE</source>
                 <target>You created a ticket with the subject:</target>
             </trans-unit>
-            <trans-unit id="61">
+            <trans-unit id="60">
                 <source>FEED_MESSAGE_RECEIVED</source>
                 <target>You received a message from</target>
             </trans-unit>
