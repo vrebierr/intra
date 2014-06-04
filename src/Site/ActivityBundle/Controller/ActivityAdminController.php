@@ -5,6 +5,7 @@ namespace Site\ActivityBundle\Controller;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Site\ForumBundle\Entity\ForumSubboard;
 use Site\ActivityBundle\Entity\ActivityGroup;
+use Site\IntraBundle\Entity\Event;
 
 class ActivityAdminController extends CRUDController
 {
@@ -70,6 +71,16 @@ class ActivityAdminController extends CRUDController
 							foreach($keys as $key)
 							{
 								$object->addStudent($users[$key]);
+								$event = new Event();
+								$event->setInfo($object->getName());
+								$event->setUser($users[$key]);
+								$event->setDate(new \Datetime());
+								$event->setType("registration");
+								if ($object->getSizeMax() == 1)
+									$event->setDescription("FEED_REGISTRATION_ACTIVITY_ONE_RANDOM");
+								else
+									$event->setDescription("FEED_REGISTRATION_ACTIVITY_GROUP_RANDOM");
+								$em->persist($event);
 								$group->addStudent($users[$key]);
 								unset($users[$key]);
 							}

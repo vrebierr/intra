@@ -20,7 +20,7 @@ DONE	date de début et de ﬁn d’inscription
 DONE	date de début et de ﬁn de l’activité
 DONE	inscription par groupe de taille variable
 DONE	choix du nombre de pairs (peer correcting) pour les projets
-		génération automatique de groupe ou inscription manuelle
+DONE	génération automatique de groupe ou inscription manuelle
 DONE	une activité doit forcément appartenir à un Module
 DONE	un type (projet / examen ou TD)
 
@@ -37,7 +37,7 @@ DONE	nom / prénom
 DONE	photo
 		nombre de crédits acquis / possibles
 DONE	liste des modules / activités en cours, ceux qui sont passés et ceux qui vont débuter
-		liste des personnes liées aux activités et corrections
+DONE	liste des personnes liées aux activités et corrections
 
 PLANNING:
 DONE	Planning des activités de l’étudiant par semaine
