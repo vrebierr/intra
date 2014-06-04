@@ -112,25 +112,29 @@
                 <source>ADMIN_ACTIVITY_SUBJECT</source>
                 <target>Sujet</target>
             </trans-unit>
+            <trans-unit id="26">
+                <source>ADMIN_ACTIVITY_RANDOMGROUPS</source>
+                <target>Groupes aléatoires</target>
+            </trans-unit>
 
             <!-- SCALES -->
-            <trans-unit id="26">
+            <trans-unit id="27">
                 <source>ADMIN_HEADING_SCALES</source>
                 <target>Barèmes</target>
             </trans-unit>
-            <trans-unit id="27">
+            <trans-unit id="28">
                 <source>ADMIN_SCALE_ACTIVITY</source>
                 <target>Activité</target>
             </trans-unit>
-            <trans-unit id="28">
+            <trans-unit id="29">
                 <source>ADMIN_SCALE_MARK</source>
                 <target>Note</target>
             </trans-unit>
-            <trans-unit id="29">
+            <trans-unit id="30">
                 <source>ADMIN_SCALE_NAME</source>
                 <target>Nom</target>
             </trans-unit>
-            <trans-unit id="30">
+            <trans-unit id="31">
                 <source>ADMIN_SCALE_DESCRIPTION</source>
                 <target>Description</target>
             </trans-unit>

@@ -130,7 +130,7 @@ class ForumThread
      *
      * @return string
      */
-    public function getpinned()
+    public function getPinned()
     {
         return $this->pinned;
     }
