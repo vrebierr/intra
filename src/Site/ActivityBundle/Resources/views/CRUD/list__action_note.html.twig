@@ -1,0 +1,6 @@
+{% if admin.hasRoute('note') %}
+	<a href="{{ admin.generateObjectUrl('note', object) }}" class="btn btn-sm btn-default" title="{{ 'note'|trans({}, 'SiteActivityBundle') }}">
+		<i class='glyphicon glyphicon-pencil'></i>
+		{{ 'note'|trans({}, 'SiteActivityBundle') }}
+	</a>
+{% endif %}

@@ -1,0 +1,38 @@
+{% extends 'SiteIntraBundle:Admin:standard_layout.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block form %}
+	<form method="POST" {{ form_enctype(form) }}>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-success">
+				<div class="box-header">
+					<h4 class="box-title">
+						Activités
+					</h4>
+				</div>
+				<div class="box-body">
+					<div class="form-group">
+						{{ form_widget(form.Correction) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ form_rest(form) }}
+	<div class="well well-small form-actions">
+		<button type="submit" class="btn btn-success" name="btn_create_and_create">
+			<i class="fa fa-plus-circle"></i>
+			{{ 'btn_create_and_create_a_new_one'|trans({}, 'SonataAdminBundle') }}
+		</button>
+		<button type="submit" class="btn btn-success" name="btn_create_and_list">
+			<i class="fa fa-save"></i>
+			<i class="fa fa-list"></i>
+			{{ 'btn_create_and_return_to_list'|trans({}, 'SonataAdminBundle') }}
+		</button>
+	</div>
+</form>
+{% endblock %}

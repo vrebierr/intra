@@ -7,13 +7,19 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class ActivityAdmin extends Admin
 {
 
     protected $translationDomain = 'SiteActivityBundle';
 
-    /**
+	protected function configureRoutes(RouteCollection $collection)
+	{
+		$collection->add('note', $this->getRouterIdParameter().'/note');
+	}
+
+	/**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -61,6 +67,9 @@ class ActivityAdmin extends Admin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
+					'note' => array(
+						'template' => 'SiteActivityBundle:CRUD:list__action_note.html.twig'
+					)
                 )
             ))
         ;

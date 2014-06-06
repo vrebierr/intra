@@ -4,6 +4,10 @@
         <body>
 
             <!-- ADMIN -->
+            <trans-unit id="-1">
+                <source>note</source>
+                <target>Noter</target>
+            </trans-unit>
             <trans-unit id="0">
                 <source>ADMIN_HEADING_ACTIVITIES</source>
                 <target>Activités</target>

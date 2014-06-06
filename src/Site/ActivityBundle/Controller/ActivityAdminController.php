@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Controller\CRUDController;
 use Site\ForumBundle\Entity\ForumSubboard;
 use Site\ActivityBundle\Entity\ActivityGroup;
 use Site\IntraBundle\Entity\Event;
+use Site\ActivityBundle\Form\AdminUploadType;
 
 class ActivityAdminController extends CRUDController
 {
@@ -125,5 +126,45 @@ class ActivityAdminController extends CRUDController
 			'form'   => $view,
 			'object' => $object,
 		));
+	}
+
+	public function noteAction()
+	{
+		$data = array();
+		$id = $this->get('request')->get($this->admin->getIdParameter());
+
+		$object = $this->admin->getObject($id);
+		$form = $this->createForm(new AdminUploadType());
+		$data['form'] = $form->createView();
+		if (!$object)
+			throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
+
+		$request = $this->getRequest();
+		if ($request->isMethod("POST"))
+		{
+			$form->bind($request);
+			if ($form->isValid())
+			{
+				$date = new \Datetime();
+				$filename = "notes_" .$date->format("d_m_Y_H_i_s"). ".csv";
+				$formData = $form->getData();
+				$formData['Correction']->move("./", $filename);
+				$row = 1;
+				if (($handle = fopen($filename, "r")))
+				{
+					while (($content = fgetcsv($handle, 1000, ",")))
+					{
+/*						$correction = new \ScaleGroup();
+						$correction->setScale();
+						$correction->setNote($content[2]);
+						$correction->setGroup();
+						$correction->setRater();
+						$correction->setActivity();
+						$correction->setDone(true);*/
+					}
+					fclose($handle);
+				}
+			}
+		}
 	}
 }
