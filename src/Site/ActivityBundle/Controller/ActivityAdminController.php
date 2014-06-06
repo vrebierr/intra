@@ -7,6 +7,7 @@ use Site\ForumBundle\Entity\ForumSubboard;
 use Site\ActivityBundle\Entity\ActivityGroup;
 use Site\IntraBundle\Entity\Event;
 use Site\ActivityBundle\Form\AdminUploadType;
+use Site\ActivityBundle\Entity\ScaleGroup;
 
 class ActivityAdminController extends CRUDController
 {
@@ -128,15 +129,18 @@ class ActivityAdminController extends CRUDController
 		));
 	}
 
-	public function noteAction()
+	public function noteAction($id = null)
 	{
+		// the key used to lookup the template
+		$templateKey = 'note';
+
 		$data = array();
 		$id = $this->get('request')->get($this->admin->getIdParameter());
 
-		$object = $this->admin->getObject($id);
+		$activity = $this->admin->getObject($id);
 		$form = $this->createForm(new AdminUploadType());
 		$data['form'] = $form->createView();
-		if (!$object)
+		if (!$activity)
 			throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
 
 		$request = $this->getRequest();
@@ -149,19 +153,26 @@ class ActivityAdminController extends CRUDController
 				$filename = "notes_" .$date->format("d_m_Y_H_i_s"). ".csv";
 				$formData = $form->getData();
 				$formData['Correction']->move("./", $filename);
-				$row = 1;
+				$user = $this->container->get("security.context")->getToken()->getUser();
 				if (($handle = fopen($filename, "r")))
 				{
 					while (($content = fgetcsv($handle, 1000, ",")))
 					{
-/*						$correction = new \ScaleGroup();
-						$correction->setScale();
-						$correction->setNote($content[2]);
-						$correction->setGroup();
-						$correction->setRater();
-						$correction->setActivity();
-						$correction->setDone(true);*/
+/*						$correction = new ScaleGroup();
+						$correction->setScale($activity->getScale());
+						$correction->setNote($content[1]);
+						$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup");
+						$group = $repo->findOneBy(array("activity" => $activity, "name" => $content[0]. "_" .$activity->getName()));
+						$correction->setGroup($group);
+						$correction->setRater($user);
+						$correction->setComment($content[2]);
+						$correction->setActivity($activity);
+						$correction->setDone(true);
+
+						$em = $this->getDoctrine()->getManager();
+						$em->persist($correction);*/
 					}
+					$em->flush();
 					fclose($handle);
 				}
 			}

@@ -43,7 +43,7 @@ class Scale
     private $description;
 
     /**
-     * @ORM\OnetoOne(targetEntity="Activity")
+     * @ORM\OnetoOne(targetEntity="Activity", inversedBy="scale")
      * @ORM\JoinColumn(nullable=false, name="activity_id")
      */
     private $activity;

@@ -144,6 +144,11 @@ class Activity
     private $lessons;
 
     /**
+     * @ORM\OneToOne(targetEntity="Scale", mappedBy="activity", cascade={"persist", "remove"})
+     */
+    private $scale;
+
+    /**
      * @var boolean
      * @ORM\Column(name="correction_generated", type="boolean")
      */
@@ -677,5 +682,28 @@ class Activity
     public function getRandomGroups()
     {
         return $this->randomGroups;
+    }
+
+    /**
+     * Set scale
+     *
+     * @param \Site\ActivityBundle\Entity\Scale $scale
+     * @return Activity
+     */
+    public function setScale(\Site\ActivityBundle\Entity\Scale $scale = null)
+    {
+        $this->scale = $scale;
+
+        return $this;
+    }
+
+    /**
+     * Get scale
+     *
+     * @return \Site\ActivityBundle\Entity\Scale 
+     */
+    public function getScale()
+    {
+        return $this->scale;
     }
 }
