@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Site\ActivityBundle\Entity\ScaleGroup;
-use Site\ACtivityBundle\Entity\ActivityMark;
+use Site\ActivityBundle\Entity\ModuleGrade;
 
 class ModuleGradeCommand extends ContainerAwareCommand
 {
@@ -18,8 +18,52 @@ class ModuleGradeCommand extends ContainerAwareCommand
 			->setDescription('Look up for each module if its terminated, and define a grade for each student.');
 	}
 
-	private function correction(\Site\ActivityBundle\Entity\Activity $activity)
+	private function correction(\Site\ActivityBundle\Entity\Module $module)
 	{
+		$repo = $this->getContainer()->get('doctrine')->getManager()->getRepository("ApplicationSonataUserBundle:User");
+		$students = $repo->findAll();
+		$em = $this->getContainer()->get('doctrine')->getManager();
+
+		foreach ($students as $student)
+		{
+			$grade = new ModuleGrade();
+			$grade->setStudent($student);
+			$grade->setModule($module);
+
+			$marks = $student->getMarks();
+			if ($marks->isEmpty() == false)
+			{
+				$max = 0;
+				$note = 0;
+				foreach ($student->getMarks() as $mark)
+				{
+					if ($mark->getActivity()->getModule() == $module)
+					{
+						$max += $mark->getActivity()->getScale()->GetMark();
+						$note += $mark->getMark();
+					}
+				}
+				if ($max != 0)
+					$finalnote = $note / $max * 100;
+				else
+					$finalnote = -1;
+
+				if ($finalnote <= 100 && $finalnote >= 80)
+					$grade->setGrade("A");
+				else if ($finalnote < 80 && $finalnote >= 60)
+					$grade->setGrade("B");
+				else if ($finalnote < 60 && $finalnote >= 40)
+					$grade->setGrade("C");
+				else if ($finalnote < 40 && $finalnote >= 20)
+					$grade->setGrade("D");
+				else
+					$grade->setGrade("ECHEC");
+			}
+			else
+				$grade->setGrade("ECHEC");
+			$em->persist($grade);
+		}
+		$em->flush();
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
@@ -27,15 +71,15 @@ class ModuleGradeCommand extends ContainerAwareCommand
 		$date = new \Datetime();
 
 		$repo = $this->getContainer()->get('doctrine')->getManager()->getRepository("SiteActivityBundle:Module");
-		$activities = $repo->findAll();
+		$modules = $repo->findAll();
 
-		foreach($activities as $activity)
+		foreach($modules as $module)
 		{
-			if ($activity->getEndCorrection() >= $date && $activity->AreCorrectionGroupsGenerated())
+			if ($module->getEnd() >= $date && !$module->areGradesGiven())
 			{
-				$output->writeln("Defining final note for " .$activity->getName());
-				$this->correction($activity);
-				$output->writeln("<info>" .$activity->getName(). "'s marks done!</info>");
+				$output->writeln("Defining grades for " .$module->getName());
+				$this->correction($module);
+				$output->writeln("<info>" .$module->getName(). "'s grades given!</info>");
 			}
 		}
 	}

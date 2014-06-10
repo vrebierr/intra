@@ -48,7 +48,7 @@ class ActivityMarkCommand extends ContainerAwareCommand
 				$total = 0;
 				foreach ($scales as $scale)
 				{
-					$total = $total + $scale->getNote();
+					$total += $scale->getNote();
 					$i++;
 				}
 				$total = $total / $i;
@@ -79,11 +79,11 @@ class ActivityMarkCommand extends ContainerAwareCommand
 
 		foreach($activities as $activity)
 		{
-			if ($activity->getEndCorrection() >= $date && !$activity->isFinalMarkGiven())
+			if ($activity->getEndCorrection() >= $date && !$activity->areGradesGiven())
 			{
-				$output->writeln("Defining final note for " .$activity->getName());
+				$output->writeln("Defining final marks for " .$activity->getName());
 				$this->correction($activity);
-				$output->writeln("<info>" .$activity->getName(). "'s marks done!</info>");
+				$output->writeln("<info>" .$activity->getName(). "'s marks given!</info>");
 			}
 		}
 	}

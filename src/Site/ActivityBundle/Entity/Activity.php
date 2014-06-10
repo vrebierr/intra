@@ -751,7 +751,7 @@ class Activity
         return $this->marks;
     }
 
-    public function isFinalMarkGiven()
+    public function areMarksGiven()
     {
         if ($this->getMarks()->isEmpty())
             return (false);

@@ -404,6 +404,14 @@ class Module
         return $this->grades;
     }
 
+    public function areGradesGiven()
+    {
+        if ($this->getGrades()->isEmpty())
+            return (false);
+        else
+            return (true);
+    }
+
     /**
      * Set optionnal
      *
