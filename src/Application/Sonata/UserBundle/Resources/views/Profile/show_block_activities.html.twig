@@ -30,17 +30,11 @@
 					<tr class="hidden {{ i }}">
 						<td style="padding-left: 75px;"><a href="{{ path('site_activities_activity', { 'id': activity.id}) }}">{{ activity.name }}</a></td>
 						<td>
-							{% set total = 0 %}
-							{% set count = 0 %}
-							{% for scale in scales %}
-								{% if scale.activity == activity %}
-									{% set total = total + scale.note %}
-									{% set count = count + 1 %}
+							{% for mark in user.marks %}
+								{% if mark.activity == activity %}
+									{{ mark.mark }}
 								{% endif %}
 							{% endfor %}
-							{% if count != 0 %}
-								{{ total / count }}
-							{% endif %}
 						</td>
 					</tr>
 				{% endif %}

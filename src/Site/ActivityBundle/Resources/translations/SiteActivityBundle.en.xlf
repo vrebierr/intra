@@ -50,95 +50,103 @@
                 <source>ADMIN_MODULE_ENDREGISTRATION</source>
                 <target>End of registrations</target>
             </trans-unit>
+            <trans-unit id="10">
+                <source>ADMIN_MODULE_OPTIONNAL</source>
+                <target>Optionnal</target>
+            </trans-unit>
 
             <!-- ACTIVITIES -->
-            <trans-unit id="10">
+            <trans-unit id="11">
                 <source>ADMIN_HEADING_ACTIVITIES</source>
                 <target>Activities</target>
             </trans-unit>
-            <trans-unit id="11">
+            <trans-unit id="12">
                 <source>ADMIN_ACTIVITY_MODULE</source>
                 <target>Module</target>
             </trans-unit>
-            <trans-unit id="12">
+            <trans-unit id="13">
                 <source>ADMIN_ACTIVITY_PLACES</source>
                 <target>Places</target>
             </trans-unit>
-            <trans-unit id="13">
+            <trans-unit id="14">
                 <source>ADMIN_ACTIVITY_NAME</source>
                 <target>Name</target>
             </trans-unit>
-            <trans-unit id="14">
+            <trans-unit id="15">
                 <source>ADMIN_ACTIVITY_DESCRIPTION</source>
                 <target>Description</target>
             </trans-unit>
-            <trans-unit id="15">
+            <trans-unit id="16">
                 <source>ADMIN_ACTIVITY_START</source>
                 <target>Start</target>
             </trans-unit>
-            <trans-unit id="16">
+            <trans-unit id="17">
                 <source>ADMIN_ACTIVITY_END</source>
                 <target>End</target>
             </trans-unit>
-            <trans-unit id="17">
+            <trans-unit id="18">
                 <source>ADMIN_ACTIVITY_STARTREGISTRATION</source>
                 <target>Start of registrations</target>
             </trans-unit>
-            <trans-unit id="18">
+            <trans-unit id="19">
                 <source>ADMIN_ACTIVITY_ENDREGISTRATION</source>
                 <target>End of registrations</target>
             </trans-unit>
-            <trans-unit id="19">
+            <trans-unit id="20">
                 <source>ADMIN_ACTIVITY_STARTCORRECTION</source>
                 <target>Start of notations</target>
             </trans-unit>
-            <trans-unit id="20">
+            <trans-unit id="21">
                 <source>ADMIN_ACTIVITY_ENDCORRECTION</source>
                 <target>End of notations</target>
             </trans-unit>
-            <trans-unit id="21">
+            <trans-unit id="22">
                 <source>ADMIN_ACTIVITY_SIZEMIN</source>
                 <target>Minimal size</target>
             </trans-unit>
-            <trans-unit id="22">
+            <trans-unit id="23">
                 <source>ADMIN_ACTIVITY_SIZEMAX</source>
                 <target>Maximal size</target>
             </trans-unit>
-            <trans-unit id="23">
+            <trans-unit id="24">
                 <source>ADMIN_ACTIVITY_PEERS</source>
                 <target>Peers</target>
             </trans-unit>
-            <trans-unit id="24">
+            <trans-unit id="25">
                 <source>ADMIN_ACTIVITY_TYPE</source>
                 <target>Type</target>
             </trans-unit>
-            <trans-unit id="25">
+            <trans-unit id="26">
                 <source>ADMIN_ACTIVITY_SUBJECT</source>
                 <target>Subject</target>
             </trans-unit>
-            <trans-unit id="26">
+            <trans-unit id="27">
                 <source>ADMIN_ACTIVITY_RANDOMGROUPS</source>
                 <target>Random groups</target>
             </trans-unit>
+            <trans-unit id="28">
+                <source>ADMIN_ACTIVITY_OPTIONNAL</source>
+                <target>Optionnal</target>
+            </trans-unit>
 
             <!-- SCALES -->
-            <trans-unit id="27">
+            <trans-unit id="29">
                 <source>ADMIN_HEADING_SCALES</source>
                 <target>Scales</target>
             </trans-unit>
-            <trans-unit id="28">
+            <trans-unit id="30">
                 <source>ADMIN_SCALE_ACTIVITY</source>
                 <target>Activities</target>
             </trans-unit>
-            <trans-unit id="29">
+            <trans-unit id="31">
                 <source>ADMIN_SCALE_MARK</source>
                 <target>Mark</target>
             </trans-unit>
-            <trans-unit id="30">
+            <trans-unit id="32">
                 <source>ADMIN_SCALE_NAME</source>
                 <target>Name</target>
             </trans-unit>
-            <trans-unit id="31">
+            <trans-unit id="33">
                 <source>ADMIN_SCALE_DESCRIPTION</source>
                 <target>Description</target>
             </trans-unit>

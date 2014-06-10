@@ -86,13 +86,18 @@ class Module
      * @ORM\ManytoMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="modules")
      * @ORM\JoinTable(name="modules_students")
      */
-	private $students;
+    private $students;
 
     /**
      * @ORM\OneToMany(targetEntity="ModuleGrade", mappedBy="module", cascade={"persist", "remove"})
      */
     private $grades;
 
+    /**
+     * @var boolean
+     * @ORM\Column(name="optionnal", type="boolean")
+     */
+    private $optionnal = false;
 
     public function __toString()
     {
@@ -397,5 +402,28 @@ class Module
     public function getGrades()
     {
         return $this->grades;
+    }
+
+    /**
+     * Set optionnal
+     *
+     * @param boolean $optionnal
+     * @return Activity
+     */
+    public function setOptionnal($optionnal)
+    {
+        $this->optionnal = $optionnal;
+
+        return $this;
+    }
+
+    /**
+     * Get optionnal
+     *
+     * @return boolean 
+     */
+    public function getOptionnal()
+    {
+        return $this->optionnal;
     }
 }

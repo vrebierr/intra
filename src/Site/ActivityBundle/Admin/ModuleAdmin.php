@@ -24,6 +24,7 @@ class ModuleAdmin extends Admin
             ->add('places', null, array('label' => 'ADMIN_MODULE_PLACES'))
             ->add('start', null, array('label' => 'ADMIN_MODULE_START'))
             ->add('end', null, array('label' => 'ADMIN_MODULE_END'))
+            ->add('optionnal', null, array('label' => 'ADMIN_MODULE_OPTIONNAL'))
         ;
     }
 
@@ -40,6 +41,7 @@ class ModuleAdmin extends Admin
             ->add('end', null, array('label' => 'ADMIN_MODULE_END'))
             ->add('startRegistration', null, array('label' => 'ADMIN_MODULE_STARTREGISTRATION'))
             ->add('endRegistration', null, array('label' => 'ADMIN_MODULE_ENDREGISTRATION'))
+            ->add('optionnal', null, array('label' => 'ADMIN_MODULE_OPTIONNAL', 'editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -68,6 +70,7 @@ class ModuleAdmin extends Admin
             ->add('end', 'dateTimePicker', array('label' => 'ADMIN_MODULE_END'))
             ->add('startRegistration', 'dateTimePicker', array('label' => 'ADMIN_MODULE_STARTREGISTRATION'))
             ->add('endRegistration', 'dateTimePicker', array('label' => 'ADMIN_MODULE_ENDREGISTRATION'))
+            ->add('optionnal', null, array('label' => 'ADMIN_MODULE_OPTIONNAL'))
         ;
     }
 
@@ -85,6 +88,7 @@ class ModuleAdmin extends Admin
             ->add('end', null, array('label' => 'ADMIN_MODULE_END'))
             ->add('startRegistration', null, array('label' => 'ADMIN_MODULE_STARTREGISTRATION'))
             ->add('endRegistration', null, array('label' => 'ADMIN_MODULE_ENDREGISTRATION'))
+            ->add('optionnal', null, array('label' => 'ADMIN_MODULE_OPTIONNAL'))
         ;
     }
 }

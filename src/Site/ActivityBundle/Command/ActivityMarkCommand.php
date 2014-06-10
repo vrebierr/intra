@@ -18,8 +18,56 @@ class ActivityMarkCommand extends ContainerAwareCommand
 			->setDescription('Look up for each activity if corrections are terminated, and define a final mark.');
 	}
 
+	private function getGroup(\Site\ActivityBundle\Entity\Activity $activity, \Application\Sonata\UserBundle\Entity\User $student)
+	{
+		foreach ($student->getActivityGroups() as $group)
+		{
+			if ($group->getActivity() == $activity)
+				return ($group);
+		}
+		return (null);
+	}
+
 	private function correction(\Site\ActivityBundle\Entity\Activity $activity)
 	{
+		$repo = $this->getContainer()->get('doctrine')->getManager()->getRepository("ApplicationSonataUserBundle:User");
+		$students = $repo->findAll();
+		$em = $this->getContainer()->get('doctrine')->getManager();
+
+		foreach ($students as $student)
+		{
+			$repo = $this->getContainer()->get('doctrine')->getManager()->getRepository("SiteActivityBundle:ScaleGroup");
+			$group = $this->getGroup($activity, $student);
+			if ($group)
+				$scales = $repo->findBy(array("activity" => $activity, "group" => $group), array("activity" => 'DESC'));
+			else
+				$scales = null;
+			if ($scales)
+			{
+				$i = 0;
+				$total = 0;
+				foreach ($scales as $scale)
+				{
+					$total = $total + $scale->getNote();
+					$i++;
+				}
+				$total = $total / $i;
+				$mark = new ActivityMark();
+				$mark->setStudent($student);
+				$mark->setActivity($activity);
+				$mark->setMark($total);
+				$em->persist($mark);
+			}
+			else if (!$scales && $activity->getOptionnal() == 0)
+			{
+				$mark = new ActivityMark();
+				$mark->setStudent($student);
+				$mark->setActivity($activity);
+				$mark->setMark(0);
+				$em->persist($mark);
+			}
+		}
+		$em->flush();
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
@@ -31,7 +79,7 @@ class ActivityMarkCommand extends ContainerAwareCommand
 
 		foreach($activities as $activity)
 		{
-			if ($activity->getEndCorrection() >= $date && $activity->AreCorrectionGroupsGenerated())
+			if ($activity->getEndCorrection() >= $date && !$activity->isFinalMarkGiven())
 			{
 				$output->writeln("Defining final note for " .$activity->getName());
 				$this->correction($activity);

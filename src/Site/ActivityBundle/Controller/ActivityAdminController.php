@@ -158,7 +158,7 @@ class ActivityAdminController extends CRUDController
 				{
 					while (($content = fgetcsv($handle, 1000, ",")))
 					{
-/*						$correction = new ScaleGroup();
+						$correction = new ScaleGroup();
 						$correction->setScale($activity->getScale());
 						$correction->setNote($content[1]);
 						$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ActivityGroup");
@@ -170,7 +170,7 @@ class ActivityAdminController extends CRUDController
 						$correction->setDone(true);
 
 						$em = $this->getDoctrine()->getManager();
-						$em->persist($correction);*/
+						$em->persist($correction);
 					}
 					$em->flush();
 					fclose($handle);

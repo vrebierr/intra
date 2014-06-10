@@ -146,7 +146,7 @@ class Activity
     /**
      * @ORM\OneToOne(targetEntity="Scale", mappedBy="activity", cascade={"persist", "remove"})
      */
-	private $scale;
+    private $scale;
 
     /**
      * @ORM\OneToMany(targetEntity="ActivityMark", mappedBy="activity", cascade={"persist", "remove"})
@@ -164,6 +164,12 @@ class Activity
      * @ORM\Column(name="random_groups", type="boolean")
      */
     private $randomGroups = false;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="optionnal", type="boolean")
+     */
+    private $optionnal = false;
 
 
     public function __toString()
@@ -743,5 +749,36 @@ class Activity
     public function getMarks()
     {
         return $this->marks;
+    }
+
+    public function isFinalMarkGiven()
+    {
+        if ($this->getMarks()->isEmpty())
+            return (false);
+        else
+            return (true);
+    }
+
+    /**
+     * Set optionnal
+     *
+     * @param boolean $optionnal
+     * @return Activity
+     */
+    public function setOptionnal($optionnal)
+    {
+        $this->optionnal = $optionnal;
+
+        return $this;
+    }
+
+    /**
+     * Get optionnal
+     *
+     * @return boolean 
+     */
+    public function getOptionnal()
+    {
+        return $this->optionnal;
     }
 }

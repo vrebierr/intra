@@ -14,12 +14,12 @@ class ActivityAdmin extends Admin
 
     protected $translationDomain = 'SiteActivityBundle';
 
-	protected function configureRoutes(RouteCollection $collection)
-	{
-		$collection->add('note', $this->getRouterIdParameter().'/note');
-	}
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('note', $this->getRouterIdParameter().'/note');
+    }
 
-	/**
+    /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -39,6 +39,7 @@ class ActivityAdmin extends Admin
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
             ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
+            ->add('optionnal', null, array('label' => 'ADMIN_ACTIVITY_OPTIONNAL'))
         ;
     }
 
@@ -62,14 +63,15 @@ class ActivityAdmin extends Admin
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
             ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
+            ->add('optionnal', null, array('label' => 'ADMIN_ACTIVITY_OPTIONNAL', 'editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
-					'note' => array(
-						'template' => 'SiteActivityBundle:CRUD:list__action_note.html.twig'
-					)
+                    'note' => array(
+                        'template' => 'SiteActivityBundle:CRUD:list__action_note.html.twig'
+                    )
                 )
             ))
         ;
@@ -109,6 +111,7 @@ class ActivityAdmin extends Admin
                 'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD', 'rush' => 'Rush')
                 ))
             ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
+            ->add('optionnal', null, array('label' => 'ADMIN_ACTIVITY_OPTIONNAL'))
         ;
     }
 
@@ -132,7 +135,7 @@ class ActivityAdmin extends Admin
             ->add('sizeMax', null, array('label' => 'ADMIN_ACTIVITY_SIZEMAX'))
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
-            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS', 'editable' => true))
+            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
         ;
     }
 }
