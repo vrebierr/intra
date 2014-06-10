@@ -63,6 +63,18 @@
                 <cascade-persist/>
             </cascade>
         </one-to-many>
+        <one-to-many field="grades" target-entity="Site\ActivityBundle\Entity\ModuleGrade" mapped-by="student" orphan-removal="true">
+            <cascade>
+                <cascade-remove/>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
+        <one-to-many field="marks" target-entity="Site\ActivityBundle\Entity\ActivityMark" mapped-by="student" orphan-removal="true">
+            <cascade>
+                <cascade-remove/>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
     </entity>
 
 </doctrine-mapping>

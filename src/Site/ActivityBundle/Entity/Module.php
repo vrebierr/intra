@@ -86,7 +86,13 @@ class Module
      * @ORM\ManytoMany(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="modules")
      * @ORM\JoinTable(name="modules_students")
      */
-    private $students;
+	private $students;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ModuleGrade", mappedBy="module", cascade={"persist", "remove"})
+     */
+    private $grades;
+
 
     public function __toString()
     {
@@ -358,5 +364,38 @@ class Module
     public function getStudents()
     {
         return $this->students;
+    }
+
+    /**
+     * Add grades
+     *
+     * @param \Site\ActivityBundle\Entity\ModuleGrade $grades
+     * @return Module
+     */
+    public function addGrade(\Site\ActivityBundle\Entity\ModuleGrade $grades)
+    {
+        $this->grades[] = $grades;
+
+        return $this;
+    }
+
+    /**
+     * Remove grades
+     *
+     * @param \Site\ActivityBundle\Entity\ModuleGrade $grades
+     */
+    public function removeGrade(\Site\ActivityBundle\Entity\ModuleGrade $grades)
+    {
+        $this->grades->removeElement($grades);
+    }
+
+    /**
+     * Get grades
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGrades()
+    {
+        return $this->grades;
     }
 }

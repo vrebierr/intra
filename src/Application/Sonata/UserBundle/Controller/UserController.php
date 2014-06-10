@@ -194,18 +194,23 @@ class UserController extends BaseController
 		$date = new \Datetime();
 
 		$repo = $this->getDoctrine()->getManager()->getRepository("SiteActivityBundle:ScaleGroup");
-		if ($request->getLocale() == "en")
-		{
-			$filename = $user->getUsername(). "_notes_" .$date->format("m_d_Y_H_i_s").".csv";
-			$data['content'][] = "Module,Activity,Note";
-		}
-		else
-		{
-			$filename = $user->getUsername(). "_notes_" .$date->format("d_m_Y_H_i_s").".csv";
-			$data['content'][] = "Module,Activité,Note";
-		}
 		foreach ($user->getModules() as $module)
 		{
+			if ($request->getLocale() == "en")
+			{
+				$filename = $user->getUsername(). "_notes_" .$date->format("m_d_Y_H_i_s").".csv";
+				$data['content'][] = "Module,Grade";
+			}
+			else
+			{
+				$filename = $user->getUsername(). "_notes_" .$date->format("d_m_Y_H_i_s").".csv";
+				$data['content'][] = "Module,Grade";
+			}
+			$data['content'][] = $module->getName(). ",";
+			if ($request->getLocale() == "en")
+				$data['content'][] = "Activity,Note";
+			else
+				$data['content'][] = "Activité,Note";
 			foreach ($user->getActivities() as $activity)
 			{
 				$data['activities'][] = $activity;

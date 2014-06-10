@@ -46,49 +46,59 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
     protected $dateOfBirth;
 
     /**
-     * @var \Site\Intra\ForumBundle\Entity\ForumThread
+     * @var \Site\ForumBundle\Entity\ForumThread
      */
     protected $threads;
 
     /**
-     * @var \Site\Intra\ForumBundle\Entity\ForumPost
+     * @var \Site\ForumBundle\Entity\ForumPost
      */
     protected $posts;
 
     /**
-     * @var \Site\Intra\ForumBundle\Entity\ForumComment
+     * @var \Site\ForumBundle\Entity\ForumComment
      */
     protected $comments;
 
     /**
-     * @var \Site\Intra\TicketBundle\Entity\TicketTicket
+     * @var \Site\TicketBundle\Entity\TicketTicket
      */
     protected $tickets;
 
     /**
-     * @var \Site\Intra\TicketBundle\Entity\TicketMessage
+     * @var \Site\TicketBundle\Entity\TicketMessage
      */
     protected $messages;
 
     /**
-     * @var \Site\Intra\ActivityBundle\Entity\Module
+     * @var \Site\ActivityBundle\Entity\Module
      */
     protected $modules;
 
     /**
-     * @var \Site\Intra\ActivityBundle\Entity\Activity
+     * @var \Site\ActivityBundle\Entity\Activity
      */
     protected $activities;
 
     /**
-     * @var \Site\Intra\ActivityBundle\Entity\ActivityGroup
+     * @var \Site\ActivityBundle\Entity\ActivityGroup
      */
      protected $activity_groups;
 
     /**
-     * @var \Site\Intra\IntraBundle\Entitiy\Event
+     * @var \Site\IntraBundle\Entity\Event
      */
     protected $events;
+
+    /**
+     * @var \Site\ActivityBundle\Entity\ModuleGrade
+     */
+    protected $grades;
+
+    /**
+     * @var \Site\ActivityBundle\Entity\ActivityMark
+     */
+    protected $marks;
 
     /**
      * Constructor
@@ -104,7 +114,9 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
         $this->activities = new \Doctrine\Common\Collections\ArrayCollection();
         $this->modules = new \Doctrine\Common\Collections\ArrayCollection();
         $this->activity_groups = new \Doctrine\Common\Collections\ArrayCollection();
-
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->grades = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->marks = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -193,14 +205,14 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
      * @param \DateTime or string $dateOfBirth
      */
     public function setDateOfBirth($dateOfBirth)
-	{
-		if ($dateOfBirth instanceOf \DateTime)
-			$this->dateOfBirth = $dateOfBirth;
-		else
-		{
-			$date = substr($dateOfBirth, 0, 8);
-			$this->dateOfBirth = new \DateTime($date);
-		}
+    {
+        if ($dateOfBirth instanceOf \DateTime)
+            $this->dateOfBirth = $dateOfBirth;
+        else
+        {
+            $date = substr($dateOfBirth, 0, 8);
+            $this->dateOfBirth = new \DateTime($date);
+        }
     }
 
     /**
@@ -474,4 +486,71 @@ class User extends BaseUser implements LdapUserInterface, ParticipantInterface
     {
         return $this->activity_groups;
     }
+
+    /**
+     * Add grade
+     *
+     * @param \Site\ActivityBundle\Entity\ModuleGrade $grade
+     * @return User
+     */
+    public function addGrade(\Site\ActivityBundle\Entity\ModuleGrade $grade)
+    {
+        $this->grades[] = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Remove grade
+     *
+     * @param \Site\ActivityBundle\Entity\ModuleGrade $grade
+     */
+    public function removeGrade(\Site\ActivityBundle\Entity\ModuleGrade $grade)
+    {
+        $this->grades->removeElement($grade);
+    }
+
+    /**
+     * Get grades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrades()
+    {
+        return $this->grades;
+    }
+
+    /**
+     * Add mark
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityMark $mark
+     * @return User
+     */
+    public function addMark(\Site\ActivityBundle\Entity\ActivityMark $mark)
+    {
+        $this->marks[] = $mark;
+
+        return $this;
+    }
+
+    /**
+     * Remove mark
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityMark $mark
+     */
+    public function removeMark(\Site\ActivityBundle\Entity\ActivityMark $mark)
+    {
+        $this->marks->removeElement($mark);
+    }
+
+    /**
+     * Get marks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMarks()
+    {
+        return $this->marks;
+    }
+
 }

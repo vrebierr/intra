@@ -146,7 +146,12 @@ class Activity
     /**
      * @ORM\OneToOne(targetEntity="Scale", mappedBy="activity", cascade={"persist", "remove"})
      */
-    private $scale;
+	private $scale;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ActivityMark", mappedBy="activity", cascade={"persist", "remove"})
+     */
+    private $marks;
 
     /**
      * @var boolean
@@ -705,5 +710,38 @@ class Activity
     public function getScale()
     {
         return $this->scale;
+    }
+
+    /**
+     * Add marks
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityMark $marks
+     * @return Activity
+     */
+    public function addMark(\Site\ActivityBundle\Entity\ActivityMark $marks)
+    {
+        $this->marks[] = $marks;
+
+        return $this;
+    }
+
+    /**
+     * Remove marks
+     *
+     * @param \Site\ActivityBundle\Entity\ActivityMark $marks
+     */
+    public function removeMark(\Site\ActivityBundle\Entity\ActivityMark $marks)
+    {
+        $this->marks->removeElement($marks);
+    }
+
+    /**
+     * Get marks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMarks()
+    {
+        return $this->marks;
     }
 }

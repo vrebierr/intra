@@ -9,14 +9,13 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Site\ActivityBundle\Entity\ScaleGroup;
 
-class ActivityCommand extends ContainerAwareCommand
+class CorrectionGroupsCommand extends ContainerAwareCommand
 {
 	protected function configure()
 	{
-		$this->setName('activity:check:finished')
+		$this->setName('activities:correction:generate')
 			->setDescription('Look up for each activity if its terminated, and generate corrections group if so.');
 	}
-
 
 	private function checkKeysValidity(array $keys, array $corrected, $corrector)
 	{
