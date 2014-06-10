@@ -161,7 +161,12 @@ class ActivityController extends Controller
 			}
 			else
 			{
-				$form = $this->createForm(new ActivityGroupType($activity->getModule()->getStudents()->toArray(), $activity));
+				$students = $activity->getModule()->getStudents();
+				foreach ($activity->getStudents() as $student)
+				{
+					$students->removeElement($student);
+				}
+				$form = $this->createForm(new ActivityGroupType($students->toArray(), $activity));
 				$request = $this->getRequest();
 				if ($request->isMethod("POST"))
 				{
