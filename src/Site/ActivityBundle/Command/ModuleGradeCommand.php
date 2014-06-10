@@ -26,42 +26,53 @@ class ModuleGradeCommand extends ContainerAwareCommand
 
 		foreach ($students as $student)
 		{
-			$grade = new ModuleGrade();
-			$grade->setStudent($student);
-			$grade->setModule($module);
-
-			$marks = $student->getMarks();
-			if ($marks->isEmpty() == false)
+			if ($module->getStudents()->contains($student))
 			{
-				$max = 0;
-				$note = 0;
-				foreach ($student->getMarks() as $mark)
-				{
-					if ($mark->getActivity()->getModule() == $module)
-					{
-						$max += $mark->getActivity()->getScale()->GetMark();
-						$note += $mark->getMark();
-					}
-				}
-				if ($max != 0)
-					$finalnote = $note / $max * 100;
-				else
-					$finalnote = -1;
+				$grade = new ModuleGrade();
+				$grade->setStudent($student);
+				$grade->setModule($module);
 
-				if ($finalnote <= 100 && $finalnote >= 80)
-					$grade->setGrade("A");
-				else if ($finalnote < 80 && $finalnote >= 60)
-					$grade->setGrade("B");
-				else if ($finalnote < 60 && $finalnote >= 40)
-					$grade->setGrade("C");
-				else if ($finalnote < 40 && $finalnote >= 20)
-					$grade->setGrade("D");
+				$marks = $student->getMarks();
+				if ($marks->isEmpty() == false)
+				{
+					$max = 0;
+					$note = 0;
+					foreach ($student->getMarks() as $mark)
+					{
+						if ($mark->getActivity()->getModule() == $module)
+						{
+							$max += $mark->getActivity()->getScale()->GetMark();
+							$note += $mark->getMark();
+						}
+					}
+					if ($max != 0)
+						$finalnote = $note / $max * 100;
+					else
+						$finalnote = -1;
+
+					if ($finalnote <= 100 && $finalnote >= 80)
+						$grade->setGrade("A");
+					else if ($finalnote < 80 && $finalnote >= 60)
+						$grade->setGrade("B");
+					else if ($finalnote < 60 && $finalnote >= 40)
+						$grade->setGrade("C");
+					else if ($finalnote < 40 && $finalnote >= 20)
+						$grade->setGrade("D");
+					else
+						$grade->setGrade("ECHEC");
+				}
 				else
 					$grade->setGrade("ECHEC");
+				$em->persist($grade);
 			}
-			else
+			else if ($module->getOptionnal() == 0)
+			{
+				$grade = new ModuleGrade();
+				$grade->setStudent($student);
+				$grade->setModule($module);
 				$grade->setGrade("ECHEC");
-			$em->persist($grade);
+				$em->persist($grade);
+			}
 		}
 		$em->flush();
 	}

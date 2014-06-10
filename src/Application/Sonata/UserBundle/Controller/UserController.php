@@ -206,24 +206,37 @@ class UserController extends BaseController
 				$filename = $user->getUsername(). "_notes_" .$date->format("d_m_Y_H_i_s").".csv";
 				$data['content'][] = "Module,Grade";
 			}
-			$data['content'][] = $module->getName(). ",";
+
+			if (!$user->getGrades()->isEmpty())
+			{
+				foreach ($user->getGrades() as $grade)
+				{
+					if ($grade->getModule() == $module)
+						$data['content'][] = $module->getName(). "," .$grade->getGrade();
+				}
+			}
+			else
+				$data['content'][] = $module->getName(). ",";
+
 			if ($request->getLocale() == "en")
 				$data['content'][] = "Activity,Note";
 			else
 				$data['content'][] = "Activité,Note";
+
 			foreach ($user->getActivities() as $activity)
 			{
-				$data['activities'][] = $activity;
-				foreach ($user->getActivityGroups() as $group)
+				if ($activity->getModule() == $module)
 				{
-					if (($corrections = $repo->findBy(array("activity" => $activity, "group" => $group))) != null)
+					if (!$user->getMarks()->isEmpty())
 					{
-						foreach ($corrections as $correction)
+						foreach ($user->getMarks() as $mark)
 						{
-							if ($correction->getActivity() == $activity && $correction->getActivity()->getModule() == $module && $correction->isDone())
-								$data['content'][] = $module->getName(). "," .$activity->getName(). "," .$correction->getNote();
+							if ($mark->getActivity() == $activity)
+								$data['content'][] = $activity->getName(). "," .$mark->getMark();
 						}
 					}
+					else
+						$data['content'][] = $activity->getName(). ",";
 				}
 			}
 		}

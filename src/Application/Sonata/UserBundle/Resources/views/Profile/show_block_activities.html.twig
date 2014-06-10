@@ -19,7 +19,13 @@
 			<tr class="show activities" data-text="{{ i }}">
 				<td>{{ module.name }}</td>
 				<td>{{ module.credits }}</td>
-				<td></td>
+				<td>
+					{% for grade in user.grades %}
+						{% if grade.module == module %}
+							{{ grade.grade }}
+						{% endif %}
+					{% endfor %}
+				</td>
 			</tr>
 				<tr class="hidden {{ i }}">
 					<td style="padding-left: 75px;">{{ 'label_profile_module_table_activity'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
