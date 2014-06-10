@@ -30,7 +30,7 @@ DONE	on doit pouvoir associé un barème à une activité de type projet
 
 NOTES/CORRECTIONS:
 DONE	Générer des paires de correction
-		Pour les examen un fichier .csv doit être importé
+DONE	Pour les examen un fichier .csv doit être importé
 
 PROFILS:
 DONE	nom / prénom

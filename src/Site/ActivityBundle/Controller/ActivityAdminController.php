@@ -173,9 +173,13 @@ class ActivityAdminController extends CRUDController
 						$em->persist($correction);
 					}
 					$em->flush();
+
+					$this->addFlash('sonata_flash_success', "Les corrections ont été correctement effectuées.");
+
 					fclose($handle);
 				}
 			}
 		}
+		return $this->render("SiteActivityBundle:CRUD:note_action.html.twig", $data);
 	}
 }
