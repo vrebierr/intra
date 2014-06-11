@@ -45,6 +45,7 @@ class ScaleController extends Controller
 			'required' => true,
 			'choices' => $scale->getMarks(),
 		));
+		$fb->add('cheat', 'checkbox', array('label' => 'scale.form.cheat', 'required' => false, 'attr' => array('value' => 0)));
 		$form = $fb->getForm();
 
 		$request = $this->getRequest();
@@ -55,7 +56,10 @@ class ScaleController extends Controller
 			{
 				$data = $form->getData();
 				$correction->setComment($data['comment']);
-				$correction->setNote($data['note']);
+				if ($data['cheat'] === true)
+					$correction->setNote(-42);
+				else
+					$correction->setNote($data['note']);
 				$correction->setDone(true);
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($correction);

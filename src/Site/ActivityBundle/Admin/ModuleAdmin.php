@@ -70,7 +70,7 @@ class ModuleAdmin extends Admin
             ->add('end', 'dateTimePicker', array('label' => 'ADMIN_MODULE_END'))
             ->add('startRegistration', 'dateTimePicker', array('label' => 'ADMIN_MODULE_STARTREGISTRATION'))
             ->add('endRegistration', 'dateTimePicker', array('label' => 'ADMIN_MODULE_ENDREGISTRATION'))
-            ->add('optionnal', null, array('label' => 'ADMIN_MODULE_OPTIONNAL'))
+            ->add('optionnal', null, array('label' => 'ADMIN_MODULE_OPTIONNAL', 'required' => false))
         ;
     }
 

@@ -65,3 +65,13 @@ activity:
         cancel: Cancel
         deregister: Deregister
     cursor: Now
+
+scale:
+    heading: %activity% - Correction
+    correction:
+        done: This correction is done.
+    form:
+        mark: Mark
+        comment: Comments
+        cheat: Cheat
+        send: Send

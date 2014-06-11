@@ -49,6 +49,9 @@ $(document).ready(function() {
 		fgColor:"#6ECFF5"
 	});
 
+	/* CHECKBOX */
+	$('.ui.checkbox').checkbox();
+
 	/* CALENDAR */
 	var date = new Date();
 	var d = date.getDate();

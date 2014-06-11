@@ -110,8 +110,8 @@ class ActivityAdmin extends Admin
                 'label' => 'ADMIN_ACTIVITY_TYPE',
                 'choices' => array('projet' => 'Projet', 'examen' => 'Examen', 'TD' => 'TD', 'rush' => 'Rush')
                 ))
-            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
-            ->add('optionnal', null, array('label' => 'ADMIN_ACTIVITY_OPTIONNAL'))
+            ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS', 'required' => false))
+            ->add('optionnal', null, array('label' => 'ADMIN_ACTIVITY_OPTIONNAL', 'required' => false))
         ;
     }
 
@@ -136,6 +136,7 @@ class ActivityAdmin extends Admin
             ->add('peers', null, array('label' => 'ADMIN_ACTIVITY_PEERS'))
             ->add('type', null, array('label' => 'ADMIN_ACTIVITY_TYPE'))
             ->add('randomGroups', null, array('label' => 'ADMIN_ACTIVITY_RANDOMGROUPS'))
+            ->add('optionnal', null, array('label' => 'ADMIN_ACTIVITY_OPTIONNAL'))
         ;
     }
 }

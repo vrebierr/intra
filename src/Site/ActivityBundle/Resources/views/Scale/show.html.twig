@@ -1,6 +1,6 @@
 {% extends 'SiteActivityBundle::layout_activities.html.twig' %}
 
-{# BLOCK FORM_RENDERING#}
+{# BLOCK FORM_RENDERING #}
 {% form_theme form _self %}
 
 {% block choice_widget_collapsed %}
@@ -58,11 +58,17 @@
 		</div>
 		<div class="form correction">
 			<form class="ui form" method="post" action="{{ path('site_activities_scale_show', {'id': group.id }) }}">
-				<div class="field">
-					<div class="ui selection dropdown">
-						<div class="default text">{{ 'scale.form.mark'|trans }}</div>
-						<i class="dropdown icon"></i>
-						{{ form_widget(form.note) }}
+				<div class="two fields">
+					<div class="field">
+						<div class="ui selection dropdown">
+							<div class="default text">{{ 'scale.form.mark'|trans }}</div>
+							<i class="dropdown icon"></i>
+							{{ form_widget(form.note) }}
+						</div>
+					</div>
+					<div class="ui checkbox">
+						{{ form_widget(form.cheat) }}
+						{{ form_label(form.cheat) }}
 					</div>
 				</div>
 				<div class="field">
