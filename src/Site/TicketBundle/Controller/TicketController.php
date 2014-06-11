@@ -43,7 +43,7 @@ class TicketController extends Controller
 				$message->setAuthor($user);
 				$message->setContent($postVal['content']);
 
-				$ticket->addMessages($message);
+				$ticket->addMessage($message);
 
 				$event = new Event();
 				$event->setUser($user);
