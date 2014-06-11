@@ -123,6 +123,14 @@ class UserController extends BaseController
 		$event = new InteractiveLoginEvent($this->getRequest(), $token);
 		$this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
 
+		$locale = $user->getLocale();
+		if ($locale !== null)
+		{
+			$request = $this->getRequest();
+			$request->setLocale($request->getSession()->get('_locale', $locale));
+			$request->getSession()->set('_locale', $locale);
+		}
+
 		return $this->redirect($this->generateUrl('site_intra'));
 	}
 
