@@ -23,6 +23,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: "Activites", label: "ADMIN_HEADING_SCALES"}
 
+    site_activity.admin.corrections:
+        class: Site\ActivityBundle\Admin\CorrectionAdmin
+        arguments: [~, Site\ActivityBundle\Entity\ScaleGroup, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Activites", label: "ADMIN_HEADING_CORRECTIONS"}
+
     site_elearning.admin.lesson:
         class: Site\ActivityBundle\Admin\LessonAdmin
         arguments: [~, Site\ActivityBundle\Entity\Lesson, SonataAdminBundle:CRUD]

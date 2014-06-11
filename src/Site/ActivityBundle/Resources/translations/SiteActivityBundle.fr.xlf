@@ -151,6 +151,40 @@
                 <target>Description</target>
             </trans-unit>
 
+            <!-- CORRECTIONS -->
+            <trans-unit id="34">
+                <source>ADMIN_HEADING_CORRECTIONS</source>
+                <target>Corrections</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>ADMIN_CORRECTION_ACTIVITY</source>
+                <target>Activité</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>ADMIN_CORRECTION_SCALE</source>
+                <target>Barème</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>ADMIN_CORRECTION_GROUP</source>
+                <target>Groupe</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>ADMIN_CORRECTION_RATER</source>
+                <target>Noteur</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>ADMIN_CORRECTION_NOTE</source>
+                <target>Note</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>ADMIN_CORRECTION_COMMENT</source>
+                <target>Commentaire</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>ADMIN_CORRECTION_DONE</source>
+                <target>Effectuée</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

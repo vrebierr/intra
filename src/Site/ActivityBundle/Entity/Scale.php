@@ -48,6 +48,10 @@ class Scale
      */
     private $activity;
 
+    public function __toString()
+    {
+        return ($this->name);
+    }
 
     public function getMarks()
     {
