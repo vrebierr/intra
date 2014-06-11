@@ -8,6 +8,9 @@
 				<h3 class="ui dividing header">
 					<div style="display:inline-block;">
 						<i class="file outline icon"></i>
+						{% if activity.optionnal == 0 %}
+							<i class="red exclamation icon"></i>
+						{% endif %}
 					</div>
 					{{ activity.name }}
 					<div class="ui blue label float right">

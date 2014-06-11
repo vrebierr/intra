@@ -63,6 +63,10 @@ class ModuleGradeCommand extends ContainerAwareCommand
 				}
 				else
 					$grade->setGrade("ECHEC");
+				if ($grade->getGrade() != "ECHEC")
+					$grade->setCredits($module->getCredits());
+				else
+					$grade->setCredits(0);
 				$em->persist($grade);
 			}
 			else if ($module->getOptionnal() == 0)
@@ -71,6 +75,7 @@ class ModuleGradeCommand extends ContainerAwareCommand
 				$grade->setStudent($student);
 				$grade->setModule($module);
 				$grade->setGrade("ECHEC");
+				$grade->setCredits(0);
 				$em->persist($grade);
 			}
 		}

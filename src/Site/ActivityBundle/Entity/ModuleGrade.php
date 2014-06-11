@@ -42,6 +42,13 @@ class ModuleGrade
 	private $module;
 
 	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="credits", type="integer")
+	 */
+	private $credits;
+
+	/**
 	 * Get id
 	 *
 	 * @return integer 
@@ -49,6 +56,29 @@ class ModuleGrade
 	public function getId()
 	{
 		return $this->id;
+	}
+
+	/**
+	 * Set credits
+	 *
+	 * @param integer $credits
+	 * @return ModuleGrade
+	 */
+	public function setCredits($credits)
+	{
+		$this->credits = $credits;
+
+		return $this;
+	}
+
+	/**
+	 * Get credits
+	 *
+	 * @return integer
+	 */
+	public function getCredits()
+	{
+		return $this->credits;
 	}
 
 	/**

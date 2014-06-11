@@ -70,7 +70,7 @@ class LessonAdmin extends Admin
 			))
 			->add('type', 'choice', array(
 				'label' => 'ADMIN_ELEARNING_TYPE',
-				'choices' => array('pdf' => 'PDF', 'video' => 'Vidéo', 'html' => 'Page HTML')
+				'choices' => array('pdf' => 'PDF', 'video' => 'Video')
 				))
 		;
 	}

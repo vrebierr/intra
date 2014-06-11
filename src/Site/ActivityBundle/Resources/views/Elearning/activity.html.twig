@@ -48,7 +48,7 @@
 				<ul>
 					{% for lesson in activity.lessons %}
 						<li>
-							<a href="#" class="elearning_menu" id="{{ loop.index0 }}"><i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}</a>
+							<a href="#" class="elearning_menu" id="{{ loop.index0 }}"><i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% endif %} icon"></i>{{ lesson.name }}</a>
 						</li>
 					{% endfor %}
 				</ul>

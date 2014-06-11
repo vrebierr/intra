@@ -12,7 +12,7 @@
 							<ul>
 								{% for lesson in activity.lessons %}
 									<li>
-										<i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% else %}code{% endif %} icon"></i>{{ lesson.name }}
+										<i class="{% if lesson.type == 'video' %}video{% elseif lesson.type == 'pdf' %}file{% endif %} icon"></i>{{ lesson.name }}
 									</li>
 								{% endfor %}
 							</ul>
