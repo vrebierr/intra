@@ -15,6 +15,7 @@
 	<tbody>
 		{% set i = 0 %}
 		{% set total_credits = 0 %}
+		{% set final_credits = 0 %}
 		{% for module in user.modules %}
 			<tr class="show activities" data-text="{{ i }}">
 				<td>{{ module.name }}</td>
@@ -23,6 +24,9 @@
 					{% for grade in user.grades %}
 						{% if grade.module == module %}
 							{{ grade.grade }}
+							{% if grade.grade != "ECHEC" %}
+								{% set final_credits = final_credits + module.credits %}
+							{% endif %}
 						{% endif %}
 					{% endfor %}
 				</td>
@@ -50,7 +54,7 @@
 		{% endfor %}
 			<tr>
 				<td>{{ 'label_profile_module_table_total'|trans({}, 'ApplicationSonataUserBundle')|upper }}</td>
-				<td>X/{{ total_credits }}</td>
+				<td>{{ final_credits }}/{{ total_credits }}</td>
 				<td>
 					<a href="{{ path('sonata_user_profile_export') }}">
 						<button class="ui blue right floated button">
