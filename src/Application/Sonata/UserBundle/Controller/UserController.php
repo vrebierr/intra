@@ -52,6 +52,7 @@ class UserController extends BaseController
 				$userObject->setPhone($info[0]['mobile-phone'][0]);
 				$userObject->setEmail($info[0]['alias'][0]);
 				$userObject->setDateOfBirth($info[0]['birth-date'][0]);
+				$userObject->setEnabled(true);
 			}
 			else
 				throw new \Exception("Cet utilisateur n'existe pas !");
