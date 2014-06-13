@@ -79,7 +79,7 @@ class ActivityMarkCommand extends ContainerAwareCommand
 
 		foreach($activities as $activity)
 		{
-			if ($activity->getEndCorrection() >= $date && !$activity->areGradesGiven())
+			if ($activity->getEndCorrection() >= $date && !$activity->areMarksGiven())
 			{
 				$output->writeln("Defining final marks for " .$activity->getName());
 				$this->correction($activity);

@@ -41,7 +41,7 @@ class ModuleGradeCommand extends ContainerAwareCommand
 					{
 						if ($mark->getActivity()->getModule() == $module)
 						{
-							$max += $mark->getActivity()->getScale()->GetMark();
+							$max += $mark->getActivity()->getScale()->getMark();
 							$note += $mark->getMark();
 						}
 					}
