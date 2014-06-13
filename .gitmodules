@@ -1,3 +1,0 @@
-[submodule "rack"]
-	path = vendor/friendsofsymfony/user-bundle/FOS/UserBundle
-	url = https://github.com/FriendsOfSymfony/FOSUserBundle.git
